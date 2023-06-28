@@ -5,10 +5,14 @@ abstract class Routes {
   Routes._();
   static const SPLASH = _Paths.SPLASH;
   static const NAVIGATION_BAR = _Paths.NAVIGATION_BAR;
+  static const ADD = _Paths.ADD;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
   _Paths._();
   static const SPLASH = '/splash';
   static const NAVIGATION_BAR = '/navigation-bar';
+  static const ADD = '/add';
+  static const PROFILE = '/profile';
 }
