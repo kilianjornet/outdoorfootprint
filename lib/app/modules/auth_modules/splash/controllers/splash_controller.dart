@@ -11,9 +11,26 @@ class SplashController extends GetxController
     super.onInit();
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(
+        seconds: 2,
+      ),
     );
-    animation = Tween<double>(begin: 0, end: 1).animate(animationController);
+    animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(
+      animationController,
+    );
+    Future.delayed(
+      const Duration(
+        seconds: 4,
+      ),
+      () async {
+        await Get.offAllNamed(
+          '/sign-in',
+        );
+      },
+    );
   }
 
   @override

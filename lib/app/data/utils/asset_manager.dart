@@ -16,4 +16,9 @@ class AssetManager {
   static const infoSnackBar = 'assets/icons/info_snackbar.svg';
   static const errorSnackBar = 'assets/icons/error_snackbar.svg';
   static const notificationSnackBar = 'assets/icons/notification_snackbar.svg';
+  static const authLogo = 'assets/icons/auth_logo.svg';
+  static const email = 'assets/icons/email.svg';
+  static const password = 'assets/icons/password.svg';
+  static const obscureOpen = 'assets/icons/obscure_open.svg';
+  static const obscureClose = 'assets/icons/obscure_close.svg';
 }

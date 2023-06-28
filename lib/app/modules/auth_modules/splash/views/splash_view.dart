@@ -25,7 +25,10 @@ class SplashView extends GetView<SplashController> {
                 top: 125.h,
               ),
               child: FadeTransition(
-                opacity: Tween<double>(begin: 0, end: 1).animate(
+                opacity: Tween<double>(
+                  begin: 0,
+                  end: 1,
+                ).animate(
                   CurvedAnimation(
                     parent: controller.animationController,
                     curve: Curves.easeIn,

@@ -1,5 +1,18 @@
 class StringManager {
   StringManager._();
 
-  static const myOutdoorFootprint = 'My Outdoor Footprint';
+  static const outdoorFootprintTitle = 'My Outdoor Footprint';
+  static const signIn = 'Sign In';
+  static const greetingText = 'Hi there! Nice to see you again.';
+  static const userEmail = 'Email';
+  static const userPassword = 'Password';
+  static const forgotPassword = 'Forgot Password';
+  static const noAccount = 'Don\'t have an account';
+  static const signUp = 'Sign Up';
+  static const enterValidEmail = 'Please enter valid email';
+  static const passwordMinLength = 'Password must be at least 8 characters';
+  static const passwordUppercase = 'Password must contain an uppercase letter';
+  static const passwordLowercase = 'Password must contain a lowercase letter';
+  static const passwordNumber = 'Password must contain a number';
+  static const passwordSymbol = 'Password must contain a symbol';
 }

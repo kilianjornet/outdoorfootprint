@@ -15,7 +15,7 @@ Future<void> main() async {
         child,
       ) {
         return GetMaterialApp(
-          title: StringManager.myOutdoorFootprint,
+          title: StringManager.outdoorFootprintTitle,
           debugShowCheckedModeBanner: false,
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
