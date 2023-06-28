@@ -31,4 +31,8 @@ class StringManager {
   static const enterValidLastName = 'Please enter a valid last name';
   static const enterValidPhoneNumber = 'Please enter a valid phone number';
   static const passwordMismatch = 'Password does not match';
+  static const home = 'Home';
+  static const calculator = 'Calculator';
+  static const myFootprint = 'My Footprint';
+  static const profile = 'Profile';
 }
