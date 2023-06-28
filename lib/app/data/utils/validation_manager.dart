@@ -1,0 +1,3 @@
+class ValidationManager {
+  ValidationManager._();
+}
