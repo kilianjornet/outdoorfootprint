@@ -7,6 +7,8 @@ abstract class Routes {
   static const NAVIGATION_BAR = _Paths.NAVIGATION_BAR;
   static const ADD = _Paths.ADD;
   static const PROFILE = _Paths.PROFILE;
+  static const HOME = _Paths.HOME;
+  static const MY_FOOTPRINT = _Paths.MY_FOOTPRINT;
 }
 
 abstract class _Paths {
@@ -15,4 +17,6 @@ abstract class _Paths {
   static const NAVIGATION_BAR = '/navigation-bar';
   static const ADD = '/add';
   static const PROFILE = '/profile';
+  static const HOME = '/home';
+  static const MY_FOOTPRINT = '/my-footprint';
 }

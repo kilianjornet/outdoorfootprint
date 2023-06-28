@@ -4,6 +4,10 @@ import '../modules/auth_modules/splash/bindings/splash_binding.dart';
 import '../modules/auth_modules/splash/views/splash_view.dart';
 import '../modules/main_modules/calculator_modules/add/bindings/add_binding.dart';
 import '../modules/main_modules/calculator_modules/add/views/add_view.dart';
+import '../modules/main_modules/home/bindings/home_binding.dart';
+import '../modules/main_modules/home/views/home_view.dart';
+import '../modules/main_modules/my_footprint/bindings/my_footprint_binding.dart';
+import '../modules/main_modules/my_footprint/views/my_footprint_view.dart';
 import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
@@ -36,6 +40,16 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.MY_FOOTPRINT,
+      page: () => const MyFootprintView(),
+      binding: MyFootprintBinding(),
     ),
   ];
 }
