@@ -90,6 +90,10 @@ class SignUpView extends GetView<SignUpController> {
               ),
               SignUpWidget.agreeTermsAndPrivacy(
                 isChecked: controller.isChecked,
+                onChanged: (value) {
+                  controller.isChecked.value = value!;
+                  controller.updateButtonState(value);
+                },
               ),
               WidgetManager.primaryButton(
                 buttonName: StringManager.continueButton,

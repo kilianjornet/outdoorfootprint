@@ -133,6 +133,97 @@ class SignUpWidget {
     );
   }
 
+  static Widget countryTextField({
+    required TextEditingController countryController,
+    required FocusNode countryNode,
+    required void Function(String)? onChanged,
+    required void Function()? onTap,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 15.h,
+      ),
+      child: TextFormField(
+        onTapOutside: (value) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        },
+        onChanged: onChanged,
+        onTap: onTap,
+        readOnly: true,
+        controller: countryController,
+        focusNode: countryNode,
+        decoration: InputDecoration(
+          isDense: true,
+          filled: true,
+          fillColor: ColorManager.white,
+          hintText: StringManager.country,
+          hintStyle: GoogleFonts.oswald(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+            color: ColorManager.labelText,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorManager.button,
+              width: 1.5.w,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorManager.errorText,
+              width: 1.5.w,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: ColorManager.white,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: ColorManager.errorText,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          errorStyle: GoogleFonts.oswald(
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w400,
+            color: ColorManager.errorText,
+          ),
+          prefixIcon: Container(
+            padding: EdgeInsets.only(
+              top: 12.h,
+              left: 15.w,
+              right: 10.w,
+              bottom: 12.h,
+            ),
+            child: SvgPicture.asset(
+              AssetManager.world,
+              width: 7.w,
+            ),
+          ),
+        ),
+        style: GoogleFonts.oswald(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+          color: ColorManager.labelText,
+        ),
+        cursorColor: ColorManager.button,
+      ),
+    );
+  }
+
   static Widget numberTextField({
     required TextEditingController numberController,
     required FocusNode numberNode,
@@ -221,97 +312,6 @@ class SignUpWidget {
             ),
             child: SvgPicture.asset(
               AssetManager.mobile,
-              width: 7.w,
-            ),
-          ),
-        ),
-        style: GoogleFonts.oswald(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w400,
-          color: ColorManager.labelText,
-        ),
-        cursorColor: ColorManager.button,
-      ),
-    );
-  }
-
-  static Widget countryTextField({
-    required TextEditingController countryController,
-    required FocusNode countryNode,
-    required void Function(String)? onChanged,
-    required void Function()? onTap,
-  }) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 15.h,
-      ),
-      child: TextFormField(
-        onTapOutside: (value) {
-          FocusManager.instance.primaryFocus!.unfocus();
-        },
-        onChanged: onChanged,
-        onTap: onTap,
-        readOnly: true,
-        controller: countryController,
-        focusNode: countryNode,
-        decoration: InputDecoration(
-          isDense: true,
-          filled: true,
-          fillColor: ColorManager.white,
-          hintText: StringManager.country,
-          hintStyle: GoogleFonts.oswald(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
-            color: ColorManager.labelText,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: ColorManager.button,
-              width: 1.5.w,
-            ),
-            borderRadius: BorderRadius.circular(
-              8.w,
-            ),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: ColorManager.errorText,
-              width: 1.5.w,
-            ),
-            borderRadius: BorderRadius.circular(
-              8.w,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: ColorManager.white,
-            ),
-            borderRadius: BorderRadius.circular(
-              8.w,
-            ),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: ColorManager.errorText,
-            ),
-            borderRadius: BorderRadius.circular(
-              8.w,
-            ),
-          ),
-          errorStyle: GoogleFonts.oswald(
-            fontSize: 15.sp,
-            fontWeight: FontWeight.w400,
-            color: ColorManager.errorText,
-          ),
-          prefixIcon: Container(
-            padding: EdgeInsets.only(
-              top: 12.h,
-              left: 15.w,
-              right: 10.w,
-              bottom: 12.h,
-            ),
-            child: SvgPicture.asset(
-              AssetManager.world,
               width: 7.w,
             ),
           ),
@@ -460,6 +460,7 @@ class SignUpWidget {
 
   static Widget agreeTermsAndPrivacy({
     required var isChecked,
+    required void Function(bool?)? onChanged,
   }) {
     return Padding(
       padding: EdgeInsets.only(
@@ -477,9 +478,7 @@ class SignUpWidget {
                 visualDensity:
                     const VisualDensity(horizontal: -4, vertical: -4),
                 value: isChecked.value,
-                onChanged: (value) {
-                  isChecked.value = value!;
-                },
+                onChanged: onChanged,
                 activeColor: ColorManager.white,
                 checkColor: ColorManager.labelText,
                 side: BorderSide(
@@ -543,6 +542,96 @@ class SignUpWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  static InputDecoration? searchBarDecoration() {
+    return InputDecoration(
+      isDense: true,
+      filled: true,
+      fillColor: ColorManager.white,
+      hintText: StringManager.country,
+      hintStyle: GoogleFonts.oswald(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.labelText,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.button,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.errorText,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.white,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.errorText,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorStyle: GoogleFonts.oswald(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.errorText,
+      ),
+      prefixIcon: Container(
+        padding: EdgeInsets.only(
+          top: 12.h,
+          left: 15.w,
+          right: 10.w,
+          bottom: 12.h,
+        ),
+        child: SvgPicture.asset(
+          AssetManager.world,
+          width: 7.w,
+        ),
+      ),
+    );
+  }
+
+  static TextStyle? countryTextStyle() {
+    return GoogleFonts.oswald(
+      fontWeight: FontWeight.w400,
+      fontSize: 14.sp,
+      color: ColorManager.white,
+    );
+  }
+
+  static Widget? countryPickerTitle() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 15.h,
+      ),
+      child: Text(
+        StringManager.selectCountry,
+        style: GoogleFonts.oswald(
+          fontWeight: FontWeight.w400,
+          fontSize: 14.sp,
+          color: ColorManager.subtitleText,
+        ),
       ),
     );
   }
