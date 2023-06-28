@@ -21,4 +21,7 @@ class AssetManager {
   static const password = 'assets/icons/password.svg';
   static const obscureOpen = 'assets/icons/obscure_open.svg';
   static const obscureClose = 'assets/icons/obscure_close.svg';
+  static const user = 'assets/icons/user.svg';
+  static const world = 'assets/icons/world.svg';
+  static const mobile = 'assets/icons/mobile.svg';
 }

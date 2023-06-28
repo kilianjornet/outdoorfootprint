@@ -15,4 +15,20 @@ class StringManager {
   static const passwordLowercase = 'Password must contain a lowercase letter';
   static const passwordNumber = 'Password must contain a number';
   static const passwordSymbol = 'Password must contain a symbol';
+  static const firstName = 'First Name';
+  static const lastName = 'Last Name';
+  static const country = 'Country';
+  static const selectCountry = 'Select Country';
+  static const phoneNumber = 'Phone Number';
+  static const confirmPassword = 'Confirm Password';
+  static const agreeTo = 'I agree to';
+  static const termsAndConditions = 'Terms and Condition';
+  static const andThe = 'and the';
+  static const privacyPolicy = 'Privacy Policy';
+  static const continueButton = 'Continue';
+  static const haveAccount = 'Have an account';
+  static const enterValidFirstName = 'Please enter valid first name';
+  static const enterValidLastName = 'Please enter a valid last name';
+  static const enterValidPhoneNumber = 'Please enter a valid phone number';
+  static const passwordMismatch = 'Password does not match';
 }

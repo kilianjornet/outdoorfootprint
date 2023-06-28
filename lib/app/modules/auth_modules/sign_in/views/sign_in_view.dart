@@ -15,105 +15,85 @@ class SignInView extends GetView<SignInController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: WidgetManager.authBackground(
+          title: StringManager.signIn,
           child: Form(
-        key: controller.signInKey,
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 5.h,
-              ),
-              child: Text(
-                StringManager.signIn,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24.sp,
-                  color: ColorManager.displayText,
+            key: controller.signInKey,
+            child: Column(
+              children: [
+                WidgetManager.emailTextField(
+                  emailController: controller.emailController,
+                  emailNode: controller.emailNode,
+                  onChanged: (value) async {
+                    controller.updateButtonState(value);
+                  },
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: 35.h,
-              ),
-              child: Text(
-                StringManager.greetingText,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18.sp,
-                  color: ColorManager.captionText,
+                WidgetManager.passwordTextField(
+                  passwordController: controller.passwordController,
+                  passwordNode: controller.passwordNode,
+                  hintText: StringManager.userPassword,
+                  obscureText: controller.obscurePasswordText,
+                  onChanged: (value) async {
+                    controller.updateButtonState(value);
+                  },
                 ),
-              ),
-            ),
-            WidgetManager.emailTextField(
-              emailController: controller.emailController,
-              emailNode: controller.emailNode,
-              onChanged: (value) async {
-                controller.updateButtonState(value);
-              },
-            ),
-            WidgetManager.passwordTextField(
-              passwordController: controller.passwordController,
-              passwordNode: controller.passwordNode,
-              hintText: StringManager.userPassword,
-              obscureText: controller.obscurePasswordText,
-              onChanged: (value) async {
-                controller.updateButtonState(value);
-              },
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 30.h,
-                bottom: 25.h,
-              ),
-              child: GestureDetector(
-                onTap: () async {},
-                child: Text(
-                  '${StringManager.forgotPassword}?',
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.subtitleText,
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 30.h,
+                    bottom: 25.h,
                   ),
-                ),
-              ),
-            ),
-            WidgetManager.primaryButton(
-              buttonName: StringManager.signIn,
-              isEnable: controller.isEnable,
-              onTap: () async {},
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 30.h,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    '${StringManager.noAccount}? ',
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: ColorManager.subtitleText,
-                    ),
-                  ),
-                  GestureDetector(
+                  child: GestureDetector(
                     onTap: () async {},
                     child: Text(
-                      StringManager.signUp,
+                      '${StringManager.forgotPassword}?',
                       style: GoogleFonts.oswald(
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        color: ColorManager.titleText,
+                        color: ColorManager.subtitleText,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                WidgetManager.primaryButton(
+                  buttonName: StringManager.signIn,
+                  isEnable: controller.isEnable,
+                  onTap: () async {},
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 30.h,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${StringManager.noAccount}? ',
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
+                          color: ColorManager.subtitleText,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          await Get.toNamed(
+                            '/sign-up',
+                          );
+                        },
+                        child: Text(
+                          StringManager.signUp,
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14.sp,
+                            color: ColorManager.titleText,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      )),
+          )),
     );
   }
 }

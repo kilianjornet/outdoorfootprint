@@ -6,7 +6,7 @@ class SignInController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final emailNode = FocusNode();
-  final passwordNode = FocusNode().obs;
+  final passwordNode = FocusNode();
   var obscurePasswordText = true.obs;
   var isEnable = false.obs;
   @override

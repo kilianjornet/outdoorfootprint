@@ -113,6 +113,7 @@ class WidgetManager {
   }
 
   static Widget authBackground({
+    required String title,
     required Widget child,
   }) {
     return Container(
@@ -129,22 +130,53 @@ class WidgetManager {
               width: 360.w,
             ),
           ),
-          Positioned(
-            left: 42.w,
-            top: 75.h,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    bottom: 50.h,
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 30.w,
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 75.h,
+                      bottom: 50.h,
+                    ),
+                    child: SvgPicture.asset(
+                      AssetManager.logoWT,
+                      width: 175.w,
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    AssetManager.logoWT,
-                    width: 175.w,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 5.h,
+                    ),
+                    child: Text(
+                      title,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24.sp,
+                        color: ColorManager.displayText,
+                      ),
+                    ),
                   ),
-                ),
-                child,
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 35.h,
+                    ),
+                    child: Text(
+                      StringManager.greetingText,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18.sp,
+                        color: ColorManager.captionText,
+                      ),
+                    ),
+                  ),
+                  child,
+                ],
+              ),
             ),
           ),
         ],
@@ -161,16 +193,127 @@ class WidgetManager {
       padding: EdgeInsets.only(
         top: 15.h,
       ),
-      child: SizedBox(
-        width: 275.w,
-        child: TextFormField(
+      child: TextFormField(
+        onTapOutside: (value) {
+          FocusManager.instance.primaryFocus!.unfocus();
+        },
+        onChanged: onChanged,
+        controller: emailController,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        keyboardType: TextInputType.emailAddress,
+        inputFormatters: [
+          FilteringTextInputFormatter.deny(
+            RegExp(
+              '[ ]',
+            ),
+          ),
+          FilteringTextInputFormatter.singleLineFormatter,
+          FilteringTextInputFormatter.allow(
+            RegExp(
+              r'^[\w.@]+',
+            ),
+          ),
+        ],
+        validator: (value) {
+          if (value!.isEmpty) {
+            return null;
+          }
+          if (!ValidationManager.validateEmail(value)) {
+            return StringManager.enterValidEmail;
+          }
+          return null;
+        },
+        focusNode: emailNode,
+        decoration: InputDecoration(
+          isDense: true,
+          filled: true,
+          fillColor: ColorManager.white,
+          hintText: StringManager.userEmail,
+          hintStyle: GoogleFonts.oswald(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+            color: ColorManager.labelText,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: ColorManager.button,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorManager.errorText,
+              width: 1.5.w,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: ColorManager.white,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: ColorManager.errorText,
+            ),
+            borderRadius: BorderRadius.circular(
+              8.w,
+            ),
+          ),
+          errorStyle: GoogleFonts.oswald(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+            color: ColorManager.errorText,
+          ),
+          prefixIcon: Container(
+            padding: EdgeInsets.only(
+              top: 12.h,
+              left: 15.w,
+              right: 10.w,
+              bottom: 12.h,
+            ),
+            child: SvgPicture.asset(
+              AssetManager.email,
+              width: 7.w,
+            ),
+          ),
+        ),
+        style: GoogleFonts.oswald(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w400,
+          color: ColorManager.labelText,
+        ),
+        cursorColor: ColorManager.cursor,
+      ),
+    );
+  }
+
+  static Widget passwordTextField({
+    required TextEditingController passwordController,
+    required FocusNode passwordNode,
+    required String? hintText,
+    required void Function(String)? onChanged,
+    required var obscureText,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 15.h,
+      ),
+      child: Obx(() {
+        return TextFormField(
           onTapOutside: (value) {
             FocusManager.instance.primaryFocus!.unfocus();
           },
           onChanged: onChanged,
-          controller: emailController,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          keyboardType: TextInputType.emailAddress,
+          controller: passwordController,
+          keyboardType: TextInputType.visiblePassword,
           inputFormatters: [
             FilteringTextInputFormatter.deny(
               RegExp(
@@ -178,44 +321,54 @@ class WidgetManager {
               ),
             ),
             FilteringTextInputFormatter.singleLineFormatter,
-            FilteringTextInputFormatter.allow(
-              RegExp(
-                r'^[\w.@]+',
-              ),
-            ),
           ],
+          obscureText: obscureText.value,
+          obscuringCharacter: '●',
           validator: (value) {
             if (value!.isEmpty) {
               return null;
             }
-            if (!ValidationManager.validateEmail(value)) {
-              return StringManager.enterValidEmail;
+            if (value.length < 8) {
+              return StringManager.passwordMinLength;
+            }
+            if (!value.contains(RegExp(r'[A-Z]'))) {
+              return StringManager.passwordUppercase;
+            }
+            if (!value.contains(RegExp(r'[a-z]'))) {
+              return StringManager.passwordLowercase;
+            }
+            if (!value.contains(RegExp(r'[0-9]'))) {
+              return StringManager.passwordNumber;
+            }
+            if (!value.contains(RegExp(r'[!@#$%^&*()\-_=+{};:,<.>]'))) {
+              return StringManager.passwordSymbol;
             }
             return null;
           },
-          focusNode: emailNode,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          focusNode: passwordNode,
           decoration: InputDecoration(
             isDense: true,
             filled: true,
             fillColor: ColorManager.white,
-            hintText: StringManager.userEmail,
+            hintText: hintText,
             hintStyle: GoogleFonts.oswald(
               fontSize: 16.sp,
               fontWeight: FontWeight.w400,
               color: ColorManager.labelText,
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
                 color: ColorManager.button,
+                width: 1.5.w,
               ),
               borderRadius: BorderRadius.circular(
                 8.w,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: ColorManager.errorText,
-                width: 1.5.w,
               ),
               borderRadius: BorderRadius.circular(
                 8.w,
@@ -250,8 +403,27 @@ class WidgetManager {
                 bottom: 12.h,
               ),
               child: SvgPicture.asset(
-                AssetManager.email,
+                AssetManager.password,
                 width: 7.w,
+              ),
+            ),
+            suffixIcon: InkWell(
+              onTap: () {
+                obscureText.value = !obscureText.value;
+              },
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: 13.h,
+                  left: 10.w,
+                  right: 15.w,
+                  bottom: 11.h,
+                ),
+                child: SvgPicture.asset(
+                  obscureText.value
+                      ? AssetManager.obscureClose
+                      : AssetManager.obscureOpen,
+                  width: 7.w,
+                ),
               ),
             ),
           ),
@@ -261,154 +433,8 @@ class WidgetManager {
             color: ColorManager.labelText,
           ),
           cursorColor: ColorManager.cursor,
-        ),
-      ),
-    );
-  }
-
-  static Widget passwordTextField({
-    required TextEditingController passwordController,
-    required Rx<FocusNode> passwordNode,
-    required String? hintText,
-    required void Function(String)? onChanged,
-    required var obscureText,
-  }) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 15.h,
-      ),
-      child: SizedBox(
-        width: 275.w,
-        child: Obx(() {
-          return TextFormField(
-            onTapOutside: (value) {
-              FocusManager.instance.primaryFocus!.unfocus();
-            },
-            onChanged: onChanged,
-            controller: passwordController,
-            keyboardType: TextInputType.visiblePassword,
-            inputFormatters: [
-              FilteringTextInputFormatter.deny(
-                RegExp(
-                  '[ ]',
-                ),
-              ),
-              FilteringTextInputFormatter.singleLineFormatter,
-            ],
-            obscureText: obscureText.value,
-            obscuringCharacter: '●',
-            validator: (value) {
-              if (value!.isEmpty) {
-                return null;
-              }
-              if (value.length < 8) {
-                return StringManager.passwordMinLength;
-              }
-              if (!value.contains(RegExp(r'[A-Z]'))) {
-                return StringManager.passwordUppercase;
-              }
-              if (!value.contains(RegExp(r'[a-z]'))) {
-                return StringManager.passwordLowercase;
-              }
-              if (!value.contains(RegExp(r'[0-9]'))) {
-                return StringManager.passwordNumber;
-              }
-              if (!value.contains(RegExp(r'[!@#$%^&*()\-_=+{};:,<.>]'))) {
-                return StringManager.passwordSymbol;
-              }
-              return null;
-            },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            focusNode: passwordNode.value,
-            decoration: InputDecoration(
-              isDense: true,
-              filled: true,
-              fillColor: ColorManager.white,
-              hintText: hintText,
-              hintStyle: GoogleFonts.oswald(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-                color: ColorManager.labelText,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: ColorManager.button,
-                  width: 1.5.w,
-                ),
-                borderRadius: BorderRadius.circular(
-                  8.w,
-                ),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: ColorManager.errorText,
-                ),
-                borderRadius: BorderRadius.circular(
-                  8.w,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: ColorManager.white,
-                ),
-                borderRadius: BorderRadius.circular(
-                  8.w,
-                ),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: ColorManager.errorText,
-                ),
-                borderRadius: BorderRadius.circular(
-                  8.w,
-                ),
-              ),
-              errorStyle: GoogleFonts.oswald(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: ColorManager.errorText,
-              ),
-              prefixIcon: Container(
-                padding: EdgeInsets.only(
-                  top: 12.h,
-                  left: 15.w,
-                  right: 10.w,
-                  bottom: 12.h,
-                ),
-                child: SvgPicture.asset(
-                  AssetManager.password,
-                  width: 7.w,
-                ),
-              ),
-              suffixIcon: InkWell(
-                onTap: () {
-                  obscureText.value = !obscureText.value;
-                },
-                child: Container(
-                  padding: EdgeInsets.only(
-                    top: 13.h,
-                    left: 10.w,
-                    right: 15.w,
-                    bottom: 11.h,
-                  ),
-                  child: SvgPicture.asset(
-                    obscureText.value
-                        ? AssetManager.obscureClose
-                        : AssetManager.obscureOpen,
-                    width: 7.w,
-                  ),
-                ),
-              ),
-            ),
-            style: GoogleFonts.oswald(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-              color: ColorManager.labelText,
-            ),
-            cursorColor: ColorManager.cursor,
-          );
-        }),
-      ),
+        );
+      }),
     );
   }
 

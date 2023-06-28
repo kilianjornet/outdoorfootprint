@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/auth_modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/auth_modules/sign_in/views/sign_in_view.dart';
+import '../modules/auth_modules/sign_up/bindings/sign_up_binding.dart';
+import '../modules/auth_modules/sign_up/views/sign_up_view.dart';
 import '../modules/auth_modules/splash/bindings/splash_binding.dart';
 import '../modules/auth_modules/splash/views/splash_view.dart';
 import '../modules/main_modules/calculator_modules/add/bindings/add_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.SIGN_IN,
       page: () => const SignInView(),
       binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_UP,
+      page: () => const SignUpView(),
+      binding: SignUpBinding(),
     ),
   ];
 }

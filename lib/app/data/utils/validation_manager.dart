@@ -13,4 +13,16 @@ class ValidationManager {
     final regex = RegExp(pattern);
     return regex.hasMatch(password);
   }
+
+  static bool validateName(String name) {
+    const pattern = r'^[a-zA-Z].{2,}$';
+    final regex = RegExp(pattern);
+    return regex.hasMatch(name);
+  }
+
+  static bool validateNumber(String number) {
+    const pattern = r'^[0-9]{4,13}$';
+    final regex = RegExp(pattern);
+    return regex.hasMatch(number);
+  }
 }

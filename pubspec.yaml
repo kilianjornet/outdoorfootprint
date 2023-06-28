@@ -11,17 +11,18 @@ dependencies:
   flutter_screenutil: 5.8.4
   google_fonts: ^5.1.0
   flutter_svg: ^2.0.7
+  connectivity_plus: ^4.0.1
+  fl_country_code_picker: 0.1.4
   flutter: 
     sdk: flutter
-  connectivity_plus: ^4.0.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
   flutter_test: 
     sdk: flutter
 
-flutter:
-  assets:
+flutter: 
+  assets: 
     - assets/icons/
   uses-material-design: true
 
