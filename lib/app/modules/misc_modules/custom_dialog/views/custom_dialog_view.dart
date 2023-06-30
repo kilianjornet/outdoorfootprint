@@ -12,7 +12,10 @@ class CustomDialogView extends GetView {
   CustomDialogView({Key? key}) : super(key: key);
   @override
   final controller = Get.put(CustomDialogController());
-  Widget build(BuildContext context) {
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
     return BackdropFilter(
       filter: ImageFilter.blur(
         sigmaY: 3,
@@ -21,7 +24,10 @@ class CustomDialogView extends GetView {
       child: Center(
         child: AnimatedBuilder(
           animation: controller.animationController,
-          builder: (context, child) {
+          builder: (
+            context,
+            child,
+          ) {
             return Transform.scale(
               scale: 1.0 - controller.animationController.value * 0.1,
               child: SvgPicture.asset(
