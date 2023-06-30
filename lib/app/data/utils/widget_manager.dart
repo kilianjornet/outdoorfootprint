@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/validation_manager.dart';
 
+import '../../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
 import 'asset_manager.dart';
 import 'color_manager.dart';
 
@@ -114,7 +115,6 @@ class WidgetManager {
 
   static Widget authBackground({
     required String title,
-    required bool appBar,
     required Widget child,
   }) {
     return Container(
@@ -141,7 +141,7 @@ class WidgetManager {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      top: appBar ? 0 : 75.h,
+                      top: 75.h,
                       bottom: 50.h,
                     ),
                     child: SvgPicture.asset(
@@ -167,13 +167,13 @@ class WidgetManager {
                       bottom: 35.h,
                     ),
                     child: Text(
-                      StringManager.greetingText,
+                      title == StringManager.forgetPassword
+                          ? StringManager.enterRegisteredEmail
+                          : StringManager.greetingText,
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 18.sp,
-                        color: appBar
-                            ? Colors.transparent
-                            : ColorManager.captionText,
+                        color: ColorManager.captionText,
                       ),
                     ),
                   ),
@@ -634,23 +634,50 @@ class WidgetManager {
     );
   }
 
-  static PreferredSizeWidget? primaryAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: ColorManager.primary,
-      toolbarHeight: 34.h,
-      title: GestureDetector(
-        onTap: () async {
-          Get.back();
-        },
-        child: SvgPicture.asset(
-          AssetManager.arrow,
-          width: 20.w,
+  static Widget backToSignIn() {
+    return GestureDetector(
+      onTap: () async {
+        await Get.offAllNamed(
+          '/sign-in',
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 25.h,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AssetManager.longArrow,
+              width: 20.w,
+            ),
+            Text(
+              '  ${StringManager.backToSignIn}',
+              style: GoogleFonts.oswald(
+                fontWeight: FontWeight.w400,
+                fontSize: 14.sp,
+                color: ColorManager.subtitleText,
+              ),
+            )
+          ],
         ),
       ),
-      leadingWidth: 0,
-      leading: const SizedBox(),
     );
+  }
+
+  static void showCustomDialog() {
+    Get.dialog(
+      CustomDialogView(),
+      barrierDismissible: false,
+      barrierColor: ColorManager.button.withOpacity(
+        0.5,
+      ),
+    );
+  }
+
+  static void hideCustomDialog() {
+    Get.isDialogOpen == true ? Get.back() : null;
   }
 }
 

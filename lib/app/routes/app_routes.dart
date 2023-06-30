@@ -14,6 +14,7 @@ abstract class Routes {
   static const SEND_EMAIL = _Paths.SEND_EMAIL;
   static const VERIFY_OTP = _Paths.VERIFY_OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const CUSTOM_DIALOG = _Paths.CUSTOM_DIALOG;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const SEND_EMAIL = '/send-email';
   static const VERIFY_OTP = '/verify-otp';
   static const RESET_PASSWORD = '/reset-password';
+  static const CUSTOM_DIALOG = '/custom-dialog';
 }

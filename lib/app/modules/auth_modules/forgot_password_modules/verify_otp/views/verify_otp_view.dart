@@ -16,10 +16,8 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: WidgetManager.primaryAppBar(),
       body: WidgetManager.authBackground(
         title: StringManager.verifyOtpTitle,
-        appBar: true,
         child: Column(
           children: [
             VerifyOtpWidget.otpTextField(

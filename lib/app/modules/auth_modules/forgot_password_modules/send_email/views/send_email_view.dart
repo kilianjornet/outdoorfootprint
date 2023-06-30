@@ -11,10 +11,8 @@ class SendEmailView extends GetView<SendEmailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetManager.primaryAppBar(),
       body: WidgetManager.authBackground(
-        title: StringManager.sendEmailTitle,
-        appBar: true,
+        title: StringManager.forgetPassword,
         child: Form(
           key: controller.sendEmailKey,
           child: Column(
@@ -31,11 +29,12 @@ class SendEmailView extends GetView<SendEmailController> {
                   top: 25.h,
                 ),
                 child: WidgetManager.primaryButton(
-                  buttonName: StringManager.continueButton,
+                  buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
                   onTap: () async {},
                 ),
               ),
+              WidgetManager.backToSignIn(),
             ],
           ),
         ),

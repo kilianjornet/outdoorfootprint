@@ -35,7 +35,10 @@ class StringManager {
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
-  static const sendEmailTitle = 'Password Recovery';
+  static const forgetPassword = 'Forget Password';
+  static const enterRegisteredEmail =
+      'Please type your registered email address';
+  static const backToSignIn = 'Back to Sign In';
   static const verifyOtpTitle = 'Enter OTP';
   static const submit = 'Submit';
   static const second = 'Second';

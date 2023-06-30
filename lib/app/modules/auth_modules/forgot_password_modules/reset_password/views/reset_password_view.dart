@@ -12,10 +12,8 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: WidgetManager.primaryAppBar(),
       body: WidgetManager.authBackground(
         title: StringManager.resetPasswordTitle,
-        appBar: true,
         child: Form(
           key: controller.resetPasswordKey,
           child: Column(

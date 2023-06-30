@@ -22,13 +22,15 @@ import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.d
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
+import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
+import '../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.RESET_PASSWORD;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.RESET_PASSWORD,
       page: () => const ResetPasswordView(),
       binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOM_DIALOG,
+      page: () => CustomDialogView(),
+      binding: CustomDialogBinding(),
     ),
   ];
 }

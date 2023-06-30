@@ -24,5 +24,6 @@ class AssetManager {
   static const user = 'assets/icons/user.svg';
   static const world = 'assets/icons/world.svg';
   static const mobile = 'assets/icons/mobile.svg';
+  static const longArrow = 'assets/icons/long_arrow.svg';
   static const arrow = 'assets/icons/arrow.svg';
 }

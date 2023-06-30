@@ -16,7 +16,6 @@ class SignInView extends GetView<SignInController> {
       resizeToAvoidBottomInset: false,
       body: WidgetManager.authBackground(
           title: StringManager.signIn,
-          appBar: false,
           child: Form(
             key: controller.signInKey,
             child: Column(
