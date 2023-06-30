@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/auth_modules/forgot_password_modules/send_email/bindings/send_email_binding.dart';
+import '../modules/auth_modules/forgot_password_modules/send_email/views/send_email_view.dart';
 import '../modules/auth_modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/auth_modules/sign_in/views/sign_in_view.dart';
 import '../modules/auth_modules/sign_up/bindings/sign_up_binding.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.SIGN_UP,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEND_EMAIL,
+      page: () => const SendEmailView(),
+      binding: SendEmailBinding(),
     ),
   ];
 }

@@ -17,6 +17,7 @@ class SignUpView extends GetView<SignUpController> {
     return Scaffold(
       body: WidgetManager.authBackground(
         title: StringManager.signUp,
+        appBar: false,
         child: Form(
           key: controller.signUpKey,
           child: Column(

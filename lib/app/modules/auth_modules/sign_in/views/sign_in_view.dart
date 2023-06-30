@@ -16,6 +16,7 @@ class SignInView extends GetView<SignInController> {
       resizeToAvoidBottomInset: false,
       body: WidgetManager.authBackground(
           title: StringManager.signIn,
+          appBar: false,
           child: Form(
             key: controller.signInKey,
             child: Column(
@@ -42,7 +43,11 @@ class SignInView extends GetView<SignInController> {
                     bottom: 25.h,
                   ),
                   child: GestureDetector(
-                    onTap: () async {},
+                    onTap: () async {
+                      await Get.toNamed(
+                        '/send-email',
+                      );
+                    },
                     child: Text(
                       '${StringManager.forgotPassword}?',
                       style: GoogleFonts.oswald(

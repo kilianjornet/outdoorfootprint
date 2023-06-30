@@ -115,6 +115,7 @@ class WidgetManager {
   static Widget authBackground({
     required String title,
     required Widget child,
+    required bool appBar,
   }) {
     return Container(
       decoration: const BoxDecoration(
@@ -140,7 +141,7 @@ class WidgetManager {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 75.h,
+                      top: appBar ? 0 : 75.h,
                       bottom: 50.h,
                     ),
                     child: SvgPicture.asset(
@@ -170,7 +171,9 @@ class WidgetManager {
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 18.sp,
-                        color: ColorManager.captionText,
+                        color: appBar
+                            ? Colors.transparent
+                            : ColorManager.captionText,
                       ),
                     ),
                   ),
@@ -458,7 +461,6 @@ class WidgetManager {
         },
         onTap: isEnable.value ? onTap : null,
         child: Container(
-          width: 275.w,
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
             vertical: 10.h,
@@ -500,6 +502,25 @@ class WidgetManager {
           ),
         ),
       ),
+    );
+  }
+
+  static PreferredSizeWidget? primaryAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: ColorManager.primary,
+      toolbarHeight: 34.h,
+      title: GestureDetector(
+        onTap: () async {
+          Get.back();
+        },
+        child: SvgPicture.asset(
+          AssetManager.arrow,
+          width: 20.w,
+        ),
+      ),
+      leadingWidth: 0,
+      leading: const SizedBox(),
     );
   }
 }

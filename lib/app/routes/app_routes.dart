@@ -11,6 +11,7 @@ abstract class Routes {
   static const MY_FOOTPRINT = _Paths.MY_FOOTPRINT;
   static const SIGN_IN = _Paths.SIGN_IN;
   static const SIGN_UP = _Paths.SIGN_UP;
+  static const SEND_EMAIL = _Paths.SEND_EMAIL;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const MY_FOOTPRINT = '/my-footprint';
   static const SIGN_IN = '/sign-in';
   static const SIGN_UP = '/sign-up';
+  static const SEND_EMAIL = '/send-email';
 }
