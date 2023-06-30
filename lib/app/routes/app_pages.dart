@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/auth_modules/forgot_password_modules/reset_password/bindings/reset_password_binding.dart';
+import '../modules/auth_modules/forgot_password_modules/reset_password/views/reset_password_view.dart';
 import '../modules/auth_modules/forgot_password_modules/send_email/bindings/send_email_binding.dart';
 import '../modules/auth_modules/forgot_password_modules/send_email/views/send_email_view.dart';
 import '../modules/auth_modules/forgot_password_modules/verify_otp/bindings/verify_otp_binding.dart';
@@ -26,7 +28,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.VERIFY_OTP;
+  static const INITIAL = Routes.RESET_PASSWORD;
 
   static final routes = [
     GetPage(
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.VERIFY_OTP,
       page: () => const VerifyOtpView(),
       binding: VerifyOtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => const ResetPasswordView(),
+      binding: ResetPasswordBinding(),
     ),
   ];
 }

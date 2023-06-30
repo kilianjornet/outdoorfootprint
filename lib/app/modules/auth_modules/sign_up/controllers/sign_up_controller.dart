@@ -56,7 +56,6 @@ class SignUpController extends GetxController {
         numberController.text.isEmpty ||
         passwordController.text.isEmpty ||
         confirmPasswordController.text.isEmpty ||
-        confirmPasswordController.text.isEmpty ||
         isChecked.value == false) {
       isEnable.value = false;
     } else {

@@ -31,7 +31,6 @@ class SignInView extends GetView<SignInController> {
                 WidgetManager.passwordTextField(
                   passwordController: controller.passwordController,
                   passwordNode: controller.passwordNode,
-                  hintText: StringManager.userPassword,
                   obscureText: controller.obscurePasswordText,
                   onChanged: (value) async {
                     controller.updateButtonState(value);
