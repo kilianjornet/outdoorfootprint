@@ -45,6 +45,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                   onTap: () async {},
                 ),
               ),
+              WidgetManager.backToSignIn(),
             ],
           ),
         ),

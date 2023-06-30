@@ -171,7 +171,9 @@ class WidgetManager {
                           ? StringManager.enterRegisteredEmail
                           : title == StringManager.verifyOtpTitle
                               ? '${StringManager.enterCode} demomail@gmail.com'
-                              : StringManager.greetingText,
+                              : title == StringManager.resetPasswordTitle
+                                  ? StringManager.enterNewPassword
+                                  : StringManager.greetingText,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
