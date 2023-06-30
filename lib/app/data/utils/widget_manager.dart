@@ -114,8 +114,8 @@ class WidgetManager {
 
   static Widget authBackground({
     required String title,
-    required Widget child,
     required bool appBar,
+    required Widget child,
   }) {
     return Container(
       decoration: const BoxDecoration(

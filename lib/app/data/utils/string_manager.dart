@@ -36,4 +36,9 @@ class StringManager {
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
   static const sendEmailTitle = 'Password Recovery';
+  static const verifyOtpTitle = 'Enter OTP';
+  static const submit = 'Submit';
+  static const second = 'Second';
+  static const seconds = 'Seconds';
+  static const resend = 'Resend';
 }
