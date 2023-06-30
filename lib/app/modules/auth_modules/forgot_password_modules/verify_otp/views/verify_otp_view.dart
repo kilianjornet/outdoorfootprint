@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_outdoor_footprint/app/data/utils/asset_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 import 'package:my_outdoor_footprint/app/modules/auth_modules/forgot_password_modules/verify_otp/widgets/verify_otp_widget.dart';
@@ -31,7 +33,7 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
                 top: 25.h,
               ),
               child: WidgetManager.primaryButton(
-                buttonName: StringManager.submit,
+                buttonName: StringManager.verify,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
@@ -60,17 +62,27 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
                             onTap: () async {
                               controller.resendCode();
                             },
-                            child: Text(
-                              StringManager.resend,
-                              style: GoogleFonts.oswald(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.sp,
-                                color: ColorManager.subtitleText,
-                              ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  AssetManager.resend,
+                                  width: 15.w,
+                                ),
+                                Text(
+                                  '  ${StringManager.resend}',
+                                  style: GoogleFonts.oswald(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp,
+                                    color: ColorManager.subtitleText,
+                                  ),
+                                ),
+                              ],
                             ),
                           );
               },
             ),
+            WidgetManager.backToSignIn(),
           ],
         ),
       ),

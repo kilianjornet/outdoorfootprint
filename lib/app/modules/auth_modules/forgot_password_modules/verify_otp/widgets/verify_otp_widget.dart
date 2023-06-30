@@ -37,6 +37,9 @@ class VerifyOtpWidget {
           (index) => SizedBox(
             width: 60.w,
             child: TextFormField(
+              onTapOutside: (value) {
+                FocusManager.instance.primaryFocus!.unfocus();
+              },
               controller: otpControllers[index],
               focusNode: otpNodes[index],
               cursorColor: ColorManager.button,

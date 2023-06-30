@@ -26,4 +26,5 @@ class AssetManager {
   static const mobile = 'assets/icons/mobile.svg';
   static const longArrow = 'assets/icons/long_arrow.svg';
   static const arrow = 'assets/icons/arrow.svg';
+  static const resend = 'assets/icons/resend.svg';
 }

@@ -169,7 +169,10 @@ class WidgetManager {
                     child: Text(
                       title == StringManager.forgetPassword
                           ? StringManager.enterRegisteredEmail
-                          : StringManager.greetingText,
+                          : title == StringManager.verifyOtpTitle
+                              ? '${StringManager.enterCode} demomail@gmail.com'
+                              : StringManager.greetingText,
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 18.sp,
