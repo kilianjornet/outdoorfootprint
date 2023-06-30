@@ -22,4 +22,5 @@ class ColorManager {
   static const titleText = Color(0xFF252525);
   static const subtitleText = Color(0xFF212121);
   static const cursor = Color(0xFF508CAE);
+  static const secondaryField = Color(0xFFEFEFEF);
 }

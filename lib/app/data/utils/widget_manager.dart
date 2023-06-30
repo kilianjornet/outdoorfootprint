@@ -671,6 +671,210 @@ class WidgetManager {
     );
   }
 
+  static PreferredSizeWidget primaryAppBar({
+    required String title,
+    required AppBarType type,
+  }) {
+    String offsetPath;
+    String tipPath;
+    String notificationPath;
+
+    switch (type) {
+      case AppBarType.primary:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.secondary:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.offset:
+        offsetPath = AssetManager.offsetE;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.tip:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipE;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.notification:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationE;
+        break;
+    }
+    return AppBar(
+      elevation: 0,
+      backgroundColor: ColorManager.white,
+      leading: const SizedBox(),
+      leadingWidth: 0,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              type == AppBarType.primary
+                  ? const SizedBox()
+                  : SvgPicture.asset(
+                      AssetManager.arrow,
+                      width: 20.w,
+                    ),
+              Text(
+                type == AppBarType.primary ? title : '  $title',
+                style: GoogleFonts.oswald(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22.sp,
+                  color: ColorManager.displayText,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () async {},
+                child: SvgPicture.asset(
+                  offsetPath,
+                  width: 20.w,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.w,
+                ),
+                child: GestureDetector(
+                  onTap: () async {},
+                  child: SvgPicture.asset(
+                    tipPath,
+                    width: 15.w,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {},
+                child: Container(
+                  padding: EdgeInsets.all(
+                    10.h,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: ColorManager.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorManager.black.withOpacity(
+                          0.25,
+                        ),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    notificationPath,
+                    width: 12.5.w,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  static InputDecoration? searchBarDecoration() {
+    return InputDecoration(
+      isDense: true,
+      filled: true,
+      fillColor: ColorManager.white,
+      hintText: StringManager.country,
+      hintStyle: GoogleFonts.oswald(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.labelText,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.button,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.errorText,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.white,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.errorText,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorStyle: GoogleFonts.oswald(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.errorText,
+      ),
+      prefixIcon: Container(
+        padding: EdgeInsets.only(
+          top: 12.h,
+          left: 15.w,
+          right: 10.w,
+          bottom: 12.h,
+        ),
+        child: SvgPicture.asset(
+          AssetManager.world,
+          width: 7.w,
+        ),
+      ),
+    );
+  }
+
+  static TextStyle? countryTextStyle() {
+    return GoogleFonts.oswald(
+      fontWeight: FontWeight.w400,
+      fontSize: 14.sp,
+      color: ColorManager.white,
+    );
+  }
+
+  static Widget? countryPickerTitle() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 15.h,
+      ),
+      child: Text(
+        StringManager.selectCountry,
+        style: GoogleFonts.oswald(
+          fontWeight: FontWeight.w400,
+          fontSize: 14.sp,
+          color: ColorManager.subtitleText,
+        ),
+      ),
+    );
+  }
+
   static void showCustomDialog() {
     Get.dialog(
       CustomDialogView(),
@@ -690,5 +894,13 @@ enum SnackBarType {
   success,
   info,
   error,
+  notification,
+}
+
+enum AppBarType {
+  primary,
+  secondary,
+  offset,
+  tip,
   notification,
 }

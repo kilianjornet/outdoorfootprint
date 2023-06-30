@@ -48,4 +48,5 @@ class StringManager {
   static const resend = 'Resend Code';
   static const resetPasswordTitle = 'Create New Password';
   static const enterNewPassword = 'Please enter the new password below';
+  static const update = 'Update';
 }

@@ -27,4 +27,12 @@ class AssetManager {
   static const longArrow = 'assets/icons/long_arrow.svg';
   static const arrow = 'assets/icons/arrow.svg';
   static const resend = 'assets/icons/resend.svg';
+  static const offsetE = 'assets/icons/offset_enable.svg';
+  static const offsetD = 'assets/icons/offset_disable.svg';
+  static const tipE = 'assets/icons/tip_enable.svg';
+  static const tipD = 'assets/icons/tip_disable.svg';
+  static const notificationE = 'assets/icons/notification_enable.svg';
+  static const notificationD = 'assets/icons/notification_disable.svg';
+  static const pencil = 'assets/icons/pencil.svg';
+  static const avatar = 'assets/icons/avatar.svg';
 }
