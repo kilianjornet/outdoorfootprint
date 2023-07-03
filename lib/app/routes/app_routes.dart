@@ -15,6 +15,7 @@ abstract class Routes {
   static const VERIFY_OTP = _Paths.VERIFY_OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const CUSTOM_DIALOG = _Paths.CUSTOM_DIALOG;
+  static const HOUSE = _Paths.HOUSE;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const VERIFY_OTP = '/verify-otp';
   static const RESET_PASSWORD = '/reset-password';
   static const CUSTOM_DIALOG = '/custom-dialog';
+  static const HOUSE = '/house';
 }

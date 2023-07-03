@@ -38,6 +38,9 @@ class ProfileView extends GetView<ProfileController> {
                       return controller.selectedImage == null
                           ? SvgPicture.asset(
                               AssetManager.avatar,
+                              fit: BoxFit.cover,
+                              width: ScreenUtil().screenWidth,
+                              height: ScreenUtil().screenHeight,
                             )
                           : Image.file(
                               controller.selectedImage!,

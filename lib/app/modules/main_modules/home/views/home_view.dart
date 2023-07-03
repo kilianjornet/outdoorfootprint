@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
+import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
+import '../../../../data/utils/color_manager.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -9,15 +11,10 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      backgroundColor: ColorManager.white,
+      appBar: WidgetManager.primaryAppBar(
+        title: StringManager.home,
+        type: AppBarType.primary,
       ),
     );
   }
