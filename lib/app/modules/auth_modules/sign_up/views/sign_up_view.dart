@@ -71,18 +71,15 @@ class SignUpView extends GetView<SignUpController> {
               WidgetManager.passwordTextField(
                 passwordController: controller.passwordController,
                 passwordNode: controller.passwordNode,
-                hintText: StringManager.userPassword,
                 obscureText: controller.obscurePasswordText,
                 onChanged: (value) async {
                   controller.updateButtonState(value);
                 },
               ),
-              SignUpWidget.confirmPasswordTextField(
+              WidgetManager.confirmPasswordTextField(
                 passwordController: controller.passwordController,
                 confirmPasswordController: controller.confirmPasswordController,
                 confirmPasswordNode: controller.confirmPasswordNode,
-                hintText: StringManager.confirmPassword,
-                errorText: StringManager.passwordMismatch,
                 onChanged: (value) async {
                   controller.updateButtonState(value);
                 },

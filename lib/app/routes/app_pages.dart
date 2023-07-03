@@ -1,5 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/auth_modules/forgot_password_modules/reset_password/bindings/reset_password_binding.dart';
+import '../modules/auth_modules/forgot_password_modules/reset_password/views/reset_password_view.dart';
+import '../modules/auth_modules/forgot_password_modules/send_email/bindings/send_email_binding.dart';
+import '../modules/auth_modules/forgot_password_modules/send_email/views/send_email_view.dart';
+import '../modules/auth_modules/forgot_password_modules/verify_otp/bindings/verify_otp_binding.dart';
+import '../modules/auth_modules/forgot_password_modules/verify_otp/views/verify_otp_view.dart';
 import '../modules/auth_modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/auth_modules/sign_in/views/sign_in_view.dart';
 import '../modules/auth_modules/sign_up/bindings/sign_up_binding.dart';
@@ -16,6 +22,8 @@ import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.d
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
+import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
+import '../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
 
 part 'app_routes.dart';
 
@@ -64,6 +72,26 @@ class AppPages {
       name: _Paths.SIGN_UP,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEND_EMAIL,
+      page: () => const SendEmailView(),
+      binding: SendEmailBinding(),
+    ),
+    GetPage(
+      name: _Paths.VERIFY_OTP,
+      page: () => const VerifyOtpView(),
+      binding: VerifyOtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => const ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOM_DIALOG,
+      page: () => CustomDialogView(),
+      binding: CustomDialogBinding(),
     ),
   ];
 }

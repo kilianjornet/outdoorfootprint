@@ -34,17 +34,26 @@ class NavigationBarView extends GetView<NavigationBarController> {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.withOpacity(
+                0.5,
+              ),
               spreadRadius: 10,
               blurRadius: 20,
-              offset: const Offset(0, 5),
+              offset: const Offset(
+                0,
+                5,
+              ),
             ),
           ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25.w),
-            topRight: Radius.circular(25.w),
+            topLeft: Radius.circular(
+              25.w,
+            ),
+            topRight: Radius.circular(
+              25.w,
+            ),
           ),
           child: Obx(
             () => BottomNavigationBar(
@@ -60,51 +69,40 @@ class NavigationBarView extends GetView<NavigationBarController> {
               unselectedItemColor: Colors.transparent,
               selectedFontSize: 16.sp,
               type: BottomNavigationBarType.fixed,
+              showUnselectedLabels: false,
               items: [
                 BottomNavigationBarItem(
                   activeIcon: Container(
-                    margin: EdgeInsets.only(
-                      top: 5.h,
-                      bottom: 5.h,
-                    ),
                     padding: EdgeInsets.all(
                       8.h,
                     ),
                     width: 175.w,
                     decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: ColorManager.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: ColorManager.black.withOpacity(
-                              0.25,
-                            ),
-                            spreadRadius: 1,
-                            blurRadius: 10,
+                      shape: BoxShape.circle,
+                      color: ColorManager.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: ColorManager.black.withOpacity(
+                            0.25,
                           ),
-                        ]),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
                     child: SvgPicture.asset(
                       AssetManager.homeE,
                       height: 25.h,
                     ),
                   ),
-                  icon: Padding(
-                    padding: EdgeInsets.only(
-                      bottom: 5.h,
-                    ),
-                    child: SvgPicture.asset(
-                      AssetManager.homeD,
-                      height: 25.h,
-                    ),
+                  icon: SvgPicture.asset(
+                    AssetManager.homeD,
+                    height: 25.h,
                   ),
                   label: StringManager.home,
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Container(
-                    margin: EdgeInsets.only(
-                      top: 5.h,
-                      bottom: 5.h,
-                    ),
                     padding: EdgeInsets.all(
                       8.h,
                     ),
@@ -127,23 +125,14 @@ class NavigationBarView extends GetView<NavigationBarController> {
                       height: 25.h,
                     ),
                   ),
-                  icon: Padding(
-                    padding: EdgeInsets.only(
-                      bottom: 5.h,
-                    ),
-                    child: SvgPicture.asset(
-                      AssetManager.calculatorD,
-                      height: 25.h,
-                    ),
+                  icon: SvgPicture.asset(
+                    AssetManager.calculatorD,
+                    height: 25.h,
                   ),
                   label: StringManager.calculator,
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Container(
-                    margin: EdgeInsets.only(
-                      top: 5.h,
-                      bottom: 5.h,
-                    ),
                     padding: EdgeInsets.all(
                       8.h,
                     ),
@@ -166,23 +155,14 @@ class NavigationBarView extends GetView<NavigationBarController> {
                       height: 25.h,
                     ),
                   ),
-                  icon: Padding(
-                    padding: EdgeInsets.only(
-                      bottom: 5.h,
-                    ),
-                    child: SvgPicture.asset(
-                      AssetManager.footprintD,
-                      height: 25.h,
-                    ),
+                  icon: SvgPicture.asset(
+                    AssetManager.footprintD,
+                    height: 25.h,
                   ),
                   label: StringManager.myFootprint,
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Container(
-                    margin: EdgeInsets.only(
-                      top: 5.h,
-                      bottom: 5.h,
-                    ),
                     padding: EdgeInsets.all(
                       8.h,
                     ),
@@ -205,14 +185,9 @@ class NavigationBarView extends GetView<NavigationBarController> {
                       height: 25.h,
                     ),
                   ),
-                  icon: Padding(
-                    padding: EdgeInsets.only(
-                      bottom: 5.h,
-                    ),
-                    child: SvgPicture.asset(
-                      AssetManager.profileD,
-                      height: 25.h,
-                    ),
+                  icon: SvgPicture.asset(
+                    AssetManager.profileD,
+                    height: 25.h,
                   ),
                   label: StringManager.profile,
                 ),

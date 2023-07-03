@@ -1,7 +1,7 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_outdoor_footprint/app/modules/auth_modules/sign_up/widgets/signup_widget.dart';
+import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class SignUpController extends GetxController {
   final signUpKey = GlobalKey<FormState>();
@@ -31,9 +31,9 @@ class SignUpController extends GetxController {
     countryPicker = FlCountryCodePicker(
       localize: false,
       showDialCode: false,
-      title: SignUpWidget.countryPickerTitle(),
-      countryTextStyle: SignUpWidget.countryTextStyle(),
-      searchBarDecoration: SignUpWidget.searchBarDecoration(),
+      title: WidgetManager.countryPickerTitle(),
+      countryTextStyle: WidgetManager.countryTextStyle(),
+      searchBarDecoration: WidgetManager.searchBarDecoration(),
     );
   }
 
@@ -55,7 +55,6 @@ class SignUpController extends GetxController {
         countryController.text.isEmpty ||
         numberController.text.isEmpty ||
         passwordController.text.isEmpty ||
-        confirmPasswordController.text.isEmpty ||
         confirmPasswordController.text.isEmpty ||
         isChecked.value == false) {
       isEnable.value = false;

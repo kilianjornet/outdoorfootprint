@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/validation_manager.dart';
 
+import '../../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
 import 'asset_manager.dart';
 import 'color_manager.dart';
 
@@ -166,7 +167,14 @@ class WidgetManager {
                       bottom: 35.h,
                     ),
                     child: Text(
-                      StringManager.greetingText,
+                      title == StringManager.forgetPassword
+                          ? StringManager.enterRegisteredEmail
+                          : title == StringManager.verifyOtpTitle
+                              ? '${StringManager.enterCode} demomail@gmail.com'
+                              : title == StringManager.resetPasswordTitle
+                                  ? StringManager.enterNewPassword
+                                  : StringManager.greetingText,
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 18.sp,
@@ -298,7 +306,6 @@ class WidgetManager {
   static Widget passwordTextField({
     required TextEditingController passwordController,
     required FocusNode passwordNode,
-    required String? hintText,
     required void Function(String)? onChanged,
     required var obscureText,
   }) {
@@ -351,7 +358,7 @@ class WidgetManager {
             isDense: true,
             filled: true,
             fillColor: ColorManager.white,
-            hintText: hintText,
+            hintText: StringManager.userPassword,
             hintStyle: GoogleFonts.oswald(
               fontSize: 16.sp,
               fontWeight: FontWeight.w400,
@@ -458,7 +465,6 @@ class WidgetManager {
         },
         onTap: isEnable.value ? onTap : null,
         child: Container(
-          width: 275.w,
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
             vertical: 10.h,
@@ -502,11 +508,399 @@ class WidgetManager {
       ),
     );
   }
+
+  static Widget confirmPasswordTextField({
+    required TextEditingController passwordController,
+    required TextEditingController confirmPasswordController,
+    required FocusNode confirmPasswordNode,
+    required void Function(String)? onChanged,
+    required var obscureText,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 15.h,
+      ),
+      child: Obx(() => TextFormField(
+            onTapOutside: (value) {
+              FocusManager.instance.primaryFocus!.unfocus();
+            },
+            onChanged: onChanged,
+            controller: confirmPasswordController,
+            keyboardType: TextInputType.visiblePassword,
+            inputFormatters: [
+              FilteringTextInputFormatter.deny(
+                RegExp(
+                  '[ ]',
+                ),
+              ),
+              FilteringTextInputFormatter.singleLineFormatter,
+            ],
+            obscureText: obscureText.value,
+            obscuringCharacter: '●',
+            validator: (value) {
+              if (value!.isEmpty) {
+                return null;
+              }
+              if (passwordController.text != confirmPasswordController.text) {
+                return StringManager.passwordMismatch;
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            focusNode: confirmPasswordNode,
+            decoration: InputDecoration(
+              isDense: true,
+              filled: true,
+              fillColor: ColorManager.white,
+              hintText: StringManager.confirmPassword,
+              hintStyle: GoogleFonts.oswald(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w400,
+                color: ColorManager.labelText,
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: ColorManager.button,
+                  width: 1.5.w,
+                ),
+                borderRadius: BorderRadius.circular(
+                  8.w,
+                ),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: ColorManager.errorText,
+                  width: 1.5.w,
+                ),
+                borderRadius: BorderRadius.circular(
+                  8.w,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorManager.white,
+                ),
+                borderRadius: BorderRadius.circular(
+                  8.w,
+                ),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorManager.errorText,
+                ),
+                borderRadius: BorderRadius.circular(
+                  8.w,
+                ),
+              ),
+              errorStyle: GoogleFonts.oswald(
+                fontSize: 15.sp,
+                fontWeight: FontWeight.w400,
+                color: ColorManager.errorText,
+              ),
+              prefixIcon: Container(
+                padding: EdgeInsets.only(
+                  top: 12.h,
+                  left: 15.w,
+                  right: 10.w,
+                  bottom: 12.h,
+                ),
+                child: SvgPicture.asset(
+                  AssetManager.password,
+                  width: 7.w,
+                ),
+              ),
+              suffixIcon: InkWell(
+                onTap: () {
+                  obscureText.value = !obscureText.value;
+                },
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: 13.h,
+                    left: 10.w,
+                    right: 15.w,
+                    bottom: 11.h,
+                  ),
+                  child: SvgPicture.asset(
+                    obscureText.value
+                        ? AssetManager.obscureClose
+                        : AssetManager.obscureOpen,
+                    width: 7.w,
+                  ),
+                ),
+              ),
+            ),
+            style: GoogleFonts.oswald(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w400,
+              color: ColorManager.labelText,
+            ),
+            cursorColor: ColorManager.button,
+          )),
+    );
+  }
+
+  static Widget backToSignIn() {
+    return GestureDetector(
+      onTap: () async {
+        await Get.offAllNamed(
+          '/sign-in',
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 25.h,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AssetManager.longArrow,
+              width: 20.w,
+            ),
+            Text(
+              '  ${StringManager.backToSignIn}',
+              style: GoogleFonts.oswald(
+                fontWeight: FontWeight.w400,
+                fontSize: 14.sp,
+                color: ColorManager.subtitleText,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  static PreferredSizeWidget primaryAppBar({
+    required String title,
+    required AppBarType type,
+  }) {
+    String offsetPath;
+    String tipPath;
+    String notificationPath;
+
+    switch (type) {
+      case AppBarType.primary:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.secondary:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.offset:
+        offsetPath = AssetManager.offsetE;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.tip:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipE;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.notification:
+        offsetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationE;
+        break;
+    }
+    return AppBar(
+      elevation: 0,
+      backgroundColor: ColorManager.white,
+      leading: const SizedBox(),
+      leadingWidth: 0,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              type == AppBarType.primary
+                  ? const SizedBox()
+                  : SvgPicture.asset(
+                      AssetManager.arrow,
+                      width: 20.w,
+                    ),
+              Text(
+                type == AppBarType.primary ? title : '  $title',
+                style: GoogleFonts.oswald(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22.sp,
+                  color: ColorManager.displayText,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () async {},
+                child: SvgPicture.asset(
+                  offsetPath,
+                  width: 20.w,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.w,
+                ),
+                child: GestureDetector(
+                  onTap: () async {},
+                  child: SvgPicture.asset(
+                    tipPath,
+                    width: 15.w,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {},
+                child: Container(
+                  padding: EdgeInsets.all(
+                    10.h,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: ColorManager.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorManager.black.withOpacity(
+                          0.25,
+                        ),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    notificationPath,
+                    width: 12.5.w,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  static InputDecoration? searchBarDecoration() {
+    return InputDecoration(
+      isDense: true,
+      filled: true,
+      fillColor: ColorManager.white,
+      hintText: StringManager.country,
+      hintStyle: GoogleFonts.oswald(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.labelText,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.button,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.errorText,
+          width: 1.5.w,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.white,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: ColorManager.errorText,
+        ),
+        borderRadius: BorderRadius.circular(
+          8.w,
+        ),
+      ),
+      errorStyle: GoogleFonts.oswald(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w400,
+        color: ColorManager.errorText,
+      ),
+      prefixIcon: Container(
+        padding: EdgeInsets.only(
+          top: 12.h,
+          left: 15.w,
+          right: 10.w,
+          bottom: 12.h,
+        ),
+        child: SvgPicture.asset(
+          AssetManager.world,
+          width: 7.w,
+        ),
+      ),
+    );
+  }
+
+  static TextStyle? countryTextStyle() {
+    return GoogleFonts.oswald(
+      fontWeight: FontWeight.w400,
+      fontSize: 14.sp,
+      color: ColorManager.white,
+    );
+  }
+
+  static Widget? countryPickerTitle() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 15.h,
+      ),
+      child: Text(
+        StringManager.selectCountry,
+        style: GoogleFonts.oswald(
+          fontWeight: FontWeight.w400,
+          fontSize: 14.sp,
+          color: ColorManager.subtitleText,
+        ),
+      ),
+    );
+  }
+
+  static void showCustomDialog() {
+    Get.dialog(
+      CustomDialogView(),
+      barrierDismissible: false,
+      barrierColor: ColorManager.button.withOpacity(
+        0.5,
+      ),
+    );
+  }
+
+  static void hideCustomDialog() {
+    Get.isDialogOpen == true ? Get.back() : null;
+  }
 }
 
 enum SnackBarType {
   success,
   info,
   error,
+  notification,
+}
+
+enum AppBarType {
+  primary,
+  secondary,
+  offset,
+  tip,
   notification,
 }

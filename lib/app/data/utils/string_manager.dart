@@ -35,4 +35,18 @@ class StringManager {
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
+  static const forgetPassword = 'Forget Password';
+  static const enterRegisteredEmail =
+      'Please type your registered email address';
+  static const backToSignIn = 'Back to Sign In';
+  static const verifyOtpTitle = 'Verify Your Email';
+  static const enterCode = 'Please enter the 4 digit code sent to';
+  static const submit = 'Submit';
+  static const verify = 'Verify';
+  static const second = 'Second';
+  static const seconds = 'Seconds';
+  static const resend = 'Resend Code';
+  static const resetPasswordTitle = 'Create New Password';
+  static const enterNewPassword = 'Please enter the new password below';
+  static const update = 'Update';
 }
