@@ -105,7 +105,7 @@ class CalculatorWidget{
     required String? buttonName,
     required var isEnable,
     required void Function()? onTap,
-  }) {
+  })  {
     var isPressed = false.obs;
     return Obx(
           () => GestureDetector(
@@ -127,6 +127,7 @@ class CalculatorWidget{
           ),
           margin: EdgeInsets.only(
             top: 8.h,
+            // bottom: 20.h,
           ),
           decoration: BoxDecoration(
             color: isPressed.value
@@ -341,8 +342,7 @@ class CalculatorWidget{
                     padding: EdgeInsets.only(left: 8.w, right: 8.w),
                     child: SvgPicture.asset(
                       AssetManager.food,
-                      width: 26.w,
-                      height: 26.h,
+                      width: 20.w,
                     ),
                   ),
                   Align(
@@ -433,8 +433,7 @@ class CalculatorWidget{
                     padding: EdgeInsets.only(left: 8.w, right: 8.w),
                     child: SvgPicture.asset(
                       AssetManager.publicService,
-                      width: 26.w,
-                      height: 26.h,
+                      width: 20.w,
                     ),
                   ),
                   Align(
