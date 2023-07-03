@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 
-class CalculatorWidget{
-  CalculatorWidget._();
+class AddWidget {
+  AddWidget._();
   static Widget calculatorPageButton1({
     required String? buttonName,
     required var isEnable,
@@ -16,7 +16,7 @@ class CalculatorWidget{
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -41,21 +41,21 @@ class CalculatorWidget{
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -85,7 +85,6 @@ class CalculatorWidget{
                   ),
                 ],
               ),
-
               Padding(
                 padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
@@ -105,10 +104,10 @@ class CalculatorWidget{
     required String? buttonName,
     required var isEnable,
     required void Function()? onTap,
-  })  {
+  }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -133,21 +132,21 @@ class CalculatorWidget{
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -177,7 +176,6 @@ class CalculatorWidget{
                   ),
                 ],
               ),
-
               Padding(
                 padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
@@ -200,7 +198,7 @@ class CalculatorWidget{
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -224,21 +222,21 @@ class CalculatorWidget{
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -290,7 +288,7 @@ class CalculatorWidget{
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -315,21 +313,21 @@ class CalculatorWidget{
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -358,7 +356,6 @@ class CalculatorWidget{
                   ),
                 ],
               ),
-
               Padding(
                 padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
@@ -381,7 +378,7 @@ class CalculatorWidget{
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -406,21 +403,21 @@ class CalculatorWidget{
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -449,7 +446,6 @@ class CalculatorWidget{
                   ),
                 ],
               ),
-
               Padding(
                 padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
@@ -465,4 +461,3 @@ class CalculatorWidget{
     );
   }
 }
-

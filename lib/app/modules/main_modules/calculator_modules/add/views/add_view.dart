@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/add/wigets/calculator.dart';
 
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
 import '../controllers/add_controller.dart';
+import '../widgets/add_widgets.dart';
 
 class AddView extends GetView<AddController> {
   const AddView({Key? key}) : super(key: key);
@@ -36,27 +36,27 @@ class AddView extends GetView<AddController> {
                   color: ColorManager.titleText,
                 ),
               ),
-              CalculatorWidget.calculatorPageButton1(
+              AddWidget.calculatorPageButton1(
                 buttonName: StringManager.calculatorCat1,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              CalculatorWidget.calculatorPageButton2(
+              AddWidget.calculatorPageButton2(
                 buttonName: StringManager.calculatorCat2,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              CalculatorWidget.calculatorPageButton3(
+              AddWidget.calculatorPageButton3(
                 buttonName: StringManager.calculatorCat3,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              CalculatorWidget.calculatorPageButton4(
+              AddWidget.calculatorPageButton4(
                 buttonName: StringManager.calculatorCat4,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              CalculatorWidget.calculatorPageButton5(
+              AddWidget.calculatorPageButton5(
                 buttonName: StringManager.calculatorCat5,
                 isEnable: controller.isEnable,
                 onTap: () async {},
