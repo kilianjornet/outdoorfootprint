@@ -4,6 +4,7 @@ class AddController extends GetxController {
   //TODO: Implement AddController
 
   final count = 0.obs;
+  var isEnable = true.obs;
   @override
   void onInit() {
     super.onInit();

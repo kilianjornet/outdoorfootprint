@@ -49,4 +49,11 @@ class StringManager {
   static const resetPasswordTitle = 'Create New Password';
   static const enterNewPassword = 'Please enter the new password below';
   static const update = 'Update';
+  static const addCal = 'Add';
+  static const selectCat = 'Select a category';
+  static const calculatorCat1 = 'Home';
+  static const calculatorCat2 = 'Mobility';
+  static const calculatorCat3 = 'Gear';
+  static const calculatorCat4 = 'Foods & Others';
+  static const calculatorCat5 = 'Public Service Share';
 }

@@ -24,8 +24,12 @@ class AssetManager {
   static const user = 'assets/icons/user.svg';
   static const world = 'assets/icons/world.svg';
   static const mobile = 'assets/icons/mobile.svg';
+  static const gear = 'assets/icons/gear.svg';
+  static const food = 'assets/icons/food.svg';
+  static const publicService = 'assets/icons/publicservice.svg';
   static const longArrow = 'assets/icons/long_arrow.svg';
   static const arrow = 'assets/icons/arrow.svg';
+  static const arrowForward = 'assets/icons/arrowForward.svg';
   static const resend = 'assets/icons/resend.svg';
   static const offsetE = 'assets/icons/offset_enable.svg';
   static const offsetD = 'assets/icons/offset_disable.svg';
