@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/add/wigets/calculator.dart';
 
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
@@ -35,27 +36,27 @@ class AddView extends GetView<AddController> {
                   color: ColorManager.titleText,
                 ),
               ),
-              WidgetManager.calculatorPageButton1(
+              CalculatorWidget.calculatorPageButton1(
                 buttonName: StringManager.calculatorCat1,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              WidgetManager.calculatorPageButton2(
+              CalculatorWidget.calculatorPageButton2(
                 buttonName: StringManager.calculatorCat2,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              WidgetManager.calculatorPageButton3(
+              CalculatorWidget.calculatorPageButton3(
                 buttonName: StringManager.calculatorCat3,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              WidgetManager.calculatorPageButton4(
+              CalculatorWidget.calculatorPageButton4(
                 buttonName: StringManager.calculatorCat4,
                 isEnable: controller.isEnable,
                 onTap: () async {},
               ),
-              WidgetManager.calculatorPageButton5(
+              CalculatorWidget.calculatorPageButton5(
                 buttonName: StringManager.calculatorCat5,
                 isEnable: controller.isEnable,
                 onTap: () async {},
