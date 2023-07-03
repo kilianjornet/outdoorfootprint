@@ -516,7 +516,7 @@ class WidgetManager {
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -534,28 +534,28 @@ class WidgetManager {
             vertical: 10.h,
           ),
           margin: EdgeInsets.only(
-            top: 35.h,
-            bottom: 20.h,
-          ),
+              // top: 35.h,
+              // bottom: 20.h,
+              ),
           decoration: BoxDecoration(
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -563,11 +563,11 @@ class WidgetManager {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.homeE,
-                  width: 26.w,
-                  height: 26.h,
+                  width: 20.w,
+                  // height: 26.h,
                 ),
               ),
               Align(
@@ -581,20 +581,21 @@ class WidgetManager {
                   ),
                 ),
               ),
-               Padding(
-                 padding: EdgeInsets.only(left: 8.w,right: 8.w),
-                 child: SvgPicture.asset(
+              Padding(
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                child: SvgPicture.asset(
                   AssetManager.arrowForward,
                   width: 26.w,
-                   height: 16.h,
+                  height: 16.h,
+                ),
               ),
-               ),
             ],
           ),
         ),
       ),
     );
   }
+
   static Widget calculatorPageButton2({
     required String? buttonName,
     required var isEnable,
@@ -602,7 +603,7 @@ class WidgetManager {
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -627,21 +628,21 @@ class WidgetManager {
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -649,11 +650,11 @@ class WidgetManager {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.mobile,
-                  width: 26.w,
-                  height: 26.h,
+                  width: 20.w,
+                  // height: 26.h,
                 ),
               ),
               Align(
@@ -668,7 +669,7 @@ class WidgetManager {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
                   width: 26.w,
@@ -689,7 +690,7 @@ class WidgetManager {
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -714,48 +715,52 @@ class WidgetManager {
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
-                child: SvgPicture.asset(
-                  AssetManager.gear,
-                  width: 26.w,
-                  height: 26.h,
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  buttonName!,
-                  style: GoogleFonts.oswald(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                    color: ColorManager.labelText,
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    child: SvgPicture.asset(
+                      AssetManager.gear,
+                      width: 20.w,
+                      // height: 26.h,
+                    ),
                   ),
-                ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      buttonName!,
+                      style: GoogleFonts.oswald(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                        color: ColorManager.labelText,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
                   width: 26.w,
@@ -776,7 +781,7 @@ class WidgetManager {
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -801,21 +806,21 @@ class WidgetManager {
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -823,7 +828,7 @@ class WidgetManager {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.food,
                   width: 26.w,
@@ -842,7 +847,7 @@ class WidgetManager {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
                   width: 26.w,
@@ -863,7 +868,7 @@ class WidgetManager {
   }) {
     var isPressed = false.obs;
     return Obx(
-          () => GestureDetector(
+      () => GestureDetector(
         onTapDown: (value) {
           if (isEnable.value == true) {
             isPressed.value = true;
@@ -888,21 +893,21 @@ class WidgetManager {
             color: isPressed.value
                 ? ColorManager.buttonPressed
                 : isEnable.value
-                ? ColorManager.white
-                : ColorManager.white,
+                    ? ColorManager.white
+                    : ColorManager.white,
             borderRadius: BorderRadius.circular(
               8.w,
             ),
             boxShadow: isEnable.value
                 ? [
-              BoxShadow(
-                color: ColorManager.button.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 1,
-                blurRadius: 10,
-              )
-            ]
+                    BoxShadow(
+                      color: ColorManager.button.withOpacity(
+                        0.2,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    )
+                  ]
                 : null,
           ),
           child: Row(
@@ -910,7 +915,7 @@ class WidgetManager {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.publicService,
                   width: 26.w,
@@ -929,7 +934,7 @@ class WidgetManager {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w,right: 8.w),
+                padding: EdgeInsets.only(left: 8.w, right: 8.w),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
                   width: 26.w,
@@ -1109,33 +1114,33 @@ class WidgetManager {
     required String title,
     required AppBarType type,
   }) {
-    String offsetPath;
+    String assetPath;
     String tipPath;
     String notificationPath;
 
     switch (type) {
       case AppBarType.primary:
-        offsetPath = AssetManager.offsetD;
+        assetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.secondary:
-        offsetPath = AssetManager.offsetD;
+        assetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.offset:
-        offsetPath = AssetManager.offsetE;
+        assetPath = AssetManager.offsetE;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.tip:
-        offsetPath = AssetManager.offsetD;
+        assetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipE;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.notification:
-        offsetPath = AssetManager.offsetD;
+        assetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationE;
         break;
@@ -1171,7 +1176,7 @@ class WidgetManager {
               GestureDetector(
                 onTap: () async {},
                 child: SvgPicture.asset(
-                  offsetPath,
+                  assetPath,
                   width: 20.w,
                 ),
               ),
