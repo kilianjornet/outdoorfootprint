@@ -1,7 +1,11 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/utils/asset_manager.dart';
@@ -12,7 +16,11 @@ import '../../../../data/utils/validation_manager.dart';
 class ProfileWidget {
   ProfileWidget._();
 
-  static Widget profilePicture() {
+  static Widget profilePicture({
+    required Widget? child,
+    required void Function() fromCamera,
+    required void Function() fromGallery,
+  }) {
     return Container(
       margin: EdgeInsets.only(
         top: 15.h,
@@ -21,31 +29,106 @@ class ProfileWidget {
       child: Stack(
         alignment: Alignment.centerRight,
         children: [
-          Container(
-            width: 130.w,
-            height: 130.w,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: ColorManager.white,
-              boxShadow: [
-                BoxShadow(
-                  color: ColorManager.black.withOpacity(
-                    0.25,
-                  ),
-                  spreadRadius: 1,
-                  blurRadius: 10,
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: 130.w,
+                height: 130.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ColorManager.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorManager.black.withOpacity(
+                        0.25,
+                      ),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: CircleAvatar(
-              backgroundColor: ColorManager.white,
-              child: SvgPicture.asset(
-                AssetManager.avatar,
               ),
-            ),
+              CircleAvatar(
+                radius: 60.w,
+                backgroundColor: ColorManager.primary,
+                child: ClipOval(
+                  child: child,
+                ),
+              )
+            ],
           ),
           GestureDetector(
-            onTap: () async {},
+            onTap: () async {
+              await showCupertinoModalPopup<void>(
+                barrierDismissible: false,
+                filter: ImageFilter.blur(
+                  sigmaY: 3,
+                  sigmaX: 3,
+                ),
+                barrierColor: ColorManager.button.withOpacity(
+                  0.5,
+                ),
+                context: Get.context!,
+                builder: (BuildContext context) => CupertinoActionSheet(
+                  title: Text(
+                    StringManager.uploadImage,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                      color: ColorManager.captionText,
+                    ),
+                  ),
+                  message: Text(
+                    StringManager.selectImageOption,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                      height: 0.1,
+                      color: ColorManager.labelText,
+                    ),
+                  ),
+                  actions: <CupertinoActionSheetAction>[
+                    CupertinoActionSheetAction(
+                      onPressed: fromCamera,
+                      child: Text(
+                        StringManager.clickPicture,
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20.sp,
+                          color: ColorManager.button,
+                        ),
+                      ),
+                    ),
+                    CupertinoActionSheetAction(
+                      onPressed: fromGallery,
+                      child: Text(
+                        StringManager.uploadFromCamera,
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20.sp,
+                          color: ColorManager.button,
+                        ),
+                      ),
+                    ),
+                  ],
+                  cancelButton: CupertinoActionSheetAction(
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      StringManager.cancel,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20.sp,
+                        color: ColorManager.errorText,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
             child: Container(
               margin: EdgeInsets.only(
                 top: 80.h,

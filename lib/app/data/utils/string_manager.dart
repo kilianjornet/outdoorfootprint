@@ -49,4 +49,9 @@ class StringManager {
   static const resetPasswordTitle = 'Create New Password';
   static const enterNewPassword = 'Please enter the new password below';
   static const update = 'Update';
+  static const uploadImage = 'Upload Image';
+  static const selectImageOption = 'Select option to upload image';
+  static const clickPicture = 'Click picture';
+  static const uploadFromCamera = 'Upload from camera roll';
+  static const cancel = 'Cancel';
 }

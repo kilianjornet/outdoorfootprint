@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class ProfileController extends GetxController {
   final profileKey = GlobalKey<FormState>();
   FlCountryCodePicker countryPicker = const FlCountryCodePicker();
+  final ImagePicker picker = ImagePicker();
+  Rx<File?> image = Rx<File?>(null);
+  File? get selectedImage => image.value;
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final emailController = TextEditingController();
@@ -38,6 +44,23 @@ class ProfileController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void pickImage({
+    required ImageSource imageSource,
+  }) async {
+    final pickedImage = await picker.pickImage(
+      source: imageSource,
+      imageQuality: 70,
+      requestFullMetadata: true,
+    );
+
+    if (pickedImage != null) {
+      image.value = File(
+        pickedImage.path,
+      );
+      Get.back();
+    }
   }
 
   void updateButtonState(dynamic value) {
