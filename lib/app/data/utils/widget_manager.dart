@@ -509,8 +509,6 @@ class WidgetManager {
     );
   }
 
-
-
   static Widget confirmPasswordTextField({
     required TextEditingController passwordController,
     required TextEditingController confirmPasswordController,

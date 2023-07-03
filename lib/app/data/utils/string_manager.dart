@@ -51,8 +51,8 @@ class StringManager {
   static const update = 'Update';
   static const uploadImage = 'Upload Image';
   static const selectImageOption = 'Select option to upload image';
-  static const clickPicture = 'Click picture';
-  static const uploadFromCamera = 'Upload from camera roll';
+  static const clickPicture = 'Take picture';
+  static const uploadFromCamera = 'Upload from gallery';
   static const cancel = 'Cancel';
   static const addCal = 'Add';
   static const selectCat = 'Select a category';
