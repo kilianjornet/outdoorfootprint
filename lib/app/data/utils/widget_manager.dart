@@ -487,8 +487,8 @@ class WidgetManager {
             boxShadow: isEnable.value
                 ? [
                     BoxShadow(
-                      color: ColorManager.black.withOpacity(
-                        0.2,
+                      color: ColorManager.button.withOpacity(
+                        0.5,
                       ),
                       spreadRadius: 1,
                       blurRadius: 10,

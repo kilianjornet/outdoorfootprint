@@ -87,4 +87,18 @@ class StringManager {
   static const kg = 'kg';
   static const litre = 'Litres';
   static const gbUse = 'GB of use';
+  static const mobility = 'Mobility';
+  static const car = 'Car';
+  static const literPerKm = 'Liters per 100 km';
+  static const milesPerGallon = 'Miles per gallon (UK)';
+  static const litersPetrol = 'km (Litres petrol)';
+  static const litersDiesel = 'km (Litres diesel)';
+  static const distance = 'Distance';
+  static const plane = 'Plane';
+  static const hours = 'Hours';
+  static const bus = 'Bus';
+  static const km = 'km';
+  static const train = 'Train';
+  static const helicopter = 'Helicopter';
+  static const flightHours = 'Hours of flight';
 }

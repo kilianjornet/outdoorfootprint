@@ -292,8 +292,9 @@ class HouseView extends GetView<HouseController> {
                   Obx(() {
                     final totalValue = controller.total.value;
                     final displayValue = totalValue.isNaN ? 0.0 : totalValue;
+                    final formattedValue = displayValue.toStringAsFixed(5);
                     return Text(
-                      '$displayValue ${StringManager.kgProduced}',
+                      '$formattedValue ${StringManager.kgProduced}',
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 20.sp,
