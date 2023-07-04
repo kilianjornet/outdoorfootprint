@@ -51,7 +51,7 @@ class ProfileWidget {
               ),
               CircleAvatar(
                 radius: 60.w,
-                backgroundColor: ColorManager.primary,
+                backgroundColor: ColorManager.white,
                 child: ClipOval(
                   child: child,
                 ),

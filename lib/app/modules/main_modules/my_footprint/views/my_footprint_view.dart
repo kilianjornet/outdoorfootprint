@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 
 import '../../../../data/utils/color_manager.dart';
@@ -25,7 +24,6 @@ class MyFootprintView extends GetView<MyFootprintController> {
               horizontal: 20.w,
             ),
           ),
-        )
-    );
+        ));
   }
 }

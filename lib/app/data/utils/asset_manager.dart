@@ -39,4 +39,5 @@ class AssetManager {
   static const notificationD = 'assets/icons/notification_disable.svg';
   static const pencil = 'assets/icons/pencil.svg';
   static const avatar = 'assets/icons/avatar.svg';
+  static const downArrow = 'assets/icons/down_arrow.svg';
 }

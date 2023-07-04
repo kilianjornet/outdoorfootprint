@@ -19,7 +19,6 @@ class CustomDialogController extends GetxController
           animationController.forward();
         }
       });
-
     animationController.forward();
   }
 

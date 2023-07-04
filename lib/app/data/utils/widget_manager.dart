@@ -509,8 +509,6 @@ class WidgetManager {
     );
   }
 
-
-
   static Widget confirmPasswordTextField({
     required TextEditingController passwordController,
     required TextEditingController confirmPasswordController,
@@ -1014,6 +1012,59 @@ class WidgetManager {
 
   static void hideCustomDialog() {
     Get.isDialogOpen == true ? Get.back() : null;
+  }
+
+  static Widget titleWhiteCanvas({
+    required String title,
+    required List<Widget> children,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 15.h,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: GoogleFonts.oswald(
+              fontWeight: FontWeight.w400,
+              fontSize: 22.sp,
+              color: ColorManager.displayText,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(
+              top: 10.w,
+              bottom: 10.w,
+              left: 20.h,
+              right: 20.h,
+            ),
+            margin: EdgeInsets.only(
+              top: 15.h,
+            ),
+            decoration: BoxDecoration(
+              color: ColorManager.white,
+              borderRadius: BorderRadius.circular(
+                10.w,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorManager.black.withOpacity(
+                    0.25,
+                  ),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                ),
+              ],
+            ),
+            child: Column(
+              children: children,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

@@ -53,8 +53,8 @@ class StringManager {
   static const update = 'Update';
   static const uploadImage = 'Upload Image';
   static const selectImageOption = 'Select option to upload image';
-  static const clickPicture = 'Click picture';
-  static const uploadFromCamera = 'Upload from camera roll';
+  static const clickPicture = 'Take picture';
+  static const uploadFromCamera = 'Upload from gallery';
   static const cancel = 'Cancel';
   static const addCal = 'Add';
   static const selectCat = 'Select a category';
@@ -64,4 +64,30 @@ class StringManager {
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
   static const gearLabel1 = 'Running shoe (pair) quantity';
+  static const house = 'House';
+  static const houseTitle =
+      'Enter the number of adult living in the house or put 1 to calculate the household put the number';
+  static const adult = 'Adult';
+  static const houseHeat = 'House Heating';
+  static const naturalHeat = 'Heating with natural gas';
+  static const enterQuantityUnit = 'Enter a quantity for the appropriate unit';
+  static const coal = 'Coal';
+  static const usualCoalWeight = 'One sack of coal usually weight 50 kg';
+  static const wood = 'Wood';
+  static const oil = 'Heating Oil';
+  static const solarHeating = 'Solar collector for heating';
+  static const electricity = 'Electricity';
+  static const electricityConsumption = 'Electricity Consumption';
+  static const internetData = 'Internet and Data';
+  static const personalData = 'Enter the personal use (Data)';
+  static const homeModem = 'Enter the home use (Modem)';
+  static const total = 'Total';
+  static const kgProduced = 'kg CO2 produced';
+  static const cubicMeter = 'm';
+  static const cubicFeet = '100 ft';
+  static const kwh = 'kWh';
+  static const kgCoal = 'kg coal';
+  static const kg = 'kg';
+  static const litre = 'Litres';
+  static const gbUse = 'GB of use';
 }
