@@ -15,6 +15,8 @@ abstract class Routes {
   static const VERIFY_OTP = _Paths.VERIFY_OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
   static const CUSTOM_DIALOG = _Paths.CUSTOM_DIALOG;
+  static const GEAR = _Paths.GEAR;
+  static const OTHERS = _Paths.OTHERS;
   static const HOUSE = _Paths.HOUSE;
   static const MOBILITY = _Paths.MOBILITY;
 }
@@ -33,6 +35,8 @@ abstract class _Paths {
   static const VERIFY_OTP = '/verify-otp';
   static const RESET_PASSWORD = '/reset-password';
   static const CUSTOM_DIALOG = '/custom-dialog';
+  static const GEAR = '/gear';
+  static const OTHERS = '/others';
   static const HOUSE = '/house';
   static const MOBILITY = '/mobility';
 }

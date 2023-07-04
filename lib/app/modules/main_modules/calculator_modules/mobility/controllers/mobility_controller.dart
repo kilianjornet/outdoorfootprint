@@ -58,7 +58,8 @@ class MobilityController extends GetxController {
         planeController.text.isEmpty ||
         busController.text.isEmpty ||
         trainController.text.isEmpty ||
-        helicopterController.text.isEmpty) {
+        helicopterController.text.isEmpty ||
+        total.value == 0.0) {
       isEnable.value = false;
     } else {
       isEnable.value = true;

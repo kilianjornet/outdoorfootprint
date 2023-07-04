@@ -24,7 +24,7 @@ class AddView extends GetView<AddController> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,
-          ),
+            ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -49,12 +49,20 @@ class AddView extends GetView<AddController> {
               AddWidget.calculatorPageButton3(
                 buttonName: StringManager.calculatorCat3,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed(
+                    '/gear',
+                  );
+                },
               ),
               AddWidget.calculatorPageButton4(
                 buttonName: StringManager.calculatorCat4,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed(
+                    '/others',
+                  );
+                },
               ),
               AddWidget.calculatorPageButton5(
                 buttonName: StringManager.calculatorCat5,

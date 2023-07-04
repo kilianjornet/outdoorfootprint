@@ -32,6 +32,8 @@ class StringManager {
   static const enterValidPhoneNumber = 'Please enter a valid phone number';
   static const passwordMismatch = 'Password does not match';
   static const home = 'Home';
+  static const others = 'Others';
+  static const gear = 'Gear';
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
@@ -61,6 +63,24 @@ class StringManager {
   static const calculatorCat3 = 'Gear';
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
+  static const gearLabel1 = 'Running shoe (pair) quantity';
+  static const gearLabel2 = 'Skis (pair) quantity';
+  static const gearLabel3 = 'Climbing rope (every kg) normal 4k quantity';
+  static const gearLabel4 = 'Climbing gear (every kg) normal 4k quantity ';
+  static const gearLabel5 = 'Bike (113-400) quantity';
+  static const gearLabel6 = 'Polyester tee-shirt quantity  ';
+  static const gearLabel7 = 'Tee-shirt cotton quantity';
+  static const gearLabel8 = 'Jacket quantity  ';
+  static const gearLabel9 = 'Underwear/shocks quantity';
+  static const gearLabel10 = 'Pants quantity';
+  static const gearLabel11 = 'Globes quantity ';
+  static const gearLabel12 = 'Sportswear (Piece) quantity';
+  static const gearLabel13 = 'Ski clothes (Piece) Quantity';
+  static const gearLabel14 = 'Swimwear quantity';
+  static const gearLabel15 = 'Smart watch quantity';
+  static const gearLabel16 = 'Tent quantity  ';
+  static const gearLabel17 =
+      'Custom (If you know the exact footprint of a product)';
   static const house = 'House';
   static const houseTitle =
       'Enter the number of adult living in the house or put 1 to calculate the household put the number';
@@ -101,4 +121,28 @@ class StringManager {
   static const train = 'Train';
   static const helicopter = 'Helicopter';
   static const flightHours = 'Hours of flight';
+  static const logging = 'Logging';
+  static const othersLabel1 = 'Hotel (kg CO2)';
+  static const skiDay = 'Ski Day';
+  static const othersLabel2 = 'Ski in Scandinavia (every day per person 2-5,9)';
+  static const othersLabel3 = 'Ski in USA (every day per person)';
+  static const othersLabel4 = 'Ski in the alps (every day per person)';
+  static const food = 'Food';
+  static const othersLabel5 = 'Vegan Spent';
+  static const othersLabel6 = 'Vegetarian Spent';
+  static const othersLabel7 = 'Low meat spent';
+  static const othersLabel8 = 'Medium meat spent';
+  static const othersLabel9 = 'Heavy meat spent';
+  static const othersLabel10 = 'Pharmaceutical spent';
+  static const othersLabel11 = 'Computer IT equipment';
+  static const othersLabel12 = 'Furniture and other manufactured goods spent';
+  static const othersLabel13 = 'Telephone, mobile/cell phone call costs';
+  static const othersLabel14 = 'Banking';
+  static const othersLabel15 = 'Insurance';
+  static const othersLabel16 = 'Education';
+  static const newCar = 'New Car';
+  static const othersLabel17 = 'Small car';
+  static const othersLabel18 = 'Medium Car';
+  static const othersLabel19 = 'Big Car';
+  static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
 }
