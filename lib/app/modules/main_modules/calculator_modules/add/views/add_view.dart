@@ -32,8 +32,8 @@ class AddView extends GetView<AddController> {
                 StringManager.selectCat,
                 style: GoogleFonts.oswald(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  color: ColorManager.titleText,
+                  fontSize: 20.sp,
+                  color: ColorManager.displayText,
                 ),
               ),
               AddWidget.calculatorPageButton1(

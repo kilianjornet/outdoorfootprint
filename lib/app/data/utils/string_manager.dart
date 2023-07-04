@@ -57,7 +57,7 @@ class StringManager {
   static const uploadFromCamera = 'Upload from gallery';
   static const cancel = 'Cancel';
   static const addCal = 'Add';
-  static const selectCat = 'Select a category';
+  static const selectCat = 'Select a Category';
   static const calculatorCat1 = 'Home';
   static const calculatorCat2 = 'Mobility';
   static const calculatorCat3 = 'Gear';
