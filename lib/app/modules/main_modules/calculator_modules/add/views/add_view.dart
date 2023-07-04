@@ -24,7 +24,7 @@ class AddView extends GetView<AddController> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: 20.w,
-            ),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -48,7 +48,11 @@ class AddView extends GetView<AddController> {
               AddWidget.calculatorPageButton2(
                 buttonName: StringManager.calculatorCat2,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed(
+                    '/mobility',
+                  );
+                },
               ),
               AddWidget.calculatorPageButton3(
                 buttonName: StringManager.calculatorCat3,
