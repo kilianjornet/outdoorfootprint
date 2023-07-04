@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/gear/widgets/gearwidget.dart';
 
 import '../../../../data/utils/color_manager.dart';
@@ -57,19 +58,177 @@ class GearView extends GetView<GearController> {
                     dropdownvalue: "1",
                   ),
                   GearWidget.textWithField(
-                    fieldName: StringManager.gearLabel1,
+                    fieldName: StringManager.gearLabel2,
                     isEnable: controller.isEnable,
                     dropdownvalue: "1",
                   ),
                   GearWidget.textWithField(
-                    fieldName: StringManager.gearLabel1,
+                    fieldName: StringManager.gearLabel3,
                     isEnable: controller.isEnable,
                     dropdownvalue: "1",
                   ),
                   GearWidget.textWithField(
-                    fieldName: StringManager.gearLabel1,
+                    fieldName: StringManager.gearLabel4,
                     isEnable: controller.isEnable,
                     dropdownvalue: "1",
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel5,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel6,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel7,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel8,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel9,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel10,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel11,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel2,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel13,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel14,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel15,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Expanded (
+                        flex:1,
+                        child : GearWidget.textWithField(
+                          fieldName: StringManager.gearLabel16,
+                          isEnable: controller.isEnable,
+                          dropdownvalue: "1",
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  WidgetManager.primaryButton(
+                    buttonName: StringManager.submit,
+                    isEnable: controller.isEnable,
+                    onTap: () async {},
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${StringManager.total}: ',
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20.sp,
+                          color: ColorManager.button,
+                        ),
+                      ),
+                      Obx(() {
+                        final totalValue = controller.total.value;
+                        final displayValue = totalValue.isNaN ? 0.0 : totalValue;
+                        return Text(
+                          '$displayValue ${StringManager.kgProduced}',
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20.sp,
+                            color: ColorManager.displayText,
+                          ),
+                        );
+                      }),
+                    ],
                   ),
                 ],
               ),

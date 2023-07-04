@@ -64,6 +64,22 @@ class StringManager {
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
   static const gearLabel1 = 'Running shoe (pair) quantity';
+  static const gearLabel2 = 'Skis (pair) quantity';
+  static const gearLabel3 = 'Climbing rope (every kg) normal 4k quantity';
+  static const gearLabel4 = 'Climbing gear (every kg) normal 4k quantity ';
+  static const gearLabel5 = 'Bike (113-400) quantity';
+  static const gearLabel6 = 'Polyester tee-shirt quantity  ';
+  static const gearLabel7 = 'Tee-shirt cotton quantity';
+  static const gearLabel8 = 'Jacket quantity  ';
+  static const gearLabel9 = 'Underwear/shocks quantity';
+  static const gearLabel10 = 'Pants quantity';
+  static const gearLabel11 = 'Globes quantity ';
+  static const gearLabel12 = 'Sportswear (Piece) quantity';
+  static const gearLabel13 = 'Ski clothes (Piece) Quantity';
+  static const gearLabel14 = 'Swimwear quantity';
+  static const gearLabel15 = 'Smart watch quantity';
+  static const gearLabel16 = 'Tent quantity  ';
+  static const gearLabel17 = 'Custom (If you know the exact footprint of a product)';
   static const house = 'House';
   static const houseTitle =
       'Enter the number of adult living in the house or put 1 to calculate the household put the number';
@@ -90,4 +106,5 @@ class StringManager {
   static const kg = 'kg';
   static const litre = 'Litres';
   static const gbUse = 'GB of use';
+  static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
 }

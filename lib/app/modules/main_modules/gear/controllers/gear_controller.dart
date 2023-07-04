@@ -6,6 +6,8 @@ class GearController extends GetxController {
   final count = 0.obs;
   var isEnable = true.obs;
   RxString dropdownValue = "1".obs;
+  var total = 0.0.obs;
+
   @override
   void onInit() {
     super.onInit();
