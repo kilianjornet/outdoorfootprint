@@ -787,6 +787,131 @@ class WidgetManager {
     );
   }
 
+  static PreferredSizeWidget primaryAppBarWithBackButton({
+    required String title,
+    required AppBarType type,
+  }) {
+    String assetPath;
+    String tipPath;
+    String notificationPath;
+
+    switch (type) {
+      case AppBarType.primary:
+        assetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.secondary:
+        assetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.offset:
+        assetPath = AssetManager.offsetE;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.tip:
+        assetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipE;
+        notificationPath = AssetManager.notificationD;
+        break;
+      case AppBarType.notification:
+        assetPath = AssetManager.offsetD;
+        tipPath = AssetManager.tipD;
+        notificationPath = AssetManager.notificationE;
+        break;
+    }
+    return AppBar(
+      elevation: 0,
+      backgroundColor: ColorManager.white,
+      leading: InkWell(
+        onTap: () {
+          Get.back();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: SvgPicture.asset(
+            AssetManager.arrow,
+            width: 44.w,
+          ),
+        ),
+      ),
+      leadingWidth: 44.w,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              type == AppBarType.primary
+                  ? const SizedBox()
+                  : SvgPicture.asset(
+                AssetManager.arrow,
+                width: 20.w,
+              ),
+              Text(
+                type == AppBarType.primary ? title : '  $title',
+                style: GoogleFonts.oswald(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22.sp,
+                  color: ColorManager.displayText,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () async {},
+                child: SvgPicture.asset(
+                  assetPath,
+                  width: 20.w,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.w,
+                ),
+                child: GestureDetector(
+                  onTap: () async {},
+                  child: SvgPicture.asset(
+                    tipPath,
+                    width: 15.w,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {},
+                child: Container(
+                  padding: EdgeInsets.all(
+                    10.h,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: ColorManager.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorManager.black.withOpacity(
+                          0.25,
+                        ),
+                        spreadRadius: 1,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: SvgPicture.asset(
+                    notificationPath,
+                    width: 12.5.w,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
   static InputDecoration? searchBarDecoration() {
     return InputDecoration(
       isDense: true,

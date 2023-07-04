@@ -32,6 +32,8 @@ class StringManager {
   static const enterValidPhoneNumber = 'Please enter a valid phone number';
   static const passwordMismatch = 'Password does not match';
   static const home = 'Home';
+  static const others = 'Others';
+  static const gear = 'Gear';
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
@@ -61,4 +63,5 @@ class StringManager {
   static const calculatorCat3 = 'Gear';
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
+  static const gearLabel1 = 'Running shoe (pair) quantity';
 }

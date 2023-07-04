@@ -14,12 +14,16 @@ import '../modules/auth_modules/splash/bindings/splash_binding.dart';
 import '../modules/auth_modules/splash/views/splash_view.dart';
 import '../modules/main_modules/calculator_modules/add/bindings/add_binding.dart';
 import '../modules/main_modules/calculator_modules/add/views/add_view.dart';
+import '../modules/main_modules/gear/bindings/gear_binding.dart';
+import '../modules/main_modules/gear/views/gear_view.dart';
 import '../modules/main_modules/home/bindings/home_binding.dart';
 import '../modules/main_modules/home/views/home_view.dart';
 import '../modules/main_modules/my_footprint/bindings/my_footprint_binding.dart';
 import '../modules/main_modules/my_footprint/views/my_footprint_view.dart';
 import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
+import '../modules/main_modules/others/bindings/others_binding.dart';
+import '../modules/main_modules/others/views/others_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
 import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
@@ -92,6 +96,16 @@ class AppPages {
       name: _Paths.CUSTOM_DIALOG,
       page: () => CustomDialogView(),
       binding: CustomDialogBinding(),
+    ),
+    GetPage(
+      name: _Paths.GEAR,
+      page: () => const GearView(),
+      binding: GearBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTHERS,
+      page: () => const OthersView(),
+      binding: OthersBinding(),
     ),
   ];
 }

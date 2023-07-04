@@ -24,4 +24,5 @@ class ColorManager {
   static const cursor = Color(0xFF508CAE);
   static const secondaryField = Color(0xFFEFEFEF);
   static const iconColor = Color(0xFF508CAE);
+  static const dropdownColor = Color(0xFFEFEFEF);
 }

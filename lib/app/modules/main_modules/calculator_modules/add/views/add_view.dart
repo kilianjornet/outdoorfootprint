@@ -51,12 +51,20 @@ class AddView extends GetView<AddController> {
                   CalculatorWidget.calculatorPageButton3(
                     buttonName: StringManager.calculatorCat3,
                     isEnable: controller.isEnable,
-                    onTap: () async {},
+                    onTap: () async {
+                      await Get.toNamed(
+                        '/gear',
+                      );
+                    },
                   ),
                   CalculatorWidget.calculatorPageButton4(
                     buttonName: StringManager.calculatorCat4,
                     isEnable: controller.isEnable,
-                    onTap: () async {},
+                    onTap: () async {
+                      await Get.toNamed(
+                        '/others',
+                      );
+                    },
                   ),
                   CalculatorWidget.calculatorPageButton5(
                     buttonName: StringManager.calculatorCat5,
