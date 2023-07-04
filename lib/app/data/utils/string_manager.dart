@@ -108,6 +108,7 @@ class StringManager {
   static const gbUse = 'GB of use';
   static const logging = 'Logging';
   static const othersLabel1 = 'Hotel (kg CO2)';
+  static const days = 'Days';
   static const skiDay = 'Ski Day';
   static const othersLabel2 = 'Ski in Scandinavia (every day per person 2-5,9)';
   static const othersLabel3 = 'Ski in USA (every day per person)';

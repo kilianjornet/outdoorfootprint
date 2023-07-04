@@ -18,6 +18,13 @@ class OthersController extends GetxController {
   final labelController7 = TextEditingController();
   final labelController8 = TextEditingController();
   final labelController9 = TextEditingController();
+  final labelController10 = TextEditingController();
+  final labelController11 = TextEditingController();
+  final labelController12= TextEditingController();
+  final labelController13= TextEditingController();
+  final labelController14= TextEditingController();
+  final labelController15= TextEditingController();
+  final labelController16= TextEditingController();
   final firstNameNode = FocusNode();
   final labelControllerNode1 = FocusNode();
   final labelControllerNode2 = FocusNode();
@@ -28,6 +35,13 @@ class OthersController extends GetxController {
   final labelControllerNode7 = FocusNode();
   final labelControllerNode8 = FocusNode();
   final labelControllerNode9 = FocusNode();
+  final labelControllerNode10 = FocusNode();
+  final labelControllerNode11= FocusNode();
+  final labelControllerNode12= FocusNode();
+  final labelControllerNode13= FocusNode();
+  final labelControllerNode14= FocusNode();
+  final labelControllerNode15= FocusNode();
+  final labelControllerNode16= FocusNode();
 
 
   @override
@@ -53,7 +67,18 @@ class OthersController extends GetxController {
         labelController2.text.isEmpty ||
         labelController3.text.isEmpty ||
         labelController4.text.isEmpty ||
-        labelController5.text.isEmpty) {
+        labelController5.text.isEmpty ||
+        labelController6.text.isEmpty ||
+        labelController7.text.isEmpty ||
+        labelController8.text.isEmpty ||
+        labelController9.text.isEmpty ||
+        labelController10.text.isEmpty ||
+        labelController11.text.isEmpty ||
+        labelController12.text.isEmpty ||
+        labelController13.text.isEmpty ||
+        labelController14.text.isEmpty ||
+        labelController15.text.isEmpty ||
+        labelController16.text.isEmpty) {
       isEnable.value = false;
     } else {
       isEnable.value = true;

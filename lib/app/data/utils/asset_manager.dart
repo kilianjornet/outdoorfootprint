@@ -40,4 +40,5 @@ class AssetManager {
   static const pencil = 'assets/icons/pencil.svg';
   static const avatar = 'assets/icons/avatar.svg';
   static const downArrow = 'assets/icons/down_arrow.svg';
+  static const errIcon = 'assets/icons/err.svg';
 }

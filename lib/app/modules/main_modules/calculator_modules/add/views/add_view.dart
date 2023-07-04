@@ -39,7 +39,11 @@ class AddView extends GetView<AddController> {
               AddWidget.calculatorPageButton1(
                 buttonName: StringManager.calculatorCat1,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed(
+                    '/house',
+                  );
+                },
               ),
               AddWidget.calculatorPageButton2(
                 buttonName: StringManager.calculatorCat2,
