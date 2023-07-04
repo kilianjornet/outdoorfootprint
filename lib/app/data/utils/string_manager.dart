@@ -146,4 +146,11 @@ class StringManager {
   static const othersLabel18 = 'Medium Car';
   static const othersLabel19 = 'Big Car';
   static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
+  static const hello = 'Hello';
+  static const welcomeText = 'Good to see you again!';
+  static const homeTitle = 'Diagram with % from the parts:';
+  static const kgCo = 'Kg of CO2e';
+  static const tonCo = 'Tons of CO2e';
+  static const co = 'CO2e';
+  static const ton = 'Tons';
 }

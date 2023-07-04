@@ -49,10 +49,10 @@ class NavigationBarView extends GetView<NavigationBarController> {
         child: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(
-              25.w,
+              35.w,
             ),
             topRight: Radius.circular(
-              25.w,
+              35.w,
             ),
           ),
           child: Obx(
