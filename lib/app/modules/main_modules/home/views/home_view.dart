@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                   bottom: 5.h,
                 ),
                 child: Text(
-                  '${StringManager.hello}, Jennie',
+                  '${StringManager.hello}, Kilian',
                   style: GoogleFonts.oswald(
                     fontWeight: FontWeight.w600,
                     fontSize: 24.sp,
