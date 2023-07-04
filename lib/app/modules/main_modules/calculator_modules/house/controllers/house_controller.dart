@@ -75,7 +75,8 @@ class HouseController extends GetxController {
         electricityController.text.isEmpty ||
         dataController.text.isEmpty ||
         modemController.text.isEmpty ||
-        total.value == 0) {
+        total.value == 0 ||
+        total.value.isNaN) {
       isEnable.value = false;
     } else {
       isEnable.value = true;
