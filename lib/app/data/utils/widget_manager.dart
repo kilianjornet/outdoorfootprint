@@ -718,9 +718,14 @@ class WidgetManager {
             children: [
               type == AppBarType.primary
                   ? const SizedBox()
-                  : SvgPicture.asset(
-                      AssetManager.arrow,
-                      width: 20.w,
+                  : GestureDetector(
+                      onTap: () async {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(
+                        AssetManager.arrow,
+                        width: 20.w,
+                      ),
                     ),
               Text(
                 type == AppBarType.primary ? title : '  $title',
@@ -844,9 +849,9 @@ class WidgetManager {
               type == AppBarType.primary
                   ? const SizedBox()
                   : SvgPicture.asset(
-                AssetManager.arrow,
-                width: 20.w,
-              ),
+                      AssetManager.arrow,
+                      width: 20.w,
+                    ),
               Text(
                 type == AppBarType.primary ? title : '  $title',
                 style: GoogleFonts.oswald(

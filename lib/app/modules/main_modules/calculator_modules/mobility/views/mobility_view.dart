@@ -42,9 +42,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.quantityController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -57,9 +59,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.distanceController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -75,9 +79,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.planeController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -94,9 +100,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.busController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -113,9 +121,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.trainController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -131,9 +141,11 @@ class MobilityView extends GetView<MobilityController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.helicopterController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -158,7 +170,7 @@ class MobilityView extends GetView<MobilityController> {
                   Obx(() {
                     final totalValue = controller.total.value;
                     final displayValue = totalValue.isNaN ? 0.0 : totalValue;
-                    final formattedValue = displayValue.toStringAsFixed(5);
+                    final formattedValue = displayValue.toStringAsFixed(2);
                     return Text(
                       '$formattedValue ${StringManager.kgProduced}',
                       style: GoogleFonts.oswald(

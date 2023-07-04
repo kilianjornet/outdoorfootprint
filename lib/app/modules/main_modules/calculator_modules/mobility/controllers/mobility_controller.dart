@@ -18,7 +18,7 @@ class MobilityController extends GetxController {
   final helicopterNode = FocusNode();
   var quantityUnit = StringManager.literPerKm.obs;
   var distanceUnit = StringManager.litersPetrol.obs;
-  var isEnable = true.obs;
+  var isEnable = false.obs;
   var total = 0.0.obs;
   var distanceConversion = 9.58.obs;
   var busConversion = 0.284.obs;
