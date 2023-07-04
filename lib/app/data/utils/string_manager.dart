@@ -79,7 +79,8 @@ class StringManager {
   static const gearLabel14 = 'Swimwear quantity';
   static const gearLabel15 = 'Smart watch quantity';
   static const gearLabel16 = 'Tent quantity  ';
-  static const gearLabel17 = 'Custom (If you know the exact footprint of a product)';
+  static const gearLabel17 =
+      'Custom (If you know the exact footprint of a product)';
   static const house = 'House';
   static const houseTitle =
       'Enter the number of adult living in the house or put 1 to calculate the household put the number';
@@ -106,6 +107,20 @@ class StringManager {
   static const kg = 'kg';
   static const litre = 'Litres';
   static const gbUse = 'GB of use';
+  static const mobility = 'Mobility';
+  static const car = 'Car';
+  static const literPerKm = 'Liters per 100 km';
+  static const milesPerGallon = 'Miles per gallon (UK)';
+  static const litersPetrol = 'km (Litres petrol)';
+  static const litersDiesel = 'km (Litres diesel)';
+  static const distance = 'Distance';
+  static const plane = 'Plane';
+  static const hours = 'Hours';
+  static const bus = 'Bus';
+  static const km = 'km';
+  static const train = 'Train';
+  static const helicopter = 'Helicopter';
+  static const flightHours = 'Hours of flight';
   static const logging = 'Logging';
   static const othersLabel1 = 'Hotel (kg CO2)';
   static const days = 'Days';

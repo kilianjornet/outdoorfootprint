@@ -4,21 +4,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/data/utils/asset_manager.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/house/views/oil_dialog_view.dart';
 
+import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
-import '../views/gas_dialog_view.dart';
+import '../views/km_dialog_view.dart';
+import '../views/unit_dialog_view.dart';
 
-class HouseWidget {
-  HouseWidget._();
+class MobilityWidget {
+  MobilityWidget._();
 
   static Widget customFieldWithUnit({
-    String? title,
     String? subtitle,
-    var gasUnit,
-    var oilUnit,
+    var quantityUnit,
+    var distanceUnit,
     required TextEditingController controller,
     required FocusNode node,
     required UnitType type,
@@ -30,82 +29,10 @@ class HouseWidget {
     void Function()? onTap;
 
     switch (type) {
-      case UnitType.cubicMeter:
-        text = Obx(() {
-          return RichText(
-            text: TextSpan(
-              style: GoogleFonts.oswald(
-                fontWeight: FontWeight.w400,
-                fontSize: 16.sp,
-                color: ColorManager.white,
-              ),
-              children: [
-                TextSpan(
-                  text: gasUnit.value,
-                ),
-                WidgetSpan(
-                  child: Transform.translate(
-                    offset: const Offset(
-                      2.0,
-                      -10.0,
-                    ), // Adjust the offset for proper positioning
-                    child: Text(
-                      '3',
-                      style: GoogleFonts.oswald(
-                        fontSize: gasUnit != StringManager.kwh ? 12.sp : 0,
-                        fontWeight: FontWeight.w400,
-                        color: ColorManager.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-        asset = SvgPicture.asset(
-          AssetManager.downArrow,
-          width: 10.w,
-        );
-        mainAxisAlignment = MainAxisAlignment.spaceBetween;
-        onTap = () async {
-          Get.dialog(
-            const GasDialogView(),
-            barrierDismissible: false,
-            barrierColor: ColorManager.button.withOpacity(
-              0.5,
-            ),
-          );
-        };
-        break;
-      case UnitType.kgCoal:
-        text = Text(
-          StringManager.kgCoal,
-          style: GoogleFonts.oswald(
-            fontWeight: FontWeight.w400,
-            fontSize: 14.sp,
-            color: ColorManager.white,
-          ),
-        );
-        asset = const SizedBox();
-        mainAxisAlignment = MainAxisAlignment.center;
-        break;
-      case UnitType.kg:
-        text = Text(
-          StringManager.kg,
-          style: GoogleFonts.oswald(
-            fontWeight: FontWeight.w400,
-            fontSize: 14.sp,
-            color: ColorManager.white,
-          ),
-        );
-        asset = const SizedBox();
-        mainAxisAlignment = MainAxisAlignment.center;
-        break;
-      case UnitType.litres:
+      case UnitType.perKm:
         text = Obx(() {
           return Text(
-            oilUnit.value,
+            quantityUnit.value,
             style: GoogleFonts.oswald(
               fontWeight: FontWeight.w400,
               fontSize: 14.sp,
@@ -120,7 +47,7 @@ class HouseWidget {
         mainAxisAlignment = MainAxisAlignment.spaceBetween;
         onTap = () async {
           Get.dialog(
-            const OilDialogView(),
+            const UnitDialogView(),
             barrierDismissible: false,
             barrierColor: ColorManager.button.withOpacity(
               0.5,
@@ -128,9 +55,35 @@ class HouseWidget {
           );
         };
         break;
-      case UnitType.kwh:
+      case UnitType.liter:
+        text = Obx(() {
+          return Text(
+            distanceUnit.value,
+            style: GoogleFonts.oswald(
+              fontWeight: FontWeight.w400,
+              fontSize: 14.sp,
+              color: ColorManager.white,
+            ),
+          );
+        });
+        asset = SvgPicture.asset(
+          AssetManager.downArrow,
+          width: 10.w,
+        );
+        mainAxisAlignment = MainAxisAlignment.spaceBetween;
+        onTap = () async {
+          Get.dialog(
+            const KmDialogView(),
+            barrierDismissible: false,
+            barrierColor: ColorManager.button.withOpacity(
+              0.5,
+            ),
+          );
+        };
+        break;
+      case UnitType.hours:
         text = Text(
-          StringManager.kwh,
+          StringManager.hours,
           style: GoogleFonts.oswald(
             fontWeight: FontWeight.w400,
             fontSize: 14.sp,
@@ -140,9 +93,21 @@ class HouseWidget {
         asset = const SizedBox();
         mainAxisAlignment = MainAxisAlignment.center;
         break;
-      case UnitType.gb:
+      case UnitType.km:
         text = Text(
-          StringManager.gbUse,
+          StringManager.km,
+          style: GoogleFonts.oswald(
+            fontWeight: FontWeight.w400,
+            fontSize: 14.sp,
+            color: ColorManager.white,
+          ),
+        );
+        asset = const SizedBox();
+        mainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case UnitType.hoursFlight:
+        text = Text(
+          StringManager.flightHours,
           style: GoogleFonts.oswald(
             fontWeight: FontWeight.w400,
             fontSize: 14.sp,
@@ -156,16 +121,6 @@ class HouseWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title != null
-            ? Text(
-                title,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18.sp,
-                  color: ColorManager.displayText,
-                ),
-              )
-            : const SizedBox(),
         Padding(
           padding: EdgeInsets.symmetric(
             vertical: 5.h,
@@ -200,12 +155,12 @@ class HouseWidget {
                   ),
                   inputFormatters: [
                     FilteringTextInputFormatter.deny(RegExp(r'^0')),
-                    // FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
                     FilteringTextInputFormatter.allow(
                       RegExp(
                         r'^\d+\.?\d{0,2}',
                       ),
                     ),
+                    // FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
                   ],
                   focusNode: node,
                   decoration: InputDecoration(
@@ -249,7 +204,11 @@ class HouseWidget {
               ),
               Container(
                 alignment: Alignment.center,
-                width: 75.w,
+                width: type == UnitType.hours || type == UnitType.km
+                    ? 75.w
+                    : type == UnitType.hoursFlight
+                        ? 100.w
+                        : 140.w,
                 padding: EdgeInsets.symmetric(
                   vertical: 12.5.h,
                   horizontal: 8.w,
@@ -294,10 +253,9 @@ class HouseWidget {
 }
 
 enum UnitType {
-  cubicMeter,
-  kgCoal,
-  kg,
-  litres,
-  kwh,
-  gb,
+  perKm,
+  liter,
+  hours,
+  km,
+  hoursFlight,
 }

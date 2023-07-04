@@ -14,10 +14,12 @@ import '../modules/auth_modules/splash/bindings/splash_binding.dart';
 import '../modules/auth_modules/splash/views/splash_view.dart';
 import '../modules/main_modules/calculator_modules/add/bindings/add_binding.dart';
 import '../modules/main_modules/calculator_modules/add/views/add_view.dart';
-import '../modules/main_modules/gear/bindings/gear_binding.dart';
-import '../modules/main_modules/gear/views/gear_view.dart';
 import '../modules/main_modules/calculator_modules/house/bindings/house_binding.dart';
 import '../modules/main_modules/calculator_modules/house/views/house_view.dart';
+import '../modules/main_modules/calculator_modules/mobility/bindings/mobility_binding.dart';
+import '../modules/main_modules/calculator_modules/mobility/views/mobility_view.dart';
+import '../modules/main_modules/gear/bindings/gear_binding.dart';
+import '../modules/main_modules/gear/views/gear_view.dart';
 import '../modules/main_modules/home/bindings/home_binding.dart';
 import '../modules/main_modules/home/views/home_view.dart';
 import '../modules/main_modules/my_footprint/bindings/my_footprint_binding.dart';
@@ -36,7 +38,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NAVIGATION_BAR;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -108,10 +110,16 @@ class AppPages {
       name: _Paths.OTHERS,
       page: () => const OthersView(),
       binding: OthersBinding(),
-    ),GetPage(
+    ),
+    GetPage(
       name: _Paths.HOUSE,
       page: () => const HouseView(),
       binding: HouseBinding(),
+    ),
+    GetPage(
+      name: _Paths.MOBILITY,
+      page: () => const MobilityView(),
+      binding: MobilityBinding(),
     ),
   ];
 }

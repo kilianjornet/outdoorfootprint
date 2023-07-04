@@ -18,6 +18,7 @@ abstract class Routes {
   static const GEAR = _Paths.GEAR;
   static const OTHERS = _Paths.OTHERS;
   static const HOUSE = _Paths.HOUSE;
+  static const MOBILITY = _Paths.MOBILITY;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const GEAR = '/gear';
   static const OTHERS = '/others';
   static const HOUSE = '/house';
+  static const MOBILITY = '/mobility';
 }

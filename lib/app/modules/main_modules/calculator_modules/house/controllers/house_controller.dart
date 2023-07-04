@@ -32,14 +32,6 @@ class HouseController extends GetxController {
   var oilConversion = 11.9.obs;
   var solarConversion = 1.0.obs;
 
-  final conversionValues = {
-    'gas': 10.0.obs,
-    'coal': 7.583.obs,
-    'wood': 2.778.obs,
-    'oil': 11.9.obs,
-    'solar': 1.obs,
-  };
-
   @override
   void onInit() {
     super.onInit();
@@ -82,7 +74,8 @@ class HouseController extends GetxController {
         solarController.text.isEmpty ||
         electricityController.text.isEmpty ||
         dataController.text.isEmpty ||
-        modemController.text.isEmpty) {
+        modemController.text.isEmpty ||
+        total.value == 0.0) {
       isEnable.value = false;
     } else {
       isEnable.value = true;
@@ -138,7 +131,7 @@ class HouseController extends GetxController {
             );
             unitTitle == StringManager.litre
                 ? oilConversion.value = 11.9
-                : gasConversion.value = 12;
+                : oilConversion.value = 12;
             calculateTotalCarbon();
             Get.back();
           },
