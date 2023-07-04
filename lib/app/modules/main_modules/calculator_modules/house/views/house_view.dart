@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/house/widgets/house_widget.dart';
 
+import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
@@ -74,6 +76,12 @@ class HouseView extends GetView<HouseController> {
                             controller.updateButtonState(value);
                           }
                         },
+                        onTap: () async {
+                          WidgetManager.showNumberPicker(
+                            controller: controller.adultController,
+                            type: DropdownType.adult,
+                          );
+                        },
                         controller: controller.adultController,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.number,
@@ -82,6 +90,7 @@ class HouseView extends GetView<HouseController> {
                           FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
                         ],
                         focusNode: controller.adultNode,
+                        readOnly: true,
                         decoration: InputDecoration(
                           isDense: true,
                           filled: true,
@@ -100,6 +109,21 @@ class HouseView extends GetView<HouseController> {
                             ),
                             borderRadius: BorderRadius.circular(
                               8.w,
+                            ),
+                          ),
+                          suffixIcon: Container(
+                            padding: EdgeInsets.only(
+                              top: 19.h,
+                              left: 10.w,
+                              right: 15.w,
+                              bottom: 17.h,
+                            ),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: SvgPicture.asset(
+                                AssetManager.arrowForward,
+                                width: 7.w,
+                              ),
                             ),
                           ),
                         ),

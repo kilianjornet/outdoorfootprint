@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -1071,6 +1074,68 @@ class WidgetManager {
       ),
     );
   }
+
+  static void showNumberPicker({
+    required TextEditingController controller,
+    required DropdownType type,
+  }) {
+    int number;
+
+    switch (type) {
+      case DropdownType.adult:
+        number = 20;
+        break;
+      case DropdownType.plane:
+        number = 100;
+        break;
+    }
+
+    showCupertinoModalPopup(
+      filter: ImageFilter.blur(
+        sigmaY: 3,
+        sigmaX: 3,
+      ),
+      barrierColor: ColorManager.button.withOpacity(
+        0.5,
+      ),
+      context: Get.context!,
+      builder: (BuildContext context) {
+        return Container(
+          height: 180.h,
+          decoration: BoxDecoration(
+            color: CupertinoColors.systemBackground.resolveFrom(context),
+          ),
+          child: CupertinoPicker(
+            magnification: 1.22,
+            squeeze: 1.2,
+            useMagnifier: true,
+            itemExtent: 40.sp,
+            scrollController: FixedExtentScrollController(
+              initialItem: int.tryParse(controller.text)! - 1,
+            ),
+            onSelectedItemChanged: (int index) {
+              controller.text = '${index + 1}';
+            },
+            children: List<Widget>.generate(
+              number,
+              (int index) {
+                return Center(
+                  child: Text(
+                    '${index + 1}',
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 22.sp,
+                      color: ColorManager.labelText,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
 
 enum SnackBarType {
@@ -1086,4 +1151,9 @@ enum AppBarType {
   offset,
   tip,
   notification,
+}
+
+enum DropdownType {
+  adult,
+  plane,
 }

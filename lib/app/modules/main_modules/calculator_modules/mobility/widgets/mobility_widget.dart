@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
@@ -92,6 +93,12 @@ class MobilityWidget {
         );
         asset = const SizedBox();
         mainAxisAlignment = MainAxisAlignment.center;
+        onTap = () async {
+          WidgetManager.showNumberPicker(
+            controller: controller,
+            type: DropdownType.plane,
+          );
+        };
         break;
       case UnitType.km:
         text = Text(
@@ -148,6 +155,7 @@ class MobilityWidget {
                     FocusManager.instance.primaryFocus!.unfocus();
                   },
                   onChanged: onChanged,
+                  onTap: type == UnitType.hours ? onTap : null,
                   controller: controller,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: const TextInputType.numberWithOptions(
@@ -163,6 +171,7 @@ class MobilityWidget {
                     // FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
                   ],
                   focusNode: node,
+                  readOnly: type == UnitType.hours ? true : false,
                   decoration: InputDecoration(
                     isDense: true,
                     filled: true,
@@ -193,6 +202,23 @@ class MobilityWidget {
                         ),
                       ),
                     ),
+                    suffixIcon: type == UnitType.hours
+                        ? Container(
+                            padding: EdgeInsets.only(
+                              top: 19.h,
+                              left: 10.w,
+                              right: 15.w,
+                              bottom: 17.h,
+                            ),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: SvgPicture.asset(
+                                AssetManager.arrowForward,
+                                width: 7.w,
+                              ),
+                            ),
+                          )
+                        : null,
                   ),
                   style: GoogleFonts.oswald(
                     fontSize: 14.sp,
