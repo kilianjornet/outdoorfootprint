@@ -32,7 +32,9 @@ class SendEmailView extends GetView<SendEmailController> {
                 child: WidgetManager.primaryButton(
                   buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
-                  onTap: () async {},
+                  onTap: () async {
+                    Get.toNamed('/verify-otp');
+                  },
                 ),
               ),
               WidgetManager.backToSignIn(),
