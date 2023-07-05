@@ -43,6 +43,7 @@ class AssetManager {
   static const errIcon = 'assets/icons/err.svg';
   static const footprintTopImage = 'assets/icons/footprintTopImage.svg';
   static const footprintBottomImage = 'assets/icons/footprintBottomImage.svg';
+  static const barChart = 'assets/icons/barChart.svg';
   static const home = 'assets/icons/home.svg';
   static const car = 'assets/icons/car.svg';
 }
