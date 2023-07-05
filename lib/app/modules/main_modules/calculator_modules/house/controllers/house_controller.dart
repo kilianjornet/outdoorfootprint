@@ -24,7 +24,7 @@ class HouseController extends GetxController {
   final modemNode = FocusNode();
   var gasUnit = StringManager.cubicMeter.obs;
   var oilUnit = StringManager.litre.obs;
-  var isEnable = true.obs;
+  var isEnable = false.obs;
   var total = 0.0.obs;
   var gasConversion = 10.0.obs;
   var coalConversion = 7.583.obs;
@@ -75,7 +75,8 @@ class HouseController extends GetxController {
         electricityController.text.isEmpty ||
         dataController.text.isEmpty ||
         modemController.text.isEmpty ||
-        total.value == 0.0) {
+        total.value == 0 ||
+        total.value.isNaN) {
       isEnable.value = false;
     } else {
       isEnable.value = true;

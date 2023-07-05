@@ -59,7 +59,9 @@ class SignInView extends GetView<SignInController> {
               WidgetManager.primaryButton(
                 buttonName: StringManager.signIn,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  Get.toNamed('/navigation-bar');
+                },
               ),
               Padding(
                 padding: EdgeInsets.only(

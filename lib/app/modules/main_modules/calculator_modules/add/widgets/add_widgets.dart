@@ -9,6 +9,7 @@ import '../../../../../data/utils/color_manager.dart';
 
 class AddWidget {
   AddWidget._();
+
   static Widget calculatorPageButton1({
     required String? buttonName,
     required var isEnable,
@@ -65,11 +66,13 @@ class AddWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(
+                      left: 25.w,
+                      right: 14.w,
+                    ),
                     child: SvgPicture.asset(
-                      AssetManager.homeE,
-                      width: 20.w,
-                      // height: 26.h,
+                      AssetManager.home,
+                      height: 15.h,
                     ),
                   ),
                   Align(
@@ -86,11 +89,12 @@ class AddWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                padding: EdgeInsets.only(
+                  right: 25.w,
+                ),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
-                  width: 26.w,
-                  height: 16.h,
+                  height: 10.h,
                 ),
               ),
             ],
@@ -156,11 +160,13 @@ class AddWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(
+                      left: 25.w,
+                      right: 10.w,
+                    ),
                     child: SvgPicture.asset(
-                      AssetManager.mobile,
-                      width: 20.w,
-                      // height: 26.h,
+                      AssetManager.car,
+                      height: 15.h,
                     ),
                   ),
                   Align(
@@ -177,11 +183,12 @@ class AddWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                padding: EdgeInsets.only(
+                  right: 25.w,
+                ),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
-                  width: 26.w,
-                  height: 16.h,
+                  height: 10.h,
                 ),
               ),
             ],
@@ -246,11 +253,13 @@ class AddWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(
+                      left: 25.w,
+                      right: 9.w,
+                    ),
                     child: SvgPicture.asset(
                       AssetManager.gear,
-                      width: 20.w,
-                      // height: 26.h,
+                      height: 15.h,
                     ),
                   ),
                   Align(
@@ -267,11 +276,12 @@ class AddWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                padding: EdgeInsets.only(
+                  right: 25.w,
+                ),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
-                  width: 26.w,
-                  height: 16.h,
+                  height: 10.h,
                 ),
               ),
             ],
@@ -337,10 +347,13 @@ class AddWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(
+                      left: 25.w,
+                      right: 14.w,
+                    ),
                     child: SvgPicture.asset(
                       AssetManager.food,
-                      width: 20.w,
+                      height: 15.h,
                     ),
                   ),
                   Align(
@@ -357,11 +370,12 @@ class AddWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                padding: EdgeInsets.only(
+                  right: 25.w,
+                ),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
-                  width: 26.w,
-                  height: 16.h,
+                  height: 10.h,
                 ),
               ),
             ],
@@ -427,10 +441,13 @@ class AddWidget {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                    padding: EdgeInsets.only(
+                      left: 25.w,
+                      right: 14.w,
+                    ),
                     child: SvgPicture.asset(
                       AssetManager.publicService,
-                      width: 20.w,
+                      height: 15.h,
                     ),
                   ),
                   Align(
@@ -447,11 +464,12 @@ class AddWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 8.w, right: 8.w),
+                padding: EdgeInsets.only(
+                  right: 25.w,
+                ),
                 child: SvgPicture.asset(
                   AssetManager.arrowForward,
-                  width: 26.w,
-                  height: 16.h,
+                  height: 10.h,
                 ),
               ),
             ],

@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/profile/widgets/profile_widget.dart';
 
 import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
@@ -15,12 +12,12 @@ import '../../../../data/utils/validation_manager.dart';
 import '../../calculator_modules/house/views/gas_dialog_view.dart';
 import '../../calculator_modules/house/views/oil_dialog_view.dart';
 
-class OthersWidgets{
+class OthersWidgets {
   OthersWidgets._();
   static Widget textWithField({
     required String? fieldName,
     required var isEnable,
-    required String?dropdownvalue,
+    required String? dropdownvalue,
   }) {
     var isPressed = false.obs;
     return GestureDetector(
@@ -52,19 +49,23 @@ class OthersWidgets{
               ),
             ),
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(
+            height: 8.h,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: DecoratedBox(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color:ColorManager.dropdownColor, //background color of dropdown button
-                  border: Border.all(color: ColorManager.dropdownColor,
-                      width:3), //border of dropdown button
-                  borderRadius: BorderRadius.circular(8), //border raiuds of dropdown button
+                  color: ColorManager
+                      .dropdownColor, //background color of dropdown button
+                  border: Border.all(
+                      color: ColorManager.dropdownColor,
+                      width: 3), //border of dropdown button
+                  borderRadius: BorderRadius.circular(
+                      8), //border raiuds of dropdown button
                 ),
-
-                child:SizedBox(),
-          ))
+                child: const SizedBox(),
+              ))
         ],
       ),
     );
@@ -76,7 +77,7 @@ class OthersWidgets{
     required FieldType type,
     required void Function(String)? onChanged,
     void Function()? onTap,
-    required String?labelName,
+    required String? labelName,
   }) {
     String title;
     TextInputType inputType;
@@ -94,7 +95,7 @@ class OthersWidgets{
             ),
           ),
           TextInputFormatter.withFunction(
-                (oldValue, newValue) {
+            (oldValue, newValue) {
               if (newValue.text.isNotEmpty) {
                 return TextEditingValue(
                   text: newValue.text.substring(0, 1).toUpperCase() +
@@ -126,7 +127,7 @@ class OthersWidgets{
             ),
           ),
           TextInputFormatter.withFunction(
-                (oldValue, newValue) {
+            (oldValue, newValue) {
               if (newValue.text.isNotEmpty) {
                 return TextEditingValue(
                   text: newValue.text.substring(0, 1).toUpperCase() +
@@ -423,13 +424,13 @@ class OthersWidgets{
           ),
           child: subtitle != null
               ? Text(
-            subtitle,
-            style: GoogleFonts.oswald(
-              fontWeight: FontWeight.w400,
-              fontSize: 14.sp,
-              color: ColorManager.labelText,
-            ),
-          )
+                  subtitle,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
+                  ),
+                )
               : const SizedBox(),
         ),
         Padding(
@@ -540,8 +541,8 @@ class OthersWidgets{
       ],
     );
   }
-
 }
+
 enum FieldType {
   firstName,
   lastName,

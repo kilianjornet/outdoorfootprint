@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/house/widgets/house_widget.dart';
 
+import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
@@ -67,10 +69,18 @@ class HouseView extends GetView<HouseController> {
                         onChanged: (value) async {
                           if (value.isEmpty) {
                             controller.adultController.text = '0';
-                          } else {
-                            controller.updateButtonState(value);
                             controller.calculateTotalCarbon();
+                            controller.updateButtonState(value);
+                          } else {
+                            controller.calculateTotalCarbon();
+                            controller.updateButtonState(value);
                           }
+                        },
+                        onTap: () async {
+                          WidgetManager.showNumberPicker(
+                            controller: controller.adultController,
+                            type: DropdownType.adult,
+                          );
                         },
                         controller: controller.adultController,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -80,6 +90,7 @@ class HouseView extends GetView<HouseController> {
                           FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
                         ],
                         focusNode: controller.adultNode,
+                        readOnly: true,
                         decoration: InputDecoration(
                           isDense: true,
                           filled: true,
@@ -98,6 +109,21 @@ class HouseView extends GetView<HouseController> {
                             ),
                             borderRadius: BorderRadius.circular(
                               8.w,
+                            ),
+                          ),
+                          suffixIcon: Container(
+                            padding: EdgeInsets.only(
+                              top: 19.h,
+                              left: 10.w,
+                              right: 15.w,
+                              bottom: 17.h,
+                            ),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: SvgPicture.asset(
+                                AssetManager.arrowForward,
+                                width: 7.w,
+                              ),
                             ),
                           ),
                         ),
@@ -154,9 +180,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.gasController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -169,9 +197,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.coalController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -183,9 +213,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.woodController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -199,9 +231,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.oilController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -213,9 +247,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.solarController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -232,9 +268,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.electricityController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -251,9 +289,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.dataController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -265,9 +305,11 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.modemController.text = '0';
-                      } else {
-                        controller.updateButtonState(value);
                         controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
+                      } else {
+                        controller.calculateTotalCarbon();
+                        controller.updateButtonState(value);
                       }
                     },
                   ),
@@ -292,7 +334,7 @@ class HouseView extends GetView<HouseController> {
                   Obx(() {
                     final totalValue = controller.total.value;
                     final displayValue = totalValue.isNaN ? 0.0 : totalValue;
-                    final formattedValue = displayValue.toStringAsFixed(5);
+                    final formattedValue = displayValue.toStringAsFixed(2);
                     return Text(
                       '$formattedValue ${StringManager.kgProduced}',
                       style: GoogleFonts.oswald(

@@ -39,10 +39,20 @@ class ProfileController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    firstNameController.text = 'Kilian';
+    lastNameController.text = 'Jornet';
+    emailController.text = 'kilianjornet@me.com';
+    countryController.text = 'Norway';
+    numberController.text = '40581605';
   }
 
   @override
   void onClose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    countryController.dispose();
+    numberController.dispose();
     super.onClose();
   }
 

@@ -25,4 +25,9 @@ class ColorManager {
   static const secondaryField = Color(0xFFEFEFEF);
   static const iconColor = Color(0xFF508CAE);
   static const dropdownColor = Color(0xFFEFEFEF);
+  static const avatar = Color(0xFFD9D9D9);
+  static const pieHome = Color(0xFFA58127);
+  static const pieMobility = Color(0xFF229C78);
+  static const pieGear = Color(0xFF227793);
+  static const pieFood = Color(0xFF81B2C6);
 }
