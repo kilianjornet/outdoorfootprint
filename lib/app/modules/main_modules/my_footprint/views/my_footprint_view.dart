@@ -40,13 +40,14 @@ class MyFootprintView extends GetView<MyFootprintController> {
                   ),
                   SvgPicture.asset(
                     AssetManager.barChart,
-                    height: 750.h,
+                    height: 500.h,
                     //height: 1000.h,
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
                 child: MyFootprintWidget.shadowCanvas(
                   children: [
                     MyFootprintWidget.totalData(
