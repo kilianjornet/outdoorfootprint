@@ -20,6 +20,7 @@ abstract class Routes {
   static const HOUSE = _Paths.HOUSE;
   static const MOBILITY = _Paths.MOBILITY;
   static const TIPS = _Paths.TIPS;
+  static const OFFSET = _Paths.OFFSET;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const HOUSE = '/house';
   static const MOBILITY = '/mobility';
   static const TIPS = '/tips';
+  static const OFFSET = '/offset';
 }

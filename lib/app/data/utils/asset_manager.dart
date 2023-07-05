@@ -43,4 +43,5 @@ class AssetManager {
   static const errIcon = 'assets/icons/err.svg';
   static const home = 'assets/icons/home.svg';
   static const car = 'assets/icons/car.svg';
+  static const euro = 'assets/icons/euro.svg';
 }
