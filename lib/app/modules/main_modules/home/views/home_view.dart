@@ -93,7 +93,7 @@ class HomeView extends GetView<HomeController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              controller.totalKg,
+                              controller.totalTon,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.oswald(
                                 fontWeight: FontWeight.w400,
