@@ -30,11 +30,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
         ),
       ),
       bottomNavigationBar: Container(
-<<<<<<< HEAD
-        height: 98.h,
-=======
         height: 104.h,
->>>>>>> d10c5b63c8dfdf3583785ee7b5346815cf84d26f
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
