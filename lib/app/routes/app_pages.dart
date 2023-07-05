@@ -30,10 +30,10 @@ import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.d
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
-import '../modules/misc_modules//notification/bindings/notification_binding.dart';
-import '../modules/misc_modules//notification/views/notification_view.dart';
 import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
 import '../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
+import '../modules/misc_modules/notification/bindings/notification_binding.dart';
+import '../modules/misc_modules/notification/views/notification_view.dart';
 import '../modules/misc_modules/offset/bindings/offset_binding.dart';
 import '../modules/misc_modules/offset/views/offset_view.dart';
 import '../modules/misc_modules/tips/bindings/tips_binding.dart';
