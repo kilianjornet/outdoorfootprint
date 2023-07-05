@@ -676,38 +676,38 @@ class WidgetManager {
 
   static PreferredSizeWidget primaryAppBar(
       {required String title, required AppBarType type, Widget? child}) {
-    String assetPath;
+    String offsetPath;
     String tipPath;
     String notificationPath;
 
     switch (type) {
       case AppBarType.primary:
-        assetPath = AssetManager.offsetD;
+        offsetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.secondary:
-        assetPath = AssetManager.offsetD;
+        offsetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.home:
-        assetPath = AssetManager.offsetD;
+        offsetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.offset:
-        assetPath = AssetManager.offsetE;
+        offsetPath = AssetManager.offsetE;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.tip:
-        assetPath = AssetManager.offsetD;
+        offsetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipE;
         notificationPath = AssetManager.notificationD;
         break;
       case AppBarType.notification:
-        assetPath = AssetManager.offsetD;
+        offsetPath = AssetManager.offsetD;
         tipPath = AssetManager.tipD;
         notificationPath = AssetManager.notificationE;
         break;
@@ -767,9 +767,17 @@ class WidgetManager {
           Row(
             children: [
               GestureDetector(
-                onTap: () async {},
+                onTap: () async {
+                  if (type == AppBarType.offset ||
+                      type == AppBarType.tip ||
+                      type == AppBarType.notification) {
+                    await Get.offNamed('/offset');
+                  } else {
+                    await Get.toNamed('/offset');
+                  }
+                },
                 child: SvgPicture.asset(
-                  assetPath,
+                  offsetPath,
                   width: 20.w,
                 ),
               ),
@@ -778,7 +786,15 @@ class WidgetManager {
                   horizontal: 15.w,
                 ),
                 child: GestureDetector(
-                  onTap: () async {},
+                  onTap: () async {
+                    if (type == AppBarType.offset ||
+                        type == AppBarType.tip ||
+                        type == AppBarType.notification) {
+                      await Get.offNamed('/tips');
+                    } else {
+                      await Get.toNamed('/tips');
+                    }
+                  },
                   child: SvgPicture.asset(
                     tipPath,
                     width: 15.w,
