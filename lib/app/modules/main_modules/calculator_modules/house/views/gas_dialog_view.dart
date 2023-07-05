@@ -38,44 +38,54 @@ class GasDialogView extends GetView<HouseController> {
                 padding: EdgeInsets.only(
                   bottom: 10.h,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16.sp,
-                          color: ColorManager.labelText,
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: StringManager.cubicMeter,
+                child: GestureDetector(
+                  onTap: () async {
+                    controller.selectGasUnit(
+                      StringManager.cubicMeter,
+                    );
+                    controller.gasConversion.value = 10;
+                    controller.calculateTotalCarbon();
+                    Get.back();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            color: ColorManager.labelText,
                           ),
-                          WidgetSpan(
-                            child: Transform.translate(
-                              offset: const Offset(
-                                2.0,
-                                -10.0,
-                              ), // Adjust the offset for proper positioning
-                              child: Text(
-                                '3',
-                                style: GoogleFonts.oswald(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorManager.labelText,
+                          children: [
+                            const TextSpan(
+                              text: StringManager.cubicMeter,
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(
+                                  2.0,
+                                  -10.0,
+                                ), // Adjust the offset for proper positioning
+                                child: Text(
+                                  '3',
+                                  style: GoogleFonts.oswald(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorManager.labelText,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    controller.buildGasRadio(
-                      unitTitle: StringManager.cubicMeter,
-                      unitValue: controller.gasUnit,
-                    ),
-                  ],
+                      controller.buildGasRadio(
+                        unitTitle: StringManager.cubicMeter,
+                        unitValue: controller.gasUnit,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Divider(
@@ -87,44 +97,54 @@ class GasDialogView extends GetView<HouseController> {
                 padding: EdgeInsets.only(
                   bottom: 10.h,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16.sp,
-                          color: ColorManager.labelText,
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: StringManager.cubicFeet,
+                child: GestureDetector(
+                  onTap: () async {
+                    controller.selectGasUnit(
+                      StringManager.cubicFeet,
+                    );
+                    controller.gasConversion.value = 28.32;
+                    controller.calculateTotalCarbon();
+                    Get.back();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            color: ColorManager.labelText,
                           ),
-                          WidgetSpan(
-                            child: Transform.translate(
-                              offset: const Offset(
-                                2.0,
-                                -10.0,
-                              ), // Adjust the offset for proper positioning
-                              child: Text(
-                                '3',
-                                style: GoogleFonts.oswald(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorManager.labelText,
+                          children: [
+                            const TextSpan(
+                              text: StringManager.cubicFeet,
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(
+                                  2.0,
+                                  -10.0,
+                                ), // Adjust the offset for proper positioning
+                                child: Text(
+                                  '3',
+                                  style: GoogleFonts.oswald(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: ColorManager.labelText,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    controller.buildGasRadio(
-                      unitTitle: StringManager.cubicFeet,
-                      unitValue: controller.gasUnit,
-                    ),
-                  ],
+                      controller.buildGasRadio(
+                        unitTitle: StringManager.cubicFeet,
+                        unitValue: controller.gasUnit,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Divider(
@@ -132,22 +152,32 @@ class GasDialogView extends GetView<HouseController> {
                   0.25,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectGasUnit(
                     StringManager.kwh,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.gasConversion.value = 1;
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.kwh,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildGasRadio(
-                    unitTitle: StringManager.kwh,
-                    unitValue: controller.gasUnit,
-                  ),
-                ],
+                    controller.buildGasRadio(
+                      unitTitle: StringManager.kwh,
+                      unitValue: controller.gasUnit,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
