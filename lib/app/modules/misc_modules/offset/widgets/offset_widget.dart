@@ -28,8 +28,6 @@ class OffsetWidget {
     return Padding(
       padding: EdgeInsets.only(
         top: 10.h,
-        left: 5.h,
-        right: 5.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,8 +194,6 @@ class OffsetWidget {
       padding: EdgeInsets.only(
         top: 10.h,
         bottom: 20.h,
-        left: 5.w,
-        right: 5.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

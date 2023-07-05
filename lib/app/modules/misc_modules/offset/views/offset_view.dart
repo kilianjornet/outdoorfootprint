@@ -22,13 +22,13 @@ class OffsetView extends GetView<OffsetController> {
         title: StringManager.offset,
         type: AppBarType.offset,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 15.w,
-        ),
-        child: Column(
-          children: [
-            Container(
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15.w,
+            ),
+            child: Container(
               width: ScreenUtil().screenWidth,
               margin: EdgeInsets.only(
                 top: 10.h,
@@ -94,20 +94,20 @@ class OffsetView extends GetView<OffsetController> {
                 },
               ),
             ),
-            Expanded(
-              child: PageView(
-                controller: controller.pageController,
-                onPageChanged: (index) {
-                  controller.currentIndex.value = index;
-                },
-                children: [
-                  MyYearView(),
-                  CustomView(),
-                ],
-              ),
+          ),
+          Expanded(
+            child: PageView(
+              controller: controller.pageController,
+              onPageChanged: (index) {
+                controller.currentIndex.value = index;
+              },
+              children: [
+                MyYearView(),
+                CustomView(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
