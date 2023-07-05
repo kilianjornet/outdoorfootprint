@@ -786,7 +786,11 @@ class WidgetManager {
                 ),
               ),
               GestureDetector(
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed(
+                    '/notification',
+                  );
+                },
                 child: Container(
                   padding: EdgeInsets.all(
                     10.h,

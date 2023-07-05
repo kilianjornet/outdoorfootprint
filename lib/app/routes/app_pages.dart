@@ -26,6 +26,8 @@ import '../modules/main_modules/my_footprint/bindings/my_footprint_binding.dart'
 import '../modules/main_modules/my_footprint/views/my_footprint_view.dart';
 import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
+import '../modules/main_modules/notification/bindings/notification_binding.dart';
+import '../modules/main_modules/notification/views/notification_view.dart';
 import '../modules/main_modules/others/bindings/others_binding.dart';
 import '../modules/main_modules/others/views/others_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
@@ -121,6 +123,11 @@ class AppPages {
       name: _Paths.MOBILITY,
       page: () => const MobilityView(),
       binding: MobilityBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
     ),
   ];
 }
