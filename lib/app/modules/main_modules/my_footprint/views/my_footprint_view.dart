@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
 import '../../../../data/utils/string_manager.dart';
 import '../../../../data/utils/widget_manager.dart';
@@ -19,10 +21,22 @@ class MyFootprintView extends GetView<MyFootprintController> {
         ),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20.w,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SvgPicture.asset(
+                AssetManager.footprintTopImage,
+                height: 550.h,
+                //height: 1000.h,
+              ),
+
+              SvgPicture.asset(
+                AssetManager.footprintBottomImage,
+                height: 550.h,
+                //height: 1000.h,
+              ),
+
+            ],
           ),
         ));
   }
