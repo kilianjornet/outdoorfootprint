@@ -14,22 +14,24 @@ import '../modules/auth_modules/splash/bindings/splash_binding.dart';
 import '../modules/auth_modules/splash/views/splash_view.dart';
 import '../modules/main_modules/calculator_modules/add/bindings/add_binding.dart';
 import '../modules/main_modules/calculator_modules/add/views/add_view.dart';
+import '../modules/main_modules/calculator_modules/gear/bindings/gear_binding.dart';
+import '../modules/main_modules/calculator_modules/gear/views/gear_view.dart';
 import '../modules/main_modules/calculator_modules/house/bindings/house_binding.dart';
 import '../modules/main_modules/calculator_modules/house/views/house_view.dart';
 import '../modules/main_modules/calculator_modules/mobility/bindings/mobility_binding.dart';
 import '../modules/main_modules/calculator_modules/mobility/views/mobility_view.dart';
-import '../modules/main_modules/gear/bindings/gear_binding.dart';
-import '../modules/main_modules/gear/views/gear_view.dart';
+import '../modules/main_modules/calculator_modules/others/bindings/others_binding.dart';
+import '../modules/main_modules/calculator_modules/others/views/others_view.dart';
 import '../modules/main_modules/home/bindings/home_binding.dart';
 import '../modules/main_modules/home/views/home_view.dart';
 import '../modules/main_modules/my_footprint/bindings/my_footprint_binding.dart';
 import '../modules/main_modules/my_footprint/views/my_footprint_view.dart';
 import '../modules/main_modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import '../modules/main_modules/navigation_bar/views/navigation_bar_view.dart';
-import '../modules/main_modules/others/bindings/others_binding.dart';
-import '../modules/main_modules/others/views/others_view.dart';
 import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
+import '../modules/misc_modules//notification/bindings/notification_binding.dart';
+import '../modules/misc_modules//notification/views/notification_view.dart';
 import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
 import '../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
 import '../modules/misc_modules/offset/bindings/offset_binding.dart';
@@ -42,6 +44,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
+  //static const INITIAL = Routes.SPLASH;
   static const INITIAL = Routes.NAVIGATION_BAR;
 
   static final routes = [
@@ -135,5 +138,10 @@ class AppPages {
       page: () => const OffsetView(),
       binding: OffsetBinding(),
     ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
+    )
   ];
 }

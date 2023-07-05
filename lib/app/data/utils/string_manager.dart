@@ -34,6 +34,7 @@ class StringManager {
   static const home = 'Home';
   static const others = 'Others';
   static const gear = 'Gear';
+  static const notification = 'Notification';
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
   static const profile = 'Profile';
@@ -161,4 +162,5 @@ class StringManager {
   static const custom = 'Custom';
   static const removal = 'Removal';
   static const reforest = 'Reforest';
+  static const currentYear = 'Current Year';
 }

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/others/widgets/others_widget.dart';
+import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/others/widgets/others_widget.dart';
 
-import '../../../../data/utils/color_manager.dart';
-import '../../../../data/utils/string_manager.dart';
-import '../../../../data/utils/widget_manager.dart';
+import '../../../../../data/utils/color_manager.dart';
+import '../../../../../data/utils/string_manager.dart';
+import '../../../../../data/utils/widget_manager.dart';
 import '../../gear/widgets/gearwidget.dart';
 import '../controllers/others_controller.dart';
 

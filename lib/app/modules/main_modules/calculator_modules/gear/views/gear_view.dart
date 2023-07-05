@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/gear/widgets/gearwidget.dart';
+import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/gear/widgets/gearwidget.dart';
 
-import '../../../../data/utils/color_manager.dart';
-import '../../../../data/utils/string_manager.dart';
-import '../../../../data/utils/widget_manager.dart';
+import '../../../../../data/utils/color_manager.dart';
+import '../../../../../data/utils/string_manager.dart';
+import '../../../../../data/utils/widget_manager.dart';
 import '../controllers/gear_controller.dart';
 
 class GearView extends GetView<GearController> {

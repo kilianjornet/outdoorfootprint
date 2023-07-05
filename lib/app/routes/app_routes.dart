@@ -21,6 +21,7 @@ abstract class Routes {
   static const MOBILITY = _Paths.MOBILITY;
   static const TIPS = _Paths.TIPS;
   static const OFFSET = _Paths.OFFSET;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const MOBILITY = '/mobility';
   static const TIPS = '/tips';
   static const OFFSET = '/offset';
+  static const NOTIFICATION = '/notification';
 }

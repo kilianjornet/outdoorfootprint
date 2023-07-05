@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../data/utils/color_manager.dart';
+import '../../../../../data/utils/color_manager.dart';
 
 class GearWidget {
   GearWidget._();

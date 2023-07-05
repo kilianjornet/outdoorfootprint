@@ -802,7 +802,15 @@ class WidgetManager {
                 ),
               ),
               GestureDetector(
-                onTap: () async {},
+                onTap: () async {
+                  if (type == AppBarType.offset ||
+                      type == AppBarType.tip ||
+                      type == AppBarType.notification) {
+                    await Get.offNamed('/notification');
+                  } else {
+                    await Get.toNamed('/notification');
+                  }
+                },
                 child: Container(
                   padding: EdgeInsets.all(
                     10.h,

@@ -5,12 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../data/utils/asset_manager.dart';
-import '../../../../data/utils/color_manager.dart';
-import '../../../../data/utils/string_manager.dart';
-import '../../../../data/utils/validation_manager.dart';
-import '../../calculator_modules/house/views/gas_dialog_view.dart';
-import '../../calculator_modules/house/views/oil_dialog_view.dart';
+import '../../../../../data/utils/asset_manager.dart';
+import '../../../../../data/utils/color_manager.dart';
+import '../../../../../data/utils/string_manager.dart';
+import '../../../../../data/utils/validation_manager.dart';
+import '../../../calculator_modules/house/views/gas_dialog_view.dart';
+import '../../../calculator_modules/house/views/oil_dialog_view.dart';
 
 class OthersWidgets {
   OthersWidgets._();
