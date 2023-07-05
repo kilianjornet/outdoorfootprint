@@ -34,44 +34,62 @@ class UnitDialogView extends GetView<MobilityController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectQuantityUnit(
                     StringManager.literPerKm,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.literPerKm,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildQuantityRadio(
-                    unitTitle: StringManager.literPerKm,
-                    unitValue: controller.quantityUnit,
-                  ),
-                ],
+                    controller.buildQuantityRadio(
+                      unitTitle: StringManager.literPerKm,
+                      unitValue: controller.quantityUnit,
+                    ),
+                  ],
+                ),
               ),
               Divider(
                 color: ColorManager.labelText.withOpacity(
                   0.25,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectQuantityUnit(
                     StringManager.milesPerGallon,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.milesPerGallon,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildQuantityRadio(
-                    unitTitle: StringManager.milesPerGallon,
-                    unitValue: controller.quantityUnit,
-                  ),
-                ],
+                    controller.buildQuantityRadio(
+                      unitTitle: StringManager.milesPerGallon,
+                      unitValue: controller.quantityUnit,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
