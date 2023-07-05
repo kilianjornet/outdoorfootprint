@@ -26,10 +26,24 @@ class MyFootprintView extends GetView<MyFootprintController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SvgPicture.asset(
-                AssetManager.barChart,
-                height: 750.h,
-                //height: 1000.h,
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Text(
+                    StringManager.currentYear,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 24.sp,
+                      color: ColorManager.captionText,
+                    ),
+                  ),
+                  SvgPicture.asset(
+                    AssetManager.barChart,
+                    height: 750.h,
+                    //height: 1000.h,
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),

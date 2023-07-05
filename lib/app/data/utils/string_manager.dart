@@ -153,4 +153,5 @@ class StringManager {
   static const tonCo = 'Tons of CO2e';
   static const co = 'CO2e';
   static const ton = 'Tons';
+  static const currentYear = 'Current Year';
 }
