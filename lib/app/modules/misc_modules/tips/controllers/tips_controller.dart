@@ -24,6 +24,8 @@ class TipsController extends GetxController {
     },
   ];
   late List<RxBool> boolList = List.generate(list.length, (index) => false.obs);
+  late List<RxBool> isPressed =
+      List.generate(list.length, (index) => false.obs);
 
   @override
   void onInit() {
