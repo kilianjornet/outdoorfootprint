@@ -41,11 +41,8 @@ class AssetManager {
   static const avatar = 'assets/icons/avatar.svg';
   static const downArrow = 'assets/icons/down_arrow.svg';
   static const errIcon = 'assets/icons/err.svg';
-<<<<<<< HEAD
   static const footprintTopImage = 'assets/icons/footprintTopImage.svg';
   static const footprintBottomImage = 'assets/icons/footprintBottomImage.svg';
-=======
   static const home = 'assets/icons/home.svg';
   static const car = 'assets/icons/car.svg';
->>>>>>> d10c5b63c8dfdf3583785ee7b5346815cf84d26f
 }
