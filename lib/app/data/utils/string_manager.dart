@@ -153,4 +153,7 @@ class StringManager {
   static const tonCo = 'Tons of CO2e';
   static const co = 'CO2e';
   static const ton = 'Tons';
+  static const tip = 'Tips';
+  static const tipTitle =
+      'What can you do to preserve these very vulnerable natural spaces?';
 }

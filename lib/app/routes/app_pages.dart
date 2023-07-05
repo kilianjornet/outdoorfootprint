@@ -32,13 +32,15 @@ import '../modules/main_modules/profile/bindings/profile_binding.dart';
 import '../modules/main_modules/profile/views/profile_view.dart';
 import '../modules/misc_modules/custom_dialog/bindings/custom_dialog_binding.dart';
 import '../modules/misc_modules/custom_dialog/views/custom_dialog_view.dart';
+import '../modules/misc_modules/tips/bindings/tips_binding.dart';
+import '../modules/misc_modules/tips/views/tips_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NAVIGATION_BAR;
+  static const INITIAL = Routes.TIPS;
 
   static final routes = [
     GetPage(
@@ -120,6 +122,11 @@ class AppPages {
       name: _Paths.MOBILITY,
       page: () => const MobilityView(),
       binding: MobilityBinding(),
+    ),
+    GetPage(
+      name: _Paths.TIPS,
+      page: () => const TipsView(),
+      binding: TipsBinding(),
     ),
   ];
 }
