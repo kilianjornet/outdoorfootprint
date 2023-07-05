@@ -40,7 +40,7 @@ class AddWidget {
           ),
           decoration: BoxDecoration(
             color: isPressed.value
-                ? ColorManager.buttonPressed
+                ? ColorManager.dropdownColor
                 : isEnable.value
                     ? ColorManager.white
                     : ColorManager.white,
@@ -134,7 +134,7 @@ class AddWidget {
           ),
           decoration: BoxDecoration(
             color: isPressed.value
-                ? ColorManager.buttonPressed
+                ? ColorManager.dropdownColor
                 : isEnable.value
                     ? ColorManager.white
                     : ColorManager.white,
@@ -227,7 +227,7 @@ class AddWidget {
           ),
           decoration: BoxDecoration(
             color: isPressed.value
-                ? ColorManager.buttonPressed
+                ? ColorManager.dropdownColor
                 : isEnable.value
                     ? ColorManager.white
                     : ColorManager.white,
@@ -321,7 +321,7 @@ class AddWidget {
           ),
           decoration: BoxDecoration(
             color: isPressed.value
-                ? ColorManager.buttonPressed
+                ? ColorManager.dropdownColor
                 : isEnable.value
                     ? ColorManager.white
                     : ColorManager.white,
@@ -415,7 +415,7 @@ class AddWidget {
           ),
           decoration: BoxDecoration(
             color: isPressed.value
-                ? ColorManager.buttonPressed
+                ? ColorManager.dropdownColor
                 : isEnable.value
                     ? ColorManager.white
                     : ColorManager.white,

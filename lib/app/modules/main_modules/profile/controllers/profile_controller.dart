@@ -23,7 +23,7 @@ class ProfileController extends GetxController {
   final countryNode = FocusNode();
   final numberNode = FocusNode();
   var country = ''.obs;
-  var isEnable = false.obs;
+  var isEnable = true.obs;
   @override
   void onInit() {
     super.onInit();
