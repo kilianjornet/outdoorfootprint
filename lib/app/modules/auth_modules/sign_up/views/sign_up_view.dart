@@ -96,7 +96,7 @@ class SignUpView extends GetView<SignUpController> {
                 buttonName: StringManager.continueButton,
                 isEnable: controller.isEnable,
                 onTap: () async {
-                  await controller.signUp();
+                  // await controller.signUp();
                 },
               ),
               Padding(
