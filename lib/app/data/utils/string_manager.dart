@@ -95,30 +95,34 @@ class StringManager {
   static const oil = 'Heating Oil';
   static const solarHeating = 'Solar collector for heating';
   static const electricity = 'Electricity';
+  static const billInformation =
+      'You can find this information in your electricity bill';
   static const electricityConsumption = 'Electricity Consumption';
   static const internetData = 'Internet and Data';
   static const personalData = 'Enter the personal use (Data)';
   static const homeModem = 'Enter the home use (Modem)';
   static const total = 'Total';
-  static const kgProduced = 'kg CO2 produced';
+  static const kgProduced = 'Kg CO2 produced';
   static const cubicMeter = 'm';
   static const cubicFeet = '100 ft';
   static const kwh = 'kWh';
-  static const kgCoal = 'kg coal';
-  static const kg = 'kg';
+  static const kgCoal = 'Kg Coal';
+  static const kg = 'Kg';
   static const litre = 'Litres';
   static const gbUse = 'GB of use';
   static const mobility = 'Mobility';
   static const car = 'Car';
   static const literPerKm = 'Liters per 100 km';
   static const milesPerGallon = 'Miles per gallon (UK)';
-  static const litersPetrol = 'km (Litres petrol)';
-  static const litersDiesel = 'km (Litres diesel)';
+  static const litersPetrol = 'Km (Petrol)';
+  static const litersDiesel = 'Km (Diesel)';
   static const distance = 'Distance';
   static const plane = 'Plane';
   static const hours = 'Hours';
   static const bus = 'Bus';
-  static const km = 'km';
+  static const busDistance =
+      'Enter the distance you have been traveling by bus';
+  static const km = 'Km';
   static const train = 'Train';
   static const helicopter = 'Helicopter';
   static const flightHours = 'Hours of flight';
@@ -165,4 +169,6 @@ class StringManager {
   static const currentYear = 'Current Year';
   static const noConnection = 'No Internet Connection';
   static const connected = 'Connected to Internet';
+  static const offsetEmission = 'Offset Your Emissions';
+  static const tipsFootprint = 'Tips to Lower Your Footprint';
 }

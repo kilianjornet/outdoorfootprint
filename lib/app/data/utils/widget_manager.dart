@@ -948,6 +948,7 @@ class WidgetManager {
 
   static Widget titleWhiteCanvas({
     required String title,
+    String? subtitle,
     required List<Widget> children,
   }) {
     return Padding(
@@ -965,6 +966,16 @@ class WidgetManager {
               color: ColorManager.displayText,
             ),
           ),
+          subtitle == null
+              ? const SizedBox()
+              : Text(
+                  subtitle,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
+                  ),
+                ),
           Container(
             padding: EdgeInsets.only(
               top: 10.w,

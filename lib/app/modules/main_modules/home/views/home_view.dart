@@ -123,6 +123,16 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
+              HomeWidget.primaryButton(
+                buttonName: StringManager.offsetEmission,
+                isEnable: controller.isEnable[0],
+                onTap: () async {},
+              ),
+              HomeWidget.primaryButton(
+                buttonName: StringManager.tipsFootprint,
+                isEnable: controller.isEnable[1],
+                onTap: () async {},
+              ),
               Padding(
                 padding: EdgeInsets.only(
                   bottom: 5.h,
