@@ -124,6 +124,8 @@ class StringManager {
       'Enter the distance you have been traveling by bus';
   static const km = 'Km';
   static const train = 'Train';
+  static const trainDistance =
+      'Enter the distance you have been traveling by train';
   static const helicopter = 'Helicopter';
   static const flightHours = 'Hours of flight';
   static const logging = 'Logging';
