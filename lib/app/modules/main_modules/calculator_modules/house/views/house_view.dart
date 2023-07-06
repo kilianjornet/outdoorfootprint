@@ -458,7 +458,7 @@ class HouseView extends GetView<HouseController> {
                           type: UnitType.kwh,
                           onChanged: (value) async {
                             if (value.isEmpty) {
-                              controller.electricityNuclearController.text =
+                              controller.electricityThermalController.text =
                                   '0';
                               controller.calculateConversion();
                               controller.calculateComposition();
@@ -510,8 +510,7 @@ class HouseView extends GetView<HouseController> {
                           type: UnitType.kwh,
                           onChanged: (value) async {
                             if (value.isEmpty) {
-                              controller.electricityNuclearController.text =
-                                  '0';
+                              controller.electricityWasteController.text = '0';
                               controller.calculateConversion();
                               controller.calculateComposition();
                               controller.calculateTotalCarbon();
@@ -564,9 +563,13 @@ class HouseView extends GetView<HouseController> {
                     onChanged: (value) async {
                       if (value.isEmpty) {
                         controller.electricityController.text = '0';
+                        controller.calculateConversion();
+                        controller.calculateComposition();
                         controller.calculateTotalCarbon();
                         controller.updateButtonState(value);
                       } else {
+                        controller.calculateConversion();
+                        controller.calculateComposition();
                         controller.calculateTotalCarbon();
                         controller.updateButtonState(value);
                       }
