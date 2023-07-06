@@ -264,16 +264,16 @@ class OffsetWidget {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    final Uri toLaunch = Uri(
+                    final Uri url = Uri(
                       scheme: 'https',
                       host: ApiManager.donationBaseUrl,
                       path: ApiManager.donationHeaders,
                     );
                     if (!await launchUrl(
-                      toLaunch,
+                      url,
                       mode: LaunchMode.inAppWebView,
                     )) {
-                      throw Exception('Could not launch $toLaunch');
+                      throw Exception('Could not launch $url');
                     }
                   },
                   child: Text(
