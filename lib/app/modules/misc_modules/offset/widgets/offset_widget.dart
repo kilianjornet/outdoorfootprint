@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/asset_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../data/utils/api_manager.dart';
 import '../../../../data/utils/color_manager.dart';
 
 class OffsetWidget {
@@ -28,8 +30,6 @@ class OffsetWidget {
     return Padding(
       padding: EdgeInsets.only(
         top: 10.h,
-        left: 5.h,
-        right: 5.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,8 +196,6 @@ class OffsetWidget {
       padding: EdgeInsets.only(
         top: 10.h,
         bottom: 20.h,
-        left: 5.w,
-        right: 5.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,12 +241,49 @@ class OffsetWidget {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 5.h,
+                  ),
+                  child: Text(
+                    content,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      color: ColorManager.labelText,
+                    ),
+                  ),
+                ),
                 Text(
-                  content,
+                  StringManager.helpProject,
                   style: GoogleFonts.oswald(
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,
                     color: ColorManager.labelText,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    final Uri toLaunch = Uri(
+                      scheme: 'https',
+                      host: ApiManager.donationBaseUrl,
+                      path: ApiManager.donationHeaders,
+                    );
+                    if (!await launchUrl(
+                      toLaunch,
+                      mode: LaunchMode.inAppWebView,
+                    )) {
+                      throw Exception('Could not launch $toLaunch');
+                    }
+                  },
+                  child: Text(
+                    StringManager.visitLink,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      color: ColorManager.labelText,
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ),
               ],

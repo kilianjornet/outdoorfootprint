@@ -20,6 +20,7 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
       resizeToAvoidBottomInset: false,
       body: WidgetManager.authBackground(
         title: StringManager.verifyOtpTitle,
+        subtitle: controller.arguments,
         child: Column(
           children: [
             VerifyOtpWidget.otpTextField(

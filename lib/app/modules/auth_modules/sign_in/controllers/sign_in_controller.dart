@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_in_service.dart';
+
+import '../../../../data/utils/widget_manager.dart';
 
 class SignInController extends GetxController {
+  final signInService = SignInService();
   final signInKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -22,6 +26,39 @@ class SignInController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> signIn() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final signUpResponse = await signInService.signIn(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (signUpResponse['status'] == true) {
+        WidgetManager.customSnackBar(
+          title: signUpResponse['message'],
+          type: SnackBarType.success,
+        );
+      } else {
+        WidgetManager.customSnackBar(
+          title: signUpResponse['message'],
+          type: SnackBarType.info,
+        );
+        await Get.toNamed(
+          '/verify-otp',
+          arguments: emailController.text,
+        );
+      }
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void updateButtonState(String value) {

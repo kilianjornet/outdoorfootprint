@@ -56,7 +56,7 @@ class WidgetManager {
           content: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 12.w,
-              vertical: 16.h,
+              vertical: 10.h,
             ),
             margin: EdgeInsets.only(
               left: 10.w,
@@ -118,6 +118,7 @@ class WidgetManager {
 
   static Widget authBackground({
     required String title,
+    String? subtitle,
     required Widget child,
   }) {
     return Container(
@@ -173,7 +174,7 @@ class WidgetManager {
                       title == StringManager.forgetPassword
                           ? StringManager.enterRegisteredEmail
                           : title == StringManager.verifyOtpTitle
-                              ? '${StringManager.enterCode} demomail@gmail.com'
+                              ? '${StringManager.enterCode} $subtitle'
                               : title == StringManager.resetPasswordTitle
                                   ? StringManager.enterNewPassword
                                   : StringManager.greetingText,
@@ -947,6 +948,7 @@ class WidgetManager {
 
   static Widget titleWhiteCanvas({
     required String title,
+    String? subtitle,
     required List<Widget> children,
   }) {
     return Padding(
@@ -964,6 +966,16 @@ class WidgetManager {
               color: ColorManager.displayText,
             ),
           ),
+          subtitle == null
+              ? const SizedBox()
+              : Text(
+                  subtitle,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
+                  ),
+                ),
           Container(
             padding: EdgeInsets.only(
               top: 10.w,

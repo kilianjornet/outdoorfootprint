@@ -44,7 +44,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.NAVIGATION_BAR;
 
   static final routes = [
     GetPage(
@@ -141,6 +141,6 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
-    )
+    ),
   ];
 }

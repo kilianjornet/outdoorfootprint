@@ -93,7 +93,7 @@ class MobilityView extends GetView<MobilityController> {
                 title: StringManager.bus,
                 children: [
                   MobilityWidget.customFieldWithUnit(
-                    subtitle: StringManager.enterQuantityUnit,
+                    subtitle: StringManager.busDistance,
                     controller: controller.busController,
                     node: controller.busNode,
                     type: UnitType.km,
@@ -114,7 +114,7 @@ class MobilityView extends GetView<MobilityController> {
                 title: StringManager.train,
                 children: [
                   MobilityWidget.customFieldWithUnit(
-                    subtitle: StringManager.enterQuantityUnit,
+                    subtitle: StringManager.trainDistance,
                     controller: controller.trainController,
                     node: controller.trainNode,
                     type: UnitType.km,

@@ -34,44 +34,64 @@ class KmDialogView extends GetView<MobilityController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectDistanceUnit(
                     StringManager.litersPetrol,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.distanceConversion.value = 9.58;
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.litersPetrol,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildDistanceRadio(
-                    unitTitle: StringManager.litersPetrol,
-                    unitValue: controller.distanceUnit,
-                  ),
-                ],
+                    controller.buildDistanceRadio(
+                      unitTitle: StringManager.litersPetrol,
+                      unitValue: controller.distanceUnit,
+                    ),
+                  ],
+                ),
               ),
               Divider(
                 color: ColorManager.labelText.withOpacity(
                   0.25,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectDistanceUnit(
                     StringManager.litersDiesel,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.distanceConversion.value = 10.52;
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.litersDiesel,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildDistanceRadio(
-                    unitTitle: StringManager.litersDiesel,
-                    unitValue: controller.distanceUnit,
-                  ),
-                ],
+                    controller.buildDistanceRadio(
+                      unitTitle: StringManager.litersDiesel,
+                      unitValue: controller.distanceUnit,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

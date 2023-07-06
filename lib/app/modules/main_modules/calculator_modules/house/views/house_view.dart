@@ -259,6 +259,7 @@ class HouseView extends GetView<HouseController> {
               ),
               WidgetManager.titleWhiteCanvas(
                 title: StringManager.electricity,
+                subtitle: StringManager.billInformation,
                 children: [
                   HouseWidget.customFieldWithUnit(
                     subtitle: StringManager.electricityConsumption,

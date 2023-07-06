@@ -1,9 +1,11 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_up_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class SignUpController extends GetxController {
+  final signUpService = SignUpService();
   final signUpKey = GlobalKey<FormState>();
   FlCountryCodePicker countryPicker = const FlCountryCodePicker();
   final firstNameController = TextEditingController();
@@ -45,6 +47,32 @@ class SignUpController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> signUp() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final signUpResponse = await signUpService.signUp(
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        email: emailController.text,
+        address: countryController.text,
+        phoneNumber: numberController.text,
+        password: passwordController.text,
+      );
+      WidgetManager.customSnackBar(
+        title: signUpResponse['message'],
+        type: SnackBarType.success,
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void updateButtonState(dynamic value) {

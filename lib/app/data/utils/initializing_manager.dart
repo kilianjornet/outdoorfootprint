@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class InitializingManager {
@@ -41,7 +42,7 @@ class InitializingManager {
     } else if (result != ConnectivityResult.none &&
         previousResult == ConnectivityResult.none) {
       WidgetManager.customSnackBar(
-        title: 'Connected to Internet',
+        title: StringManager.connected,
         type: SnackBarType.success,
       );
     }
@@ -50,7 +51,7 @@ class InitializingManager {
 
   static void showNoInternetSnackBar() {
     WidgetManager.customSnackBar(
-      title: 'No Internet Connection',
+      title: StringManager.noConnection,
       type: SnackBarType.error,
     );
   }

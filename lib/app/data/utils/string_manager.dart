@@ -33,7 +33,11 @@ class StringManager {
   static const passwordMismatch = 'Password does not match';
   static const home = 'Home';
   static const others = 'Others';
+  static const othersDetails =
+      'How much have you spent in those items and services';
   static const gear = 'Gear';
+  static const gearStartingText =
+      'Add the number of new pieces of gear you have bought:';
   static const notification = 'Notification';
   static const calculator = 'Calculator';
   static const myFootprint = 'My Footprint';
@@ -64,22 +68,22 @@ class StringManager {
   static const calculatorCat3 = 'Gear';
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
-  static const gearLabel1 = 'Running shoe (pair) quantity';
-  static const gearLabel2 = 'Skis (pair) quantity';
-  static const gearLabel3 = 'Climbing rope (every kg) normal 4k quantity';
-  static const gearLabel4 = 'Climbing gear (every kg) normal 4k quantity ';
-  static const gearLabel5 = 'Bike (113-400) quantity';
-  static const gearLabel6 = 'Polyester tee-shirt quantity  ';
-  static const gearLabel7 = 'Tee-shirt cotton quantity';
-  static const gearLabel8 = 'Jacket quantity  ';
-  static const gearLabel9 = 'Underwear/shocks quantity';
-  static const gearLabel10 = 'Pants quantity';
-  static const gearLabel11 = 'Globes quantity ';
-  static const gearLabel12 = 'Sportswear (Piece) quantity';
-  static const gearLabel13 = 'Ski clothes (Piece) Quantity';
-  static const gearLabel14 = 'Swimwear quantity';
-  static const gearLabel15 = 'Smart watch quantity';
-  static const gearLabel16 = 'Tent quantity  ';
+  static const gearLabel1 = 'Running shoe (pair)';
+  static const gearLabel2 = 'Skis (pair) ';
+  static const gearLabel3 = 'Kg of climbing rope(normally a rope weights 4kg)';
+  static const gearLabel4 = ' Kg of climbing gear(cams, nuts, pitons…)';
+  static const gearLabel5 = 'Bike (113-400)';
+  static const gearLabel6 = 'Polyester tee-shirt';
+  static const gearLabel7 = 'Tee-shirt cotton';
+  static const gearLabel8 = 'Jacket ';
+  static const gearLabel9 = 'Underwear/shocks';
+  static const gearLabel10 = 'Pants';
+  static const gearLabel11 = 'Globes';
+  static const gearLabel12 = 'Sportswear (Piece)';
+  static const gearLabel13 = 'Ski clothes (Piece)';
+  static const gearLabel14 = 'Swimwear';
+  static const gearLabel15 = 'Smart watch';
+  static const gearLabel16 = 'Tent';
   static const gearLabel17 =
       'Custom (If you know the exact footprint of a product)';
   static const house = 'House';
@@ -95,49 +99,62 @@ class StringManager {
   static const oil = 'Heating Oil';
   static const solarHeating = 'Solar collector for heating';
   static const electricity = 'Electricity';
+  static const billInformation =
+      'You can find this information in your electricity bill';
   static const electricityConsumption = 'Electricity Consumption';
   static const internetData = 'Internet and Data';
   static const personalData = 'Enter the personal use (Data)';
   static const homeModem = 'Enter the home use (Modem)';
   static const total = 'Total';
+  static const compareCarbon =
+      'Do you want to know how is your footprint compared to the average in your country?';
   static const kgProduced = 'kg CO2 produced';
   static const cubicMeter = 'm';
   static const cubicFeet = '100 ft';
   static const kwh = 'kWh';
-  static const kgCoal = 'kg coal';
-  static const kg = 'kg';
+  static const kgCoal = 'Kg Coal';
+  static const kg = 'Kg';
   static const litre = 'Litres';
   static const gbUse = 'GB of use';
   static const mobility = 'Mobility';
   static const car = 'Car';
   static const literPerKm = 'Liters per 100 km';
   static const milesPerGallon = 'Miles per gallon (UK)';
-  static const litersPetrol = 'km (Litres petrol)';
-  static const litersDiesel = 'km (Litres diesel)';
+  static const litersPetrol = 'Km (Petrol)';
+  static const litersDiesel = 'Km (Diesel)';
   static const distance = 'Distance';
   static const plane = 'Plane';
   static const hours = 'Hours';
   static const bus = 'Bus';
-  static const km = 'km';
+  static const busDistance =
+      'Enter the distance you have been traveling by bus';
+  static const km = 'Km';
   static const train = 'Train';
+  static const trainDistance =
+      'Enter the distance you have been traveling by train';
   static const helicopter = 'Helicopter';
   static const flightHours = 'Hours of flight';
   static const logging = 'Logging';
   static const othersLabel1 = 'Hotel (kg CO2)';
   static const days = 'Days';
   static const skiDay = 'Ski Day';
-  static const othersLabel2 = 'Ski in Scandinavia (every day per person 2-5,9)';
-  static const othersLabel3 = 'Ski in USA (every day per person)';
-  static const othersLabel4 = 'Ski in the alps (every day per person)';
+  static const skiDayDetails =
+      'Days per person using ski resort infrastructures';
+  static const skiDayHotelLabel = 'estimate your hotel footprint here';
+  static const othersLabel2 = 'Ski in Scandinavia';
+  static const othersLabel3 = 'Ski in USA';
+  static const othersLabel4 = 'Ski in the alps';
   static const food = 'Food';
-  static const othersLabel5 = 'Vegan Spent';
-  static const othersLabel6 = 'Vegetarian Spent';
-  static const othersLabel7 = 'Low meat spent';
-  static const othersLabel8 = 'Medium meat spent';
-  static const othersLabel9 = 'Heavy meat spent';
-  static const othersLabel10 = 'Pharmaceutical spent';
-  static const othersLabel11 = 'Computer IT equipment';
-  static const othersLabel12 = 'Furniture and other manufactured goods spent';
+  static const foodDetails =
+      'Choose the diet you follow and add how much money have you spent.';
+  static const othersLabel5 = 'Vegan';
+  static const othersLabel6 = 'Vegetarian';
+  static const othersLabel7 = 'Low meat';
+  static const othersLabel8 = 'Medium meat';
+  static const othersLabel9 = 'Heavy meat';
+  static const othersLabel10 = 'Pharmaceutical';
+  static const othersLabel11 = 'Computer IT';
+  static const othersLabel12 = 'Furniture and other manufactured goods';
   static const othersLabel13 = 'Telephone, mobile/cell phone call costs';
   static const othersLabel14 = 'Banking';
   static const othersLabel15 = 'Insurance';
@@ -149,7 +166,7 @@ class StringManager {
   static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
   static const hello = 'Hello';
   static const welcomeText = 'Good to see you again!';
-  static const homeTitle = 'Diagram with % from the parts:';
+  static const homeTitle = 'My Carbon Footprint this year:';
   static const kgCo = 'Kg of CO2e';
   static const tonCo = 'Tons of CO2e';
   static const co = 'CO2e';
@@ -162,5 +179,11 @@ class StringManager {
   static const custom = 'Custom';
   static const removal = 'Removal';
   static const reforest = 'Reforest';
+  static const helpProject = 'Consider helping other environmental projects';
+  static const visitLink = 'Visit link';
   static const currentYear = 'Current Year';
+  static const noConnection = 'No Internet Connection';
+  static const connected = 'Connected to Internet';
+  static const offsetEmission = 'Offset Your Emissions';
+  static const tipsFootprint = 'Tips to Lower Your Footprint';
 }

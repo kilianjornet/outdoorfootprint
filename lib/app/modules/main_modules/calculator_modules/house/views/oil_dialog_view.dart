@@ -34,44 +34,64 @@ class OilDialogView extends GetView<HouseController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectOilUnit(
                     StringManager.litre,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.oilConversion.value = 11.9;
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.litre,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildOilRadio(
-                    unitTitle: StringManager.litre,
-                    unitValue: controller.oilUnit,
-                  ),
-                ],
+                    controller.buildOilRadio(
+                      unitTitle: StringManager.litre,
+                      unitValue: controller.oilUnit,
+                    ),
+                  ],
+                ),
               ),
               Divider(
                 color: ColorManager.labelText.withOpacity(
                   0.25,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
+              GestureDetector(
+                onTap: () async {
+                  controller.selectOilUnit(
                     StringManager.kg,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      color: ColorManager.labelText,
+                  );
+                  controller.oilConversion.value = 12;
+                  controller.calculateTotalCarbon();
+                  Get.back();
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      StringManager.kg,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        color: ColorManager.labelText,
+                      ),
                     ),
-                  ),
-                  controller.buildOilRadio(
-                    unitTitle: StringManager.kg,
-                    unitValue: controller.oilUnit,
-                  ),
-                ],
+                    controller.buildOilRadio(
+                      unitTitle: StringManager.kg,
+                      unitValue: controller.oilUnit,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

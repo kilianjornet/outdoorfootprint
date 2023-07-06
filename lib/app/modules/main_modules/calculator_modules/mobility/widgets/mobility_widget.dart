@@ -228,46 +228,46 @@ class MobilityWidget {
                   cursorColor: ColorManager.cursor,
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                width: type == UnitType.hours || type == UnitType.km
-                    ? 75.w
-                    : type == UnitType.hoursFlight
-                        ? 100.w
-                        : 140.w,
-                padding: EdgeInsets.symmetric(
-                  vertical: 12.5.h,
-                  horizontal: 8.w,
-                ),
-                decoration: BoxDecoration(
-                  color: ColorManager.primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorManager.black.withOpacity(
-                        0.25,
+              GestureDetector(
+                onTap: onTap,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: type == UnitType.hours || type == UnitType.km
+                      ? 75.w
+                      : type == UnitType.hoursFlight
+                          ? 100.w
+                          : 140.w,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 12.5.h,
+                    horizontal: 8.w,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ColorManager.primary,
+                    boxShadow: [
+                      BoxShadow(
+                        color: ColorManager.black.withOpacity(
+                          0.25,
+                        ),
+                        spreadRadius: 1,
+                        blurRadius: 10,
                       ),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                    ),
-                  ],
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(
-                      10.w,
-                    ),
-                    bottomRight: Radius.circular(
-                      10.w,
+                    ],
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(
+                        10.w,
+                      ),
+                      bottomRight: Radius.circular(
+                        10.w,
+                      ),
                     ),
                   ),
-                ),
-                child: Row(
-                  mainAxisAlignment: mainAxisAlignment,
-                  children: [
-                    text,
-                    GestureDetector(
-                      onTap: onTap,
-                      child: asset,
-                    ),
-                  ],
+                  child: Row(
+                    mainAxisAlignment: mainAxisAlignment,
+                    children: [
+                      text,
+                      asset,
+                    ],
+                  ),
                 ),
               ),
             ],
