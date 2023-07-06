@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
@@ -12,6 +13,7 @@ class InitializingManager {
   static Future<void> initialize() async {
     WidgetsFlutterBinding.ensureInitialized();
     await ScreenUtil.ensureScreenSize();
+    await dotenv.load(fileName: ".env");
     await subscribe();
   }
 

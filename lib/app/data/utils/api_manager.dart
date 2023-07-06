@@ -11,4 +11,5 @@ class ApiManager {
   //Authentication
   static const signUp = '/api/auth/register';
   static const signIn = '/api/auth/login';
+  static const sendEmail = '/api/auth/send-verification-email';
 }

@@ -3,7 +3,11 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../../../data/services/auth_services/forgot_password_services/send_email_service.dart';
+import '../../../../../data/utils/widget_manager.dart';
+
 class VerifyOtpController extends GetxController {
+  final sendEmailService = SendEmailService();
   final verifyOtpKey = GlobalKey<FormState>();
   late List<TextEditingController> otpControllers;
   late List<FocusNode> otpNodes;
@@ -33,6 +37,27 @@ class VerifyOtpController extends GetxController {
       otpNodes[i].dispose();
     }
     super.onClose();
+  }
+
+  Future<void> resendEmail() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final sendEmailResponse = await sendEmailService.sendEmail(
+        email: arguments['email'],
+      );
+      WidgetManager.customSnackBar(
+        title: sendEmailResponse['message'],
+        type: SnackBarType.info,
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void generateOtp() {

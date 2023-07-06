@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/auth_services/forgot_password_services/send_email_service.dart';
+
+import '../../../../../data/utils/widget_manager.dart';
 
 class SendEmailController extends GetxController {
+  final sendEmailService = SendEmailService();
   final sendEmailKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final emailNode = FocusNode();
@@ -20,6 +24,34 @@ class SendEmailController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> sendEmail() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final sendEmailResponse = await sendEmailService.sendEmail(
+        email: emailController.text,
+      );
+      WidgetManager.customSnackBar(
+        title: sendEmailResponse['message'],
+        type: SnackBarType.info,
+      );
+      await Get.toNamed(
+        '/verify-otp',
+        arguments: {
+          'email': emailController.text,
+          'page': 'forget',
+        },
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void updateButtonState(String value) {
