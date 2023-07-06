@@ -5,7 +5,7 @@ import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_up_ser
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class SignUpController extends GetxController {
-  SignUpService signUpService = SignUpService();
+  final signUpService = SignUpService();
   final signUpKey = GlobalKey<FormState>();
   FlCountryCodePicker countryPicker = const FlCountryCodePicker();
   final firstNameController = TextEditingController();
