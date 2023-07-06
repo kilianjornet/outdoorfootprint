@@ -27,7 +27,7 @@ class SignInService extends GetConnect implements GetxService {
         },
       );
       var jsonResponse = jsonDecode(response.bodyString!);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 409) {
         return jsonResponse;
       } else {
         throw (jsonResponse['message']);

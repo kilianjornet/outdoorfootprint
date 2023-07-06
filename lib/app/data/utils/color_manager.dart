@@ -14,7 +14,7 @@ class ColorManager {
   static const snackBarNB = Color(0xFFDCEEFA);
   static const successText = Color(0xFF396B5F);
   static const errorText = Color(0xFFD05150);
-  static const infoText = Color(0xFFCB9C32);
+  static const infoText = Color(0xFFD2B448);
   static const notificationText = Color(0xFF0E609B);
   static const displayText = Color(0xFF343336);
   static const captionText = Color(0xFF464646);

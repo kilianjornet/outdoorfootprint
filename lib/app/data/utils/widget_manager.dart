@@ -56,7 +56,7 @@ class WidgetManager {
           content: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 12.w,
-              vertical: 16.h,
+              vertical: 10.h,
             ),
             margin: EdgeInsets.only(
               left: 10.w,
@@ -118,6 +118,7 @@ class WidgetManager {
 
   static Widget authBackground({
     required String title,
+    String? subtitle,
     required Widget child,
   }) {
     return Container(
@@ -173,7 +174,7 @@ class WidgetManager {
                       title == StringManager.forgetPassword
                           ? StringManager.enterRegisteredEmail
                           : title == StringManager.verifyOtpTitle
-                              ? '${StringManager.enterCode} demomail@gmail.com'
+                              ? '${StringManager.enterCode} $subtitle'
                               : title == StringManager.resetPasswordTitle
                                   ? StringManager.enterNewPassword
                                   : StringManager.greetingText,

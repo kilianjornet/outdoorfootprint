@@ -11,6 +11,7 @@ class VerifyOtpController extends GetxController {
   var isEnable = false.obs;
   RxInt secondsRemaining = 59.obs;
   Timer? timer;
+  var arguments = Get.arguments;
 
   @override
   void onInit() {

@@ -36,10 +36,21 @@ class SignInController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
-      WidgetManager.customSnackBar(
-        title: signUpResponse['message'],
-        type: SnackBarType.success,
-      );
+      if (signUpResponse['status'] == true) {
+        WidgetManager.customSnackBar(
+          title: signUpResponse['message'],
+          type: SnackBarType.success,
+        );
+      } else {
+        WidgetManager.customSnackBar(
+          title: signUpResponse['message'],
+          type: SnackBarType.info,
+        );
+        await Get.toNamed(
+          '/verify-otp',
+          arguments: emailController.text,
+        );
+      }
     } catch (e) {
       WidgetManager.customSnackBar(
         title: '$e',
