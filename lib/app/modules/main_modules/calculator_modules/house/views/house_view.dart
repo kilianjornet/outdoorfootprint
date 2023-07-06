@@ -223,7 +223,7 @@ class HouseView extends GetView<HouseController> {
                   ),
                   HouseWidget.customFieldWithUnit(
                     type: UnitType.litres,
-                    title: StringManager.oil,
+                    title: StringManager.heatingOil,
                     subtitle: StringManager.enterQuantityUnit,
                     controller: controller.oilController,
                     node: controller.oilNode,
@@ -261,8 +261,303 @@ class HouseView extends GetView<HouseController> {
                 title: StringManager.electricity,
                 subtitle: StringManager.billInformation,
                 children: [
+                  Text(
+                    StringManager.electricComposition,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18.sp,
+                      color: ColorManager.displayText,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.coal,
+                          controller: controller.electricityCoalController,
+                          node: controller.electricityCoalNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityCoalController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.oil,
+                          controller: controller.electricityOilController,
+                          node: controller.electricityOilNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityOilController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.naturalGas,
+                          controller: controller.electricityGasController,
+                          node: controller.electricityGasNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityGasController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.nuclear,
+                          controller: controller.electricityNuclearController,
+                          node: controller.electricityNuclearNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityNuclearController.text =
+                                  '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.hydro,
+                          controller: controller.electricityHydroController,
+                          node: controller.electricityHydroNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityHydroController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.solar,
+                          controller: controller.electricitySolarController,
+                          node: controller.electricitySolarNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricitySolarController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.wind,
+                          controller: controller.electricityWindController,
+                          node: controller.electricityWindNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityWindController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.thermal,
+                          controller: controller.electricityThermalController,
+                          node: controller.electricityThermalNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityNuclearController.text =
+                                  '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.wood,
+                          controller: controller.electricityWoodController,
+                          node: controller.electricityWoodNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityWoodController.text = '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: HouseWidget.customFieldWithUnit(
+                          subtitle: StringManager.waste,
+                          controller: controller.electricityWasteController,
+                          node: controller.electricityWasteNode,
+                          type: UnitType.kwh,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.electricityNuclearController.text =
+                                  '0';
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            } else {
+                              controller.calculateConversion();
+                              controller.calculateComposition();
+                              controller.calculateTotalCarbon();
+                              controller.updateButtonState(value);
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 10.h,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          '${StringManager.sumShare} :',
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            color: ColorManager.labelText,
+                          ),
+                        ),
+                        Obx(() {
+                          return Text(
+                            ' ${controller.sum.value}',
+                            style: GoogleFonts.oswald(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16.sp,
+                              color: controller.sum.value == 100.0
+                                  ? ColorManager.successText
+                                  : ColorManager.errorText,
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
                   HouseWidget.customFieldWithUnit(
-                    subtitle: StringManager.electricityConsumption,
+                    title: StringManager.electricityConsumption,
                     controller: controller.electricityController,
                     node: controller.electricityNode,
                     type: UnitType.kwh,

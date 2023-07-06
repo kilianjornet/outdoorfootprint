@@ -1002,6 +1002,7 @@ class WidgetManager {
               ],
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: children,
             ),
           ),

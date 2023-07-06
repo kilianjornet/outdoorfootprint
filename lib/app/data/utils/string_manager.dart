@@ -96,11 +96,20 @@ class StringManager {
   static const coal = 'Coal';
   static const usualCoalWeight = 'One sack of coal usually weight 50 kg';
   static const wood = 'Wood';
-  static const oil = 'Heating Oil';
+  static const heatingOil = 'Heating Oil';
   static const solarHeating = 'Solar collector for heating';
   static const electricity = 'Electricity';
   static const billInformation =
       'You can find this information in your electricity bill';
+  static const electricComposition = 'Composition of your electricity';
+  static const oil = 'Oil';
+  static const naturalGas = 'Natural Gas';
+  static const nuclear = 'Nuclear Energy';
+  static const hydro = 'Hydroelectric';
+  static const solar = 'PV Solar';
+  static const wind = 'Wind';
+  static const thermal = 'Geothermal';
+  static const waste = 'Waste';
   static const electricityConsumption = 'Electricity Consumption';
   static const internetData = 'Internet and Data';
   static const personalData = 'Enter the personal use (Data)';
@@ -186,4 +195,5 @@ class StringManager {
   static const connected = 'Connected to Internet';
   static const offsetEmission = 'Offset Your Emissions';
   static const tipsFootprint = 'Tips to Lower Your Footprint';
+  static const sumShare = 'Sum in share %';
 }

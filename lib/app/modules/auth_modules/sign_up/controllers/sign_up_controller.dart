@@ -63,7 +63,14 @@ class SignUpController extends GetxController {
       );
       WidgetManager.customSnackBar(
         title: signUpResponse['message'],
-        type: SnackBarType.success,
+        type: SnackBarType.info,
+      );
+      await Get.toNamed(
+        '/verify-otp',
+        arguments: {
+          'email': emailController.text,
+          'page': 'signUp',
+        },
       );
     } catch (e) {
       WidgetManager.customSnackBar(

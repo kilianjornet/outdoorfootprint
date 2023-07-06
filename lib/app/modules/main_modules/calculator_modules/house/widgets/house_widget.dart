@@ -251,7 +251,7 @@ class HouseWidget {
                 onTap: onTap,
                 child: Container(
                   alignment: Alignment.center,
-                  width: 75.w,
+                  width: type == UnitType.kwh ? 50.w : 75.w,
                   padding: EdgeInsets.symmetric(
                     vertical: 12.5.h,
                     horizontal: 8.w,

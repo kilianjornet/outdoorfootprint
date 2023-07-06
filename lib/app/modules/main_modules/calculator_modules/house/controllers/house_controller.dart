@@ -11,6 +11,16 @@ class HouseController extends GetxController {
   final oilController = TextEditingController();
   final solarController = TextEditingController();
   final electricityController = TextEditingController();
+  final electricityCoalController = TextEditingController();
+  final electricityOilController = TextEditingController();
+  final electricityGasController = TextEditingController();
+  final electricityNuclearController = TextEditingController();
+  final electricityHydroController = TextEditingController();
+  final electricitySolarController = TextEditingController();
+  final electricityWindController = TextEditingController();
+  final electricityThermalController = TextEditingController();
+  final electricityWoodController = TextEditingController();
+  final electricityWasteController = TextEditingController();
   final dataController = TextEditingController();
   final modemController = TextEditingController();
   final adultNode = FocusNode();
@@ -20,12 +30,24 @@ class HouseController extends GetxController {
   final oilNode = FocusNode();
   final solarNode = FocusNode();
   final electricityNode = FocusNode();
+  final electricityCoalNode = FocusNode();
+  final electricityOilNode = FocusNode();
+  final electricityGasNode = FocusNode();
+  final electricityNuclearNode = FocusNode();
+  final electricityHydroNode = FocusNode();
+  final electricitySolarNode = FocusNode();
+  final electricityWindNode = FocusNode();
+  final electricityThermalNode = FocusNode();
+  final electricityWoodNode = FocusNode();
+  final electricityWasteNode = FocusNode();
   final dataNode = FocusNode();
   final modemNode = FocusNode();
   var gasUnit = StringManager.cubicMeter.obs;
   var oilUnit = StringManager.litre.obs;
   var isEnable = false.obs;
   var total = 0.0.obs;
+  var totalElectricity = 0.0.obs;
+  var sum = 0.0.obs;
   var gasConversion = 10.0.obs;
   var coalConversion = 7.583.obs;
   var woodConversion = 2.778.obs;
@@ -47,6 +69,16 @@ class HouseController extends GetxController {
     oilController.text = '0';
     solarController.text = '0';
     electricityController.text = '0';
+    electricityCoalController.text = '0';
+    electricityOilController.text = '0';
+    electricityGasController.text = '0';
+    electricityNuclearController.text = '0';
+    electricityHydroController.text = '0';
+    electricitySolarController.text = '0';
+    electricityWindController.text = '0';
+    electricityThermalController.text = '0';
+    electricityWoodController.text = '0';
+    electricityWasteController.text = '0';
     dataController.text = '0';
     modemController.text = '0';
   }
@@ -60,6 +92,16 @@ class HouseController extends GetxController {
     oilController.dispose();
     solarController.dispose();
     electricityController.dispose();
+    electricityCoalController.dispose();
+    electricityOilController.dispose();
+    electricityGasController.dispose();
+    electricityNuclearController.dispose();
+    electricityHydroController.dispose();
+    electricitySolarController.dispose();
+    electricityWindController.dispose();
+    electricityThermalController.dispose();
+    electricityWoodController.dispose();
+    electricityWasteController.dispose();
     dataController.dispose();
     modemController.dispose();
     super.onClose();
@@ -76,6 +118,7 @@ class HouseController extends GetxController {
         dataController.text.isEmpty ||
         modemController.text.isEmpty ||
         total.value == 0 ||
+        sum.value != 100.0 ||
         total.value.isNaN) {
       isEnable.value = false;
     } else {
@@ -141,6 +184,40 @@ class HouseController extends GetxController {
     );
   }
 
+  void calculateComposition() {
+    final coalSiUnit = calculateElectricity(electricityCoalController);
+    final oilSiUnit = calculateElectricity(electricityOilController);
+    final gasSiUnit = calculateElectricity(electricityGasController);
+    final nuclearSiUnit = calculateElectricity(electricityNuclearController);
+    final hydroSiUnit = calculateElectricity(electricityHydroController);
+    final solarSiUnit = calculateElectricity(electricitySolarController);
+    final windSiUnit = calculateElectricity(electricityWindController);
+    final thermalSiUnit = calculateElectricity(electricityThermalController);
+    final woodSiUnit = calculateElectricity(electricityWoodController);
+    final wasteSiUnit = calculateElectricity(electricityWasteController);
+
+    final coalKg = coalSiUnit * 0.9;
+    final oilKg = oilSiUnit * 0.7;
+    final gasKg = gasSiUnit * 0.36;
+    final nuclearKg = nuclearSiUnit * 0.02;
+    final hydroKg = hydroSiUnit * 0.003;
+    final solarKg = solarSiUnit * 0.05;
+    final windKg = windSiUnit * 0.01;
+    final thermalKg = thermalSiUnit * 0.03;
+    final woodKg = woodSiUnit * 0.0;
+    final wasteKg = wasteSiUnit * 0.0;
+    totalElectricity.value = gasKg +
+        coalKg +
+        woodKg +
+        oilKg +
+        solarKg +
+        nuclearKg +
+        hydroKg +
+        windKg +
+        thermalKg +
+        wasteKg;
+  }
+
   void calculateTotalCarbon() {
     final adultValue = double.tryParse(adultController.text) ?? 0.0;
     final gasSiUnit =
@@ -158,7 +235,8 @@ class HouseController extends GetxController {
     final woodKg = woodSiUnit * 0.25;
     final oilKg = oilSiUnit * 0.25;
     final solarKg = solarSiUnit * 0;
-    final electricityKg = double.tryParse(electricityController.text)! * 0.0030;
+    final electricityKg =
+        double.tryParse(electricityController.text)! * totalElectricity.value;
     final dataKg = double.tryParse(dataController.text)! * 3;
     final modemKg = double.tryParse(modemController.text)! * 3;
     total.value = gasKg +
@@ -175,5 +253,38 @@ class HouseController extends GetxController {
       TextEditingController controller, RxDouble conversionValue) {
     final controllerValue = double.tryParse(controller.text) ?? 0.0;
     return controllerValue * conversionValue.value;
+  }
+
+  void calculateConversion() {
+    final coalValue = double.tryParse(electricityCoalController.text) ?? 0.0;
+    final oilValue = double.tryParse(electricityOilController.text) ?? 0.0;
+    final gasValue = double.tryParse(electricityGasController.text) ?? 0.0;
+    final nuclearValue =
+        double.tryParse(electricityNuclearController.text) ?? 0.0;
+    final hydroValue = double.tryParse(electricityHydroController.text) ?? 0.0;
+    final solarValue = double.tryParse(electricitySolarController.text) ?? 0.0;
+    final windValue = double.tryParse(electricityWindController.text) ?? 0.0;
+    final thermalValue =
+        double.tryParse(electricityThermalController.text) ?? 0.0;
+    final woodValue = double.tryParse(electricityWoodController.text) ?? 0.0;
+    final wasteValue = double.tryParse(electricityWasteController.text) ?? 0.0;
+    sum.value = coalValue +
+        oilValue +
+        gasValue +
+        nuclearValue +
+        hydroValue +
+        solarValue +
+        windValue +
+        thermalValue +
+        woodValue +
+        wasteValue;
+  }
+
+  double calculateElectricity(TextEditingController controller) {
+    final controllerValue = double.tryParse(controller.text) ?? 0.0;
+    final electricityValue = double.tryParse(electricityController.text) ?? 0.0;
+    final adultValue = double.tryParse(adultController.text) ?? 0.0;
+    final result = (controllerValue * electricityValue) / adultValue;
+    return result / 100;
   }
 }
