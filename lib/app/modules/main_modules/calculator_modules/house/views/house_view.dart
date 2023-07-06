@@ -542,7 +542,9 @@ class HouseView extends GetView<HouseController> {
                         ),
                         Obx(() {
                           return Text(
-                            ' ${controller.sum.value}',
+                            controller.sum.value == 100.0
+                                ? ' ${controller.sum.value}'
+                                : ' ${controller.sum.value} ${StringManager.sumError}',
                             style: GoogleFonts.oswald(
                               fontWeight: FontWeight.w400,
                               fontSize: 16.sp,
