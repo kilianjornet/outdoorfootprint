@@ -278,7 +278,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.coal,
                           controller: controller.electricityCoalController,
                           node: controller.electricityCoalNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityCoalController.text = '0';
@@ -301,7 +301,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.oil,
                           controller: controller.electricityOilController,
                           node: controller.electricityOilNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityOilController.text = '0';
@@ -329,7 +329,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.naturalGas,
                           controller: controller.electricityGasController,
                           node: controller.electricityGasNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityGasController.text = '0';
@@ -352,7 +352,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.nuclear,
                           controller: controller.electricityNuclearController,
                           node: controller.electricityNuclearNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityNuclearController.text =
@@ -381,7 +381,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.hydro,
                           controller: controller.electricityHydroController,
                           node: controller.electricityHydroNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityHydroController.text = '0';
@@ -404,7 +404,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.solar,
                           controller: controller.electricitySolarController,
                           node: controller.electricitySolarNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricitySolarController.text = '0';
@@ -432,7 +432,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.wind,
                           controller: controller.electricityWindController,
                           node: controller.electricityWindNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityWindController.text = '0';
@@ -455,7 +455,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.thermal,
                           controller: controller.electricityThermalController,
                           node: controller.electricityThermalNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityThermalController.text =
@@ -484,7 +484,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.wood,
                           controller: controller.electricityWoodController,
                           node: controller.electricityWoodNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityWoodController.text = '0';
@@ -507,7 +507,7 @@ class HouseView extends GetView<HouseController> {
                           subtitle: StringManager.waste,
                           controller: controller.electricityWasteController,
                           node: controller.electricityWasteNode,
-                          type: UnitType.kwh,
+                          type: UnitType.percentage,
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.electricityWasteController.text = '0';
