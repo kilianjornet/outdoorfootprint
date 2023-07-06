@@ -126,12 +126,16 @@ class HomeView extends GetView<HomeController> {
               HomeWidget.primaryButton(
                 buttonName: StringManager.offsetEmission,
                 isEnable: controller.isEnable[0],
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed('/offset');
+                },
               ),
               HomeWidget.primaryButton(
                 buttonName: StringManager.tipsFootprint,
                 isEnable: controller.isEnable[1],
-                onTap: () async {},
+                onTap: () async {
+                  await Get.toNamed('/tips');
+                },
               ),
               Padding(
                 padding: EdgeInsets.only(
