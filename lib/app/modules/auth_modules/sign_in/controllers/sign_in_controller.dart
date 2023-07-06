@@ -48,7 +48,10 @@ class SignInController extends GetxController {
         );
         await Get.toNamed(
           '/verify-otp',
-          arguments: emailController.text,
+          arguments: {
+            'email': emailController.text,
+            'page': 'signIn',
+          },
         );
       }
     } catch (e) {

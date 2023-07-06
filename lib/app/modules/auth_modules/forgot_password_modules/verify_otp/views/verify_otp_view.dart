@@ -20,7 +20,7 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
       resizeToAvoidBottomInset: false,
       body: WidgetManager.authBackground(
         title: StringManager.verifyOtpTitle,
-        subtitle: controller.arguments,
+        subtitle: controller.arguments['email'],
         child: Column(
           children: [
             VerifyOtpWidget.otpTextField(
@@ -85,7 +85,9 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
                           );
               },
             ),
-            WidgetManager.backToSignIn(),
+            controller.arguments['page'] == 'forget'
+                ? WidgetManager.backToSignIn()
+                : const SizedBox(),
           ],
         ),
       ),
