@@ -17,6 +17,7 @@ dependencies:
   fl_chart: 0.63.0
   flutter: 
     sdk: flutter
+  url_launcher: ^6.1.11
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

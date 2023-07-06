@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/others/widgets/others_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
@@ -66,16 +67,69 @@ class OthersView extends GetView<OthersController> {
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: OthersWidgets.editFields(
-                        controller: controller.labelController1,
-                        node: controller.firstNameNode,
-                        type: FieldType.firstName,
-                        onChanged: (value) async {
-                          controller.updateButtonState(value);
-                        },
-                        labelName: StringManager.othersLabel1,
+                      child: Column(
+                        children: [
+                          OthersWidgets.editFields(
+                            controller: controller.labelController1,
+                            node: controller.firstNameNode,
+                            type: FieldType.firstName,
+                            onChanged: (value) async {
+                              controller.updateButtonState(value);
+                            },
+                            labelName: StringManager.othersLabel1,
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              StringManager.skiDayHotelLabel,
+                              style: GoogleFonts.oswald(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.sp,
+                                color: ColorManager.titleText,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: ()async {
+                                const url = 'https://www.hotelfootprints.org';
+                                if(await canLaunch(url)){
+                                  await launch(url);
+                                }else {
+                                  throw 'Could not launch $url';
+                                }
+                              },
+                              style: TextButton.styleFrom(
+                              ),
+                              child: const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                        Icons.language,
+                                        color: Color(0xFFED92A2)),
+                                    SizedBox(width: 10.0),
+                                    Text('https://www.hotelfootprints.org',
+                                        style: TextStyle(
+                                            color: Color(0xFFA294C2),
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w500)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    )),
+                    )
+                ),
                 SizedBox(
                   height: 8.h,
                 ),
@@ -85,6 +139,17 @@ class OthersView extends GetView<OthersController> {
                     fontWeight: FontWeight.w400,
                     fontSize: 18.sp,
                     color: ColorManager.titleText,
+                  ),
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  StringManager.skiDayDetails,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
                   ),
                 ),
                 SizedBox(
@@ -177,6 +242,17 @@ class OthersView extends GetView<OthersController> {
                     fontWeight: FontWeight.w400,
                     fontSize: 18.sp,
                     color: ColorManager.titleText,
+                  ),
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  StringManager.foodDetails,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
                   ),
                 ),
                 SizedBox(
@@ -322,6 +398,17 @@ class OthersView extends GetView<OthersController> {
                     fontWeight: FontWeight.w400,
                     fontSize: 18.sp,
                     color: ColorManager.titleText,
+                  ),
+                ),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  StringManager.othersDetails,
+                  style: GoogleFonts.oswald(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14.sp,
+                    color: ColorManager.labelText,
                   ),
                 ),
                 SizedBox(
