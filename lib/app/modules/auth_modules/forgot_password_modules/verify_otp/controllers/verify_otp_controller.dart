@@ -7,7 +7,7 @@ class VerifyOtpController extends GetxController {
   final verifyOtpKey = GlobalKey<FormState>();
   late List<TextEditingController> otpControllers;
   late List<FocusNode> otpNodes;
-  final int numberOfFields = 4;
+  final int numberOfFields = 6;
   var isEnable = false.obs;
   RxInt secondsRemaining = 59.obs;
   Timer? timer;

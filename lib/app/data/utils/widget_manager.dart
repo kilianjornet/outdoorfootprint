@@ -139,7 +139,7 @@ class WidgetManager {
             physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 30.w,
+                horizontal: 15.w,
               ),
               child: Column(
                 children: [

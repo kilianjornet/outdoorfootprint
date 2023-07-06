@@ -35,7 +35,7 @@ class VerifyOtpWidget {
         children: List.generate(
           numberOfFields,
           (index) => SizedBox(
-            width: 60.w,
+            width: 50.w,
             child: TextFormField(
               onTapOutside: (value) {
                 FocusManager.instance.primaryFocus!.unfocus();
