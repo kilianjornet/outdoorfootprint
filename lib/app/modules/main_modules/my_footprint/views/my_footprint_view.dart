@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
@@ -140,7 +141,72 @@ class MyFootprintView extends GetView<MyFootprintController> {
                       ],
                     ),
                   ],
+
                 ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: SizedBox(
+                  height: 8.h,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    StringManager.compareCarbon,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      color: ColorManager.titleText,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: ()async {
+                      const url = 'https://ourworldindata.org/per-capita-co2 ';
+                      if(await canLaunch(url)){
+                        await launch(url);
+                      }else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    style: TextButton.styleFrom(
+                    ),
+                    child: const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                              Icons.language,
+                              color: Color(0xFFED92A2)),
+                          SizedBox(width: 10.0),
+                          Text('https://ourworldindata.org/per-capita-co2 ',
+                              style: TextStyle(
+                                  color: Color(0xFFA294C2),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
               ),
             ],
           ),
