@@ -102,6 +102,7 @@ class StringManager {
   static const personalData = 'Enter the personal use (Data)';
   static const homeModem = 'Enter the home use (Modem)';
   static const total = 'Total';
+  static const compareCarbon = 'Do you want to know how is your footprint compared to the average in your country?';
   static const kgProduced = 'kg CO2 produced';
   static const cubicMeter = 'm';
   static const cubicFeet = '100 ft';

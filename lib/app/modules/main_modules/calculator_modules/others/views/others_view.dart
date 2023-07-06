@@ -108,9 +108,9 @@ class OthersView extends GetView<OthersController> {
                               child: const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Row(
-                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(
                                         Icons.language,
