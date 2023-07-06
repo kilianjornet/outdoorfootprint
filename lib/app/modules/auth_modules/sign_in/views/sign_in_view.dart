@@ -60,7 +60,8 @@ class SignInView extends GetView<SignInController> {
                 buttonName: StringManager.signIn,
                 isEnable: controller.isEnable,
                 onTap: () async {
-                  await controller.signIn();
+                  //await controller.signIn();
+                  Get.toNamed('/navigation-bar');
                 },
               ),
               Padding(
