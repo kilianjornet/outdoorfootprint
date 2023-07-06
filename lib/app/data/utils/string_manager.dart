@@ -163,4 +163,6 @@ class StringManager {
   static const removal = 'Removal';
   static const reforest = 'Reforest';
   static const currentYear = 'Current Year';
+  static const noConnection = 'No Internet Connection';
+  static const connected = 'Connected to Internet';
 }
