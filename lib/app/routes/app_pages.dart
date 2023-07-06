@@ -141,6 +141,6 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
-    )
+    ),
   ];
 }
