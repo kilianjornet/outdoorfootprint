@@ -154,7 +154,9 @@ class MobilityView extends GetView<MobilityController> {
               WidgetManager.primaryButton(
                 buttonName: StringManager.submit,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await controller.submitMobility();
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

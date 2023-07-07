@@ -44,6 +44,13 @@ class SignInController extends GetxController {
           title: signUpResponse['message'],
           type: SnackBarType.success,
         );
+        await TokenManager.saveTokens(
+          signUpResponse['tokens']['access']['token'],
+          signUpResponse['tokens']['refresh']['token'],
+        );
+        await Get.toNamed(
+          '/navigation-bar',
+        );
       } else {
         await TokenManager.saveTokens(
           signUpResponse['tokens']['access']['token'],

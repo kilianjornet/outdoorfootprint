@@ -63,10 +63,10 @@ class MobilityController extends GetxController {
       final userId = await CrudManager.getId();
       final mobilityResponse = await mobilityService.submitMobility(
         userId: '$userId',
-        totalKgCo2OfMobility: '$total',
+        totalKgCo2OfMobility: '${total.value}',
       );
       WidgetManager.customSnackBar(
-        title: mobilityResponse['message'],
+        title: mobilityResponse['totalKgCo2OfMobility'],
         type: SnackBarType.success,
       );
       await Get.offNamed('/navigation-bar');
