@@ -56,7 +56,7 @@ class WidgetManager {
           content: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 12.w,
-              vertical: 10.h,
+              vertical: 16.h,
             ),
             margin: EdgeInsets.only(
               left: 10.w,

@@ -37,7 +37,8 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
                 buttonName: StringManager.verify,
                 isEnable: controller.isEnable,
                 onTap: () async {
-                  Get.toNamed('/reset-password');
+                  // Get.toNamed('/reset-password');
+                  await controller.verifyOtp();
                 },
               ),
             ),
