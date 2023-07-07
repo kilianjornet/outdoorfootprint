@@ -46,6 +46,7 @@ class VerifyOtpController extends GetxController {
       final sendEmailResponse = await sendEmailService.sendEmail(
         email: arguments['email'],
       );
+      resendCode();
       WidgetManager.customSnackBar(
         title: sendEmailResponse['message'],
         type: SnackBarType.info,

@@ -4,12 +4,15 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/misc_services/refresh_token_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
 import '../../../utils/api_manager.dart';
 
 class SendEmailService extends GetConnect implements GetxService {
+  final refreshTokenService = RefreshTokenService();
+
   Future<dynamic> sendEmail({
     required String email,
   }) async {
@@ -17,8 +20,7 @@ class SendEmailService extends GetConnect implements GetxService {
     final jwtAccessSecret = dotenv.env['JWT_ACCESS_SECRET'];
 
     try {
-      final jwt = JWT.verify('$token', SecretKey('$jwtAccessSecret'));
-      print('Payload: ${jwt.payload}');
+      JWT.verify('$token', SecretKey('$jwtAccessSecret'));
       var connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.none) {
         throw StringManager.noConnection;
@@ -40,7 +42,15 @@ class SendEmailService extends GetConnect implements GetxService {
         throw (jsonResponse['message']);
       }
     } on JWTExpiredException {
-      print('jwt expired');
+      final token = await TokenManager.getRefreshToken();
+      final refreshTokenResponse = await refreshTokenService.refreshToken(
+        refreshToken: '$token',
+      );
+      await TokenManager.saveTokens(
+        refreshTokenResponse['access']['token'],
+        refreshTokenResponse['refresh']['token'],
+      );
+      return await sendEmail(email: email);
     } on JWTException catch (e) {
       throw (e.message);
     } catch (e) {

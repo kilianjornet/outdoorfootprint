@@ -8,6 +8,9 @@ class ApiManager {
   static const donationBaseUrl = 'www.kilianjornetfoundation.org';
   static const donationHeaders = '/take-action/donate/';
 
+  //Refresh Token
+  static const refreshToken = '/api/auth/refresh-tokens';
+
   //Authentication
   static const signUp = '/api/auth/register';
   static const signIn = '/api/auth/login';

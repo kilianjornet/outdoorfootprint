@@ -60,7 +60,7 @@ class SignInController extends GetxController {
           '/verify-otp',
           arguments: {
             'email': emailController.text,
-            'page': 'forget',
+            'page': 'signIn',
           },
         );
       }

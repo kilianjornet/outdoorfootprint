@@ -63,7 +63,7 @@ class VerifyOtpView extends GetView<VerifyOtpController> {
                           )
                         : GestureDetector(
                             onTap: () async {
-                              controller.resendCode();
+                              await controller.resendEmail();
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

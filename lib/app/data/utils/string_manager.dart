@@ -47,7 +47,7 @@ class StringManager {
       'Please type your registered email address';
   static const backToSignIn = 'Back to Sign In';
   static const verifyOtpTitle = 'Verify Your Email';
-  static const enterCode = 'Please enter the 4 digit code sent to';
+  static const enterCode = 'Please enter the 6 digit code sent to';
   static const submit = 'Submit';
   static const verify = 'Verify';
   static const second = 'Second';
