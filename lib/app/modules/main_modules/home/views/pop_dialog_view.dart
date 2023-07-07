@@ -72,7 +72,7 @@ class PopDialogView extends GetView<HomeController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      StringManager.logout,
+                                      StringManager.signOut,
                                       style: GoogleFonts.oswald(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16.sp,

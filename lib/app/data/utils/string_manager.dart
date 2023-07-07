@@ -173,7 +173,7 @@ class StringManager {
   static const othersLabel18 = 'Medium Car';
   static const othersLabel19 = 'Big Car';
   static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
-  static const logout = 'Logout';
+  static const signOut = 'Sign Out';
   static const deleteAccount = 'Delete Account';
   static const hello = 'Hello';
   static const welcomeText = 'Good to see you again!';
