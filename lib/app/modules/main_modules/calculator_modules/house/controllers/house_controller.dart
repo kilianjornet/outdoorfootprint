@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/main_services/calculator_services/house_service.dart';
+import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 
 import '../../../../../data/utils/string_manager.dart';
+import '../../../../../data/utils/widget_manager.dart';
 
 class HouseController extends GetxController {
+  final houseService = HouseService();
   final adultController = TextEditingController();
   final gasController = TextEditingController();
   final coalController = TextEditingController();
@@ -105,6 +109,30 @@ class HouseController extends GetxController {
     dataController.dispose();
     modemController.dispose();
     super.onClose();
+  }
+
+  Future<void> submitHouse() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final userId = await CrudManager.getId();
+      final houseResponse = await houseService.submitHouse(
+        userId: '$userId',
+        totalKgCo2OfHome: '$total',
+      );
+      WidgetManager.customSnackBar(
+        title: houseResponse['message'],
+        type: SnackBarType.success,
+      );
+      await Get.offNamed('/navigation-bar');
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void updateButtonState(dynamic value) {

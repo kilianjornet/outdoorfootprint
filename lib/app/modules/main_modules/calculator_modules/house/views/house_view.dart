@@ -619,7 +619,9 @@ class HouseView extends GetView<HouseController> {
               WidgetManager.primaryButton(
                 buttonName: StringManager.submit,
                 isEnable: controller.isEnable,
-                onTap: () async {},
+                onTap: () async {
+                  await controller.submitHouse();
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
