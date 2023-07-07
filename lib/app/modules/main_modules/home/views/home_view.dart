@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
+import 'package:my_outdoor_footprint/app/modules/main_modules/home/views/pop_dialog_view.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/home/widgets/home_widget.dart';
 
 import '../../../../data/utils/asset_manager.dart';
@@ -20,6 +21,8 @@ class HomeView extends GetView<HomeController> {
       appBar: WidgetManager.primaryAppBar(
         title: StringManager.home,
         type: AppBarType.home,
+        dialog: const PopDialogView(),
+        openDialog: controller.openDialog,
         child: SvgPicture.asset(
           AssetManager.avatar,
           fit: BoxFit.cover,
