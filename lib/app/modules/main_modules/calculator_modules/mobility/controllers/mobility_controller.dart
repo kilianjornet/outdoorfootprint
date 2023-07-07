@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/main_services/calculator_services/mobility_service.dart';
 
+import '../../../../../data/utils/crud_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
+import '../../../../../data/utils/widget_manager.dart';
 
 class MobilityController extends GetxController {
+  final mobilityService = MobilityService();
   final quantityController = TextEditingController();
   final distanceController = TextEditingController();
   final planeController = TextEditingController();
@@ -50,6 +54,30 @@ class MobilityController extends GetxController {
     trainController.dispose();
     helicopterController.dispose();
     super.onClose();
+  }
+
+  Future<void> submitMobility() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final userId = await CrudManager.getId();
+      final mobilityResponse = await mobilityService.submitMobility(
+        userId: '$userId',
+        totalKgCo2OfMobility: '$total',
+      );
+      WidgetManager.customSnackBar(
+        title: mobilityResponse['message'],
+        type: SnackBarType.success,
+      );
+      await Get.offNamed('/navigation-bar');
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void updateButtonState(dynamic value) {
