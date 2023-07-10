@@ -24,5 +24,5 @@ class ApiManager {
   static const createHome = '/api/users/create-user-home-category';
   static const createMobility = '/api/users/create-user-mobility-category';
   static const createGear = '/api/users/create-user-gear-category';
-  static const createFood = '/api/users/create-user-food-category';
+  static const createFood = '/api/users/create-user-other-category';
 }
