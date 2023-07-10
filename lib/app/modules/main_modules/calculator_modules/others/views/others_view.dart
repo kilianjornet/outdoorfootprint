@@ -96,10 +96,16 @@ class OthersView extends GetView<OthersController> {
                             alignment: Alignment.centerLeft,
                             child: TextButton(
                               onPressed: ()async {
+                                // const url = 'https://www.hotelfootprints.org';
+                                // if(await canLaunch(url)){
+                                //   await launch(url);
+                                // }else {
+                                //   throw 'Could not launch $url';
+                                // }
                                 const url = 'https://www.hotelfootprints.org';
-                                if(await canLaunch(url)){
-                                  await launch(url);
-                                }else {
+                                if (await canLaunchUrl(Uri.parse(url))) {
+                                  await launchUrl(Uri.parse(url));
+                                } else {
                                   throw 'Could not launch $url';
                                 }
                               },
@@ -108,9 +114,9 @@ class OthersView extends GetView<OthersController> {
                               child: const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Row(
-                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                         Icons.language,
