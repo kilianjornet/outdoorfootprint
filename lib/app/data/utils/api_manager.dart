@@ -21,6 +21,9 @@ class ApiManager {
   static const resetPassword = '/api/auth/reset-password';
 
   //Main URL
+  static const getProfile = '/api/users/app/get-profile';
+
+  //Calculator URL
   static const createHome = '/api/users/create-user-home-category';
   static const createMobility = '/api/users/create-user-mobility-category';
 

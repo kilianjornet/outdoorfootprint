@@ -4,6 +4,7 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class ProfileController extends GetxController {
@@ -37,13 +38,13 @@ class ProfileController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
-    firstNameController.text = 'Kilian';
-    lastNameController.text = 'Jornet';
-    emailController.text = 'kilianjornet@me.com';
-    countryController.text = 'Norway';
-    numberController.text = '40581605';
+    firstNameController.text = '${await CrudManager.getFirstName()}';
+    lastNameController.text = '${await CrudManager.getLastName()}';
+    emailController.text = '${await CrudManager.getEmail()}';
+    countryController.text = '${await CrudManager.getCountry()}';
+    numberController.text = '${await CrudManager.getPhoneNumber()}';
   }
 
   @override
