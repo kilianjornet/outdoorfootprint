@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:my_outdoor_footprint/app/data/services/misc_services/terms_condition_service.dart';
 
+import '../../../../data/services/misc_services/privacy_policy_service.dart';
 import '../../../../data/utils/widget_manager.dart';
 
-class TermsConditionController extends GetxController {
-  final termsConditionService = TermsConditionService();
+class PrivacyPolicyController extends GetxController {
+  final privacyPolicyService = PrivacyPolicyService();
   var content = ''.obs;
 
   @override
@@ -15,7 +15,7 @@ class TermsConditionController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    await termsCondition();
+    await privacyPolicy();
   }
 
   @override
@@ -23,13 +23,12 @@ class TermsConditionController extends GetxController {
     super.onClose();
   }
 
-  Future<void> termsCondition() async {
+  Future<void> privacyPolicy() async {
     try {
       WidgetManager.showCustomDialog();
 
-      final termsConditionResponse =
-          await termsConditionService.termsCondition();
-      content.value = termsConditionResponse['cms']['content'];
+      final privacyPolicyResponse = await privacyPolicyService.privacyPolicy();
+      content.value = privacyPolicyResponse['cms']['content'];
     } catch (e) {
       WidgetManager.customSnackBar(
         title: '$e',

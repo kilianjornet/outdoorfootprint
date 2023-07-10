@@ -23,6 +23,7 @@ abstract class Routes {
   static const OFFSET = _Paths.OFFSET;
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const TERMS_CONDITION = _Paths.TERMS_CONDITION;
+  static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const OFFSET = '/offset';
   static const NOTIFICATION = '/notification';
   static const TERMS_CONDITION = '/terms-condition';
+  static const PRIVACY_POLICY = '/privacy-policy';
 }

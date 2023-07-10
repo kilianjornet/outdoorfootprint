@@ -36,6 +36,8 @@ import '../modules/misc_modules/notification/bindings/notification_binding.dart'
 import '../modules/misc_modules/notification/views/notification_view.dart';
 import '../modules/misc_modules/offset/bindings/offset_binding.dart';
 import '../modules/misc_modules/offset/views/offset_view.dart';
+import '../modules/misc_modules/privacy_policy/bindings/privacy_policy_binding.dart';
+import '../modules/misc_modules/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/misc_modules/terms_condition/bindings/terms_condition_binding.dart';
 import '../modules/misc_modules/terms_condition/views/terms_condition_view.dart';
 import '../modules/misc_modules/tips/bindings/tips_binding.dart';
@@ -148,6 +150,11 @@ class AppPages {
       name: _Paths.TERMS_CONDITION,
       page: () => const TermsConditionView(),
       binding: TermsConditionBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVACY_POLICY,
+      page: () => const PrivacyPolicyView(),
+      binding: PrivacyPolicyBinding(),
     ),
   ];
 }

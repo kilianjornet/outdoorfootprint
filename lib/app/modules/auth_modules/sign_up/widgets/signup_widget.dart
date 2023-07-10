@@ -380,7 +380,9 @@ class SignUpWidget {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        await Get.toNamed('/terms-condition');
+                        await Get.toNamed(
+                          '/terms-condition',
+                        );
                       },
                       child: Text(
                         StringManager.termsAndConditions,
@@ -402,13 +404,20 @@ class SignUpWidget {
                     ),
                   ],
                 ),
-                Text(
-                  StringManager.privacyPolicy,
-                  style: GoogleFonts.oswald(
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.white,
+                GestureDetector(
+                  onTap: () async {
+                    await Get.toNamed(
+                      '/privacy-policy',
+                    );
+                  },
+                  child: Text(
+                    StringManager.privacyPolicy,
+                    style: GoogleFonts.oswald(
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18.sp,
+                      color: ColorManager.white,
+                    ),
                   ),
                 ),
               ],
