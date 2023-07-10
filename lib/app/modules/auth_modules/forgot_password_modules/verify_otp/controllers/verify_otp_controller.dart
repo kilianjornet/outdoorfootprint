@@ -45,14 +45,24 @@ class VerifyOtpController extends GetxController {
     try {
       WidgetManager.showCustomDialog();
 
-      final sendEmailResponse = await sendEmailService.sendVerificationEmail(
-        email: arguments['email'],
-      );
+      if (arguments['page'] == 'forget') {
+        final sendEmailResponse = await sendEmailService.sendForgotEmail(
+          email: arguments['email'],
+        );
+        WidgetManager.customSnackBar(
+          title: sendEmailResponse['message'],
+          type: SnackBarType.info,
+        );
+      } else {
+        final sendEmailResponse = await sendEmailService.sendVerificationEmail(
+          email: arguments['email'],
+        );
+        WidgetManager.customSnackBar(
+          title: sendEmailResponse['message'],
+          type: SnackBarType.info,
+        );
+      }
       resendCode();
-      WidgetManager.customSnackBar(
-        title: sendEmailResponse['message'],
-        type: SnackBarType.info,
-      );
     } catch (e) {
       WidgetManager.customSnackBar(
         title: '$e',
@@ -69,18 +79,27 @@ class VerifyOtpController extends GetxController {
 
       final otp = joinOtpFromControllers(otpControllers);
 
-      final verifyEmailResponse = await verifyEmailService.verifyEmail(
-        otp: otp,
-      );
-      WidgetManager.customSnackBar(
-        title: verifyEmailResponse['message'],
-        type: SnackBarType.success,
-      );
       if (arguments['page'] == 'forget') {
+        final verifyEmailResponse =
+            await verifyEmailService.verifyForgotPassword(
+          email: arguments['email'],
+          otp: otp,
+        );
+        WidgetManager.customSnackBar(
+          title: verifyEmailResponse['message'],
+          type: SnackBarType.success,
+        );
         await Get.toNamed(
           '/reset-password',
         );
       } else {
+        final verifyEmailResponse = await verifyEmailService.verifyEmail(
+          otp: otp,
+        );
+        WidgetManager.customSnackBar(
+          title: verifyEmailResponse['message'],
+          type: SnackBarType.success,
+        );
         await Get.toNamed(
           '/navigation-bar',
         );

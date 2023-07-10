@@ -57,4 +57,34 @@ class VerifyEmailService extends GetConnect implements GetxService {
       rethrow;
     }
   }
+
+  Future<dynamic> verifyForgotPassword({
+    required String email,
+    required String otp,
+  }) async {
+    try {
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      if (connectivityResult == ConnectivityResult.none) {
+        throw StringManager.noConnection;
+      }
+      final response = await post(
+        '${ApiManager.baseUrl}${ApiManager.verifyForgotEmail}',
+        {
+          "email": email,
+          "otp": otp,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      var jsonResponse = jsonDecode(response.bodyString!);
+      if (response.statusCode == 200) {
+        return jsonResponse;
+      } else {
+        throw (jsonResponse['message']);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
