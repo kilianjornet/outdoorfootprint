@@ -91,6 +91,7 @@ class VerifyOtpController extends GetxController {
         );
         await Get.toNamed(
           '/reset-password',
+          arguments: verifyEmailResponse['token'],
         );
       } else {
         final verifyEmailResponse = await verifyEmailService.verifyEmail(

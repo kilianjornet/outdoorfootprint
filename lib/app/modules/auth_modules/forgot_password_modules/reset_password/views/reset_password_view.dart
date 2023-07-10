@@ -42,7 +42,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                 child: WidgetManager.primaryButton(
                   buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
-                  onTap: () async {},
+                  onTap: () async {
+                    await controller.resetPassword();
+                  },
                 ),
               ),
               WidgetManager.backToSignIn(),
