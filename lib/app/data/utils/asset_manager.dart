@@ -47,4 +47,6 @@ class AssetManager {
   static const home = 'assets/icons/home.svg';
   static const car = 'assets/icons/car.svg';
   static const euro = 'assets/icons/euro.svg';
+  static const logout = 'assets/icons/logout.svg';
+  static const delete = 'assets/icons/delete.svg';
 }

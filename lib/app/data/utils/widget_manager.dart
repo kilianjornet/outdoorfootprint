@@ -56,7 +56,7 @@ class WidgetManager {
           content: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 12.w,
-              vertical: 10.h,
+              vertical: 16.h,
             ),
             margin: EdgeInsets.only(
               left: 10.w,
@@ -675,8 +675,13 @@ class WidgetManager {
     );
   }
 
-  static PreferredSizeWidget primaryAppBar(
-      {required String title, required AppBarType type, Widget? child}) {
+  static PreferredSizeWidget primaryAppBar({
+    required String title,
+    required AppBarType type,
+    Widget? child,
+    Widget? dialog,
+    var openDialog,
+  }) {
     String offsetPath;
     String tipPath;
     String notificationPath;
@@ -722,25 +727,41 @@ class WidgetManager {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           type == AppBarType.home
-              ? Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 45.w,
-                      height: 45.w,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: ColorManager.avatar,
+              ? GestureDetector(
+                  onTap: () async {
+                    openDialog.value = true;
+                    Get.dialog(
+                      dialog!,
+                      barrierDismissible: true,
+                      barrierColor: ColorManager.button.withOpacity(
+                        0.5,
                       ),
-                    ),
-                    CircleAvatar(
-                      radius: 18.w,
-                      backgroundColor: ColorManager.white,
-                      child: ClipOval(
-                        child: child,
+                      transitionCurve: Curves.easeInOut,
+                      transitionDuration: const Duration(
+                        milliseconds: 300,
                       ),
-                    )
-                  ],
+                    );
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        width: 45.w,
+                        height: 45.w,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: ColorManager.avatar,
+                        ),
+                      ),
+                      CircleAvatar(
+                        radius: 18.w,
+                        backgroundColor: ColorManager.white,
+                        child: ClipOval(
+                          child: child,
+                        ),
+                      )
+                    ],
+                  ),
                 )
               : Row(
                   children: [

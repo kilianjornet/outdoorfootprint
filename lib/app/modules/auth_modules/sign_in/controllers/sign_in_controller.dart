@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_in_service.dart';
+import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
+import '../../../../data/services/auth_services/forgot_password_services/send_email_service.dart';
 import '../../../../data/utils/widget_manager.dart';
 
 class SignInController extends GetxController {
   final signInService = SignInService();
+  final sendEmailService = SendEmailService();
   final signInKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -41,9 +44,23 @@ class SignInController extends GetxController {
           title: signUpResponse['message'],
           type: SnackBarType.success,
         );
+        await TokenManager.saveTokens(
+          signUpResponse['tokens']['access']['token'],
+          signUpResponse['tokens']['refresh']['token'],
+        );
+        await Get.toNamed(
+          '/navigation-bar',
+        );
       } else {
+        await TokenManager.saveTokens(
+          signUpResponse['tokens']['access']['token'],
+          signUpResponse['tokens']['refresh']['token'],
+        );
+        final sendEmailResponse = await sendEmailService.sendEmail(
+          email: emailController.text,
+        );
         WidgetManager.customSnackBar(
-          title: signUpResponse['message'],
+          title: sendEmailResponse['message'],
           type: SnackBarType.info,
         );
         await Get.toNamed(

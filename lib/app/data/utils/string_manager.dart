@@ -47,7 +47,7 @@ class StringManager {
       'Please type your registered email address';
   static const backToSignIn = 'Back to Sign In';
   static const verifyOtpTitle = 'Verify Your Email';
-  static const enterCode = 'Please enter the 4 digit code sent to';
+  static const enterCode = 'Please enter the 6 digit code sent to';
   static const submit = 'Submit';
   static const verify = 'Verify';
   static const second = 'Second';
@@ -173,6 +173,8 @@ class StringManager {
   static const othersLabel18 = 'Medium Car';
   static const othersLabel19 = 'Big Car';
   static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
+  static const signOut = 'Sign Out';
+  static const deleteAccount = 'Delete Account';
   static const hello = 'Hello';
   static const welcomeText = 'Good to see you again!';
   static const homeTitle = 'My Carbon Footprint this year:';

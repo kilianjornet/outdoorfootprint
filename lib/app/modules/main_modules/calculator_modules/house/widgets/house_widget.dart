@@ -152,6 +152,18 @@ class HouseWidget {
         asset = const SizedBox();
         mainAxisAlignment = MainAxisAlignment.center;
         break;
+      case UnitType.percentage:
+        text = Text(
+          '%',
+          style: GoogleFonts.oswald(
+            fontWeight: FontWeight.w400,
+            fontSize: 14.sp,
+            color: ColorManager.white,
+          ),
+        );
+        asset = const SizedBox();
+        mainAxisAlignment = MainAxisAlignment.center;
+        break;
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,7 +263,7 @@ class HouseWidget {
                 onTap: onTap,
                 child: Container(
                   alignment: Alignment.center,
-                  width: type == UnitType.kwh ? 50.w : 75.w,
+                  width: type == UnitType.percentage ? 50.w : 75.w,
                   padding: EdgeInsets.symmetric(
                     vertical: 12.5.h,
                     horizontal: 8.w,
@@ -300,4 +312,5 @@ enum UnitType {
   litres,
   kwh,
   gb,
+  percentage,
 }

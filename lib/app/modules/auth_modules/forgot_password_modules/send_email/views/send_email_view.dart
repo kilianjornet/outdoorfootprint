@@ -33,7 +33,8 @@ class SendEmailView extends GetView<SendEmailController> {
                   buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
                   onTap: () async {
-                    Get.toNamed('/verify-otp');
+                    // Get.toNamed('/verify-otp');
+                    await controller.sendEmail();
                   },
                 ),
               ),
