@@ -3,6 +3,7 @@ class StringManager {
 
   static const outdoorFootprintTitle = 'My Outdoor Footprint';
   static const signIn = 'Sign In';
+  static const perCapitaUrl = 'https://ourworldindata.org/per-capita-co2';
   static const greetingText = 'Hi there! Nice to see you again.';
   static const userEmail = 'Email';
   static const userPassword = 'Password';
