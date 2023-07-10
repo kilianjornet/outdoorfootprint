@@ -66,7 +66,7 @@ class MobilityController extends GetxController {
         totalKgCo2OfMobility: '${total.value}',
       );
       WidgetManager.customSnackBar(
-        title: mobilityResponse['totalKgCo2OfMobility'],
+        title: mobilityResponse['message'],
         type: SnackBarType.success,
       );
       await Get.offNamed('/navigation-bar');
