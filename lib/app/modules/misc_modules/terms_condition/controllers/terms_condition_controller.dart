@@ -5,7 +5,7 @@ import '../../../../data/utils/widget_manager.dart';
 
 class TermsConditionController extends GetxController {
   final termsConditionService = TermsConditionService();
-  dynamic content = {};
+  var content = ''.obs;
   @override
   void onInit() {
     super.onInit();
@@ -28,7 +28,7 @@ class TermsConditionController extends GetxController {
 
       final termsConditionResponse =
           await termsConditionService.termsCondition();
-      content = termsConditionResponse;
+      content.value = termsConditionResponse['cms']['content'];
     } catch (e) {
       WidgetManager.customSnackBar(
         title: '$e',

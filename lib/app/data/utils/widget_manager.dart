@@ -1095,6 +1095,46 @@ class WidgetManager {
       },
     );
   }
+
+  static Widget whiteCanvas({
+    required List<Widget> children,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.only(
+            top: 10.w,
+            bottom: 10.w,
+            left: 20.h,
+            right: 20.h,
+          ),
+          margin: EdgeInsets.only(
+            top: 15.h,
+          ),
+          decoration: BoxDecoration(
+            color: ColorManager.white,
+            borderRadius: BorderRadius.circular(
+              10.w,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: ColorManager.black.withOpacity(
+                  0.25,
+                ),
+                spreadRadius: 1,
+                blurRadius: 10,
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 enum SnackBarType {
