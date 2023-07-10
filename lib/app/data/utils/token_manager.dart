@@ -7,7 +7,7 @@ class TokenManager {
   static const String refreshTokenKey = 'refreshToken';
 
   static Future<void> saveTokens(
-      String accessToken, String refreshToken) async {
+      {required String accessToken, required String refreshToken}) async {
     final preferences = await SharedPreferences.getInstance();
     await preferences.setString(accessTokenKey, accessToken);
     await preferences.setString(refreshTokenKey, refreshToken);

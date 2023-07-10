@@ -35,28 +35,28 @@ class SignInController extends GetxController {
     try {
       WidgetManager.showCustomDialog();
 
-      final signUpResponse = await signInService.signIn(
+      final signInResponse = await signInService.signIn(
         email: emailController.text,
         password: passwordController.text,
       );
-      if (signUpResponse['status'] == true) {
+      if (signInResponse['status'] == true) {
         WidgetManager.customSnackBar(
-          title: signUpResponse['message'],
+          title: signInResponse['message'],
           type: SnackBarType.success,
         );
         await TokenManager.saveTokens(
-          signUpResponse['tokens']['access']['token'],
-          signUpResponse['tokens']['refresh']['token'],
+          accessToken: signInResponse['tokens']['access']['token'],
+          refreshToken: signInResponse['tokens']['refresh']['token'],
         );
         await Get.toNamed(
           '/navigation-bar',
         );
       } else {
         await TokenManager.saveTokens(
-          signUpResponse['tokens']['access']['token'],
-          signUpResponse['tokens']['refresh']['token'],
+          accessToken: signInResponse['tokens']['access']['token'],
+          refreshToken: signInResponse['tokens']['refresh']['token'],
         );
-        final sendEmailResponse = await sendEmailService.sendEmail(
+        final sendEmailResponse = await sendEmailService.sendVerificationEmail(
           email: emailController.text,
         );
         WidgetManager.customSnackBar(

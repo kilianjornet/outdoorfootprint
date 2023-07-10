@@ -47,8 +47,8 @@ class VerifyEmailService extends GetConnect implements GetxService {
         refreshToken: '$token',
       );
       await TokenManager.saveTokens(
-        refreshTokenResponse['access']['token'],
-        refreshTokenResponse['refresh']['token'],
+        accessToken: refreshTokenResponse['access']['token'],
+        refreshToken: refreshTokenResponse['refresh']['token'],
       );
       return await verifyEmail(otp: otp);
     } on JWTException catch (e) {

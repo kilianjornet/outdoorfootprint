@@ -45,7 +45,7 @@ class VerifyOtpController extends GetxController {
     try {
       WidgetManager.showCustomDialog();
 
-      final sendEmailResponse = await sendEmailService.sendEmail(
+      final sendEmailResponse = await sendEmailService.sendVerificationEmail(
         email: arguments['email'],
       );
       resendCode();

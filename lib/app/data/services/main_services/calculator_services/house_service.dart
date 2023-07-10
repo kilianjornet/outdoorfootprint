@@ -49,8 +49,8 @@ class HouseService extends GetConnect implements GetxService {
         refreshToken: '$token',
       );
       await TokenManager.saveTokens(
-        refreshTokenResponse['access']['token'],
-        refreshTokenResponse['refresh']['token'],
+        accessToken: refreshTokenResponse['access']['token'],
+        refreshToken: refreshTokenResponse['refresh']['token'],
       );
       return await submitHouse(
         userId: userId,

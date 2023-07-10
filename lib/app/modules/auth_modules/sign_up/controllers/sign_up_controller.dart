@@ -4,8 +4,12 @@ import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_up_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
+import '../../../../data/services/auth_services/forgot_password_services/send_email_service.dart';
+import '../../../../data/utils/token_manager.dart';
+
 class SignUpController extends GetxController {
   final signUpService = SignUpService();
+  final sendEmailService = SendEmailService();
   final signUpKey = GlobalKey<FormState>();
   FlCountryCodePicker countryPicker = const FlCountryCodePicker();
   final firstNameController = TextEditingController();
@@ -61,9 +65,16 @@ class SignUpController extends GetxController {
         phoneNumber: numberController.text,
         password: passwordController.text,
       );
+      await TokenManager.saveTokens(
+        accessToken: signUpResponse['tokens']['access']['token'],
+        refreshToken: signUpResponse['tokens']['refresh']['token'],
+      );
+      final sendEmailResponse = await sendEmailService.sendVerificationEmail(
+        email: emailController.text,
+      );
       WidgetManager.customSnackBar(
-        title: signUpResponse['message'],
-        type: SnackBarType.info,
+        title: sendEmailResponse['message'],
+        type: SnackBarType.error,
       );
       await Get.toNamed(
         '/verify-otp',

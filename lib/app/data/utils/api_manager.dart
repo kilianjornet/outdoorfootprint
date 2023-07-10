@@ -14,8 +14,9 @@ class ApiManager {
   //Authentication URL
   static const signUp = '/api/auth/register';
   static const signIn = '/api/auth/login';
-  static const sendEmail = '/api/auth/send-verification-email';
+  static const sendVerificationEmail = '/api/auth/send-verification-email';
   static const verifyEmail = '/api/auth/verify-email';
+  static const sendForgotEmail = '/api/auth/forgot-password';
 
   //Main URL
   static const createHome = '/api/users/create-user-home-category';

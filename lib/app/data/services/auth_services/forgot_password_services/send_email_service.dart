@@ -13,7 +13,7 @@ import '../../../utils/api_manager.dart';
 class SendEmailService extends GetConnect implements GetxService {
   final refreshTokenService = RefreshTokenService();
 
-  Future<dynamic> sendEmail({
+  Future<dynamic> sendVerificationEmail({
     required String email,
   }) async {
     final token = await TokenManager.getAccessToken();
@@ -26,7 +26,7 @@ class SendEmailService extends GetConnect implements GetxService {
         throw StringManager.noConnection;
       }
       final response = await post(
-        '${ApiManager.baseUrl}${ApiManager.sendEmail}',
+        '${ApiManager.baseUrl}${ApiManager.sendVerificationEmail}',
         {
           "email": email,
         },
@@ -47,12 +47,40 @@ class SendEmailService extends GetConnect implements GetxService {
         refreshToken: '$token',
       );
       await TokenManager.saveTokens(
-        refreshTokenResponse['access']['token'],
-        refreshTokenResponse['refresh']['token'],
+        accessToken: refreshTokenResponse['access']['token'],
+        refreshToken: refreshTokenResponse['refresh']['token'],
       );
-      return await sendEmail(email: email);
+      return await sendVerificationEmail(email: email);
     } on JWTException catch (e) {
       throw (e.message);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<dynamic> sendForgotEmail({
+    required String email,
+  }) async {
+    try {
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      if (connectivityResult == ConnectivityResult.none) {
+        throw StringManager.noConnection;
+      }
+      final response = await post(
+        '${ApiManager.baseUrl}${ApiManager.sendForgotEmail}',
+        {
+          "email": email,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      var jsonResponse = jsonDecode(response.bodyString!);
+      if (response.statusCode == 200) {
+        return jsonResponse;
+      } else {
+        throw (jsonResponse['message']);
+      }
     } catch (e) {
       rethrow;
     }

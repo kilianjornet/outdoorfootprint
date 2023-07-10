@@ -30,7 +30,7 @@ class SendEmailController extends GetxController {
     try {
       WidgetManager.showCustomDialog();
 
-      final sendEmailResponse = await sendEmailService.sendEmail(
+      final sendEmailResponse = await sendEmailService.sendForgotEmail(
         email: emailController.text,
       );
       WidgetManager.customSnackBar(
