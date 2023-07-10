@@ -20,4 +20,7 @@ class ApiManager {
   //Main URL
   static const createHome = '/api/users/create-user-home-category';
   static const createMobility = '/api/users/create-user-mobility-category';
+
+  //Miscellaneous URL
+  static const termsCondition = '/api/cms/app/terms';
 }

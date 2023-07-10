@@ -36,6 +36,8 @@ import '../modules/misc_modules/notification/bindings/notification_binding.dart'
 import '../modules/misc_modules/notification/views/notification_view.dart';
 import '../modules/misc_modules/offset/bindings/offset_binding.dart';
 import '../modules/misc_modules/offset/views/offset_view.dart';
+import '../modules/misc_modules/terms_condition/bindings/terms_condition_binding.dart';
+import '../modules/misc_modules/terms_condition/views/terms_condition_view.dart';
 import '../modules/misc_modules/tips/bindings/tips_binding.dart';
 import '../modules/misc_modules/tips/views/tips_view.dart';
 
@@ -141,6 +143,11 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.TERMS_CONDITION,
+      page: () => const TermsConditionView(),
+      binding: TermsConditionBinding(),
     ),
   ];
 }

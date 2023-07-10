@@ -199,4 +199,5 @@ class StringManager {
   static const tipsFootprint = 'Tips to Lower Your Footprint';
   static const sumShare = 'Sum in share %';
   static const sumError = '(Should be 100%)';
+  static const termsCondition = 'Terms and Condition';
 }

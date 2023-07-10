@@ -181,7 +181,9 @@ class WidgetManager {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
-                        fontSize: 18.sp,
+                        fontSize: title == StringManager.termsAndConditions
+                            ? 0.sp
+                            : 18.sp,
                         color: ColorManager.captionText,
                       ),
                     ),

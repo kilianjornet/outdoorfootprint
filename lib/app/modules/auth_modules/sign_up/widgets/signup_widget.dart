@@ -378,13 +378,18 @@ class SignUpWidget {
                         color: ColorManager.white,
                       ),
                     ),
-                    Text(
-                      StringManager.termsAndConditions,
-                      style: GoogleFonts.oswald(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 18.sp,
-                        color: ColorManager.white,
+                    GestureDetector(
+                      onTap: () async {
+                        await Get.toNamed('/terms-condition');
+                      },
+                      child: Text(
+                        StringManager.termsAndConditions,
+                        style: GoogleFonts.oswald(
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18.sp,
+                          color: ColorManager.white,
+                        ),
                       ),
                     ),
                     Text(
