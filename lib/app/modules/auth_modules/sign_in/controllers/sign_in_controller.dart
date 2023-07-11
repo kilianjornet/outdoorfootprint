@@ -48,7 +48,7 @@ class SignInController extends GetxController {
           accessToken: signInResponse['tokens']['access']['token'],
           refreshToken: signInResponse['tokens']['refresh']['token'],
         );
-        await Get.toNamed(
+        await Get.offAllNamed(
           '/navigation-bar',
         );
       } else {
