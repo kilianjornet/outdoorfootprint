@@ -71,17 +71,17 @@ class GearView extends GetView<GearController> {
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel2,
                           isEnable: controller.isEnable,
-                          dropdownvalue: "1",
+                          dropdownvalue: controller.selectedDropdownValue2,
                         ),
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel3,
                           isEnable: controller.isEnable,
-                          dropdownvalue: "1",
+                          dropdownvalue: controller.selectedDropdownValue3,
                         ),
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel4,
                           isEnable: controller.isEnable,
-                          dropdownvalue: "1",
+                          dropdownvalue: controller.selectedDropdownValue4,
                         ),
                         Row(
                           children: [
@@ -90,7 +90,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel5,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue5,
                               ),
                             ),
                             SizedBox(
@@ -101,7 +101,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel6,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue6,
                               ),
                             ),
                           ],
@@ -113,7 +113,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel7,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue7,
                               ),
                             ),
                             SizedBox(
@@ -124,7 +124,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel8,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue8,
                               ),
                             ),
                           ],
@@ -136,7 +136,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel9,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue9,
                               ),
                             ),
                             SizedBox(
@@ -147,7 +147,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel10,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue10,
                               ),
                             ),
                           ],
@@ -159,7 +159,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel11,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue11,
                               ),
                             ),
                             SizedBox(
@@ -170,7 +170,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel2,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue12,
                               ),
                             ),
                           ],
@@ -182,7 +182,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel13,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue13,
                               ),
                             ),
                             SizedBox(
@@ -193,7 +193,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel14,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue14,
                               ),
                             ),
                           ],
@@ -205,7 +205,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel15,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue15,
                               ),
                             ),
                             SizedBox(
@@ -216,7 +216,7 @@ class GearView extends GetView<GearController> {
                               child: GearWidget.textWithField(
                                 fieldName: StringManager.gearLabel16,
                                 isEnable: controller.isEnable,
-                                dropdownvalue: "1",
+                                dropdownvalue: controller.selectedDropdownValue16,
                               ),
                             ),
                           ],
@@ -225,6 +225,7 @@ class GearView extends GetView<GearController> {
                           buttonName: StringManager.submit,
                           isEnable: controller.isEnable,
                           onTap: () async {
+                            controller.calculateConversion();
                             await controller.submitGears();
                           },
                         ),

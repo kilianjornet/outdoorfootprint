@@ -152,6 +152,7 @@ class StringManager {
       'Days per person using ski resort infrastructures';
   static const skiDayHotelLabel = 'estimate your hotel footprint here';
   static const othersLabel2 = 'Ski in Scandinavia';
+  static const othersAspenLabel17 = 'Ski in Aspen';
   static const othersLabel3 = 'Ski in USA';
   static const othersLabel4 = 'Ski in the alps';
   static const food = 'Food';

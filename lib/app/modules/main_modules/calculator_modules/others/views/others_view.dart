@@ -205,6 +205,21 @@ class OthersView extends GetView<OthersController> {
                         ),
                         OthersWidgets.customFieldWithUnit(
                           type: UnitType.kgCoal,
+                          subtitle: StringManager.othersAspenLabel17,
+                          controller: controller.labelController17,
+                          node: controller.labelControllerNode17,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.labelController17.text = '0';
+                            } else {
+                              controller.updateButtonState(value);
+                              //controller.calculateTotalCarbon();
+                            }
+                          },
+                          unitName: StringManager.days,
+                        ),
+                        OthersWidgets.customFieldWithUnit(
+                          type: UnitType.kgCoal,
                           subtitle: StringManager.othersLabel3,
                           controller: controller.labelController3,
                           node: controller.labelControllerNode3,
@@ -632,7 +647,7 @@ class OthersView extends GetView<OthersController> {
                                 child: GearWidget.textWithField(
                                   fieldName: StringManager.othersLabel17,
                                   isEnable: controller.isEnable,
-                                  dropdownvalue: "1",
+                                  dropdownvalue: controller.selectedDropdownValue1,
                                 ),
                               ),
                               SizedBox(
@@ -643,7 +658,7 @@ class OthersView extends GetView<OthersController> {
                                 child: GearWidget.textWithField(
                                   fieldName: StringManager.othersLabel18,
                                   isEnable: controller.isEnable,
-                                  dropdownvalue: "1",
+                                  dropdownvalue: controller.selectedDropdownValue2,
                                 ),
                               ),
                             ],
@@ -651,7 +666,7 @@ class OthersView extends GetView<OthersController> {
                           GearWidget.textWithField(
                             fieldName: StringManager.othersLabel19,
                             isEnable: controller.isEnable,
-                            dropdownvalue: "1",
+                            dropdownvalue: controller.selectedDropdownValue3,
                           ),
                         ],
                       ),
@@ -661,6 +676,7 @@ class OthersView extends GetView<OthersController> {
                   buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
                   onTap: () async {
+                    controller.calculateConversion();
                     await controller.submitOthers();
                   },
                 ),

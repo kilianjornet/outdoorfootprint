@@ -32,6 +32,7 @@ class OthersController extends GetxController {
   final labelController14= TextEditingController();
   final labelController15= TextEditingController();
   final labelController16= TextEditingController();
+  final labelController17= TextEditingController();
   final labelControllerNode1 = FocusNode();
   final labelControllerNode2 = FocusNode();
   final labelControllerNode3 = FocusNode();
@@ -48,6 +49,10 @@ class OthersController extends GetxController {
   final labelControllerNode14= FocusNode();
   final labelControllerNode15= FocusNode();
   final labelControllerNode16= FocusNode();
+  final labelControllerNode17= FocusNode();
+  var selectedDropdownValue1 = "1".obs;
+  var selectedDropdownValue2 = "1".obs;
+  var selectedDropdownValue3 = "1".obs;
 
 
   @override
@@ -74,6 +79,7 @@ class OthersController extends GetxController {
     labelController14.text = '0';
     labelController15.text = '0';
     labelController16.text = '0';
+    labelController17.text = '0';
   }
 
   @override
@@ -94,6 +100,7 @@ class OthersController extends GetxController {
     labelController14.dispose();
     labelController15.dispose();
     labelController16.dispose();
+    labelController17.dispose();
   }
 
   void updateButtonState(dynamic value) {
@@ -113,7 +120,8 @@ class OthersController extends GetxController {
         labelController13.text.isEmpty ||
         labelController14.text.isEmpty ||
         labelController15.text.isEmpty ||
-        labelController16.text.isEmpty) {
+        labelController16.text.isEmpty ||
+        labelController17.text.isEmpty) {
       isEnable.value = false;
     } else {
       isEnable.value = true;
@@ -161,24 +169,26 @@ class OthersController extends GetxController {
     final labelValue14 = double.tryParse(labelController14.text) ?? 0.0;
     final labelValue15 = double.tryParse(labelController15.text) ?? 0.0;
     final labelValue16 = double.tryParse(labelController16.text) ?? 0.0;
+    final labelValue17 = double.tryParse(labelController17.text) ?? 0.0;
 
     final labelValue1Kg = labelValue1 * 3.7;
     final labelValue2Kg = labelValue2 * 15;
-    final labelValue3Kg = labelValue3 * 34;
-    final labelValue4Kg = labelValue4 * 13.3;
-    final labelValue5Kg = labelValue5 * 10;
+    final labelValue17Kg = labelValue17 * 34;
+    final labelValue3Kg = labelValue3 * 13.3;
+    final labelValue4Kg = labelValue4 * 10;
 
-    final labelValue6Kg = labelValue6 * 0.48;
-    final labelValue7Kg = labelValue7 * 0.54;
-    final labelValue8Kg = labelValue8 * 0.66;
-    final labelValue9Kg = labelValue9 * 0.88;
-    final labelValue10Kg = labelValue10 * 1.02;
+    final labelValue5Kg = labelValue5 * 0.48;
+    final labelValue6Kg = labelValue6 * 0.54;
+    final labelValue7Kg = labelValue7 * 0.66;
+    final labelValue8Kg = labelValue8 * 0.88;
+    final labelValue9Kg = labelValue9 * 1.02;
 
-    final labelValue11Kg = labelValue11 * 0.382;
-    final labelValue12Kg = labelValue12 * 0.43;
-    final labelValue13Kg = labelValue13 * 0.38;
-    final labelValue14Kg = labelValue14 * 0.4698;
-    final labelValue15Kg = labelValue15 * 0.139;
+    final labelValue10Kg = labelValue10 * 0.382;
+    final labelValue11Kg = labelValue11 * 0.43;
+    final labelValue12Kg = labelValue12 * 0.38;
+    final labelValue13Kg = labelValue13 * 0.4698;
+    final labelValue14Kg = labelValue14 * 0.139;
+    final labelValue15Kg = labelValue15 * 0.234;
     final labelValue16Kg = labelValue16 * 0.234;
 
     total.value = labelValue1Kg +
@@ -196,7 +206,8 @@ class OthersController extends GetxController {
         labelValue13Kg +
         labelValue14Kg +
         labelValue15Kg +
-        labelValue16Kg ;
+        labelValue16Kg +
+        labelValue17Kg;
   }
 
 }
