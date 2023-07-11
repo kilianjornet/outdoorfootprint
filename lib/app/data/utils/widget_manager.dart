@@ -1127,7 +1127,9 @@ class WidgetManager {
             useMagnifier: true,
             itemExtent: 40.sp,
             scrollController: FixedExtentScrollController(
-              initialItem: int.tryParse(controller.text)! - 1,
+              initialItem: type == DropdownType.plane
+                  ? int.tryParse(controller.text)!
+                  : int.tryParse(controller.text)! - 1,
             ),
             onSelectedItemChanged: onSelectedItemChanged,
             children: List<Widget>.generate(
@@ -1135,7 +1137,7 @@ class WidgetManager {
               (int index) {
                 return Center(
                   child: Text(
-                    '${index + 1}',
+                    type == DropdownType.plane ? '$index' : '${index + 1}',
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.w400,
                       fontSize: 22.sp,

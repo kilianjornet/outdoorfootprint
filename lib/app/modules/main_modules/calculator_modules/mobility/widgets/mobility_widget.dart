@@ -19,7 +19,7 @@ class MobilityWidget {
     String? subtitle,
     var quantityUnit,
     var distanceUnit,
-    void onSelectedItemChanged,
+    void Function(int)? onSelectedItemChanged,
     required TextEditingController controller,
     required FocusNode node,
     required UnitType type,
@@ -98,10 +98,7 @@ class MobilityWidget {
           WidgetManager.showNumberPicker(
             controller: controller,
             type: DropdownType.plane,
-            onSelectedItemChanged: (int index) {
-              controller.text = '${index + 1}';
-              onSelectedItemChanged;
-            },
+            onSelectedItemChanged: onSelectedItemChanged,
           );
         };
         break;
