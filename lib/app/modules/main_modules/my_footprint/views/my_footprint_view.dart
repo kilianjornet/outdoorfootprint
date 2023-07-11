@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_outdoor_footprint/app/data/utils/api_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../data/utils/asset_manager.dart';
@@ -174,7 +175,7 @@ class MyFootprintView extends GetView<MyFootprintController> {
                   alignment: Alignment.centerLeft,
                   child: TextButton(
                     onPressed: ()async {
-                      const url = 'https://ourworldindata.org/per-capita-co2 ';
+                      const url = ApiManager.perCapita;
                       if(await canLaunch(url)){
                         await launch(url);
                       }else {
@@ -194,7 +195,7 @@ class MyFootprintView extends GetView<MyFootprintController> {
                               Icons.language,
                               color: Color(0xFFED92A2)),
                           SizedBox(width: 10.0),
-                          Text('https://ourworldindata.org/per-capita-co2 ',
+                          Text(StringManager.perCapitaUrl,
                               style: TextStyle(
                                   color: Color(0xFFA294C2),
                                   fontSize: 14.0,

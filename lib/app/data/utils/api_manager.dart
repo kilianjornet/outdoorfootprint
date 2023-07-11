@@ -8,6 +8,9 @@ class ApiManager {
   static const donationBaseUrl = 'www.kilianjornetfoundation.org';
   static const donationHeaders = '/take-action/donate/';
 
+  //
+  static const perCapita = 'https://ourworldindata.org/per-capita-co2 ';
+
   //Refresh Token URL
   static const refreshToken = '/api/auth/refresh-tokens';
 
@@ -26,6 +29,8 @@ class ApiManager {
   //Calculator URL
   static const createHome = '/api/users/create-user-home-category';
   static const createMobility = '/api/users/create-user-mobility-category';
+  static const createGear = '/api/users/create-user-gear-category';
+  static const createFood = '/api/users/create-user-food-category';
 
   //Miscellaneous URL
   static const termsCondition = '/api/cms/app/terms';
