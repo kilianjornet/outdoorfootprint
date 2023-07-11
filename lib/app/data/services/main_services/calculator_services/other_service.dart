@@ -15,7 +15,7 @@ class OtherService extends GetConnect implements GetxService{
 
   Future<dynamic> submitOthers({
     required String userId,
-    required String totalKgCo2OfMobility,
+    required String totalKgCo2OfOthers,
   }) async {
     final token = await TokenManager.getAccessToken();
     final jwtAccessSecret = dotenv.env['JWT_ACCESS_SECRET'];
@@ -30,7 +30,7 @@ class OtherService extends GetConnect implements GetxService{
         '${ApiManager.baseUrl}${ApiManager.createFood}',
         {
           "userId": userId,
-          "totalKgCo2OfMobility": totalKgCo2OfMobility,
+          "totalKgCo2OfOthers": totalKgCo2OfOthers,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ class OtherService extends GetConnect implements GetxService{
       );
       return await submitOthers(
         userId: userId,
-        totalKgCo2OfMobility: totalKgCo2OfMobility,
+        totalKgCo2OfOthers: totalKgCo2OfOthers,
       );
     } on JWTException catch (e) {
       throw (e.message);
