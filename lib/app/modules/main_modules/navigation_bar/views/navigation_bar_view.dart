@@ -49,7 +49,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
             () => BottomNavigationBar(
               currentIndex: controller.selectedIndex.value,
               onTap: (index) {
-                controller.selectedIndex.value = index;
+                controller.openController(index);
               },
               selectedLabelStyle: GoogleFonts.oswald(
                 fontWeight: FontWeight.w500,
