@@ -1093,6 +1093,7 @@ class WidgetManager {
   static void showNumberPicker({
     required TextEditingController controller,
     required DropdownType type,
+    required void Function(int)? onSelectedItemChanged,
   }) {
     int number;
 
@@ -1128,9 +1129,7 @@ class WidgetManager {
             scrollController: FixedExtentScrollController(
               initialItem: int.tryParse(controller.text)! - 1,
             ),
-            onSelectedItemChanged: (int index) {
-              controller.text = '${index + 1}';
-            },
+            onSelectedItemChanged: onSelectedItemChanged,
             children: List<Widget>.generate(
               number,
               (int index) {
