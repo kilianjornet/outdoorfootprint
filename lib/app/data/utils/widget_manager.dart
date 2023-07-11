@@ -193,6 +193,25 @@ class WidgetManager {
               ),
             ),
           ),
+          Visibility(
+            visible: title == StringManager.termsAndConditions ||
+                    title == StringManager.privacyPolicy
+                ? true
+                : false,
+            child: Positioned(
+              top: 55.h,
+              left: 15.w,
+              child: GestureDetector(
+                onTap: () async {
+                  Get.back();
+                },
+                child: SvgPicture.asset(
+                  AssetManager.arrow,
+                  width: 20.w,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
