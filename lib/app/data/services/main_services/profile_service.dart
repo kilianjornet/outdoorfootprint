@@ -59,38 +59,36 @@ class ProfileService extends GetConnect implements GetxService {
     required String profileImage,
     required String firstName,
     required String lastName,
-    required String email,
     required String address,
     required String phoneNumber,
   }) async {
-    final FormData formData = FormData(
-      {
-        'id': id,
-        'firstName': firstName,
-        'lastName': lastName,
-        'email': email,
-        'address': address,
-        'phoneNumber': phoneNumber,
-      },
-    );
-
-    profileImage.isEmpty
-        ? null
-        : formData.files.add(
-            MapEntry(
-              'profile_image',
-              MultipartFile(
-                File(
-                  profileImage,
-                ),
-                filename:
-                    '${DateTime.now().millisecondsSinceEpoch}.${profileImage.split('.').last}',
-                contentType: 'multipart/form-data',
-              ),
-            ),
-          );
     final token = await TokenManager.getAccessToken();
     final jwtAccessSecret = dotenv.env['JWT_ACCESS_SECRET'];
+
+    final formData = FormData({
+      'userId': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'address': address,
+      'phoneNumber': phoneNumber,
+    });
+
+    if (profileImage.isNotEmpty) {
+      final file = File(profileImage);
+      if (await file.exists()) {
+        formData.files.add(
+          MapEntry(
+            'profile_image',
+            MultipartFile(
+              file.path,
+              filename:
+                  '${DateTime.now().millisecondsSinceEpoch}.${profileImage.split('.').last}',
+              contentType: 'multipart/form-data',
+            ),
+          ),
+        );
+      }
+    }
 
     try {
       JWT.verify(
@@ -125,11 +123,28 @@ class ProfileService extends GetConnect implements GetxService {
         accessToken: refreshTokenResponse['access']['token'],
         refreshToken: refreshTokenResponse['refresh']['token'],
       );
-      return await getProfile();
+      return await updateProfile(
+        id: id,
+        profileImage: profileImage,
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        phoneNumber: phoneNumber,
+      );
     } on JWTException catch (e) {
       throw (e.message);
     } catch (e) {
       rethrow;
     }
+  }
+
+  Future<void> addProfileImageToFormData(
+      {required FormData formData, required String profileImage}) async {
+    final file = MultipartFile(
+      profileImage,
+      filename:
+          '${DateTime.now().millisecondsSinceEpoch}.${profileImage.split('.').last}',
+    );
+    formData.files.add(MapEntry('profile_image', file));
   }
 }

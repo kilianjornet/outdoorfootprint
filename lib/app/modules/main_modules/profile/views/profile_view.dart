@@ -35,19 +35,26 @@ class ProfileView extends GetView<ProfileController> {
                 ProfileWidget.profilePicture(
                   child: Obx(
                     () {
-                      return controller.selectedImage == null
-                          ? SvgPicture.asset(
-                              AssetManager.avatar,
-                              fit: BoxFit.cover,
-                              width: ScreenUtil().screenWidth,
-                              height: ScreenUtil().screenHeight,
-                            )
-                          : Image.file(
+                      return controller.image.value != null
+                          ? Image.file(
                               controller.selectedImage!,
                               fit: BoxFit.cover,
                               width: ScreenUtil().screenWidth,
                               height: ScreenUtil().screenHeight,
-                            );
+                            )
+                          : controller.profileImage.value.isNotEmpty
+                              ? Image.network(
+                                  controller.profileImage.value,
+                                  fit: BoxFit.cover,
+                                  width: ScreenUtil().screenWidth,
+                                  height: ScreenUtil().screenHeight,
+                                )
+                              : SvgPicture.asset(
+                                  AssetManager.avatar,
+                                  fit: BoxFit.cover,
+                                  width: ScreenUtil().screenWidth,
+                                  height: ScreenUtil().screenHeight,
+                                );
                     },
                   ),
                   fromCamera: () async {
@@ -142,7 +149,9 @@ class ProfileView extends GetView<ProfileController> {
                 WidgetManager.primaryButton(
                   buttonName: StringManager.update,
                   isEnable: controller.isEnable,
-                  onTap: () async {},
+                  onTap: () async {
+                    await controller.updateProfile();
+                  },
                 ),
               ],
             ),

@@ -26,6 +26,7 @@ class ProfileController extends GetxController {
   final countryNode = FocusNode();
   final numberNode = FocusNode();
   var country = ''.obs;
+  var profileImage = ''.obs;
   var isEnable = true.obs;
 
   @override
@@ -43,11 +44,16 @@ class ProfileController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
+    var id = await CrudManager.getId();
+    if (id == null) {
+      await getProfile();
+    }
     firstNameController.text = '${await CrudManager.getFirstName()}';
     lastNameController.text = '${await CrudManager.getLastName()}';
     emailController.text = '${await CrudManager.getEmail()}';
     countryController.text = '${await CrudManager.getCountry()}';
     numberController.text = '${await CrudManager.getPhoneNumber()}';
+    profileImage.value = '${await CrudManager.getProfileImage()}';
   }
 
   @override
@@ -60,7 +66,31 @@ class ProfileController extends GetxController {
     super.onClose();
   }
 
-  Future<void> profile() async {
+  Future<void> getProfile() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final profileResponse = await profileService.getProfile();
+      await CrudManager.saveUserData(
+        id: profileResponse['user']['id'],
+        phoneNumber: profileResponse['user']['phoneNumber'],
+        email: profileResponse['user']['email'],
+        lastName: profileResponse['user']['lastName'],
+        firstName: profileResponse['user']['firstName'],
+        country: profileResponse['user']['address'],
+        profileImage: profileResponse['user']['profile_image'],
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
+  }
+
+  Future<void> updateProfile() async {
     try {
       WidgetManager.showCustomDialog();
       final id = await CrudManager.getId();
@@ -70,7 +100,6 @@ class ProfileController extends GetxController {
         profileImage: image.value == null ? '' : selectedImage!.path,
         firstName: firstNameController.text,
         lastName: lastNameController.text,
-        email: emailController.text,
         address: countryController.text,
         phoneNumber: numberController.text,
       );

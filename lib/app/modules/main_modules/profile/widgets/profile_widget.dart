@@ -299,7 +299,9 @@ class ProfileWidget {
           onChanged: onChanged,
           onTap: type == FieldType.country ? onTap : null,
           controller: controller,
-          readOnly: type == FieldType.country ? true : false,
+          readOnly: type == FieldType.country || type == FieldType.email
+              ? true
+              : false,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: inputType,
           inputFormatters: inputFormatter,
