@@ -299,7 +299,7 @@ class ProfileWidget {
           onChanged: onChanged,
           onTap: type == FieldType.country ? onTap : null,
           controller: controller,
-          readOnly: type == FieldType.country || type == FieldType.email
+          readOnly: type == FieldType.country || type == FieldType.email || type == FieldType.phoneNumber
               ? true
               : false,
           autovalidateMode: AutovalidateMode.onUserInteraction,
