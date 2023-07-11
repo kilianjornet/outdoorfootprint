@@ -12,7 +12,7 @@ class GearController extends GetxController {
   var isEnable = true.obs;
   var dropdownValue = "".obs;
   var total = 0.0.obs;
-  final gearService=GearService();
+  final gearService = GearService();
   var sum = 0.0.obs;
   var selectedDropdownValue1 = "".obs;
   var selectedDropdownValue2 = "".obs;
@@ -109,6 +109,6 @@ class GearController extends GetxController {
         labelValue13 +
         labelValue14 +
         labelValue15 +
-        labelValue16 ;
+        labelValue16;
   }
 }
