@@ -224,7 +224,9 @@ class GearView extends GetView<GearController> {
                         WidgetManager.primaryButton(
                           buttonName: StringManager.submit,
                           isEnable: controller.isEnable,
-                          onTap: () async {},
+                          onTap: () async {
+                            await controller.submitGears();
+                          },
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

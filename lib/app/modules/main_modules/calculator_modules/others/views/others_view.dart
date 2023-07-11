@@ -660,7 +660,9 @@ class OthersView extends GetView<OthersController> {
                 WidgetManager.primaryButton(
                   buttonName: StringManager.submit,
                   isEnable: controller.isEnable,
-                  onTap: () async {},
+                  onTap: () async {
+                    await controller.submitOthers();
+                  },
                 ),
 
                 Row(

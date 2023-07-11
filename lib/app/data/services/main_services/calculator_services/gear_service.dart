@@ -15,7 +15,7 @@ class GearService extends GetConnect implements GetxService {
 
   Future<dynamic> submitGear({
     required String userId,
-    required String totalKgCo2OfMobility,
+    required String totalKgCo2OfGear,
   }) async {
     final token = await TokenManager.getAccessToken();
     final jwtAccessSecret = dotenv.env['JWT_ACCESS_SECRET'];
@@ -30,7 +30,7 @@ class GearService extends GetConnect implements GetxService {
         '${ApiManager.baseUrl}${ApiManager.createGear}',
         {
           "userId": userId,
-          "totalKgCo2OfMobility": totalKgCo2OfMobility,
+          "totalKgCo2OfGear": totalKgCo2OfGear,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ class GearService extends GetConnect implements GetxService {
       );
       return await submitGear(
         userId: userId,
-        totalKgCo2OfMobility: totalKgCo2OfMobility,
+        totalKgCo2OfGear: totalKgCo2OfGear,
       );
     } on JWTException catch (e) {
       throw (e.message);
