@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   List<double> dataPoints = [40, 30, 15, 15];
   List<RxBool> isEnable = List.generate(2, (index) => true.obs);
   var openDialog = false.obs;
+  var profileImage = ''.obs;
 
   @override
   void onInit() {
@@ -19,8 +20,9 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
+    profileImage.value = '${await CrudManager.getProfileImage()}';
   }
 
   @override
