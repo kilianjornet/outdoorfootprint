@@ -107,7 +107,7 @@ class WidgetManager {
             ),
           ),
           duration: const Duration(
-            seconds: 5,
+            seconds: 3,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
