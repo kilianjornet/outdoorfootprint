@@ -4,10 +4,12 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:my_outdoor_footprint/app/data/services/main_services/profile_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class ProfileController extends GetxController {
+  final profileService = ProfileService();
   final profileKey = GlobalKey<FormState>();
   FlCountryCodePicker countryPicker = const FlCountryCodePicker();
   final ImagePicker picker = ImagePicker();
@@ -25,6 +27,7 @@ class ProfileController extends GetxController {
   final numberNode = FocusNode();
   var country = ''.obs;
   var isEnable = true.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -55,6 +58,44 @@ class ProfileController extends GetxController {
     countryController.dispose();
     numberController.dispose();
     super.onClose();
+  }
+
+  Future<void> profile() async {
+    try {
+      WidgetManager.showCustomDialog();
+      final id = await CrudManager.getId();
+
+      final profileResponse = await profileService.updateProfile(
+        id: '$id',
+        profileImage: image.value == null ? '' : selectedImage!.path,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        email: emailController.text,
+        address: countryController.text,
+        phoneNumber: numberController.text,
+      );
+      await CrudManager.saveUserData(
+        id: profileResponse['user']['id'],
+        phoneNumber: profileResponse['user']['phoneNumber'],
+        email: profileResponse['user']['email'],
+        lastName: profileResponse['user']['lastName'],
+        firstName: profileResponse['user']['firstName'],
+        country: profileResponse['user']['address'],
+        profileImage: profileResponse['user']['profile_image'],
+      );
+
+      WidgetManager.customSnackBar(
+        title: profileResponse['message'],
+        type: SnackBarType.success,
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void pickImage({

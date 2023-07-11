@@ -25,6 +25,7 @@ class ApiManager {
 
   //Main URL
   static const getProfile = '/api/users/app/get-profile';
+  static const updateProfile = '/api/auth/update-profile';
 
   //Calculator URL
   static const createHome = '/api/users/create-user-home-category';

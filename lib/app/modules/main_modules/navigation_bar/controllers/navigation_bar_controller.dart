@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 
 import '../../../../data/services/main_services/profile_service.dart';
+import '../../../../data/utils/token_manager.dart';
 import '../../../../data/utils/widget_manager.dart';
 
 class NavigationBarController extends GetxController {
@@ -16,7 +17,10 @@ class NavigationBarController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    await profile();
+    var token = await TokenManager.getAccessToken();
+    if (token == null) {
+      await profile();
+    }
   }
 
   @override
