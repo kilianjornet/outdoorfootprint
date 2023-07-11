@@ -842,19 +842,56 @@ class WidgetManager {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: ColorManager.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: ColorManager.black.withOpacity(
-                          0.25,
-                        ),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                      ),
-                    ],
+                    boxShadow: type == AppBarType.notification
+                        ? [
+                            BoxShadow(
+                              color: ColorManager.black.withOpacity(0.25),
+                              offset: Offset(2, 2),
+                              blurRadius: 10,
+                              spreadRadius: -5,
+                            ),
+                          ]
+                        : [
+                            BoxShadow(
+                              color: ColorManager.black.withOpacity(
+                                0.25,
+                              ),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                            ),
+                          ],
+                    gradient: type == AppBarType.notification
+                        ? const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              ColorManager.secondaryField,
+                              Color(0xFFFFFFFF),
+                            ],
+                          )
+                        : null,
+                    border: Border.all(
+                      color: ColorManager.white,
+                      width: 0.5.w,
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    notificationPath,
-                    width: 12.5.w,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: type == AppBarType.notification
+                          ? [
+                              BoxShadow(
+                                color: ColorManager.black.withOpacity(0.25),
+                                offset: Offset(0, 0),
+                                blurRadius: 10,
+                                spreadRadius: -3,
+                              ),
+                            ]
+                          : null,
+                    ),
+                    child: SvgPicture.asset(
+                      notificationPath,
+                      width: 12.5.w,
+                    ),
                   ),
                 ),
               ),
@@ -966,7 +1003,7 @@ class WidgetManager {
   }
 
   static void hideCustomDialog() {
-    Get.isDialogOpen == true ? Get.back() : null;
+    Get.isDialogOpen! ? Get.back() : null;
   }
 
   static Widget titleWhiteCanvas({
