@@ -14,7 +14,7 @@ class GearController extends GetxController {
   var total = 0.0.obs;
   final gearService = GearService();
   var sum = 0.0.obs;
-  var selectedDropdownValue1 = "".obs;
+  var selectedDropdownValue1 = "0".obs;
   var selectedDropdownValue2 = "".obs;
   var selectedDropdownValue3 = "".obs;
   var selectedDropdownValue4 = "".obs;
