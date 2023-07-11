@@ -32,7 +32,6 @@ class OthersController extends GetxController {
   final labelController14= TextEditingController();
   final labelController15= TextEditingController();
   final labelController16= TextEditingController();
-  final firstNameNode = FocusNode();
   final labelControllerNode1 = FocusNode();
   final labelControllerNode2 = FocusNode();
   final labelControllerNode3 = FocusNode();

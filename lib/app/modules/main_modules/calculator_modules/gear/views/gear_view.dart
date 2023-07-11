@@ -66,7 +66,7 @@ class GearView extends GetView<GearController> {
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel1,
                           isEnable: controller.isEnable,
-                          dropdownvalue: "1",
+                          dropdownvalue: controller.dropdownValue.value,
                         ),
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel2,
