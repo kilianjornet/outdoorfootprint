@@ -70,7 +70,7 @@ class ProfileService extends GetConnect implements GetxService {
       'firstName': firstName,
       'lastName': lastName,
       'address': address,
-      'phoneNumber': phoneNumber,
+      //'phoneNumber': phoneNumber,
     });
 
     if (profileImage.isNotEmpty) {
