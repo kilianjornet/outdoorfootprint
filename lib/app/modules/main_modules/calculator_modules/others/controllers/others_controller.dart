@@ -58,7 +58,7 @@ class OthersController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    labelController1.text = '1';
+    labelController1.text = '0';
     labelController2.text = '0';
     labelController3.text = '0';
     labelController4.text = '0';
@@ -127,7 +127,7 @@ class OthersController extends GetxController {
       final userId = await CrudManager.getId();
       final houseResponse = await othersService.submitOthers(
         userId: '$userId',
-        totalKgCo2OfOthers: '$total',
+        totalKgCo2OfOthers: '${total.value}',
       );
       WidgetManager.customSnackBar(
         title: houseResponse['message'],
@@ -161,22 +161,42 @@ class OthersController extends GetxController {
     final labelValue14 = double.tryParse(labelController14.text) ?? 0.0;
     final labelValue15 = double.tryParse(labelController15.text) ?? 0.0;
     final labelValue16 = double.tryParse(labelController16.text) ?? 0.0;
-    sum.value = labelValue1 +
-        labelValue2 +
-        labelValue3 +
-        labelValue4 +
-        labelValue5 +
-        labelValue6 +
-        labelValue7 +
-        labelValue8 +
-        labelValue9 +
-        labelValue10 +
-        labelValue11 +
-        labelValue12 +
-        labelValue13 +
-        labelValue14 +
-        labelValue15 +
-        labelValue16 ;
+
+    final labelValue1Kg = labelValue1 * 3.7;
+    final labelValue2Kg = labelValue2 * 15;
+    final labelValue3Kg = labelValue3 * 34;
+    final labelValue4Kg = labelValue4 * 13.3;
+    final labelValue5Kg = labelValue5 * 10;
+
+    final labelValue6Kg = labelValue6 * 0.48;
+    final labelValue7Kg = labelValue7 * 0.54;
+    final labelValue8Kg = labelValue8 * 0.66;
+    final labelValue9Kg = labelValue9 * 0.88;
+    final labelValue10Kg = labelValue10 * 1.02;
+
+    final labelValue11Kg = labelValue11 * 0.382;
+    final labelValue12Kg = labelValue12 * 0.43;
+    final labelValue13Kg = labelValue13 * 0.38;
+    final labelValue14Kg = labelValue14 * 0.4698;
+    final labelValue15Kg = labelValue15 * 0.139;
+    final labelValue16Kg = labelValue16 * 0.234;
+
+    total.value = labelValue1Kg +
+        labelValue2Kg +
+        labelValue3Kg +
+        labelValue4Kg +
+        labelValue5Kg +
+        labelValue6Kg +
+        labelValue7Kg +
+        labelValue8Kg +
+        labelValue9Kg +
+        labelValue10Kg +
+        labelValue11Kg +
+        labelValue12Kg +
+        labelValue13Kg +
+        labelValue14Kg +
+        labelValue15Kg +
+        labelValue16Kg ;
   }
 
 }

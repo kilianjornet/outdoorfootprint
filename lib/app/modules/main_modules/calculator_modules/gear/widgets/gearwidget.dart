@@ -12,7 +12,7 @@ class GearWidget {
   static Widget textWithField({
     required String? fieldName,
     required var isEnable,
-    required String? dropdownvalue,
+    required var dropdownvalue,
   }) {
     var isPressed = false.obs;
     return GestureDetector(
@@ -59,8 +59,8 @@ class GearWidget {
                   borderRadius: BorderRadius.circular(
                       8), //border raiuds of dropdown button
                 ),
-                child: DropdownButton<String>(
-                  value: dropdownvalue,
+                child: Obx(() => DropdownButton<String>(
+                  value: dropdownvalue.value,
                   hint: null,
                   isExpanded: true,
                   items: <String>[
@@ -91,13 +91,13 @@ class GearWidget {
                     );
                   }).toList(),
                   onChanged: (value) {
-                    dropdownvalue=value;
+                    dropdownvalue.value=value;
                     if (kDebugMode) {
                       print("You selected $value");
                     }
                   },
                   icon: const Padding(
-                      //Icon at tail, arrow bottom is default icon
+                    //Icon at tail, arrow bottom is default icon
                       padding: EdgeInsets.only(left: 20),
                       child: Icon(Icons.arrow_drop_down)),
                   iconEnabledColor: ColorManager.labelText, //Icon color
@@ -107,7 +107,8 @@ class GearWidget {
                     color: ColorManager.labelText,
                   ),
                   dropdownColor: ColorManager.white, //dropdown background color
-                )),
+                ))
+            ),
           )
         ],
       ),

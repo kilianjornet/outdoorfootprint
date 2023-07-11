@@ -464,6 +464,7 @@ class OthersWidgets {
                     decimal: true,
                   ),
                   inputFormatters: [
+                    FilteringTextInputFormatter.deny(RegExp(r'^0')),
                     FilteringTextInputFormatter.allow(
                       RegExp(
                         r'^\d+\.?\d{0,2}',
