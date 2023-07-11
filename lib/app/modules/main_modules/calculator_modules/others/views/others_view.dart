@@ -205,7 +205,7 @@ class OthersView extends GetView<OthersController> {
                         ),
                         OthersWidgets.customFieldWithUnit(
                           type: UnitType.kgCoal,
-                          subtitle: StringManager.othersLabel17,
+                          subtitle: StringManager.othersAspenLabel17,
                           controller: controller.labelController17,
                           node: controller.labelControllerNode17,
                           onChanged: (value) async {
