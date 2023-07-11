@@ -15,21 +15,21 @@ class GearController extends GetxController {
   final gearService = GearService();
   var sum = 0.0.obs;
   var selectedDropdownValue1 = "1".obs;
-  var selectedDropdownValue2 = "".obs;
-  var selectedDropdownValue3 = "".obs;
-  var selectedDropdownValue4 = "".obs;
-  var selectedDropdownValue5 = "".obs;
-  var selectedDropdownValue6 = "".obs;
-  var selectedDropdownValue7 = "".obs;
-  var selectedDropdownValue8 = "".obs;
-  var selectedDropdownValue9 = "".obs;
-  var selectedDropdownValue10 = "".obs;
-  var selectedDropdownValue11 = "".obs;
-  var selectedDropdownValue12 = "".obs;
-  var selectedDropdownValue13 = "".obs;
-  var selectedDropdownValue14 = "".obs;
-  var selectedDropdownValue15 = "".obs;
-  var selectedDropdownValue16 = "".obs;
+  var selectedDropdownValue2 = "1".obs;
+  var selectedDropdownValue3 = "1".obs;
+  var selectedDropdownValue4 = "1".obs;
+  var selectedDropdownValue5 = "1".obs;
+  var selectedDropdownValue6 = "1".obs;
+  var selectedDropdownValue7 = "1".obs;
+  var selectedDropdownValue8 = "1".obs;
+  var selectedDropdownValue9 = "1".obs;
+  var selectedDropdownValue10 = "1".obs;
+  var selectedDropdownValue11 = "1".obs;
+  var selectedDropdownValue12 = "1".obs;
+  var selectedDropdownValue13 = "1".obs;
+  var selectedDropdownValue14 = "1".obs;
+  var selectedDropdownValue15 = "1".obs;
+  var selectedDropdownValue16 = "1".obs;
 
   @override
   void onInit() {
@@ -94,21 +94,40 @@ class GearController extends GetxController {
     final labelValue14 = double.tryParse(selectedDropdownValue14.value) ?? 1.0;
     final labelValue15 = double.tryParse(selectedDropdownValue15.value) ?? 1.0;
     final labelValue16 = double.tryParse(selectedDropdownValue16.value) ?? 1.0;
-    sum.value = labelValue1 +
-        labelValue2 +
-        labelValue3 +
-        labelValue4 +
-        labelValue5 +
-        labelValue6 +
-        labelValue7 +
-        labelValue8 +
-        labelValue9 +
-        labelValue10 +
-        labelValue11 +
-        labelValue12 +
-        labelValue13 +
-        labelValue14 +
-        labelValue15 +
-        labelValue16;
+
+    final convertedValue1=labelValue1*13.6;
+    final convertedValue2=labelValue2*45.2;
+    final convertedValue3=labelValue3*0.25;
+    final convertedValue4=labelValue4*12;
+    final convertedValue5=labelValue5*300;
+
+    final convertedValue6=labelValue6*15;
+    final convertedValue7=labelValue7*10;
+    final convertedValue8=labelValue8*18;
+    final convertedValue9=labelValue9*1.9;
+    final convertedValue10=labelValue10*9;
+
+    final convertedValue11=labelValue11*2;
+    final convertedValue12=labelValue12*6.1;
+    final convertedValue13=labelValue13*15;
+    final convertedValue14=labelValue14*1.8;
+    final convertedValue15=labelValue15*40;
+    final convertedValue16=labelValue16;
+
+    total.value = convertedValue1 +
+        convertedValue2 +
+        convertedValue3 +
+        convertedValue4 +
+        convertedValue5 +
+        convertedValue6 +
+        convertedValue7 +
+        convertedValue8 +
+        convertedValue9 +
+        convertedValue10 +
+        convertedValue11 +
+        convertedValue12 +
+        convertedValue13 +
+        convertedValue14 +
+        convertedValue15 ;
   }
 }
