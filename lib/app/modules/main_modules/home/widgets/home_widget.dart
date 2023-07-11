@@ -199,10 +199,12 @@ class HomeWidget {
     );
   }
 
-  static Widget pieChart({required List<double> dataPoints}) {
+  static Widget pieChart({required var dataPoints}) {
     return PieChart(
       PieChartData(
-        sections: showingSections(),
+        sections: showingSections(
+          dataPoints: dataPoints,
+        ),
         centerSpaceRadius: 75.w,
         borderData: FlBorderData(
           show: false,
@@ -212,7 +214,7 @@ class HomeWidget {
     );
   }
 
-  static List<PieChartSectionData> showingSections() {
+  static List<PieChartSectionData> showingSections({required var dataPoints}) {
     return List.generate(
       4,
       (i) {
@@ -221,28 +223,28 @@ class HomeWidget {
           case 0:
             return PieChartSectionData(
               color: ColorManager.pieHome,
-              value: 20,
+              value: dataPoints.value[0],
               radius: radius,
               showTitle: false,
             );
           case 1:
             return PieChartSectionData(
               color: ColorManager.pieMobility,
-              value: 30,
+              value: dataPoints.value[1],
               showTitle: false,
               radius: radius,
             );
           case 2:
             return PieChartSectionData(
               color: ColorManager.pieGear,
-              value: 25,
+              value: dataPoints.value[2],
               showTitle: false,
               radius: radius,
             );
           case 3:
             return PieChartSectionData(
               color: ColorManager.pieFood,
-              value: 15,
+              value: dataPoints.value[3],
               showTitle: false,
               radius: radius,
             );

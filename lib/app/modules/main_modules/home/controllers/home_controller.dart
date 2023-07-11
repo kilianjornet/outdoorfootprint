@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
+import '../../../../data/services/main_services/profile_service.dart';
 import '../../../../data/utils/widget_manager.dart';
 
 class HomeController extends GetxController {
+  final profileService = ProfileService();
   final appBarKey = GlobalKey();
   var totalKg = '1736.13';
   var totalTon = '1.73613';
-  List<double> dataPoints = [40, 30, 15, 15];
+  var dataPoints = [20.0, 30.0, 25.0, 25.0].obs;
   List<RxBool> isEnable = List.generate(2, (index) => true.obs);
   var openDialog = false.obs;
   var profileImage = ''.obs;
@@ -22,12 +24,40 @@ class HomeController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
+    var id = await CrudManager.getId();
+    if (id == null) {
+      await getProfile();
+    }
     profileImage.value = '${await CrudManager.getProfileImage()}';
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> getProfile() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final profileResponse = await profileService.getProfile();
+      await CrudManager.saveUserData(
+        id: profileResponse['user']['id'],
+        phoneNumber: profileResponse['user']['phoneNumber'],
+        email: profileResponse['user']['email'],
+        lastName: profileResponse['user']['lastName'],
+        firstName: profileResponse['user']['firstName'],
+        country: profileResponse['user']['address'],
+        profileImage: profileResponse['user']['profile_image'],
+      );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   double getTotalValue() {

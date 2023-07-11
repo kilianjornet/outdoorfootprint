@@ -5,14 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/add/views/add_view.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/home/views/home_view.dart';
-import 'package:my_outdoor_footprint/app/modules/main_modules/my_footprint/views/my_footprint_view.dart';
 
 import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
 import '../../../../data/utils/string_manager.dart';
-import '../../profile/views/profile_view.dart';
 import '../controllers/navigation_bar_controller.dart';
 
 class NavigationBarView extends GetView<NavigationBarController> {
@@ -21,15 +17,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-        () => IndexedStack(
-          index: controller.selectedIndex.value,
-          children: const [
-            HomeView(),
-            AddView(),
-            MyFootprintView(),
-            ProfileView(),
-          ],
-        ),
+        () => controller.bottomPages[controller.selectedIndex.value],
       ),
       bottomNavigationBar: Container(
         height: Platform.isIOS ? 104.h : 80.h,
