@@ -195,6 +195,19 @@ class OthersWidgets {
           return null;
         };
         break;
+      case FieldType.digits:
+        title = labelName!;
+        inputType = TextInputType.name;
+          inputFormatter = [
+          FilteringTextInputFormatter.digitsOnly,
+          ];
+        validator = (value) {
+          if (value!.isEmpty) {
+            return null;
+          }
+          return null;
+        };
+        break;
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -549,6 +562,7 @@ enum FieldType {
   email,
   country,
   phoneNumber,
+  digits,
 }
 
 enum UnitType {

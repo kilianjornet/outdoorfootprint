@@ -32,7 +32,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: Platform.isIOS ? 104.h : 80.h,
+        height: Platform.isIOS ? 104.h : 98.h,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

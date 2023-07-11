@@ -71,8 +71,8 @@ class OthersView extends GetView<OthersController> {
                         children: [
                           OthersWidgets.editFields(
                             controller: controller.labelController1,
-                            node: controller.firstNameNode,
-                            type: FieldType.firstName,
+                            node: controller.labelControllerNode1,
+                            type: FieldType.digits,
                             onChanged: (value) async {
                               controller.updateButtonState(value);
                             },

@@ -91,7 +91,7 @@ class GearWidget {
                     );
                   }).toList(),
                   onChanged: (value) {
-                    //get value when changed
+                    dropdownvalue=value;
                     if (kDebugMode) {
                       print("You selected $value");
                     }
