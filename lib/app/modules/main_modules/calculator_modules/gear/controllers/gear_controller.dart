@@ -93,26 +93,24 @@ class GearController extends GetxController {
     final labelValue13 = double.tryParse(selectedDropdownValue13.value) ?? 1.0;
     final labelValue14 = double.tryParse(selectedDropdownValue14.value) ?? 1.0;
     final labelValue15 = double.tryParse(selectedDropdownValue15.value) ?? 1.0;
-    final labelValue16 = double.tryParse(selectedDropdownValue16.value) ?? 1.0;
 
-    final convertedValue1=labelValue1*13.6;
-    final convertedValue2=labelValue2*45.2;
-    final convertedValue3=labelValue3*0.25;
-    final convertedValue4=labelValue4*12;
-    final convertedValue5=labelValue5*300;
+    final convertedValue1 = labelValue1 * 13.6;
+    final convertedValue2 = labelValue2 * 45.2;
+    final convertedValue3 = labelValue3 * 0.25;
+    final convertedValue4 = labelValue4 * 12;
+    final convertedValue5 = labelValue5 * 300;
 
-    final convertedValue6=labelValue6*15;
-    final convertedValue7=labelValue7*10;
-    final convertedValue8=labelValue8*18;
-    final convertedValue9=labelValue9*1.9;
-    final convertedValue10=labelValue10*9;
+    final convertedValue6 = labelValue6 * 15;
+    final convertedValue7 = labelValue7 * 10;
+    final convertedValue8 = labelValue8 * 18;
+    final convertedValue9 = labelValue9 * 1.9;
+    final convertedValue10 = labelValue10 * 9;
 
-    final convertedValue11=labelValue11*2;
-    final convertedValue12=labelValue12*6.1;
-    final convertedValue13=labelValue13*15;
-    final convertedValue14=labelValue14*1.8;
-    final convertedValue15=labelValue15*40;
-    final convertedValue16=labelValue16;
+    final convertedValue11 = labelValue11 * 2;
+    final convertedValue12 = labelValue12 * 6.1;
+    final convertedValue13 = labelValue13 * 15;
+    final convertedValue14 = labelValue14 * 1.8;
+    final convertedValue15 = labelValue15 * 40;
 
     total.value = convertedValue1 +
         convertedValue2 +
@@ -128,6 +126,6 @@ class GearController extends GetxController {
         convertedValue12 +
         convertedValue13 +
         convertedValue14 +
-        convertedValue15 ;
+        convertedValue15;
   }
 }

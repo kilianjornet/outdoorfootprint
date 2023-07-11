@@ -865,7 +865,7 @@ class WidgetManager {
                         ? [
                             BoxShadow(
                               color: ColorManager.black.withOpacity(0.25),
-                              offset: Offset(2, 2),
+                              offset: const Offset(2, 2),
                               blurRadius: 10,
                               spreadRadius: -5,
                             ),
@@ -900,7 +900,7 @@ class WidgetManager {
                           ? [
                               BoxShadow(
                                 color: ColorManager.black.withOpacity(0.25),
-                                offset: Offset(0, 0),
+                                offset: const Offset(0, 0),
                                 blurRadius: 10,
                                 spreadRadius: -3,
                               ),
