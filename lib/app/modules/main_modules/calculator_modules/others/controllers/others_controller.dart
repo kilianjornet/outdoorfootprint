@@ -50,9 +50,9 @@ class OthersController extends GetxController {
   final labelControllerNode15= FocusNode();
   final labelControllerNode16= FocusNode();
   final labelControllerNode17= FocusNode();
-  var selectedDropdownValue1 = "1".obs;
-  var selectedDropdownValue2 = "1".obs;
-  var selectedDropdownValue3 = "1".obs;
+  var selectedDropdownValue1 = "0".obs;
+  var selectedDropdownValue2 = "0".obs;
+  var selectedDropdownValue3 = "0".obs;
 
 
   @override

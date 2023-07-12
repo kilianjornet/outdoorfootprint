@@ -14,22 +14,22 @@ class GearController extends GetxController {
   var total = 0.0.obs;
   final gearService = GearService();
   var sum = 0.0.obs;
-  var selectedDropdownValue1 = "1".obs;
-  var selectedDropdownValue2 = "1".obs;
-  var selectedDropdownValue3 = "1".obs;
-  var selectedDropdownValue4 = "1".obs;
-  var selectedDropdownValue5 = "1".obs;
-  var selectedDropdownValue6 = "1".obs;
-  var selectedDropdownValue7 = "1".obs;
-  var selectedDropdownValue8 = "1".obs;
-  var selectedDropdownValue9 = "1".obs;
-  var selectedDropdownValue10 = "1".obs;
-  var selectedDropdownValue11 = "1".obs;
-  var selectedDropdownValue12 = "1".obs;
-  var selectedDropdownValue13 = "1".obs;
-  var selectedDropdownValue14 = "1".obs;
-  var selectedDropdownValue15 = "1".obs;
-  var selectedDropdownValue16 = "1".obs;
+  var selectedDropdownValue1 = "0".obs;
+  var selectedDropdownValue2 = "0".obs;
+  var selectedDropdownValue3 = "0".obs;
+  var selectedDropdownValue4 = "0".obs;
+  var selectedDropdownValue5 = "0".obs;
+  var selectedDropdownValue6 = "0".obs;
+  var selectedDropdownValue7 = "0".obs;
+  var selectedDropdownValue8 = "0".obs;
+  var selectedDropdownValue9 = "0".obs;
+  var selectedDropdownValue10 = "0".obs;
+  var selectedDropdownValue11 = "0".obs;
+  var selectedDropdownValue12 = "0".obs;
+  var selectedDropdownValue13 = "0".obs;
+  var selectedDropdownValue14 = "0".obs;
+  var selectedDropdownValue15 = "0".obs;
+  var selectedDropdownValue16 = "0".obs;
 
   @override
   void onInit() {
