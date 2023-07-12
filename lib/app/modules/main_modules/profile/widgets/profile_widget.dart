@@ -40,8 +40,8 @@ class ProfileWidget {
                   color: ColorManager.white,
                   boxShadow: [
                     BoxShadow(
-                      color: ColorManager.black.withOpacity(
-                        0.25,
+                      color: ColorManager.boxShadow.withOpacity(
+                        0.3,
                       ),
                       spreadRadius: 1,
                       blurRadius: 10,
@@ -299,7 +299,9 @@ class ProfileWidget {
           onChanged: onChanged,
           onTap: type == FieldType.country ? onTap : null,
           controller: controller,
-          readOnly: type == FieldType.country || type == FieldType.email || type == FieldType.phoneNumber
+          readOnly: type == FieldType.country ||
+                  type == FieldType.email ||
+                  type == FieldType.phoneNumber
               ? true
               : false,
           autovalidateMode: AutovalidateMode.onUserInteraction,

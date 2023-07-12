@@ -875,8 +875,8 @@ class WidgetManager {
                               color: ColorManager.black.withOpacity(
                                 0.25,
                               ),
-                              spreadRadius: 1,
-                              blurRadius: 10,
+                              spreadRadius: -3,
+                              blurRadius: 8,
                             ),
                           ],
                     gradient: type == AppBarType.notification
@@ -901,7 +901,7 @@ class WidgetManager {
                               BoxShadow(
                                 color: ColorManager.black.withOpacity(0.25),
                                 offset: const Offset(0, 0),
-                                blurRadius: 10,
+                                blurRadius: 12,
                                 spreadRadius: -3,
                               ),
                             ]
