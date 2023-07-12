@@ -72,11 +72,11 @@ class AddView extends GetView<AddController> {
                   );
                 },
               ),
-              AddWidget.calculatorPageButton5(
-                buttonName: StringManager.calculatorCat5,
-                isEnable: controller.isEnable,
-                onTap: () async {},
-              ),
+              // AddWidget.calculatorPageButton5(
+              //   buttonName: StringManager.calculatorCat5,
+              //   isEnable: controller.isEnable,
+              //   onTap: () async {},
+              // ),
             ],
           ),
         ),

@@ -11,7 +11,7 @@ class HomeController extends GetxController {
   final appBarKey = GlobalKey();
   var totalKg = '1736.13';
   var totalTon = '1.73613';
-  var dataPoints = [20.0, 30.0, 25.0, 25.0].obs;
+  var dataPoints = [20.0, 35.0, 25.0, 15.0].obs;
   List<RxBool> isEnable = List.generate(2, (index) => true.obs);
   var openDialog = false.obs;
   var profileImage = ''.obs;
