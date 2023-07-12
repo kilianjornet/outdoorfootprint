@@ -107,7 +107,7 @@ class WidgetManager {
             ),
           ),
           duration: const Duration(
-            seconds: 5,
+            seconds: 3,
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -190,6 +190,25 @@ class WidgetManager {
                   ),
                   child,
                 ],
+              ),
+            ),
+          ),
+          Visibility(
+            visible: title == StringManager.termsAndConditions ||
+                    title == StringManager.privacyPolicy
+                ? true
+                : false,
+            child: Positioned(
+              top: 55.h,
+              left: 15.w,
+              child: GestureDetector(
+                onTap: () async {
+                  Get.back();
+                },
+                child: SvgPicture.asset(
+                  AssetManager.arrow,
+                  width: 20.w,
+                ),
               ),
             ),
           ),
@@ -842,19 +861,56 @@ class WidgetManager {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: ColorManager.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: ColorManager.black.withOpacity(
-                          0.25,
-                        ),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                      ),
-                    ],
+                    boxShadow: type == AppBarType.notification
+                        ? [
+                            BoxShadow(
+                              color: ColorManager.black.withOpacity(0.25),
+                              offset: const Offset(2, 2),
+                              blurRadius: 10,
+                              spreadRadius: -5,
+                            ),
+                          ]
+                        : [
+                            BoxShadow(
+                              color: ColorManager.black.withOpacity(
+                                0.25,
+                              ),
+                              spreadRadius: 1,
+                              blurRadius: 10,
+                            ),
+                          ],
+                    gradient: type == AppBarType.notification
+                        ? const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              ColorManager.secondaryField,
+                              Color(0xFFFFFFFF),
+                            ],
+                          )
+                        : null,
+                    border: Border.all(
+                      color: ColorManager.white,
+                      width: 0.5.w,
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    notificationPath,
-                    width: 12.5.w,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: type == AppBarType.notification
+                          ? [
+                              BoxShadow(
+                                color: ColorManager.black.withOpacity(0.25),
+                                offset: const Offset(0, 0),
+                                blurRadius: 10,
+                                spreadRadius: -3,
+                              ),
+                            ]
+                          : null,
+                    ),
+                    child: SvgPicture.asset(
+                      notificationPath,
+                      width: 12.5.w,
+                    ),
                   ),
                 ),
               ),
@@ -966,7 +1022,7 @@ class WidgetManager {
   }
 
   static void hideCustomDialog() {
-    Get.isDialogOpen == true ? Get.back() : null;
+    Get.isDialogOpen! ? Get.back() : null;
   }
 
   static Widget titleWhiteCanvas({
@@ -1037,6 +1093,7 @@ class WidgetManager {
   static void showNumberPicker({
     required TextEditingController controller,
     required DropdownType type,
+    required void Function(int)? onSelectedItemChanged,
   }) {
     int number;
 
@@ -1070,17 +1127,17 @@ class WidgetManager {
             useMagnifier: true,
             itemExtent: 40.sp,
             scrollController: FixedExtentScrollController(
-              initialItem: int.tryParse(controller.text)! - 1,
+              initialItem: type == DropdownType.plane
+                  ? int.tryParse(controller.text)!
+                  : int.tryParse(controller.text)! - 1,
             ),
-            onSelectedItemChanged: (int index) {
-              controller.text = '${index + 1}';
-            },
+            onSelectedItemChanged: onSelectedItemChanged,
             children: List<Widget>.generate(
               number,
               (int index) {
                 return Center(
                   child: Text(
-                    '${index + 1}',
+                    type == DropdownType.plane ? '$index' : '${index + 1}',
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.w400,
                       fontSize: 22.sp,

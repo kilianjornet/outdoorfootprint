@@ -67,19 +67,17 @@ class HouseView extends GetView<HouseController> {
                           FocusManager.instance.primaryFocus!.unfocus();
                         },
                         onChanged: (value) async {
-                          if (value.isEmpty) {
-                            controller.adultController.text = '0';
-                            controller.calculateTotalCarbon();
-                            controller.updateButtonState(value);
-                          } else {
-                            controller.calculateTotalCarbon();
-                            controller.updateButtonState(value);
-                          }
+                          controller.calculateTotalCarbon();
+                          controller.updateButtonState(value);
                         },
                         onTap: () async {
                           WidgetManager.showNumberPicker(
                             controller: controller.adultController,
                             type: DropdownType.adult,
+                            onSelectedItemChanged: (int index) {
+                              controller.adultController.text = '${index + 1}';
+                              controller.calculateTotalCarbon();
+                            },
                           );
                         },
                         controller: controller.adultController,

@@ -101,7 +101,7 @@ class VerifyOtpController extends GetxController {
           title: verifyEmailResponse['message'],
           type: SnackBarType.success,
         );
-        await Get.toNamed(
+        await Get.offAllNamed(
           '/navigation-bar',
         );
       }

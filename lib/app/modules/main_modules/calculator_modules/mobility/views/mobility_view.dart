@@ -86,6 +86,10 @@ class MobilityView extends GetView<MobilityController> {
                         controller.updateButtonState(value);
                       }
                     },
+                    onSelectedItemChanged: (int index) {
+                      controller.planeController.text = '$index';
+                      controller.calculateTotalCarbon();
+                    },
                   ),
                 ],
               ),

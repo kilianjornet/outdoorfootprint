@@ -101,7 +101,7 @@ class OffsetView extends GetView<OffsetController> {
               onPageChanged: (index) {
                 controller.currentIndex.value = index;
               },
-              children: [
+              children: const [
                 MyYearView(),
                 CustomView(),
               ],

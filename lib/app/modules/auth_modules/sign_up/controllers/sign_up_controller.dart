@@ -74,7 +74,7 @@ class SignUpController extends GetxController {
       );
       WidgetManager.customSnackBar(
         title: sendEmailResponse['message'],
-        type: SnackBarType.error,
+        type: SnackBarType.info,
       );
       await Get.toNamed(
         '/verify-otp',

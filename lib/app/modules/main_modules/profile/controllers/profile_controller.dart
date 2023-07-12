@@ -44,10 +44,6 @@ class ProfileController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    var id = await CrudManager.getId();
-    if (id == null) {
-      await getProfile();
-    }
     firstNameController.text = '${await CrudManager.getFirstName()}';
     lastNameController.text = '${await CrudManager.getLastName()}';
     emailController.text = '${await CrudManager.getEmail()}';
@@ -64,30 +60,6 @@ class ProfileController extends GetxController {
     countryController.dispose();
     numberController.dispose();
     super.onClose();
-  }
-
-  Future<void> getProfile() async {
-    try {
-      WidgetManager.showCustomDialog();
-
-      final profileResponse = await profileService.getProfile();
-      await CrudManager.saveUserData(
-        id: profileResponse['user']['id'],
-        phoneNumber: profileResponse['user']['phoneNumber'],
-        email: profileResponse['user']['email'],
-        lastName: profileResponse['user']['lastName'],
-        firstName: profileResponse['user']['firstName'],
-        country: profileResponse['user']['address'],
-        profileImage: profileResponse['user']['profile_image'],
-      );
-    } catch (e) {
-      WidgetManager.customSnackBar(
-        title: '$e',
-        type: SnackBarType.error,
-      );
-    } finally {
-      WidgetManager.hideCustomDialog();
-    }
   }
 
   Future<void> updateProfile() async {
