@@ -775,7 +775,7 @@ class WidgetManager {
                         ),
                       ),
                       CircleAvatar(
-                        radius: 18.w,
+                        radius: 19.w,
                         backgroundColor: ColorManager.white,
                         child: ClipOval(
                           child: child,
