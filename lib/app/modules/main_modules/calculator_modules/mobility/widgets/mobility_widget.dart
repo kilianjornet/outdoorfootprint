@@ -10,7 +10,6 @@ import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
 import '../views/km_dialog_view.dart';
-import '../views/unit_dialog_view.dart';
 
 class MobilityWidget {
   MobilityWidget._();
@@ -32,30 +31,16 @@ class MobilityWidget {
 
     switch (type) {
       case UnitType.perKm:
-        text = Obx(() {
-          return Text(
-            quantityUnit.value,
-            style: GoogleFonts.oswald(
-              fontWeight: FontWeight.w400,
-              fontSize: 14.sp,
-              color: ColorManager.white,
-            ),
-          );
-        });
-        asset = SvgPicture.asset(
-          AssetManager.downArrow,
-          width: 10.w,
+        text = Text(
+          StringManager.literPerKm,
+          style: GoogleFonts.oswald(
+            fontWeight: FontWeight.w400,
+            fontSize: 14.sp,
+            color: ColorManager.white,
+          ),
         );
-        mainAxisAlignment = MainAxisAlignment.spaceBetween;
-        onTap = () async {
-          Get.dialog(
-            const UnitDialogView(),
-            barrierDismissible: false,
-            barrierColor: ColorManager.button.withOpacity(
-              0.5,
-            ),
-          );
-        };
+        asset = const SizedBox();
+        mainAxisAlignment = MainAxisAlignment.center;
         break;
       case UnitType.liter:
         text = Obx(() {
@@ -238,7 +223,7 @@ class MobilityWidget {
                       ? 75.w
                       : type == UnitType.hoursFlight
                           ? 100.w
-                          : 140.w,
+                          : 110.w,
                   padding: EdgeInsets.symmetric(
                     vertical: 12.5.h,
                     horizontal: 8.w,

@@ -81,14 +81,7 @@ class MobilityController extends GetxController {
   }
 
   void updateButtonState(dynamic value) {
-    if (quantityController.text.isEmpty ||
-        distanceController.text.isEmpty ||
-        planeController.text.isEmpty ||
-        busController.text.isEmpty ||
-        trainController.text.isEmpty ||
-        helicopterController.text.isEmpty ||
-        total.value == 0.0 ||
-        total.value.isNaN) {
+    if (total.value == 0.0 || total.value.isNaN) {
       isEnable.value = false;
     } else {
       isEnable.value = true;
@@ -149,25 +142,33 @@ class MobilityController extends GetxController {
   }
 
   void calculateTotalCarbon() {
-    final carSiUnit = calculateCarSIUnit(
+    const co2PlaneConversion = 92;
+    const co2BusConversion = 0.25;
+    const co2TrainConversion = 0.2;
+    final carKg = calculateCarSIUnit(
         distanceController, quantityController, distanceConversion);
     final busSiUnit = calculateSIUnit(busController, busConversion);
     final trainSiUnit = calculateSIUnit(trainController, trainConversion);
     final planeValue = double.tryParse(planeController.text) ?? 0.0;
     final helicopterValue = double.tryParse(helicopterController.text) ?? 0.0;
-    final carKg = carSiUnit * 0.19;
-    final planeKg = planeValue * 92;
-    final busKg = busSiUnit * 0.25;
-    final trainKg = trainSiUnit * 0.25;
+    final planeKg = planeValue * co2PlaneConversion;
+    final busKg = busSiUnit * co2BusConversion;
+    final trainKg = trainSiUnit * co2TrainConversion;
     final helicopterKg = helicopterValue * 10;
     total.value = carKg + planeKg + busKg + trainKg + helicopterKg;
   }
 
   double calculateCarSIUnit(TextEditingController primaryController,
       TextEditingController secondaryController, RxDouble conversionValue) {
+    const co2PetrolConversion = 0.24;
+    const co2DieselConversion = 0.24;
+    final co2ConversionValue = conversionValue.value == 9.58
+        ? co2PetrolConversion
+        : co2DieselConversion;
     double distance = double.tryParse(primaryController.text) ?? 0.0;
     double quantity = double.tryParse(secondaryController.text) ?? 0.0;
-    return (distance / 100 * quantity) * conversionValue.value;
+    return ((distance / 100 * quantity) * conversionValue.value) *
+        co2ConversionValue;
   }
 
   double calculateSIUnit(
