@@ -57,6 +57,7 @@ class HouseController extends GetxController {
   var woodConversion = 2.778.obs;
   var oilConversion = 11.9.obs;
   var solarConversion = 1.0.obs;
+  var internetConversion = 3.0.obs;
 
   @override
   void onInit() {
@@ -136,17 +137,8 @@ class HouseController extends GetxController {
   }
 
   void updateButtonState(dynamic value) {
-    if (adultController.text.isEmpty ||
-        gasController.text.isEmpty ||
-        coalController.text.isEmpty ||
-        woodController.text.isEmpty ||
-        oilController.text.isEmpty ||
-        solarController.text.isEmpty ||
-        electricityController.text.isEmpty ||
-        dataController.text.isEmpty ||
-        modemController.text.isEmpty ||
-        total.value == 0 ||
-        sum.value != 100.0 ||
+    if (total.value == 0 ||
+        (sum.value >= 0.1 && sum.value <= 99.9) ||
         total.value.isNaN) {
       isEnable.value = false;
     } else {
@@ -266,7 +258,8 @@ class HouseController extends GetxController {
     final electricityKg =
         double.tryParse(electricityController.text)! * totalElectricity.value;
     final dataKg = double.tryParse(dataController.text)! * 3;
-    final modemKg = double.tryParse(modemController.text)! * 3;
+    final modemKg =
+        calculateSIUnit(modemController, internetConversion) / adultValue;
     total.value = gasKg +
         coalKg +
         woodKg +
@@ -310,9 +303,10 @@ class HouseController extends GetxController {
 
   double calculateElectricity(TextEditingController controller) {
     final controllerValue = double.tryParse(controller.text) ?? 0.0;
-    final electricityValue = double.tryParse(electricityController.text) ?? 0.0;
-    final adultValue = double.tryParse(adultController.text) ?? 0.0;
-    final result = (controllerValue * electricityValue) / adultValue;
-    return result / 100;
+    // final electricityValue = double.tryParse(electricityController.text) ?? 0.0;
+    // final adultValue = double.tryParse(adultController.text) ?? 0.0;
+    final result = controllerValue / 100;
+    // return result / 100;
+    return result;
   }
 }
