@@ -13,7 +13,7 @@ class GearWidget {
     required String fieldName,
     required var isEnable,
     required var dropdownvalue,
-     //void totalConversion,
+    void Function(String?)? onChanged,
   }) {
     var isPressed = false.obs;
     return GestureDetector(
@@ -114,13 +114,7 @@ class GearWidget {
                         ),
                       );
                     }).toList(),
-                    onChanged: (value) {
-                      dropdownvalue.value = value;
-                      //totalConversion;
-                      if (kDebugMode) {
-                        print("You selected $value");
-                      }
-                    },
+                    onChanged: onChanged,
                     icon: const Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Icon(Icons.arrow_drop_down),

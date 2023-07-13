@@ -67,21 +67,37 @@ class GearView extends GetView<GearController> {
                           fieldName: StringManager.gearLabel1,
                           isEnable: controller.isEnable,
                           dropdownvalue: controller.selectedDropdownValue1,
+                          onChanged: (value) {
+                            controller.selectedDropdownValue1.value = value!;
+                            controller.calculateConversion();
+                          },
                         ),
-                        GearWidget.textWithField(
+                        /*GearWidget.textWithField(
                           fieldName: StringManager.gearLabel2,
                           isEnable: controller.isEnable,
                           dropdownvalue: controller.selectedDropdownValue2,
-                        ),
+                          onChanged: (value) {
+                            controller.selectedDropdownValue2.value = value!;
+                            controller.calculateConversion();
+                          },
+                        ),*/
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel3,
                           isEnable: controller.isEnable,
                           dropdownvalue: controller.selectedDropdownValue3,
+                          onChanged: (value) {
+                            controller.selectedDropdownValue3.value = value!;
+                            controller.calculateConversion();
+                          },
                         ),
                         GearWidget.textWithField(
                           fieldName: StringManager.gearLabel4,
                           isEnable: controller.isEnable,
                           dropdownvalue: controller.selectedDropdownValue4,
+                          onChanged: (value) {
+                            controller.selectedDropdownValue4.value = value!;
+                            controller.calculateConversion();
+                          },
                         ),
                         Row(
                           children: [
@@ -91,6 +107,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel5,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue5,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue5.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -102,6 +122,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel6,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue6,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue6.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
@@ -114,6 +138,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel7,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue7,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue7.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -125,6 +153,11 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel8,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue8,
+                                //totalConversion: controller.calculateConversion,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue8.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
@@ -137,6 +170,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel9,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue9,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue9.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -148,6 +185,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel10,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue10,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue10.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
@@ -160,6 +201,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel11,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue11,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue11.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -171,6 +216,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel2,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue12,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue12.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
@@ -183,6 +232,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel13,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue13,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue13.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -194,6 +247,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel14,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue14,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue14.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
@@ -206,6 +263,10 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel15,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue15,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue15.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                             SizedBox(
@@ -217,13 +278,17 @@ class GearView extends GetView<GearController> {
                                 fieldName: StringManager.gearLabel16,
                                 isEnable: controller.isEnable,
                                 dropdownvalue: controller.selectedDropdownValue16,
+                                onChanged: (value) {
+                                  controller.selectedDropdownValue16.value = value!;
+                                  controller.calculateConversion();
+                                },
                               ),
                             ),
                           ],
                         ),
                         WidgetManager.primaryButton(
                           buttonName: StringManager.submit,
-                          isEnable: controller.isEnable,
+                          isEnable: controller.isButtonEnable,
                           onTap: () async {
                             controller.calculateConversion();
                             await controller.submitGears();

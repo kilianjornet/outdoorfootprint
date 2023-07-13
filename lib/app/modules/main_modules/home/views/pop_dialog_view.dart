@@ -92,27 +92,33 @@ class PopDialogView extends GetView<HomeController> {
                                 0.25,
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                bottom: 10.h,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    StringManager.deleteAccount,
-                                    style: GoogleFonts.oswald(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.sp,
-                                      color: ColorManager.errorText,
+                            GestureDetector(
+                              onTap: (){
+                                Get.back();
+                                //await controller.deleteAccount();
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  bottom: 10.h,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      StringManager.deleteAccount,
+                                      style: GoogleFonts.oswald(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16.sp,
+                                        color: ColorManager.errorText,
+                                      ),
                                     ),
-                                  ),
-                                  SvgPicture.asset(
-                                    AssetManager.delete,
-                                    height: 20.h,
-                                  ),
-                                ],
+                                    SvgPicture.asset(
+                                      AssetManager.delete,
+                                      height: 20.h,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

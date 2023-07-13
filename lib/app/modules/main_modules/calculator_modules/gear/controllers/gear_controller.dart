@@ -10,6 +10,7 @@ class GearController extends GetxController {
 
   final count = 0.obs;
   var isEnable = true.obs;
+  var isButtonEnable = false.obs;
   var dropdownValue = "".obs;
   var total = 0.0.obs;
   final gearService = GearService();
@@ -39,6 +40,7 @@ class GearController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    calculateConversion();
     if (kDebugMode) {
       print(dropdownValue.value);
     }
@@ -50,6 +52,7 @@ class GearController extends GetxController {
     selectedDropdownValue2.close();
     selectedDropdownValue3.close();
     selectedDropdownValue4.close();
+    total.close();
     super.onClose();
   }
 
@@ -78,21 +81,21 @@ class GearController extends GetxController {
   }
 
   void calculateConversion() {
-    final labelValue1 = double.tryParse(selectedDropdownValue1.value) ?? 1.0;
-    final labelValue2 = double.tryParse(selectedDropdownValue2.value) ?? 1.0;
-    final labelValue3 = double.tryParse(selectedDropdownValue3.value) ?? 1.0;
-    final labelValue4 = double.tryParse(selectedDropdownValue4.value) ?? 1.0;
-    final labelValue5 = double.tryParse(selectedDropdownValue5.value) ?? 1.0;
-    final labelValue6 = double.tryParse(selectedDropdownValue6.value) ?? 1.0;
-    final labelValue7 = double.tryParse(selectedDropdownValue7.value) ?? 1.0;
-    final labelValue8 = double.tryParse(selectedDropdownValue8.value) ?? 1.0;
-    final labelValue9 = double.tryParse(selectedDropdownValue9.value) ?? 1.0;
-    final labelValue10 = double.tryParse(selectedDropdownValue10.value) ?? 1.0;
-    final labelValue11 = double.tryParse(selectedDropdownValue11.value) ?? 1.0;
-    final labelValue12 = double.tryParse(selectedDropdownValue12.value) ?? 1.0;
-    final labelValue13 = double.tryParse(selectedDropdownValue13.value) ?? 1.0;
-    final labelValue14 = double.tryParse(selectedDropdownValue14.value) ?? 1.0;
-    final labelValue15 = double.tryParse(selectedDropdownValue15.value) ?? 1.0;
+    final labelValue1 = double.tryParse(selectedDropdownValue1.value) ?? 0.0;
+    final labelValue2 = double.tryParse(selectedDropdownValue2.value) ?? 0.0;
+    final labelValue3 = double.tryParse(selectedDropdownValue3.value) ?? 0.0;
+    final labelValue4 = double.tryParse(selectedDropdownValue4.value) ?? 0.0;
+    final labelValue5 = double.tryParse(selectedDropdownValue5.value) ?? 0.0;
+    final labelValue6 = double.tryParse(selectedDropdownValue6.value) ?? 0.0;
+    final labelValue7 = double.tryParse(selectedDropdownValue7.value) ?? 0.0;
+    final labelValue8 = double.tryParse(selectedDropdownValue8.value) ?? 0.0;
+    final labelValue9 = double.tryParse(selectedDropdownValue9.value) ?? 0.0;
+    final labelValue10 = double.tryParse(selectedDropdownValue10.value) ?? 0.0;
+    final labelValue11 = double.tryParse(selectedDropdownValue11.value) ?? 0.0;
+    final labelValue12 = double.tryParse(selectedDropdownValue12.value) ?? 0.0;
+    final labelValue13 = double.tryParse(selectedDropdownValue13.value) ?? 0.0;
+    final labelValue14 = double.tryParse(selectedDropdownValue14.value) ?? 0.0;
+    final labelValue15 = double.tryParse(selectedDropdownValue15.value) ?? 0.0;
 
     final convertedValue1 = labelValue1 * 13.6;
     final convertedValue2 = labelValue2 * 45.2;
@@ -127,5 +130,10 @@ class GearController extends GetxController {
         convertedValue13 +
         convertedValue14 +
         convertedValue15;
+    if(total.value==0.0){
+      isButtonEnable.value=false;
+    }else {
+      isButtonEnable.value=true;
+    }
   }
 }

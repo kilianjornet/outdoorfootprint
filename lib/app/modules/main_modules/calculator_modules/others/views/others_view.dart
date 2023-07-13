@@ -73,8 +73,15 @@ class OthersView extends GetView<OthersController> {
                             controller: controller.labelController1,
                             node: controller.labelControllerNode1,
                             type: FieldType.digits,
-                            onChanged: (value) async {
-                              controller.updateButtonState(value);
+                            onChanged:(value) async {
+                              if (value.isEmpty) {
+                                controller.labelController1.text = '0';
+                                controller.calculateConversion();
+                                controller.updateButtonState(value);
+                              } else {
+                                controller.calculateConversion();
+                                controller.updateButtonState(value);
+                              }
                             },
                             labelName: StringManager.othersLabel1,
                           ),
@@ -196,9 +203,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController2.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);
                             }
                           },
                           unitName: StringManager.days,
@@ -211,9 +220,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController17.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);
                             }
                           },
                           unitName: StringManager.days,
@@ -226,9 +237,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController3.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);
                             }
                           },
                           unitName: StringManager.days,
@@ -241,9 +254,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController4.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);
                             }
                           },
                           unitName: StringManager.days,
@@ -316,10 +331,11 @@ class OthersView extends GetView<OthersController> {
                               onChanged: (value) async {
                                 if (value.isEmpty) {
                                   controller.labelController5.text = '0';
-                                } else {
+                                  controller.calculateConversion();
                                   controller.updateButtonState(value);
-                                  //controller.calculateTotalCarbon();
-                                }
+                                } else {
+                                  controller.calculateConversion();
+                                  controller.updateButtonState(value);                               }
                               },
                               unitName: StringManager.days,
                             ),
@@ -337,10 +353,11 @@ class OthersView extends GetView<OthersController> {
                               onChanged: (value) async {
                                 if (value.isEmpty) {
                                   controller.labelController6.text = '0';
-                                } else {
+                                  controller.calculateConversion();
                                   controller.updateButtonState(value);
-                                  //controller.calculateTotalCarbon();
-                                }
+                                } else {
+                                  controller.calculateConversion();
+                                  controller.updateButtonState(value);                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -359,10 +376,11 @@ class OthersView extends GetView<OthersController> {
                               onChanged: (value) async {
                                 if (value.isEmpty) {
                                   controller.labelController7.text = '0';
-                                } else {
+                                  controller.calculateConversion();
                                   controller.updateButtonState(value);
-                                  //controller.calculateTotalCarbon();
-                                }
+                                } else {
+                                  controller.calculateConversion();
+                                  controller.updateButtonState(value);                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -380,10 +398,11 @@ class OthersView extends GetView<OthersController> {
                               onChanged: (value) async {
                                 if (value.isEmpty) {
                                   controller.labelController8.text = '0';
-                                } else {
+                                  controller.calculateConversion();
                                   controller.updateButtonState(value);
-                                  //controller.calculateTotalCarbon();
-                                }
+                                } else {
+                                  controller.calculateConversion();
+                                  controller.updateButtonState(value);                              }
                               },
                               unitName: StringManager.days,
                             ),
@@ -398,10 +417,11 @@ class OthersView extends GetView<OthersController> {
                         onChanged: (value) async {
                           if (value.isEmpty) {
                             controller.labelController9.text = '0';
-                          } else {
+                            controller.calculateConversion();
                             controller.updateButtonState(value);
-                            //controller.calculateTotalCarbon();
-                          }
+                          } else {
+                            controller.calculateConversion();
+                            controller.updateButtonState(value);                         }
                         },
                         unitName: StringManager.days,
                       ),
@@ -474,10 +494,11 @@ class OthersView extends GetView<OthersController> {
                                 onChanged: (value) async {
                                   if (value.isEmpty) {
                                     controller.labelController10.text = '0';
-                                  } else {
+                                    controller.calculateConversion();
                                     controller.updateButtonState(value);
-                                    //controller.calculateTotalCarbon();
-                                  }
+                                  } else {
+                                    controller.calculateConversion();
+                                    controller.updateButtonState(value);                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -495,10 +516,11 @@ class OthersView extends GetView<OthersController> {
                                 onChanged: (value) async {
                                   if (value.isEmpty) {
                                     controller.labelController11.text = '0';
-                                  } else {
+                                    controller.calculateConversion();
                                     controller.updateButtonState(value);
-                                    //controller.calculateTotalCarbon();
-                                  }
+                                  } else {
+                                    controller.calculateConversion();
+                                    controller.updateButtonState(value);                                 }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -513,10 +535,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController12.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
-                            }
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);                          }
                           },
                           unitName: StringManager.days,
                         ),
@@ -528,10 +551,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController13.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
-                            }
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);                           }
                           },
                           unitName: StringManager.days,
                         ),
@@ -547,10 +571,11 @@ class OthersView extends GetView<OthersController> {
                                 onChanged: (value) async {
                                   if (value.isEmpty) {
                                     controller.labelController14.text = '0';
-                                  } else {
+                                    controller.calculateConversion();
                                     controller.updateButtonState(value);
-                                    //controller.calculateTotalCarbon();
-                                  }
+                                  } else {
+                                    controller.calculateConversion();
+                                    controller.updateButtonState(value);                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -568,10 +593,11 @@ class OthersView extends GetView<OthersController> {
                                 onChanged: (value) async {
                                   if (value.isEmpty) {
                                     controller.labelController15.text = '0';
-                                  } else {
+                                    controller.calculateConversion();
                                     controller.updateButtonState(value);
-                                    //controller.calculateTotalCarbon();
-                                  }
+                                  } else {
+                                    controller.calculateConversion();
+                                    controller.updateButtonState(value);                                 }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -586,10 +612,11 @@ class OthersView extends GetView<OthersController> {
                           onChanged: (value) async {
                             if (value.isEmpty) {
                               controller.labelController16.text = '0';
-                            } else {
+                              controller.calculateConversion();
                               controller.updateButtonState(value);
-                              //controller.calculateTotalCarbon();
-                            }
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState(value);                       }
                           },
                           unitName: StringManager.days,
                         ),
@@ -648,6 +675,10 @@ class OthersView extends GetView<OthersController> {
                                   fieldName: StringManager.othersLabel17,
                                   isEnable: controller.isEnable,
                                   dropdownvalue: controller.selectedDropdownValue1,
+                                  onChanged: (value) {
+                                    controller.selectedDropdownValue1.value = value!;
+                                    controller.calculateConversion();
+                                  },
                                 ),
                               ),
                               SizedBox(
@@ -659,6 +690,10 @@ class OthersView extends GetView<OthersController> {
                                   fieldName: StringManager.othersLabel18,
                                   isEnable: controller.isEnable,
                                   dropdownvalue: controller.selectedDropdownValue2,
+                                  onChanged: (value) {
+                                    controller.selectedDropdownValue2.value = value!;
+                                    controller.calculateConversion();
+                                  },
                                 ),
                               ),
                             ],
@@ -667,6 +702,10 @@ class OthersView extends GetView<OthersController> {
                             fieldName: StringManager.othersLabel19,
                             isEnable: controller.isEnable,
                             dropdownvalue: controller.selectedDropdownValue3,
+                            onChanged: (value) {
+                              controller.selectedDropdownValue3.value = value!;
+                              controller.calculateConversion();
+                            },
                           ),
                         ],
                       ),
@@ -674,7 +713,7 @@ class OthersView extends GetView<OthersController> {
 
                 WidgetManager.primaryButton(
                   buttonName: StringManager.submit,
-                  isEnable: controller.isEnable,
+                  isEnable: controller.isButtonEnable,
                   onTap: () async {
                     controller.calculateConversion();
                     await controller.submitOthers();

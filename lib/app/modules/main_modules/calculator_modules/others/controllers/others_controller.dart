@@ -10,6 +10,7 @@ class OthersController extends GetxController {
 
   final count = 0.obs;
   var isEnable = true.obs;
+  var isButtonEnable = false.obs;
   RxString dropdownValue = "1".obs;
   var total = 0.0.obs;
   var sum = 0.0.obs;
@@ -80,6 +81,7 @@ class OthersController extends GetxController {
     labelController15.text = '0';
     labelController16.text = '0';
     labelController17.text = '0';
+    calculateConversion();
   }
 
   @override
@@ -208,6 +210,11 @@ class OthersController extends GetxController {
         labelValue15Kg +
         labelValue16Kg +
         labelValue17Kg;
+    if(total.value==0.0){
+      isButtonEnable.value=false;
+    }else{
+      isButtonEnable.value=true;
+    }
   }
 
 }
