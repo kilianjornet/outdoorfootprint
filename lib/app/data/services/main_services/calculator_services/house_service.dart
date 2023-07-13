@@ -38,7 +38,7 @@ class HouseService extends GetConnect implements GetxService {
         },
       );
       var jsonResponse = jsonDecode(response.bodyString!);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         return jsonResponse;
       } else {
         throw (jsonResponse['message']);
