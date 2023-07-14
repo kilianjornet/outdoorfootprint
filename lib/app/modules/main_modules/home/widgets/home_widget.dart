@@ -199,59 +199,46 @@ class HomeWidget {
     );
   }
 
-  static Widget pieChart({required var dataPoints}) {
+  static Widget pieChart({
+    required var co2Home,
+    required var co2Mobility,
+    required var co2Gear,
+    required var co2Food,
+  }) {
     return PieChart(
       PieChartData(
-        sections: showingSections(
-          dataPoints: dataPoints,
-        ),
+        sections: [
+          PieChartSectionData(
+            color: ColorManager.pieHome,
+            value: co2Home.value,
+            radius: 35.w,
+            showTitle: false,
+          ),
+          PieChartSectionData(
+            color: ColorManager.pieMobility,
+            value: co2Mobility.value,
+            radius: 35.w,
+            showTitle: false,
+          ),
+          PieChartSectionData(
+            color: ColorManager.pieGear,
+            value: co2Gear.value,
+            radius: 35.w,
+            showTitle: false,
+          ),
+          PieChartSectionData(
+            color: ColorManager.pieFood,
+            value: co2Food.value,
+            radius: 35.w,
+            showTitle: false,
+          ),
+        ],
         centerSpaceRadius: 75.w,
         borderData: FlBorderData(
           show: false,
         ),
         sectionsSpace: 10.w,
       ),
-    );
-  }
-
-  static List<PieChartSectionData> showingSections({required var dataPoints}) {
-    return List.generate(
-      4,
-      (i) {
-        final radius = 35.w;
-        switch (i) {
-          case 0:
-            return PieChartSectionData(
-              color: ColorManager.pieHome,
-              value: dataPoints.value[0],
-              radius: radius,
-              showTitle: false,
-            );
-          case 1:
-            return PieChartSectionData(
-              color: ColorManager.pieMobility,
-              value: dataPoints.value[1],
-              showTitle: false,
-              radius: radius,
-            );
-          case 2:
-            return PieChartSectionData(
-              color: ColorManager.pieGear,
-              value: dataPoints.value[2],
-              showTitle: false,
-              radius: radius,
-            );
-          case 3:
-            return PieChartSectionData(
-              color: ColorManager.pieFood,
-              value: dataPoints.value[3],
-              showTitle: false,
-              radius: radius,
-            );
-          default:
-            throw Error();
-        }
-      },
     );
   }
 }

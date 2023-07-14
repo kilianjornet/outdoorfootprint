@@ -14,6 +14,7 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,13 +53,17 @@ class HomeView extends GetView<HomeController> {
                 padding: EdgeInsets.only(
                   bottom: 5.h,
                 ),
-                child: Text(
-                  '${StringManager.hello}, Kilian',
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24.sp,
-                    color: ColorManager.displayText,
-                  ),
+                child: Obx(
+                  () {
+                    return Text(
+                      '${StringManager.hello}, ${controller.firstName.value}',
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24.sp,
+                        color: ColorManager.displayText,
+                      ),
+                    );
+                  },
                 ),
               ),
               Text(
@@ -130,7 +135,10 @@ class HomeView extends GetView<HomeController> {
                   AspectRatio(
                     aspectRatio: 1,
                     child: HomeWidget.pieChart(
-                      dataPoints: controller.dataPoints,
+                      co2Home: controller.co2Home,
+                      co2Mobility: controller.co2Mobility,
+                      co2Gear: controller.co2Gear,
+                      co2Food: controller.co2Food,
                     ),
                   ),
                 ],
@@ -139,14 +147,18 @@ class HomeView extends GetView<HomeController> {
                 buttonName: StringManager.offsetEmission,
                 isEnable: controller.isEnable[0],
                 onTap: () async {
-                  await Get.toNamed('/offset');
+                  await Get.toNamed(
+                    '/offset',
+                  );
                 },
               ),
               HomeWidget.primaryButton(
                 buttonName: StringManager.tipsFootprint,
                 isEnable: controller.isEnable[1],
                 onTap: () async {
-                  await Get.toNamed('/tips');
+                  await Get.toNamed(
+                    '/tips',
+                  );
                 },
               ),
               Padding(

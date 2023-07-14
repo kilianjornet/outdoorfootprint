@@ -1,7 +1,7 @@
 class StringManager {
   StringManager._();
 
-  static const outdoorFootprintTitle = 'My Outdoor Footprint';
+  static const outdoorFootprintTitle = 'Outdoor Footprint Carbon Calculator';
   static const signIn = 'Sign In';
   static const perCapitaUrl = 'https://ourworldindata.org/per-capita-co2';
   static const greetingText = 'Hi there! Nice to see you again.';
