@@ -281,7 +281,7 @@ class OffsetWidget {
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.w400,
                       fontSize: 14.sp,
-                      color: ColorManager.labelText,
+                      color: ColorManager.button,
                       decoration: TextDecoration.underline,
                     ),
                   ),
