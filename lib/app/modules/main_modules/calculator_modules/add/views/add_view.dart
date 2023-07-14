@@ -32,7 +32,7 @@ class AddView extends GetView<AddController> {
                 StringManager.selectCat,
                 style: GoogleFonts.oswald(
                   fontWeight: FontWeight.w400,
-                  fontSize: 20.sp,
+                  fontSize: 22.sp,
                   color: ColorManager.displayText,
                 ),
               ),
