@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/modules/main_modules/calculator_modules/others/widgets/others_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
@@ -15,751 +14,443 @@ class OthersView extends GetView<OthersController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ColorManager.white,
-        appBar: WidgetManager.primaryAppBar(
-          title: StringManager.others,
-          type: AppBarType.secondary,
-        ),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20.w,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  StringManager.logging,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.titleText,
+      backgroundColor: ColorManager.white,
+      appBar: WidgetManager.primaryAppBar(
+        title: StringManager.others,
+        type: AppBarType.secondary,
+      ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 20.w,
+            right: 20.w,
+            bottom: 20.w,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              WidgetManager.titleWhiteCanvas(
+                title: StringManager.logging,
+                children: [
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel1,
+                    controller: controller.hotelController,
+                    node: controller.hotelNode,
+                    type: UnitType.none,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.hotelController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
                   ),
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 10.h,
-                    ),
-                    margin: EdgeInsets.only(
-                      top: 8.h,
-                      //bottom: 20.h,
-                    ),
-                    decoration: BoxDecoration(
-                        color: ColorManager.white,
-                        borderRadius: BorderRadius.circular(
-                          8.w,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: ColorManager.button.withOpacity(
-                              0.2,
-                            ),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          )
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        children: [
-                          OthersWidgets.editFields(
-                            controller: controller.labelController1,
-                            node: controller.labelControllerNode1,
-                            type: FieldType.digits,
-                            onChanged: (value) async {
-                              if (value.isEmpty) {
-                                controller.labelController1.text = '0';
-                                controller.calculateConversion();
-                                controller.updateButtonState(value);
-                              } else {
-                                controller.calculateConversion();
-                                controller.updateButtonState(value);
-                              }
-                            },
-                            labelName: StringManager.othersLabel1,
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              StringManager.skiDayHotelLabel,
-                              style: GoogleFonts.oswald(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12.sp,
-                                color: ColorManager.titleText,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: TextButton(
-                              onPressed: () async {
-                                // const url = 'https://www.hotelfootprints.org';
-                                // if(await canLaunch(url)){
-                                //   await launch(url);
-                                // }else {
-                                //   throw 'Could not launch $url';
-                                // }
-                                const url = 'https://www.hotelfootprints.org';
-                                if (await canLaunchUrl(Uri.parse(url))) {
-                                  await launchUrl(Uri.parse(url));
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                              style: TextButton.styleFrom(),
-                              child: const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.language,
-                                        color: Color(0xFFED92A2)),
-                                    SizedBox(width: 10.0),
-                                    Text('https://www.hotelfootprints.org',
-                                        style: TextStyle(
-                                            color: Color(0xFFA294C2),
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w500)),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.skiDay,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.titleText,
+                ],
+              ),
+              WidgetManager.titleWhiteCanvas(
+                title: StringManager.skiDay,
+                subtitle: StringManager.skiDayDetails,
+                children: [
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel2,
+                    controller: controller.scandinaviaController,
+                    node: controller.scandinaviaNode,
+                    type: UnitType.days,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.scandinaviaController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
                   ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.skiDayDetails,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel3,
+                    controller: controller.usaController,
+                    node: controller.usaNode,
+                    type: UnitType.days,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.usaController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
                   ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10.h,
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel4,
+                    controller: controller.alpsController,
+                    node: controller.alpsNode,
+                    type: UnitType.days,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.alpsController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
                   ),
-                  margin: EdgeInsets.only(
-                    top: 8.h,
-                    //bottom: 20.h,
-                  ),
-                  decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius: BorderRadius.circular(
-                        8.w,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorManager.button.withOpacity(
-                            0.2,
-                          ),
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                        )
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kgCoal,
-                          subtitle: StringManager.othersLabel2,
-                          controller: controller.labelController2,
-                          node: controller.labelControllerNode2,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController2.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kgCoal,
-                          subtitle: StringManager.othersAspenLabel17,
-                          controller: controller.labelController17,
-                          node: controller.labelControllerNode17,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController17.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kgCoal,
-                          subtitle: StringManager.othersLabel3,
-                          controller: controller.labelController3,
-                          node: controller.labelControllerNode3,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController3.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kgCoal,
-                          subtitle: StringManager.othersLabel4,
-                          controller: controller.labelController4,
-                          node: controller.labelControllerNode4,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController4.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                //Food Section
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.food,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.titleText,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.foodDetails,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10.h,
-                  ),
-                  margin: EdgeInsets.only(
-                    top: 8.h,
-                    //bottom: 20.h,
-                  ),
-                  decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius: BorderRadius.circular(
-                        8.w,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorManager.button.withOpacity(
-                            0.2,
-                          ),
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                        )
-                      ]),
-                  child: Column(
+                ],
+              ),
+              WidgetManager.titleWhiteCanvas(
+                title: StringManager.food,
+                subtitle: StringManager.foodDetails,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: OthersWidgets.customFieldWithUnit(
-                              type: UnitType.kg,
-                              subtitle: StringManager.othersLabel5,
-                              controller: controller.labelController5,
-                              node: controller.labelControllerNode5,
-                              onChanged: (value) async {
-                                if (value.isEmpty) {
-                                  controller.labelController5.text = '0';
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                } else {
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                }
-                              },
-                              unitName: StringManager.days,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: OthersWidgets.customFieldWithUnit(
-                              type: UnitType.kg,
-                              subtitle: StringManager.othersLabel6,
-                              controller: controller.labelController6,
-                              node: controller.labelControllerNode6,
-                              onChanged: (value) async {
-                                if (value.isEmpty) {
-                                  controller.labelController6.text = '0';
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                } else {
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                }
-                              },
-                              unitName: StringManager.days,
-                            ),
-                          ),
-                        ],
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel5,
+                          controller: controller.veganController,
+                          node: controller.veganNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.veganController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: OthersWidgets.customFieldWithUnit(
-                              type: UnitType.kg,
-                              subtitle: StringManager.othersLabel7,
-                              controller: controller.labelController7,
-                              node: controller.labelControllerNode7,
-                              onChanged: (value) async {
-                                if (value.isEmpty) {
-                                  controller.labelController7.text = '0';
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                } else {
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                }
-                              },
-                              unitName: StringManager.days,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8.w,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: OthersWidgets.customFieldWithUnit(
-                              type: UnitType.kg,
-                              subtitle: StringManager.othersLabel8,
-                              controller: controller.labelController8,
-                              node: controller.labelControllerNode8,
-                              onChanged: (value) async {
-                                if (value.isEmpty) {
-                                  controller.labelController8.text = '0';
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                } else {
-                                  controller.calculateConversion();
-                                  controller.updateButtonState(value);
-                                }
-                              },
-                              unitName: StringManager.days,
-                            ),
-                          ),
-                        ],
-                      ),
-                      OthersWidgets.customFieldWithUnit(
-                        type: UnitType.kg,
-                        subtitle: StringManager.othersLabel9,
-                        controller: controller.labelController9,
-                        node: controller.labelControllerNode9,
-                        onChanged: (value) async {
-                          if (value.isEmpty) {
-                            controller.labelController9.text = '0';
-                            controller.calculateConversion();
-                            controller.updateButtonState(value);
-                          } else {
-                            controller.calculateConversion();
-                            controller.updateButtonState(value);
-                          }
-                        },
-                        unitName: StringManager.days,
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel6,
+                          controller: controller.vegetarianController,
+                          node: controller.vegetarianNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.vegetarianController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
                       ),
                     ],
                   ),
-                ),
-
-                //Others Section
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.others,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.titleText,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.othersDetails,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10.h,
-                  ),
-                  margin: EdgeInsets.only(
-                    top: 8.h,
-                    //bottom: 20.h,
-                  ),
-                  decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius: BorderRadius.circular(
-                        8.w,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel7,
+                          controller: controller.lowController,
+                          node: controller.lowNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.lowController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorManager.button.withOpacity(
-                            0.2,
-                          ),
-                          spreadRadius: 1,
-                          blurRadius: 10,
-                        )
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: OthersWidgets.customFieldWithUnit(
-                                type: UnitType.kg,
-                                subtitle: StringManager.othersLabel10,
-                                controller: controller.labelController10,
-                                node: controller.labelControllerNode10,
-                                onChanged: (value) async {
-                                  if (value.isEmpty) {
-                                    controller.labelController10.text = '0';
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  } else {
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  }
-                                },
-                                unitName: StringManager.days,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: OthersWidgets.customFieldWithUnit(
-                                type: UnitType.kg,
-                                subtitle: StringManager.othersLabel11,
-                                controller: controller.labelController11,
-                                node: controller.labelControllerNode11,
-                                onChanged: (value) async {
-                                  if (value.isEmpty) {
-                                    controller.labelController11.text = '0';
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  } else {
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  }
-                                },
-                                unitName: StringManager.days,
-                              ),
-                            ),
-                          ],
-                        ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kg,
-                          subtitle: StringManager.othersLabel12,
-                          controller: controller.labelController12,
-                          node: controller.labelControllerNode12,
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel8,
+                          controller: controller.mediumMeatController,
+                          node: controller.mediumMeatNode,
+                          type: UnitType.euro,
                           onChanged: (value) async {
                             if (value.isEmpty) {
-                              controller.labelController12.text = '0';
+                              controller.mediumMeatController.text = '0';
                               controller.calculateConversion();
-                              controller.updateButtonState(value);
+                              controller.updateButtonState();
                             } else {
                               controller.calculateConversion();
-                              controller.updateButtonState(value);
+                              controller.updateButtonState();
                             }
                           },
-                          unitName: StringManager.days,
                         ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kg,
-                          subtitle: StringManager.othersLabel13,
-                          controller: controller.labelController13,
-                          node: controller.labelControllerNode13,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController13.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: OthersWidgets.customFieldWithUnit(
-                                type: UnitType.kg,
-                                subtitle: StringManager.othersLabel14,
-                                controller: controller.labelController14,
-                                node: controller.labelControllerNode14,
-                                onChanged: (value) async {
-                                  if (value.isEmpty) {
-                                    controller.labelController14.text = '0';
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  } else {
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  }
-                                },
-                                unitName: StringManager.days,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: OthersWidgets.customFieldWithUnit(
-                                type: UnitType.kg,
-                                subtitle: StringManager.othersLabel15,
-                                controller: controller.labelController15,
-                                node: controller.labelControllerNode15,
-                                onChanged: (value) async {
-                                  if (value.isEmpty) {
-                                    controller.labelController15.text = '0';
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  } else {
-                                    controller.calculateConversion();
-                                    controller.updateButtonState(value);
-                                  }
-                                },
-                                unitName: StringManager.days,
-                              ),
-                            ),
-                          ],
-                        ),
-                        OthersWidgets.customFieldWithUnit(
-                          type: UnitType.kg,
-                          subtitle: StringManager.othersLabel16,
-                          controller: controller.labelController16,
-                          node: controller.labelControllerNode16,
-                          onChanged: (value) async {
-                            if (value.isEmpty) {
-                              controller.labelController16.text = '0';
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            } else {
-                              controller.calculateConversion();
-                              controller.updateButtonState(value);
-                            }
-                          },
-                          unitName: StringManager.days,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                //New Car section
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  StringManager.newCar,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18.sp,
-                    color: ColorManager.titleText,
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 10.h,
-                    ),
-                    margin: EdgeInsets.only(
-                      top: 8.h,
-                      //bottom: 20.h,
-                    ),
-                    decoration: BoxDecoration(
-                        color: ColorManager.white,
-                        borderRadius: BorderRadius.circular(
-                          8.w,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: ColorManager.button.withOpacity(
-                              0.2,
-                            ),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          )
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: OthersWidgets.textWithField(
-                                  fieldName: StringManager.othersLabel17,
-                                  isEnable: controller.isEnable,
-                                  dropdownvalue:
-                                      controller.selectedDropdownValue1,
-                                  onChanged: (value) {
-                                    controller.selectedDropdownValue1.value =
-                                        value!;
-                                    controller.calculateConversion();
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8.w,
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: OthersWidgets.textWithField(
-                                  fieldName: StringManager.othersLabel18,
-                                  isEnable: controller.isEnable,
-                                  dropdownvalue:
-                                      controller.selectedDropdownValue2,
-                                  onChanged: (value) {
-                                    controller.selectedDropdownValue2.value =
-                                        value!;
-                                    controller.calculateConversion();
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                          OthersWidgets.textWithField(
-                            fieldName: StringManager.othersLabel19,
-                            isEnable: controller.isEnable,
-                            dropdownvalue: controller.selectedDropdownValue3,
-                            onChanged: (value) {
-                              controller.selectedDropdownValue3.value = value!;
-                              controller.calculateConversion();
-                            },
-                          ),
-                        ],
                       ),
-                    )),
-
-                WidgetManager.primaryButton(
-                  buttonName: StringManager.submit,
-                  isEnable: controller.isButtonEnable,
-                  onTap: () async {
-                    controller.calculateConversion();
-                    await controller.submitOthers();
-                  },
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${StringManager.total}: ',
+                    ],
+                  ),
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel9,
+                    controller: controller.heavyController,
+                    node: controller.heavyNode,
+                    type: UnitType.euro,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.heavyController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
+                  ),
+                ],
+              ),
+              WidgetManager.titleWhiteCanvas(
+                title: StringManager.others,
+                subtitle: StringManager.othersDetails,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel10,
+                          controller: controller.pharmaController,
+                          node: controller.pharmaNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.pharmaController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel11,
+                          controller: controller.computerController,
+                          node: controller.computerNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.computerController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel12,
+                    controller: controller.furnitureController,
+                    node: controller.furnitureNode,
+                    type: UnitType.euro,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.furnitureController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
+                  ),
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel13,
+                    controller: controller.telephoneController,
+                    node: controller.telephoneNode,
+                    type: UnitType.euro,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.telephoneController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel14,
+                          controller: controller.bankController,
+                          node: controller.bankNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.bankController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel15,
+                          controller: controller.insuranceController,
+                          node: controller.insuranceNode,
+                          type: UnitType.euro,
+                          onChanged: (value) async {
+                            if (value.isEmpty) {
+                              controller.insuranceController.text = '0';
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            } else {
+                              controller.calculateConversion();
+                              controller.updateButtonState();
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel16,
+                    controller: controller.educationController,
+                    node: controller.educationNode,
+                    type: UnitType.euro,
+                    onChanged: (value) async {
+                      if (value.isEmpty) {
+                        controller.educationController.text = '0';
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      } else {
+                        controller.calculateConversion();
+                        controller.updateButtonState();
+                      }
+                    },
+                  ),
+                ],
+              ),
+              WidgetManager.titleWhiteCanvas(
+                title: StringManager.newCar,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel17,
+                          controller: controller.smallController,
+                          node: controller.smallNode,
+                          type: UnitType.car,
+                          onChanged: (value) async {
+                            controller.calculateConversion();
+                            controller.updateButtonState();
+                          },
+                          onSelectedItemChanged: (int index) {
+                            controller.smallController.text = '$index';
+                            controller.calculateConversion();
+                            controller.updateButtonState();
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        width: 132.5.w,
+                        child: OthersWidgets.customFieldWithUnit(
+                          subtitle: StringManager.othersLabel18,
+                          controller: controller.mediumCarController,
+                          node: controller.mediumCarNode,
+                          type: UnitType.car,
+                          onChanged: (value) async {
+                            controller.calculateConversion();
+                            controller.updateButtonState();
+                          },
+                          onSelectedItemChanged: (int index) {
+                            controller.mediumCarController.text = '$index';
+                            controller.calculateConversion();
+                            controller.updateButtonState();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  OthersWidgets.customFieldWithUnit(
+                    subtitle: StringManager.othersLabel19,
+                    controller: controller.bigController,
+                    node: controller.bigNode,
+                    type: UnitType.car,
+                    onChanged: (value) async {
+                      controller.calculateConversion();
+                      controller.updateButtonState();
+                    },
+                    onSelectedItemChanged: (int index) {
+                      controller.bigController.text = '$index';
+                      controller.calculateConversion();
+                      controller.updateButtonState();
+                    },
+                  ),
+                ],
+              ),
+              WidgetManager.primaryButton(
+                buttonName: StringManager.submit,
+                isEnable: controller.isEnable,
+                onTap: () async {
+                  await controller.submitOthers();
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${StringManager.total}: ',
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20.sp,
+                      color: ColorManager.button,
+                    ),
+                  ),
+                  Obx(() {
+                    final totalValue = controller.total.value;
+                    final displayValue = totalValue.isNaN ? 0.0 : totalValue;
+                    final formattedValue = displayValue.toStringAsFixed(2);
+                    return Text(
+                      '$formattedValue ${StringManager.kgProduced}',
                       style: GoogleFonts.oswald(
                         fontWeight: FontWeight.w400,
                         fontSize: 20.sp,
-                        color: ColorManager.button,
+                        color: ColorManager.displayText,
                       ),
-                    ),
-                    Obx(() {
-                      final totalValue = controller.total.value;
-                      final displayValue = totalValue.isNaN ? 0.0 : totalValue;
-                      return Text(
-                        '$displayValue ${StringManager.kgProduced}',
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20.sp,
-                          color: ColorManager.displayText,
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              ],
-            ),
+                    );
+                  }),
+                ],
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

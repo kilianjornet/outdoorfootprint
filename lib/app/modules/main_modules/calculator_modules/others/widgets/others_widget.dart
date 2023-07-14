@@ -2,373 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../data/utils/api_manager.dart';
 import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
-import '../../../../../data/utils/validation_manager.dart';
-import '../../../calculator_modules/house/views/gas_dialog_view.dart';
-import '../../../calculator_modules/house/views/oil_dialog_view.dart';
+import '../../../../../data/utils/widget_manager.dart';
 
 class OthersWidgets {
   OthersWidgets._();
-  static Widget textWithField({
-    required String fieldName,
-    required var isEnable,
-    required var dropdownvalue,
-    void Function(String?)? onChanged,
-  }) {
-    var isPressed = false.obs;
-    return GestureDetector(
-      onTapDown: (value) {
-        if (isEnable.value == true) {
-          isPressed.value = true;
-        }
-      },
-      onTapUp: (value) {
-        if (isEnable.value == true) {
-          isPressed.value = false;
-        }
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                fieldName,
-                style: GoogleFonts.oswald(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: ColorManager.labelText,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 8.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: ColorManager
-                    .dropdownColor, //background color of dropdown button
-                border: Border.all(
-                    color: ColorManager.dropdownColor,
-                    width: 3), //border of dropdown button
-                borderRadius:
-                    BorderRadius.circular(8), //border raiuds of dropdown button
-              ),
-              child: Obx(() => DropdownButton<String>(
-                    value: dropdownvalue.value,
-                    hint: null,
-                    isExpanded: true,
-                    items: <String>[
-                      '0',
-                      '1',
-                      '2',
-                      '3',
-                      '4',
-                      '5',
-                      '6',
-                      '7',
-                      '8',
-                      '9',
-                      '10',
-                      '11',
-                      '12',
-                      '13',
-                      '14',
-                      '15',
-                      '16',
-                      '17',
-                      '18',
-                      '19',
-                      '20',
-                      '21',
-                      '22',
-                      '23',
-                      '24',
-                      '25',
-                      '26',
-                      '27',
-                      '28',
-                      '29',
-                      '30',
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value:
-                            value, // Assign unique values to each DropdownMenuItem
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            value,
-                            style: GoogleFonts.oswald(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: ColorManager.labelText,
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: onChanged,
-                    icon: const Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Icon(Icons.arrow_drop_down),
-                    ),
-                    iconEnabledColor: ColorManager.labelText,
-                    style: GoogleFonts.oswald(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: ColorManager.labelText,
-                    ),
-                    dropdownColor: ColorManager.white,
-                  )),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  static Widget editFields({
-    required TextEditingController controller,
-    required FocusNode node,
-    required FieldType type,
-    required void Function(String)? onChanged,
-    void Function()? onTap,
-    required String? labelName,
-  }) {
-    String title;
-    TextInputType inputType;
-    List<TextInputFormatter>? inputFormatter;
-    String? Function(String?)? validator;
-
-    switch (type) {
-      case FieldType.firstName:
-        title = labelName!;
-        inputType = TextInputType.name;
-        inputFormatter = [
-          FilteringTextInputFormatter.allow(
-            RegExp(
-              "[a-zA-Z]",
-            ),
-          ),
-          TextInputFormatter.withFunction(
-            (oldValue, newValue) {
-              if (newValue.text.isNotEmpty) {
-                return TextEditingValue(
-                  text: newValue.text.substring(0, 1).toUpperCase() +
-                      newValue.text.substring(1),
-                  selection: newValue.selection,
-                );
-              }
-              return newValue;
-            },
-          ),
-        ];
-        validator = (value) {
-          if (value!.isEmpty) {
-            return null;
-          }
-          if (!ValidationManager.validateName(value)) {
-            return StringManager.enterValidFirstName;
-          }
-          return null;
-        };
-        break;
-      case FieldType.lastName:
-        title = StringManager.lastName;
-        inputType = TextInputType.name;
-        inputFormatter = [
-          FilteringTextInputFormatter.allow(
-            RegExp(
-              "[a-zA-Z]",
-            ),
-          ),
-          TextInputFormatter.withFunction(
-            (oldValue, newValue) {
-              if (newValue.text.isNotEmpty) {
-                return TextEditingValue(
-                  text: newValue.text.substring(0, 1).toUpperCase() +
-                      newValue.text.substring(1),
-                  selection: newValue.selection,
-                );
-              }
-              return newValue;
-            },
-          ),
-        ];
-        validator = (value) {
-          if (value!.isEmpty) {
-            return null;
-          }
-          if (!ValidationManager.validateName(value)) {
-            return StringManager.enterValidLastName;
-          }
-          return null;
-        };
-        break;
-      case FieldType.email:
-        title = StringManager.userEmail;
-        inputType = TextInputType.emailAddress;
-        inputFormatter = [
-          FilteringTextInputFormatter.deny(
-            RegExp(
-              '[ ]',
-            ),
-          ),
-          FilteringTextInputFormatter.singleLineFormatter,
-          FilteringTextInputFormatter.allow(
-            RegExp(
-              r'^[\w.@]+',
-            ),
-          ),
-        ];
-        validator = (value) {
-          if (value!.isEmpty) {
-            return null;
-          }
-          if (!ValidationManager.validateEmail(value)) {
-            return StringManager.enterValidEmail;
-          }
-          return null;
-        };
-        break;
-      case FieldType.country:
-        title = StringManager.country;
-        inputType = TextInputType.name;
-        break;
-      case FieldType.phoneNumber:
-        title = StringManager.phoneNumber;
-        inputType = TextInputType.phone;
-        inputFormatter = [
-          FilteringTextInputFormatter.digitsOnly,
-        ];
-        validator = (value) {
-          if (value!.isEmpty) {
-            return null;
-          }
-          if (!ValidationManager.validateNumber(value)) {
-            return StringManager.enterValidPhoneNumber;
-          }
-          return null;
-        };
-        break;
-      case FieldType.digits:
-        title = labelName!;
-        inputType = TextInputType.name;
-        inputFormatter = [
-          FilteringTextInputFormatter.digitsOnly,
-        ];
-        validator = (value) {
-          if (value!.isEmpty) {
-            return null;
-          }
-          return null;
-        };
-        break;
-    }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            top: 10.h,
-            bottom: 10.h,
-          ),
-          child: Text(
-            title,
-            style: GoogleFonts.oswald(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              color: ColorManager.labelText,
-            ),
-          ),
-        ),
-        TextFormField(
-          onTapOutside: (value) {
-            FocusManager.instance.primaryFocus!.unfocus();
-          },
-          onChanged: onChanged,
-          onTap: type == FieldType.country ? onTap : null,
-          controller: controller,
-          readOnly: type == FieldType.country ? true : false,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          keyboardType: inputType,
-          inputFormatters: inputFormatter,
-          validator: validator,
-          focusNode: node,
-          decoration: InputDecoration(
-            isDense: true,
-            filled: true,
-            fillColor: ColorManager.secondaryField,
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorManager.button,
-              ),
-              borderRadius: BorderRadius.circular(
-                8.w,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorManager.errorText,
-                width: 1.5.w,
-              ),
-              borderRadius: BorderRadius.circular(
-                8.w,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorManager.white,
-              ),
-              borderRadius: BorderRadius.circular(
-                8.w,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorManager.errorText,
-              ),
-              borderRadius: BorderRadius.circular(
-                8.w,
-              ),
-            ),
-            errorStyle: GoogleFonts.oswald(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              color: ColorManager.errorText,
-            ),
-          ),
-          style: GoogleFonts.oswald(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
-            color: ColorManager.labelText,
-          ),
-          cursorColor: ColorManager.cursor,
-        ),
-      ],
-    );
-  }
 
   static Widget customFieldWithUnit({
-    String? subtitle,
-    var gasUnit,
-    var oilUnit,
+    required String subtitle,
+    var quantityUnit,
+    var distanceUnit,
+    void Function(int)? onSelectedItemChanged,
     required TextEditingController controller,
     required FocusNode node,
     required UnitType type,
     required void Function(String)? onChanged,
-    required String? unitName,
   }) {
     Widget text;
     Widget asset;
@@ -376,57 +30,9 @@ class OthersWidgets {
     void Function()? onTap;
 
     switch (type) {
-      case UnitType.cubicMeter:
-        text = Obx(() {
-          return RichText(
-            text: TextSpan(
-              style: GoogleFonts.oswald(
-                fontWeight: FontWeight.w400,
-                fontSize: 16.sp,
-                color: ColorManager.white,
-              ),
-              children: [
-                TextSpan(
-                  text: gasUnit.value,
-                ),
-                WidgetSpan(
-                  child: Transform.translate(
-                    offset: const Offset(
-                      2.0,
-                      -10.0,
-                    ), // Adjust the offset for proper positioning
-                    child: Text(
-                      '3',
-                      style: GoogleFonts.oswald(
-                        fontSize: gasUnit != StringManager.kwh ? 12.sp : 0,
-                        fontWeight: FontWeight.w400,
-                        color: ColorManager.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-        asset = SvgPicture.asset(
-          AssetManager.downArrow,
-          width: 10.w,
-        );
-        mainAxisAlignment = MainAxisAlignment.spaceBetween;
-        onTap = () async {
-          Get.dialog(
-            const GasDialogView(),
-            barrierDismissible: false,
-            barrierColor: ColorManager.button.withOpacity(
-              0.5,
-            ),
-          );
-        };
-        break;
-      case UnitType.kgCoal:
+      case UnitType.days:
         text = Text(
-          unitName!,
+          StringManager.days,
           style: GoogleFonts.oswald(
             fontWeight: FontWeight.w400,
             fontSize: 14.sp,
@@ -436,63 +42,30 @@ class OthersWidgets {
         asset = const SizedBox();
         mainAxisAlignment = MainAxisAlignment.center;
         break;
-      case UnitType.kg:
+      case UnitType.euro:
         text = const SizedBox();
         asset = SvgPicture.asset(
           AssetManager.errIcon,
-          width: 20.w,
+          height: 20.h,
         );
         mainAxisAlignment = MainAxisAlignment.center;
         break;
-      case UnitType.litres:
-        text = Obx(() {
-          return Text(
-            oilUnit.value,
-            style: GoogleFonts.oswald(
-              fontWeight: FontWeight.w400,
-              fontSize: 14.sp,
-              color: ColorManager.white,
-            ),
-          );
-        });
-        asset = SvgPicture.asset(
-          AssetManager.downArrow,
-          width: 10.w,
-        );
-        mainAxisAlignment = MainAxisAlignment.spaceBetween;
+      case UnitType.none:
+        text = const SizedBox();
+        asset = const SizedBox();
+        mainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case UnitType.car:
+        text = const SizedBox();
+        asset = const SizedBox();
+        mainAxisAlignment = MainAxisAlignment.center;
         onTap = () async {
-          Get.dialog(
-            const OilDialogView(),
-            barrierDismissible: false,
-            barrierColor: ColorManager.button.withOpacity(
-              0.5,
-            ),
+          WidgetManager.showNumberPicker(
+            controller: controller,
+            type: DropdownType.car,
+            onSelectedItemChanged: onSelectedItemChanged,
           );
         };
-        break;
-      case UnitType.kwh:
-        text = Text(
-          StringManager.kwh,
-          style: GoogleFonts.oswald(
-            fontWeight: FontWeight.w400,
-            fontSize: 14.sp,
-            color: ColorManager.white,
-          ),
-        );
-        asset = const SizedBox();
-        mainAxisAlignment = MainAxisAlignment.center;
-        break;
-      case UnitType.gb:
-        text = Text(
-          StringManager.gbUse,
-          style: GoogleFonts.oswald(
-            fontWeight: FontWeight.w400,
-            fontSize: 14.sp,
-            color: ColorManager.white,
-          ),
-        );
-        asset = const SizedBox();
-        mainAxisAlignment = MainAxisAlignment.center;
         break;
     }
     return Column(
@@ -502,16 +75,14 @@ class OthersWidgets {
           padding: EdgeInsets.symmetric(
             vertical: 5.h,
           ),
-          child: subtitle != null
-              ? Text(
-                  subtitle,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
-                  ),
-                )
-              : const SizedBox(),
+          child: Text(
+            subtitle,
+            style: GoogleFonts.oswald(
+              fontWeight: FontWeight.w400,
+              fontSize: 14.sp,
+              color: ColorManager.labelText,
+            ),
+          ),
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -525,20 +96,28 @@ class OthersWidgets {
                     FocusManager.instance.primaryFocus!.unfocus();
                   },
                   onChanged: onChanged,
+                  onTap: type == UnitType.car ? onTap : null,
                   controller: controller,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                   ),
-                  inputFormatters: [
-                    FilteringTextInputFormatter.deny(RegExp(r'^0')),
-                    FilteringTextInputFormatter.allow(
-                      RegExp(
-                        r'^\d+\.?\d{0,2}',
-                      ),
-                    ),
-                  ],
+                  inputFormatters: type == UnitType.days
+                      ? [
+                          FilteringTextInputFormatter.deny(RegExp(r'^0')),
+                          FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
+                        ]
+                      : [
+                          FilteringTextInputFormatter.deny(RegExp(r'^0')),
+                          FilteringTextInputFormatter.allow(
+                            RegExp(
+                              r'^\d+\.?\d{0,2}',
+                            ),
+                          ),
+                          // FilteringTextInputFormatter.allow(RegExp(r'^\d*')),
+                        ],
                   focusNode: node,
+                  readOnly: type == UnitType.car ? true : false,
                   decoration: InputDecoration(
                     isDense: true,
                     filled: true,
@@ -547,28 +126,55 @@ class OthersWidgets {
                       borderSide: const BorderSide(
                         color: ColorManager.button,
                       ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(
-                          10.w,
-                        ),
-                        bottomLeft: Radius.circular(
-                          10.w,
-                        ),
-                      ),
+                      borderRadius:
+                          type == UnitType.none || type == UnitType.car
+                              ? BorderRadius.all(Radius.circular(
+                                  10.w,
+                                ))
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(
+                                    10.w,
+                                  ),
+                                  bottomLeft: Radius.circular(
+                                    10.w,
+                                  ),
+                                ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                         color: ColorManager.white,
                       ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(
-                          10.w,
-                        ),
-                        bottomLeft: Radius.circular(
-                          10.w,
-                        ),
-                      ),
+                      borderRadius:
+                          type == UnitType.none || type == UnitType.car
+                              ? BorderRadius.all(Radius.circular(
+                                  10.w,
+                                ))
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(
+                                    10.w,
+                                  ),
+                                  bottomLeft: Radius.circular(
+                                    10.w,
+                                  ),
+                                ),
                     ),
+                    suffixIcon: type == UnitType.car
+                        ? Container(
+                            padding: EdgeInsets.only(
+                              top: 19.h,
+                              left: 10.w,
+                              right: 15.w,
+                              bottom: 17.h,
+                            ),
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: SvgPicture.asset(
+                                AssetManager.arrowForward,
+                                width: 7.w,
+                              ),
+                            ),
+                          )
+                        : null,
                   ),
                   style: GoogleFonts.oswald(
                     fontSize: 14.sp,
@@ -578,66 +184,91 @@ class OthersWidgets {
                   cursorColor: ColorManager.cursor,
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                width: 75.w,
-                padding: EdgeInsets.symmetric(
-                  vertical: 12.5.h,
-                  horizontal: 8.w,
-                ),
-                decoration: BoxDecoration(
-                  color: ColorManager.primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorManager.black.withOpacity(
-                        0.25,
+              type == UnitType.none || type == UnitType.car
+                  ? const SizedBox()
+                  : Container(
+                      alignment: Alignment.center,
+                      width: type == UnitType.days ? 75.w : 50.w,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 12.5.h,
+                        horizontal: 8.w,
                       ),
-                      spreadRadius: 1,
-                      blurRadius: 10,
+                      decoration: BoxDecoration(
+                        color: ColorManager.primary,
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorManager.black.withOpacity(
+                              0.25,
+                            ),
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(
+                            10.w,
+                          ),
+                          bottomRight: Radius.circular(
+                            10.w,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: mainAxisAlignment,
+                        children: [
+                          text,
+                          asset,
+                        ],
+                      ),
                     ),
-                  ],
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(
-                      10.w,
-                    ),
-                    bottomRight: Radius.circular(
-                      10.w,
-                    ),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: mainAxisAlignment,
-                  children: [
-                    text,
-                    GestureDetector(
-                      onTap: onTap,
-                      child: asset,
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
+        type == UnitType.none
+            ? Row(
+                children: [
+                  Text(
+                    '${StringManager.skiDayHotelLabel}: ',
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      color: ColorManager.labelText,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final Uri url = Uri(
+                        scheme: 'https',
+                        host: ApiManager.hotelUrl,
+                      );
+                      if (!await launchUrl(
+                        url,
+                        mode: LaunchMode.inAppWebView,
+                      )) {
+                        throw Exception('Could not launch $url');
+                      }
+                    },
+                    child: Text(
+                      StringManager.visitLink,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        decoration: TextDecoration.underline,
+                        color: ColorManager.button,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : const SizedBox(),
       ],
     );
   }
 }
 
-enum FieldType {
-  firstName,
-  lastName,
-  email,
-  country,
-  phoneNumber,
-  digits,
-}
-
 enum UnitType {
-  cubicMeter,
-  kgCoal,
-  kg,
-  litres,
-  kwh,
-  gb,
+  days,
+  euro,
+  none,
+  car,
 }

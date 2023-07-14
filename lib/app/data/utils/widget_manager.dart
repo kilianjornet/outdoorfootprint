@@ -1072,8 +1072,8 @@ class WidgetManager {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: ColorManager.black.withOpacity(
-                    0.25,
+                  color: ColorManager.boxShadow.withOpacity(
+                    0.3,
                   ),
                   spreadRadius: 1,
                   blurRadius: 10,
@@ -1130,9 +1130,9 @@ class WidgetManager {
             useMagnifier: true,
             itemExtent: 40.sp,
             scrollController: FixedExtentScrollController(
-              initialItem: type == DropdownType.plane
-                  ? int.tryParse(controller.text)!
-                  : int.tryParse(controller.text)! - 1,
+              initialItem: type == DropdownType.adult
+                  ? int.tryParse(controller.text)! - 1
+                  : int.tryParse(controller.text)!,
             ),
             onSelectedItemChanged: onSelectedItemChanged,
             children: List<Widget>.generate(
@@ -1140,7 +1140,7 @@ class WidgetManager {
               (int index) {
                 return Center(
                   child: Text(
-                    type == DropdownType.plane ? '$index' : '${index + 1}',
+                    type == DropdownType.adult ? '${index + 1}' : '$index',
                     style: GoogleFonts.oswald(
                       fontWeight: FontWeight.w400,
                       fontSize: 22.sp,

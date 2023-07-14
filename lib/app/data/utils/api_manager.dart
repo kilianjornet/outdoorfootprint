@@ -8,6 +8,9 @@ class ApiManager {
   static const donationBaseUrl = 'www.kilianjornetfoundation.org';
   static const donationHeaders = '/take-action/donate/';
 
+  //Hotel URL
+  static const hotelUrl = 'www.hotelfootprints.org';
+
   //
   static const perCapita = 'https://ourworldindata.org/per-capita-co2 ';
 

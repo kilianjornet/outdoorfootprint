@@ -151,7 +151,7 @@ class StringManager {
   static const skiDay = 'Ski Day';
   static const skiDayDetails =
       'Days per person using ski resort infrastructures';
-  static const skiDayHotelLabel = 'estimate your hotel footprint here';
+  static const skiDayHotelLabel = 'Estimate your hotel footprint here';
   static const othersLabel2 = 'Ski in Scandinavia';
   static const othersAspenLabel17 = 'Ski in Aspen';
   static const othersLabel3 = 'Ski in USA';
@@ -165,7 +165,7 @@ class StringManager {
   static const othersLabel8 = 'Medium meat';
   static const othersLabel9 = 'Heavy meat';
   static const othersLabel10 = 'Pharmaceutical';
-  static const othersLabel11 = 'Computer IT';
+  static const othersLabel11 = 'Computer IT equipment';
   static const othersLabel12 = 'Furniture and other manufactured goods';
   static const othersLabel13 = 'Telephone, mobile/cell phone call costs';
   static const othersLabel14 = 'Banking';
