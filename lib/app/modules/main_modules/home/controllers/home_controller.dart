@@ -38,7 +38,6 @@ class HomeController extends GetxController {
     co2Mobility.value = 35.0;
     co2Gear.value = 25.0;
     co2Food.value = 20.0;
-    refresh();
   }
 
   @override

@@ -864,7 +864,7 @@ class WidgetManager {
                     boxShadow: type == AppBarType.notification
                         ? [
                             BoxShadow(
-                              color: ColorManager.black.withOpacity(0.25),
+                              color: ColorManager.boxShadow.withOpacity(0.3),
                               offset: const Offset(2, 2),
                               blurRadius: 10,
                               spreadRadius: -5,
@@ -872,8 +872,8 @@ class WidgetManager {
                           ]
                         : [
                             BoxShadow(
-                              color: ColorManager.black.withOpacity(
-                                0.25,
+                              color: ColorManager.boxShadow.withOpacity(
+                                0.3,
                               ),
                               spreadRadius: -3,
                               blurRadius: 8,
@@ -1104,6 +1104,9 @@ class WidgetManager {
       case DropdownType.plane:
         number = 101;
         break;
+      case DropdownType.car:
+        number = 5;
+        break;
     }
 
     showCupertinoModalPopup(
@@ -1213,4 +1216,5 @@ enum AppBarType {
 enum DropdownType {
   adult,
   plane,
+  car,
 }
