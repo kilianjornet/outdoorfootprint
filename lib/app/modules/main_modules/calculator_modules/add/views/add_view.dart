@@ -36,47 +36,18 @@ class AddView extends GetView<AddController> {
                   color: ColorManager.displayText,
                 ),
               ),
-              AddWidget.calculatorPageButton1(
-                buttonName: StringManager.calculatorCat1,
-                isEnable: controller.isEnable,
-                onTap: () async {
-                  await Get.toNamed(
-                    '/house',
-                  );
-                },
+              AddWidget.category(
+                type: CategoryType.home,
               ),
-              AddWidget.calculatorPageButton2(
-                buttonName: StringManager.calculatorCat2,
-                isEnable: controller.isEnable,
-                onTap: () async {
-                  await Get.toNamed(
-                    '/mobility',
-                  );
-                },
+              AddWidget.category(
+                type: CategoryType.mobility,
               ),
-              AddWidget.calculatorPageButton3(
-                buttonName: StringManager.calculatorCat3,
-                isEnable: controller.isEnable,
-                onTap: () async {
-                  await Get.toNamed(
-                    '/gear',
-                  );
-                },
+              AddWidget.category(
+                type: CategoryType.gear,
               ),
-              AddWidget.calculatorPageButton4(
-                buttonName: StringManager.calculatorCat4,
-                isEnable: controller.isEnable,
-                onTap: () async {
-                  await Get.toNamed(
-                    '/others',
-                  );
-                },
+              AddWidget.category(
+                type: CategoryType.food,
               ),
-              // AddWidget.calculatorPageButton5(
-              //   buttonName: StringManager.calculatorCat5,
-              //   isEnable: controller.isEnable,
-              //   onTap: () async {},
-              // ),
             ],
           ),
         ),
