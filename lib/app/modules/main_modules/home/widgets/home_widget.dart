@@ -205,41 +205,43 @@ class HomeWidget {
     required var co2Gear,
     required var co2Food,
   }) {
-    return PieChart(
-      PieChartData(
-        sections: [
-          PieChartSectionData(
-            color: ColorManager.pieHome,
-            value: co2Home.value,
-            radius: 35.w,
-            showTitle: false,
+    return Obx(() {
+      return PieChart(
+        PieChartData(
+          sections: [
+            PieChartSectionData(
+              color: ColorManager.pieHome,
+              value: co2Home.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieMobility,
+              value: co2Mobility.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieGear,
+              value: co2Gear.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieFood,
+              value: co2Food.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+          ],
+          centerSpaceRadius: 75.w,
+          borderData: FlBorderData(
+            show: false,
           ),
-          PieChartSectionData(
-            color: ColorManager.pieMobility,
-            value: co2Mobility.value,
-            radius: 35.w,
-            showTitle: false,
-          ),
-          PieChartSectionData(
-            color: ColorManager.pieGear,
-            value: co2Gear.value,
-            radius: 35.w,
-            showTitle: false,
-          ),
-          PieChartSectionData(
-            color: ColorManager.pieFood,
-            value: co2Food.value,
-            radius: 35.w,
-            showTitle: false,
-          ),
-        ],
-        centerSpaceRadius: 75.w,
-        borderData: FlBorderData(
-          show: false,
+          sectionsSpace: 10.w,
         ),
-        sectionsSpace: 10.w,
-      ),
-    );
+      );
+    });
   }
 }
 
