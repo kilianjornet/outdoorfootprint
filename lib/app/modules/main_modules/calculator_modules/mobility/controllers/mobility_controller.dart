@@ -80,7 +80,7 @@ class MobilityController extends GetxController {
     }
   }
 
-  void updateButtonState(dynamic value) {
+  void updateButtonState() {
     if (total.value == 0.0 || total.value.isNaN) {
       isEnable.value = false;
     } else {

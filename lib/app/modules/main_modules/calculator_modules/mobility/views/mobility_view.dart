@@ -43,10 +43,10 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.quantityController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                   ),
@@ -60,10 +60,10 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.distanceController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                   ),
@@ -80,15 +80,16 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.planeController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                     onSelectedItemChanged: (int index) {
                       controller.planeController.text = '$index';
                       controller.calculateTotalCarbon();
+                      controller.updateButtonState();
                     },
                   ),
                 ],
@@ -105,10 +106,10 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.busController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                   ),
@@ -126,10 +127,10 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.trainController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                   ),
@@ -146,10 +147,10 @@ class MobilityView extends GetView<MobilityController> {
                       if (value.isEmpty) {
                         controller.helicopterController.text = '0';
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       } else {
                         controller.calculateTotalCarbon();
-                        controller.updateButtonState(value);
+                        controller.updateButtonState();
                       }
                     },
                   ),
