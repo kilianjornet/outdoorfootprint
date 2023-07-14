@@ -7,6 +7,7 @@ import '../../../../../data/utils/widget_manager.dart';
 
 class GearController extends GetxController {
   final gearService = GearService();
+
   final runningController = TextEditingController();
   final skisController = TextEditingController();
   final ropeController = TextEditingController();
@@ -23,6 +24,7 @@ class GearController extends GetxController {
   final swimController = TextEditingController();
   final smartController = TextEditingController();
   final tentController = TextEditingController();
+
   final runningNode = FocusNode();
   final skisNode = FocusNode();
   final ropeNode = FocusNode();
@@ -39,6 +41,7 @@ class GearController extends GetxController {
   final swimNode = FocusNode();
   final smartNode = FocusNode();
   final tentNode = FocusNode();
+
   var isEnable = false.obs;
   var total = 0.0.obs;
 
@@ -50,42 +53,12 @@ class GearController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    runningController.text = '0';
-    skisController.text = '0';
-    ropeController.text = '0';
-    gearController.text = '0';
-    bikeController.text = '0';
-    polyesterController.text = '0';
-    cottonController.text = '0';
-    jacketController.text = '0';
-    sockController.text = '0';
-    pantController.text = '0';
-    globeController.text = '0';
-    sportController.text = '0';
-    skiClothController.text = '0';
-    swimController.text = '0';
-    smartController.text = '0';
-    tentController.text = '0';
+    initializeControllersWithDefaultValue();
   }
 
   @override
   void onClose() {
-    runningController.dispose();
-    skisController.dispose();
-    ropeController.dispose();
-    gearController.dispose();
-    bikeController.dispose();
-    polyesterController.dispose();
-    cottonController.dispose();
-    jacketController.dispose();
-    sockController.dispose();
-    pantController.dispose();
-    globeController.dispose();
-    sportController.dispose();
-    skiClothController.dispose();
-    swimController.dispose();
-    smartController.dispose();
-    tentController.dispose();
+    disposeControllers();
     super.onClose();
   }
 
@@ -114,38 +87,46 @@ class GearController extends GetxController {
   }
 
   void calculateConversion() {
-    const co2Running = 13.6;
-    const co2Skis = 45.2;
-    const co2Rope = 0.25;
-    const co2Gear = 12.0;
-    const co2Bike = 300.0;
-    const co2Polyester = 15.0;
-    const co2Cotton = 10.0;
-    const co2Jacket = 18.0;
-    const co2Sock = 1.9;
-    const co2Pant = 9.0;
-    const co2Globe = 2.0;
-    const co2Sport = 6.1;
-    const co2SkiCloth = 15.0;
-    const co2Swim = 1.8;
-    const co2Smart = 40.0;
-    const co2Tent = 13.0;
-    final runningKg = calculateKg(runningController, co2Running);
-    final skisKg = calculateKg(skisController, co2Skis);
-    final ropeKg = calculateKg(ropeController, co2Rope);
-    final gearKg = calculateKg(gearController, co2Gear);
-    final bikeKg = calculateKg(bikeController, co2Bike);
-    final polyesterKg = calculateKg(polyesterController, co2Polyester);
-    final cottonKg = calculateKg(cottonController, co2Cotton);
-    final jacketKg = calculateKg(jacketController, co2Jacket);
-    final sockKg = calculateKg(sockController, co2Sock);
-    final pantKg = calculateKg(pantController, co2Pant);
-    final globeKg = calculateKg(globeController, co2Globe);
-    final sportKg = calculateKg(sportController, co2Sport);
-    final skiClothKg = calculateKg(skiClothController, co2SkiCloth);
-    final swimKg = calculateKg(swimController, co2Swim);
-    final smartKg = calculateKg(smartController, co2Smart);
-    final tentKg = calculateKg(tentController, co2Tent);
+    const conversions = {
+      'running': 13.6,
+      'skis': 45.2,
+      'rope': 0.25,
+      'gear': 12.0,
+      'bike': 300.0,
+      'polyester': 15.0,
+      'cotton': 10.0,
+      'jacket': 18.0,
+      'sock': 1.9,
+      'pant': 9.0,
+      'globe': 2.0,
+      'sport': 6.1,
+      'skiCloth': 15.0,
+      'swim': 1.8,
+      'smart': 40.0,
+      'tent': 13.0,
+    };
+
+    double calculateKg(TextEditingController controller, String key) {
+      final controllerValue = double.tryParse(controller.text) ?? 0.0;
+      return controllerValue * conversions[key]!;
+    }
+
+    final runningKg = calculateKg(runningController, 'running');
+    final skisKg = calculateKg(skisController, 'skis');
+    final ropeKg = calculateKg(ropeController, 'rope');
+    final gearKg = calculateKg(gearController, 'gear');
+    final bikeKg = calculateKg(bikeController, 'bike');
+    final polyesterKg = calculateKg(polyesterController, 'polyester');
+    final cottonKg = calculateKg(cottonController, 'cotton');
+    final jacketKg = calculateKg(jacketController, 'jacket');
+    final sockKg = calculateKg(sockController, 'sock');
+    final pantKg = calculateKg(pantController, 'pant');
+    final globeKg = calculateKg(globeController, 'globe');
+    final sportKg = calculateKg(sportController, 'sport');
+    final skiClothKg = calculateKg(skiClothController, 'skiCloth');
+    final swimKg = calculateKg(swimController, 'swim');
+    final smartKg = calculateKg(smartController, 'smart');
+    final tentKg = calculateKg(tentController, 'tent');
 
     total.value = runningKg +
         skisKg +
@@ -172,10 +153,56 @@ class GearController extends GetxController {
   }
 
   void updateButtonState() {
-    if (total.value == 0.0 || total.value.isNaN) {
-      isEnable.value = false;
-    } else {
-      isEnable.value = true;
+    isEnable.value = total.value != 0.0 && !total.value.isNaN;
+  }
+
+  void initializeControllersWithDefaultValue() {
+    final controllers = [
+      runningController,
+      skisController,
+      ropeController,
+      gearController,
+      bikeController,
+      polyesterController,
+      cottonController,
+      jacketController,
+      sockController,
+      pantController,
+      globeController,
+      sportController,
+      skiClothController,
+      swimController,
+      smartController,
+      tentController,
+    ];
+
+    for (var controller in controllers) {
+      controller.text = '0';
+    }
+  }
+
+  void disposeControllers() {
+    final controllers = [
+      runningController,
+      skisController,
+      ropeController,
+      gearController,
+      bikeController,
+      polyesterController,
+      cottonController,
+      jacketController,
+      sockController,
+      pantController,
+      globeController,
+      sportController,
+      skiClothController,
+      swimController,
+      smartController,
+      tentController,
+    ];
+
+    for (var controller in controllers) {
+      controller.dispose();
     }
   }
 }
