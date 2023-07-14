@@ -15,9 +15,10 @@ import '../../../calculator_modules/house/views/oil_dialog_view.dart';
 class OthersWidgets {
   OthersWidgets._();
   static Widget textWithField({
-    required String? fieldName,
+    required String fieldName,
     required var isEnable,
-    required String? dropdownvalue,
+    required var dropdownvalue,
+    void Function(String?)? onChanged,
   }) {
     var isPressed = false.obs;
     return GestureDetector(
@@ -40,7 +41,7 @@ class OthersWidgets {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                fieldName!,
+                fieldName,
                 style: GoogleFonts.oswald(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
@@ -53,19 +54,85 @@ class OthersWidgets {
             height: 8.h,
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: ColorManager
-                      .dropdownColor, //background color of dropdown button
-                  border: Border.all(
-                      color: ColorManager.dropdownColor,
-                      width: 3), //border of dropdown button
-                  borderRadius: BorderRadius.circular(
-                      8), //border raiuds of dropdown button
-                ),
-                child: const SizedBox(),
-              ))
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: ColorManager
+                    .dropdownColor, //background color of dropdown button
+                border: Border.all(
+                    color: ColorManager.dropdownColor,
+                    width: 3), //border of dropdown button
+                borderRadius:
+                    BorderRadius.circular(8), //border raiuds of dropdown button
+              ),
+              child: Obx(() => DropdownButton<String>(
+                    value: dropdownvalue.value,
+                    hint: null,
+                    isExpanded: true,
+                    items: <String>[
+                      '0',
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                      '6',
+                      '7',
+                      '8',
+                      '9',
+                      '10',
+                      '11',
+                      '12',
+                      '13',
+                      '14',
+                      '15',
+                      '16',
+                      '17',
+                      '18',
+                      '19',
+                      '20',
+                      '21',
+                      '22',
+                      '23',
+                      '24',
+                      '25',
+                      '26',
+                      '27',
+                      '28',
+                      '29',
+                      '30',
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value:
+                            value, // Assign unique values to each DropdownMenuItem
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            value,
+                            style: GoogleFonts.oswald(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: ColorManager.labelText,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: onChanged,
+                    icon: const Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Icon(Icons.arrow_drop_down),
+                    ),
+                    iconEnabledColor: ColorManager.labelText,
+                    style: GoogleFonts.oswald(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: ColorManager.labelText,
+                    ),
+                    dropdownColor: ColorManager.white,
+                  )),
+            ),
+          )
         ],
       ),
     );
@@ -198,9 +265,9 @@ class OthersWidgets {
       case FieldType.digits:
         title = labelName!;
         inputType = TextInputType.name;
-          inputFormatter = [
+        inputFormatter = [
           FilteringTextInputFormatter.digitsOnly,
-          ];
+        ];
         validator = (value) {
           if (value!.isEmpty) {
             return null;

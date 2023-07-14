@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/services/main_services/calculator_services/gear_service.dart';
 
@@ -6,31 +6,41 @@ import '../../../../../data/utils/crud_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
 
 class GearController extends GetxController {
-  //TODO: Implement GearController
-
-  final count = 0.obs;
-  var isEnable = true.obs;
-  var isButtonEnable = false.obs;
-  var dropdownValue = "".obs;
-  var total = 0.0.obs;
   final gearService = GearService();
-  var sum = 0.0.obs;
-  var selectedDropdownValue1 = "0".obs;
-  var selectedDropdownValue2 = "0".obs;
-  var selectedDropdownValue3 = "0".obs;
-  var selectedDropdownValue4 = "0".obs;
-  var selectedDropdownValue5 = "0".obs;
-  var selectedDropdownValue6 = "0".obs;
-  var selectedDropdownValue7 = "0".obs;
-  var selectedDropdownValue8 = "0".obs;
-  var selectedDropdownValue9 = "0".obs;
-  var selectedDropdownValue10 = "0".obs;
-  var selectedDropdownValue11 = "0".obs;
-  var selectedDropdownValue12 = "0".obs;
-  var selectedDropdownValue13 = "0".obs;
-  var selectedDropdownValue14 = "0".obs;
-  var selectedDropdownValue15 = "0".obs;
-  var selectedDropdownValue16 = "0".obs;
+  final runningController = TextEditingController();
+  final skisController = TextEditingController();
+  final ropeController = TextEditingController();
+  final gearController = TextEditingController();
+  final bikeController = TextEditingController();
+  final polyesterController = TextEditingController();
+  final cottonController = TextEditingController();
+  final jacketController = TextEditingController();
+  final sockController = TextEditingController();
+  final pantController = TextEditingController();
+  final globeController = TextEditingController();
+  final sportController = TextEditingController();
+  final skiClothController = TextEditingController();
+  final swimController = TextEditingController();
+  final smartController = TextEditingController();
+  final tentController = TextEditingController();
+  final runningNode = FocusNode();
+  final skisNode = FocusNode();
+  final ropeNode = FocusNode();
+  final gearNode = FocusNode();
+  final bikeNode = FocusNode();
+  final polyesterNode = FocusNode();
+  final cottonNode = FocusNode();
+  final jacketNode = FocusNode();
+  final sockNode = FocusNode();
+  final pantNode = FocusNode();
+  final globeNode = FocusNode();
+  final sportNode = FocusNode();
+  final skiClothNode = FocusNode();
+  final swimNode = FocusNode();
+  final smartNode = FocusNode();
+  final tentNode = FocusNode();
+  var isEnable = false.obs;
+  var total = 0.0.obs;
 
   @override
   void onInit() {
@@ -40,19 +50,42 @@ class GearController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    calculateConversion();
-    if (kDebugMode) {
-      print(dropdownValue.value);
-    }
+    runningController.text = '0';
+    skisController.text = '0';
+    ropeController.text = '0';
+    gearController.text = '0';
+    bikeController.text = '0';
+    polyesterController.text = '0';
+    cottonController.text = '0';
+    jacketController.text = '0';
+    sockController.text = '0';
+    pantController.text = '0';
+    globeController.text = '0';
+    sportController.text = '0';
+    skiClothController.text = '0';
+    swimController.text = '0';
+    smartController.text = '0';
+    tentController.text = '0';
   }
 
   @override
   void onClose() {
-    selectedDropdownValue1.close();
-    selectedDropdownValue2.close();
-    selectedDropdownValue3.close();
-    selectedDropdownValue4.close();
-    total.close();
+    runningController.dispose();
+    skisController.dispose();
+    ropeController.dispose();
+    gearController.dispose();
+    bikeController.dispose();
+    polyesterController.dispose();
+    cottonController.dispose();
+    jacketController.dispose();
+    sockController.dispose();
+    pantController.dispose();
+    globeController.dispose();
+    sportController.dispose();
+    skiClothController.dispose();
+    swimController.dispose();
+    smartController.dispose();
+    tentController.dispose();
     super.onClose();
   }
 
@@ -81,59 +114,68 @@ class GearController extends GetxController {
   }
 
   void calculateConversion() {
-    final labelValue1 = double.tryParse(selectedDropdownValue1.value) ?? 0.0;
-    final labelValue2 = double.tryParse(selectedDropdownValue2.value) ?? 0.0;
-    final labelValue3 = double.tryParse(selectedDropdownValue3.value) ?? 0.0;
-    final labelValue4 = double.tryParse(selectedDropdownValue4.value) ?? 0.0;
-    final labelValue5 = double.tryParse(selectedDropdownValue5.value) ?? 0.0;
-    final labelValue6 = double.tryParse(selectedDropdownValue6.value) ?? 0.0;
-    final labelValue7 = double.tryParse(selectedDropdownValue7.value) ?? 0.0;
-    final labelValue8 = double.tryParse(selectedDropdownValue8.value) ?? 0.0;
-    final labelValue9 = double.tryParse(selectedDropdownValue9.value) ?? 0.0;
-    final labelValue10 = double.tryParse(selectedDropdownValue10.value) ?? 0.0;
-    final labelValue11 = double.tryParse(selectedDropdownValue11.value) ?? 0.0;
-    final labelValue12 = double.tryParse(selectedDropdownValue12.value) ?? 0.0;
-    final labelValue13 = double.tryParse(selectedDropdownValue13.value) ?? 0.0;
-    final labelValue14 = double.tryParse(selectedDropdownValue14.value) ?? 0.0;
-    final labelValue15 = double.tryParse(selectedDropdownValue15.value) ?? 0.0;
+    const co2Running = 13.6;
+    const co2Skis = 45.2;
+    const co2Rope = 0.25;
+    const co2Gear = 12.0;
+    const co2Bike = 300.0;
+    const co2Polyester = 15.0;
+    const co2Cotton = 10.0;
+    const co2Jacket = 18.0;
+    const co2Sock = 1.9;
+    const co2Pant = 9.0;
+    const co2Globe = 2.0;
+    const co2Sport = 6.1;
+    const co2SkiCloth = 15.0;
+    const co2Swim = 1.8;
+    const co2Smart = 40.0;
+    const co2Tent = 13.0;
+    final runningKg = calculateKg(runningController, co2Running);
+    final skisKg = calculateKg(skisController, co2Skis);
+    final ropeKg = calculateKg(ropeController, co2Rope);
+    final gearKg = calculateKg(gearController, co2Gear);
+    final bikeKg = calculateKg(bikeController, co2Bike);
+    final polyesterKg = calculateKg(polyesterController, co2Polyester);
+    final cottonKg = calculateKg(cottonController, co2Cotton);
+    final jacketKg = calculateKg(jacketController, co2Jacket);
+    final sockKg = calculateKg(sockController, co2Sock);
+    final pantKg = calculateKg(pantController, co2Pant);
+    final globeKg = calculateKg(globeController, co2Globe);
+    final sportKg = calculateKg(sportController, co2Sport);
+    final skiClothKg = calculateKg(skiClothController, co2SkiCloth);
+    final swimKg = calculateKg(swimController, co2Swim);
+    final smartKg = calculateKg(smartController, co2Smart);
+    final tentKg = calculateKg(tentController, co2Tent);
 
-    final convertedValue1 = labelValue1 * 13.6;
-    final convertedValue2 = labelValue2 * 45.2;
-    final convertedValue3 = labelValue3 * 0.25;
-    final convertedValue4 = labelValue4 * 12;
-    final convertedValue5 = labelValue5 * 300;
+    total.value = runningKg +
+        skisKg +
+        ropeKg +
+        gearKg +
+        bikeKg +
+        polyesterKg +
+        cottonKg +
+        cottonKg +
+        jacketKg +
+        sockKg +
+        pantKg +
+        globeKg +
+        sportKg +
+        skiClothKg +
+        swimKg +
+        smartKg +
+        tentKg;
+  }
 
-    final convertedValue6 = labelValue6 * 15;
-    final convertedValue7 = labelValue7 * 10;
-    final convertedValue8 = labelValue8 * 18;
-    final convertedValue9 = labelValue9 * 1.9;
-    final convertedValue10 = labelValue10 * 9;
+  double calculateKg(TextEditingController controller, double conversionValue) {
+    final controllerValue = double.tryParse(controller.text) ?? 0.0;
+    return controllerValue * conversionValue;
+  }
 
-    final convertedValue11 = labelValue11 * 2;
-    final convertedValue12 = labelValue12 * 6.1;
-    final convertedValue13 = labelValue13 * 15;
-    final convertedValue14 = labelValue14 * 1.8;
-    final convertedValue15 = labelValue15 * 40;
-
-    total.value = convertedValue1 +
-        convertedValue2 +
-        convertedValue3 +
-        convertedValue4 +
-        convertedValue5 +
-        convertedValue6 +
-        convertedValue7 +
-        convertedValue8 +
-        convertedValue9 +
-        convertedValue10 +
-        convertedValue11 +
-        convertedValue12 +
-        convertedValue13 +
-        convertedValue14 +
-        convertedValue15;
-    if(total.value==0.0){
-      isButtonEnable.value=false;
-    }else {
-      isButtonEnable.value=true;
+  void updateButtonState() {
+    if (total.value == 0.0 || total.value.isNaN) {
+      isEnable.value = false;
+    } else {
+      isEnable.value = true;
     }
   }
 }

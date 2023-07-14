@@ -1,134 +1,102 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
+import '../../../../../data/utils/asset_manager.dart';
 import '../../../../../data/utils/color_manager.dart';
 
 class GearWidget {
   GearWidget._();
 
-  static Widget textWithField({
-    required String fieldName,
-    required var isEnable,
-    required var dropdownvalue,
-    void Function(String?)? onChanged,
+  static Widget customFieldWithUnit({
+    required String subtitle,
+    required void Function(int)? onSelectedItemChanged,
+    required TextEditingController controller,
+    required FocusNode node,
+    required void Function(String)? onChanged,
   }) {
-    var isPressed = false.obs;
-    return GestureDetector(
-      onTapDown: (value) {
-        if (isEnable.value == true) {
-          isPressed.value = true;
-        }
-      },
-      onTapUp: (value) {
-        if (isEnable.value == true) {
-          isPressed.value = false;
-        }
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                fieldName,
-                style: GoogleFonts.oswald(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: ColorManager.labelText,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 5.h,
+          ),
+          child: Text(
+            subtitle,
+            style: GoogleFonts.oswald(
+              fontWeight: FontWeight.w400,
+              fontSize: 14.sp,
+              color: ColorManager.labelText,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            bottom: 10.h,
+          ),
+          child: TextFormField(
+            onTapOutside: (value) {
+              FocusManager.instance.primaryFocus!.unfocus();
+            },
+            onChanged: onChanged,
+            onTap: () async {
+              WidgetManager.showNumberPicker(
+                controller: controller,
+                type: DropdownType.plane,
+                onSelectedItemChanged: onSelectedItemChanged,
+              );
+            },
+            controller: controller,
+            focusNode: node,
+            readOnly: true,
+            decoration: InputDecoration(
+              isDense: true,
+              filled: true,
+              fillColor: ColorManager.secondaryField,
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorManager.button,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(
+                  10.w,
+                )),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorManager.white,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(
+                  10.w,
+                )),
+              ),
+              suffixIcon: Container(
+                padding: EdgeInsets.only(
+                  top: 19.h,
+                  left: 10.w,
+                  right: 15.w,
+                  bottom: 17.h,
+                ),
+                child: RotatedBox(
+                  quarterTurns: 1,
+                  child: SvgPicture.asset(
+                    AssetManager.arrowForward,
+                    width: 7.w,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 8.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: ColorManager
-                    .dropdownColor, //background color of dropdown button
-                border: Border.all(
-                    color: ColorManager.dropdownColor,
-                    width: 3), //border of dropdown button
-                borderRadius:
-                    BorderRadius.circular(8), //border raiuds of dropdown button
-              ),
-              child: Obx(() => DropdownButton<String>(
-                    value: dropdownvalue.value,
-                    hint: null,
-                    isExpanded: true,
-                    items: <String>[
-                      '0',
-                      '1',
-                      '2',
-                      '3',
-                      '4',
-                      '5',
-                      '6',
-                      '7',
-                      '8',
-                      '9',
-                      '10',
-                      '11',
-                      '12',
-                      '13',
-                      '14',
-                      '15',
-                      '16',
-                      '17',
-                      '18',
-                      '19',
-                      '20',
-                      '21',
-                      '22',
-                      '23',
-                      '24',
-                      '25',
-                      '26',
-                      '27',
-                      '28',
-                      '29',
-                      '30',
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value:
-                            value, // Assign unique values to each DropdownMenuItem
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            value,
-                            style: GoogleFonts.oswald(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: ColorManager.labelText,
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: onChanged,
-                    icon: const Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Icon(Icons.arrow_drop_down),
-                    ),
-                    iconEnabledColor: ColorManager.labelText,
-                    style: GoogleFonts.oswald(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: ColorManager.labelText,
-                    ),
-                    dropdownColor: ColorManager.white,
-                  )),
+            style: GoogleFonts.oswald(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              color: ColorManager.labelText,
             ),
-          )
-        ],
-      ),
+            cursorColor: ColorManager.cursor,
+          ),
+        ),
+      ],
     );
   }
 }

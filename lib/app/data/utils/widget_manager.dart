@@ -1102,7 +1102,7 @@ class WidgetManager {
         number = 20;
         break;
       case DropdownType.plane:
-        number = 100;
+        number = 101;
         break;
     }
 

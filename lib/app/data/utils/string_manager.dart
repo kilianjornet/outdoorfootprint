@@ -37,7 +37,7 @@ class StringManager {
   static const othersDetails =
       'How much have you spent in those items and services';
   static const gear = 'Gear';
-  static const gearStartingText =
+  static const gearTitle =
       'Add the number of new pieces of gear you have bought:';
   static const notification = 'Notification';
   static const calculator = 'Calculator';
@@ -69,22 +69,23 @@ class StringManager {
   static const calculatorCat3 = 'Gear';
   static const calculatorCat4 = 'Foods & Others';
   static const calculatorCat5 = 'Public Service Share';
-  static const gearLabel1 = 'Running shoe (pair)';
-  static const gearLabel2 = 'Skis (pair) ';
-  static const gearLabel3 = 'Kg of climbing rope(normally a rope weights 4kg)';
-  static const gearLabel4 = ' Kg of climbing gear(cams, nuts, pitons…)';
-  static const gearLabel5 = 'Bike (113-400)';
-  static const gearLabel6 = 'Polyester tee-shirt';
-  static const gearLabel7 = 'Tee-shirt cotton';
-  static const gearLabel8 = 'Jacket ';
-  static const gearLabel9 = 'Underwear/shocks';
-  static const gearLabel10 = 'Pants';
-  static const gearLabel11 = 'Globes';
-  static const gearLabel12 = 'Sportswear (Piece)';
-  static const gearLabel13 = 'Ski clothes (Piece)';
-  static const gearLabel14 = 'Swimwear';
-  static const gearLabel15 = 'Smart watch';
-  static const gearLabel16 = 'Tent';
+  static const runningShoe = 'Running shoe (pair)';
+  static const skis = 'Skis (pair) ';
+  static const climbingRope =
+      'Kg of climbing rope(normally a rope weights 4kg)';
+  static const climbingGear = ' Kg of climbing gear(cams, nuts, pitons…)';
+  static const bike = 'Bike (113-400)';
+  static const polyester = 'Polyester tee-shirt';
+  static const cotton = 'Tee-shirt cotton';
+  static const jacket = 'Jacket ';
+  static const socks = 'Underwear/shocks';
+  static const pants = 'Pants';
+  static const globes = 'Globes';
+  static const sports = 'Sportswear (Piece)';
+  static const skiCloth = 'Ski clothes (Piece)';
+  static const swim = 'Swimwear';
+  static const smart = 'Smart watch';
+  static const tent = 'Tent';
   static const gearLabel17 =
       'Custom (If you know the exact footprint of a product)';
   static const house = 'House';

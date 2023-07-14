@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../../data/utils/color_manager.dart';
 import '../../../../../data/utils/string_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
-import '../../gear/widgets/gearwidget.dart';
 import '../controllers/others_controller.dart';
 
 class OthersView extends GetView<OthersController> {
@@ -73,7 +72,7 @@ class OthersView extends GetView<OthersController> {
                             controller: controller.labelController1,
                             node: controller.labelControllerNode1,
                             type: FieldType.digits,
-                            onChanged:(value) async {
+                            onChanged: (value) async {
                               if (value.isEmpty) {
                                 controller.labelController1.text = '0';
                                 controller.calculateConversion();
@@ -102,7 +101,7 @@ class OthersView extends GetView<OthersController> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: TextButton(
-                              onPressed: ()async {
+                              onPressed: () async {
                                 // const url = 'https://www.hotelfootprints.org';
                                 // if(await canLaunch(url)){
                                 //   await launch(url);
@@ -116,8 +115,7 @@ class OthersView extends GetView<OthersController> {
                                   throw 'Could not launch $url';
                                 }
                               },
-                              style: TextButton.styleFrom(
-                              ),
+                              style: TextButton.styleFrom(),
                               child: const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Row(
@@ -125,8 +123,7 @@ class OthersView extends GetView<OthersController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Icon(
-                                        Icons.language,
+                                    Icon(Icons.language,
                                         color: Color(0xFFED92A2)),
                                     SizedBox(width: 10.0),
                                     Text('https://www.hotelfootprints.org',
@@ -141,8 +138,7 @@ class OthersView extends GetView<OthersController> {
                           ),
                         ],
                       ),
-                    )
-                ),
+                    )),
                 SizedBox(
                   height: 8.h,
                 ),
@@ -335,7 +331,8 @@ class OthersView extends GetView<OthersController> {
                                   controller.updateButtonState(value);
                                 } else {
                                   controller.calculateConversion();
-                                  controller.updateButtonState(value);                               }
+                                  controller.updateButtonState(value);
+                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -357,7 +354,8 @@ class OthersView extends GetView<OthersController> {
                                   controller.updateButtonState(value);
                                 } else {
                                   controller.calculateConversion();
-                                  controller.updateButtonState(value);                                }
+                                  controller.updateButtonState(value);
+                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -380,7 +378,8 @@ class OthersView extends GetView<OthersController> {
                                   controller.updateButtonState(value);
                                 } else {
                                   controller.calculateConversion();
-                                  controller.updateButtonState(value);                                }
+                                  controller.updateButtonState(value);
+                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -402,7 +401,8 @@ class OthersView extends GetView<OthersController> {
                                   controller.updateButtonState(value);
                                 } else {
                                   controller.calculateConversion();
-                                  controller.updateButtonState(value);                              }
+                                  controller.updateButtonState(value);
+                                }
                               },
                               unitName: StringManager.days,
                             ),
@@ -421,7 +421,8 @@ class OthersView extends GetView<OthersController> {
                             controller.updateButtonState(value);
                           } else {
                             controller.calculateConversion();
-                            controller.updateButtonState(value);                         }
+                            controller.updateButtonState(value);
+                          }
                         },
                         unitName: StringManager.days,
                       ),
@@ -498,7 +499,8 @@ class OthersView extends GetView<OthersController> {
                                     controller.updateButtonState(value);
                                   } else {
                                     controller.calculateConversion();
-                                    controller.updateButtonState(value);                                  }
+                                    controller.updateButtonState(value);
+                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -520,7 +522,8 @@ class OthersView extends GetView<OthersController> {
                                     controller.updateButtonState(value);
                                   } else {
                                     controller.calculateConversion();
-                                    controller.updateButtonState(value);                                 }
+                                    controller.updateButtonState(value);
+                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -539,7 +542,8 @@ class OthersView extends GetView<OthersController> {
                               controller.updateButtonState(value);
                             } else {
                               controller.calculateConversion();
-                              controller.updateButtonState(value);                          }
+                              controller.updateButtonState(value);
+                            }
                           },
                           unitName: StringManager.days,
                         ),
@@ -555,7 +559,8 @@ class OthersView extends GetView<OthersController> {
                               controller.updateButtonState(value);
                             } else {
                               controller.calculateConversion();
-                              controller.updateButtonState(value);                           }
+                              controller.updateButtonState(value);
+                            }
                           },
                           unitName: StringManager.days,
                         ),
@@ -575,7 +580,8 @@ class OthersView extends GetView<OthersController> {
                                     controller.updateButtonState(value);
                                   } else {
                                     controller.calculateConversion();
-                                    controller.updateButtonState(value);                                  }
+                                    controller.updateButtonState(value);
+                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -597,7 +603,8 @@ class OthersView extends GetView<OthersController> {
                                     controller.updateButtonState(value);
                                   } else {
                                     controller.calculateConversion();
-                                    controller.updateButtonState(value);                                 }
+                                    controller.updateButtonState(value);
+                                  }
                                 },
                                 unitName: StringManager.days,
                               ),
@@ -616,7 +623,8 @@ class OthersView extends GetView<OthersController> {
                               controller.updateButtonState(value);
                             } else {
                               controller.calculateConversion();
-                              controller.updateButtonState(value);                       }
+                              controller.updateButtonState(value);
+                            }
                           },
                           unitName: StringManager.days,
                         ),
@@ -671,12 +679,14 @@ class OthersView extends GetView<OthersController> {
                             children: [
                               Expanded(
                                 flex: 1,
-                                child: GearWidget.textWithField(
+                                child: OthersWidgets.textWithField(
                                   fieldName: StringManager.othersLabel17,
                                   isEnable: controller.isEnable,
-                                  dropdownvalue: controller.selectedDropdownValue1,
+                                  dropdownvalue:
+                                      controller.selectedDropdownValue1,
                                   onChanged: (value) {
-                                    controller.selectedDropdownValue1.value = value!;
+                                    controller.selectedDropdownValue1.value =
+                                        value!;
                                     controller.calculateConversion();
                                   },
                                 ),
@@ -686,19 +696,21 @@ class OthersView extends GetView<OthersController> {
                               ),
                               Expanded(
                                 flex: 1,
-                                child: GearWidget.textWithField(
+                                child: OthersWidgets.textWithField(
                                   fieldName: StringManager.othersLabel18,
                                   isEnable: controller.isEnable,
-                                  dropdownvalue: controller.selectedDropdownValue2,
+                                  dropdownvalue:
+                                      controller.selectedDropdownValue2,
                                   onChanged: (value) {
-                                    controller.selectedDropdownValue2.value = value!;
+                                    controller.selectedDropdownValue2.value =
+                                        value!;
                                     controller.calculateConversion();
                                   },
                                 ),
                               ),
                             ],
                           ),
-                          GearWidget.textWithField(
+                          OthersWidgets.textWithField(
                             fieldName: StringManager.othersLabel19,
                             isEnable: controller.isEnable,
                             dropdownvalue: controller.selectedDropdownValue3,
