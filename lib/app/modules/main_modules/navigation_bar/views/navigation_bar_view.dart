@@ -24,8 +24,8 @@ class NavigationBarView extends GetView<NavigationBarController> {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(
-                0.5,
+              color: ColorManager.boxShadow.withOpacity(
+                0.3,
               ),
               spreadRadius: 10,
               blurRadius: 20,
