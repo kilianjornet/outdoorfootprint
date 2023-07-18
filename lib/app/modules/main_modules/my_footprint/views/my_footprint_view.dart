@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/api_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
 import '../../../../data/utils/stacked_barchart.dart';
 import '../../../../data/utils/string_manager.dart';
@@ -29,23 +27,37 @@ class MyFootprintView extends GetView<MyFootprintController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(height: 16.h,),
+              SizedBox(
+                height: 16.h,
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
-                child: MyFootprintWidget.shadowCanvas(children:[
-                  SizedBox(height: 16.h,),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
+                child: MyFootprintWidget.shadowCanvas(children: [
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   const HorizontalBarChart(),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   const HorizontalBarChart(),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   const HorizontalBarChart(),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                   const HorizontalBarChart(),
-                  SizedBox(height: 16.h,),
+                  SizedBox(
+                    height: 16.h,
+                  ),
                 ]),
               ),
-              SizedBox(height: 16.h,),
-
+              SizedBox(
+                height: 16.h,
+              ),
               Text(
                 StringManager.currentYear,
                 textAlign: TextAlign.center,
@@ -55,7 +67,6 @@ class MyFootprintView extends GetView<MyFootprintController> {
                   color: ColorManager.captionText,
                 ),
               ),
-
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -71,7 +82,6 @@ class MyFootprintView extends GetView<MyFootprintController> {
                           color: ColorManager.captionText,
                         ),
                       ),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -84,7 +94,6 @@ class MyFootprintView extends GetView<MyFootprintController> {
                               color: ColorManager.button,
                             ),
                           ),
-
                           Text(
                             StringManager.ton,
                             textAlign: TextAlign.center,
@@ -94,11 +103,10 @@ class MyFootprintView extends GetView<MyFootprintController> {
                               color: ColorManager.button,
                             ),
                           ),
-                      ],),
-
-
-                  ],),
-
+                        ],
+                      ),
+                    ],
+                  ),
                   AspectRatio(
                     aspectRatio: 1,
                     child: MyFootprintWidget.pieChart(
@@ -205,10 +213,8 @@ class MyFootprintView extends GetView<MyFootprintController> {
                       ],
                     ),
                   ],
-
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: SizedBox(
@@ -237,16 +243,15 @@ class MyFootprintView extends GetView<MyFootprintController> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: TextButton(
-                    onPressed: ()async {
+                    onPressed: () async {
                       const url = ApiManager.perCapita;
-                      if(await canLaunch(url)){
+                      if (await canLaunch(url)) {
                         await launch(url);
-                      }else {
+                      } else {
                         throw 'Could not launch $url';
                       }
                     },
-                    style: TextButton.styleFrom(
-                    ),
+                    style: TextButton.styleFrom(),
                     child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Row(
@@ -254,9 +259,7 @@ class MyFootprintView extends GetView<MyFootprintController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(
-                              Icons.language,
-                              color: Color(0xFFED92A2)),
+                          Icon(Icons.language, color: Color(0xFFED92A2)),
                           SizedBox(width: 10.0),
                           Text(StringManager.perCapitaUrl,
                               style: TextStyle(
