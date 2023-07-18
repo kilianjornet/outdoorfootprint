@@ -184,6 +184,7 @@ class StringManager {
   static const kgCo = 'Kg of CO2e';
   static const tonCo = 'Tons of CO2e';
   static const co = 'CO2e';
+  static const co2 = 'CO2';
   static const ton = 'Tons';
   static const tip = 'Tips';
   static const tipTitle =

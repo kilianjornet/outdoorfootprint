@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../data/utils/asset_manager.dart';
 import '../../../../data/utils/color_manager.dart';
+import '../../../../data/utils/stacked_barchart.dart';
 import '../../../../data/utils/string_manager.dart';
 import '../../../../data/utils/widget_manager.dart';
 import '../controllers/my_footprint_controller.dart';
@@ -28,22 +29,84 @@ class MyFootprintView extends GetView<MyFootprintController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              SizedBox(height: 16.h,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                child: MyFootprintWidget.shadowCanvas(children:[
+                  SizedBox(height: 16.h,),
+                  const HorizontalBarChart(),
+                  SizedBox(height: 16.h,),
+                  const HorizontalBarChart(),
+                  SizedBox(height: 16.h,),
+                  const HorizontalBarChart(),
+                  SizedBox(height: 16.h,),
+                  const HorizontalBarChart(),
+                  SizedBox(height: 16.h,),
+                ]),
+              ),
+              SizedBox(height: 16.h,),
+
+              Text(
+                StringManager.currentYear,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.oswald(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 24.sp,
+                  color: ColorManager.captionText,
+                ),
+              ),
+
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  Text(
-                    StringManager.currentYear,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 24.sp,
-                      color: ColorManager.captionText,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        StringManager.co2,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.oswald(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 24.sp,
+                          color: ColorManager.captionText,
+                        ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            controller.totalTon,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.oswald(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14.sp,
+                              color: ColorManager.button,
+                            ),
+                          ),
+
+                          Text(
+                            StringManager.ton,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.oswald(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14.sp,
+                              color: ColorManager.button,
+                            ),
+                          ),
+                      ],),
+
+
+                  ],),
+
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: MyFootprintWidget.pieChart(
+                      co2Home: controller.co2Home,
+                      co2Mobility: controller.co2Mobility,
+                      co2Gear: controller.co2Gear,
+                      co2Food: controller.co2Food,
                     ),
-                  ),
-                  SvgPicture.asset(
-                    AssetManager.barChart,
-                    height: 500.h,
-                    //height: 1000.h,
                   ),
                 ],
               ),
