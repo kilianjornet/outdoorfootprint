@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/main_services/home_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
@@ -7,14 +8,16 @@ import '../../../../data/services/main_services/profile_service.dart';
 import '../../../../data/utils/widget_manager.dart';
 
 class HomeController extends GetxController {
+  final homeService = HomeService();
   final profileService = ProfileService();
   final appBarKey = GlobalKey();
-  var totalKg = '1736.13';
-  var totalTon = '1.73613';
-  var co2Home = 0.0.obs;
-  var co2Mobility = 0.0.obs;
-  var co2Gear = 0.0.obs;
-  var co2Food = 0.0.obs;
+  var totalKg = 0.00.obs;
+  var totalTon = 0.00.obs;
+  var co2Home = 0.00.obs;
+  var co2Mobility = 0.00.obs;
+  var co2Gear = 0.00.obs;
+  var co2Food = 0.00.obs;
+  var co2Public = 0.00.obs;
   List<RxBool> isEnable = List.generate(2, (index) => true.obs);
   var openDialog = false.obs;
   var profileImage = ''.obs;
@@ -34,15 +37,41 @@ class HomeController extends GetxController {
     }
     profileImage.value = '${await CrudManager.getProfileImage()}';
     firstName.value = '${await CrudManager.getFirstName()}';
-    co2Home.value = 20.0;
-    co2Mobility.value = 35.0;
-    co2Gear.value = 25.0;
-    co2Food.value = 20.0;
+    await getUserTotal();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> getUserTotal() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final homeResponse = await homeService.getUserTotal();
+      co2Home.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalHomeCo2']}')!;
+      co2Mobility.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalMobilityCo2']}')!;
+      co2Gear.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalGearCo2']}')!;
+      co2Food.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalOtherCo2']}')!;
+      co2Public.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalPublicShareCo2']}')!;
+      totalKg.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalKgOfCo2']}')!;
+      totalTon.value = double.tryParse(
+          '${homeResponse['allCalculationByUserId']['totalTonsOfCo2']}')!;
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   Future<void> getProfile() async {
