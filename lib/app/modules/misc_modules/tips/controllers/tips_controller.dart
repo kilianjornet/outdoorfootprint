@@ -1,28 +1,12 @@
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/misc_services/tips_service.dart';
+
+import '../../../../data/utils/widget_manager.dart';
 
 class TipsController extends GetxController {
-  dynamic list = [
-    {
-      'title': 'When you go to the mountains',
-      'content':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar, lorem vitae mattis tincidunt, sem nisi efficitur quam, eget suscipit.'
-    },
-    {
-      'title': 'When eating',
-      'content':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper maximus varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur at mi ac convallis. Nunc aliquet, mauris sit.'
-    },
-    {
-      'title': 'When shopping',
-      'content':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id nisl neque. In et lorem et tortor interdum tincidunt. Sed sed iaculis velit. Etiam vitae velit eget erat mollis rhoncus eget quis elit. Nulla tincidunt luctus mauris non accumsan. Pellentesque.'
-    },
-    {
-      'title': 'At home',
-      'content':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in risus eu erat vestibulum cursus ut non massa. Nam maximus commodo orci, eu tincidunt arcu.'
-    },
-  ];
+  final tipsService = TipsService();
+  dynamic list = [].obs;
+  var tipsTitle = ''.obs;
   late List<RxBool> boolList = List.generate(list.length, (index) => false.obs);
   late List<RxBool> isPressed =
       List.generate(list.length, (index) => false.obs);
@@ -33,13 +17,31 @@ class TipsController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
+    await tips();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> tips() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final tipsResponse = await tipsService.tips();
+      tipsTitle.value = tipsResponse['allTips'][0]['tips_title'];
+      list.value = tipsResponse['allTips'][0]['content'];
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
   }
 
   void toggleExpand(int index) {

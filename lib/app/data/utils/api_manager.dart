@@ -43,4 +43,5 @@ class ApiManager {
   //Miscellaneous URL
   static const termsCondition = '/api/cms/app/terms';
   static const privacyPolicy = '/api/cms/app/privacy-policy';
+  static const tips = '/api/tips/app/list';
 }

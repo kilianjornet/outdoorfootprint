@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:my_outdoor_footprint/app/data/utils/asset_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/color_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/tips_controller.dart';
 
@@ -30,23 +32,27 @@ class TipsView extends GetView<TipsController> {
           ),
           child: Column(
             children: [
-              Text(
-                StringManager.tipTitle,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 24.sp,
-                  color: ColorManager.labelText,
-                ),
+              Obx(
+                () {
+                  return Text(
+                    controller.tipsTitle.value,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 24.sp,
+                      color: ColorManager.labelText,
+                    ),
+                  );
+                },
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                padding: EdgeInsets.only(
-                  top: 15.h,
-                ),
-                physics: const BouncingScrollPhysics(),
-                itemCount: controller.list.length,
-                itemBuilder: (context, index) {
-                  return Obx(() {
+              Obx(() {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(
+                    top: 15.h,
+                  ),
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: controller.list.value.length,
+                  itemBuilder: (context, index) {
                     return GestureDetector(
                       onTapDown: (value) {
                         controller.isPressed[index].value = true;
@@ -90,7 +96,7 @@ class TipsView extends GetView<TipsController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      controller.list[index]['title'],
+                                      controller.list[index]['content_title'],
                                       style: GoogleFonts.oswald(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14.sp,
@@ -122,13 +128,65 @@ class TipsView extends GetView<TipsController> {
                                           padding: EdgeInsets.only(
                                             top: 10.h,
                                           ),
-                                          child: Text(
-                                            controller.list[index]['content'],
-                                            style: GoogleFonts.oswald(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 14.sp,
-                                              color: ColorManager.labelText,
-                                            ),
+                                          child: Html(
+                                            data: controller.list[index]
+                                                ['content'],
+                                            onLinkTap: (url, _, __) async {
+                                              Uri uri = Uri.parse('$url');
+                                              String path = uri.path;
+                                              String host = uri.host;
+                                              List<String> pathSegments =
+                                                  path.split("/");
+                                              String desiredString =
+                                                  pathSegments.length > 2
+                                                      ? pathSegments[2]
+                                                      : "";
+                                              final Uri urls = Uri(
+                                                scheme: 'https',
+                                                host: host,
+                                                path: desiredString,
+                                              );
+                                              if (!await launchUrl(
+                                                urls,
+                                                mode: LaunchMode.inAppWebView,
+                                              )) {
+                                                throw Exception(
+                                                    'Could not launch $url');
+                                              }
+                                            },
+                                            style: {
+                                              'p': Style(
+                                                fontFamily: GoogleFonts.oswald()
+                                                    .fontFamily,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: FontSize(
+                                                  14.sp,
+                                                ),
+                                                color: ColorManager.labelText,
+                                                lineHeight: LineHeight(
+                                                  1.6.sp,
+                                                ),
+                                              ),
+                                              'ul': Style(
+                                                fontFamily: GoogleFonts.oswald()
+                                                    .fontFamily,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: FontSize(
+                                                  14.sp,
+                                                ),
+                                                color: ColorManager.labelText,
+                                                lineHeight: LineHeight(
+                                                  1.6.sp,
+                                                ),
+                                                margin: Margins.zero,
+                                                padding: HtmlPaddings.zero,
+                                              ),
+                                              'li': Style(
+                                                padding: HtmlPaddings.only(
+                                                  top: 5.h,
+                                                ), // Adjust the left padding value as per your preference
+                                              ),
+                                            },
                                           ),
                                         )
                                       : const SizedBox.shrink(),
@@ -139,9 +197,9 @@ class TipsView extends GetView<TipsController> {
                         ),
                       ),
                     );
-                  });
-                },
-              ),
+                  },
+                );
+              }),
             ],
           ),
         ),
