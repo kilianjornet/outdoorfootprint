@@ -31,4 +31,8 @@ class ColorManager {
   static const pieGear = Color(0xFF227793);
   static const pieFood = Color(0xFF81B2C6);
   static const boxShadow = Color(0xFF40788E);
+  static const chartPrimary = Color(0xFF81B2C6);
+  static const chartViolet = Color(0xFF954FAD);
+  static const chartYellow = Color(0xFFD8CA4D);
+  static const chartBlue = Color(0xFF8184C6);
 }

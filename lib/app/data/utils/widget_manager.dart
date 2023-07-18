@@ -1195,6 +1195,7 @@ class WidgetManager {
       ],
     );
   }
+
 }
 
 enum SnackBarType {

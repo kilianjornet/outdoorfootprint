@@ -1,6 +1,8 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../data/utils/asset_manager.dart';
@@ -127,6 +129,51 @@ class MyFootprintWidget{
         ],
       ),
     );
+  }
+
+  static Widget pieChart({
+    required var co2Home,
+    required var co2Mobility,
+    required var co2Gear,
+    required var co2Food,
+  }) {
+    return Obx(() {
+      return PieChart(
+        PieChartData(
+          sections: [
+            PieChartSectionData(
+              color: ColorManager.pieHome,
+              value: co2Home.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieMobility,
+              value: co2Mobility.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieGear,
+              value: co2Gear.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+            PieChartSectionData(
+              color: ColorManager.pieFood,
+              value: co2Food.value,
+              radius: 35.w,
+              showTitle: false,
+            ),
+          ],
+          centerSpaceRadius: 75.w,
+          borderData: FlBorderData(
+            show: false,
+          ),
+          sectionsSpace: 10.w,
+        ),
+      );
+    });
   }
 }
 
