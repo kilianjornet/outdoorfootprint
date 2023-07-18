@@ -48,7 +48,7 @@ class HomeWidget {
 
   static Widget totalData({
     required DataType type,
-    required String total,
+    required var total,
   }) {
     String assetPath;
     String title;
@@ -106,14 +106,18 @@ class HomeWidget {
           ),
           Row(
             children: [
-              Text(
-                total,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
-                  color: ColorManager.displayText,
-                ),
+              Obx(
+                () {
+                  return Text(
+                    '${total.value}',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16.sp,
+                      color: ColorManager.displayText,
+                    ),
+                  );
+                },
               ),
               Text(
                 ' ${StringManager.kgCo}',

@@ -26,7 +26,11 @@ class ApiManager {
   static const verifyForgotEmail = '/api/auth/verify-forgot-password';
   static const resetPassword = '/api/auth/reset-password';
 
-  //Main URL
+  //Home URL
+  static const getUserTotalCalculation =
+      '/api/users/app/get-all-calculation-by-user-id';
+
+  //Profile URL
   static const getProfile = '/api/users/app/get-profile';
   static const updateProfile = '/api/auth/update-profile';
 

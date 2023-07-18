@@ -109,15 +109,17 @@ class HomeView extends GetView<HomeController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              controller.totalTon,
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.oswald(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14.sp,
-                                color: ColorManager.button,
-                              ),
-                            ),
+                            Obx(() {
+                              return Text(
+                                '${controller.totalTon.value}',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.oswald(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                  color: ColorManager.button,
+                                ),
+                              );
+                            }),
                             Text(
                               ' ${StringManager.ton}',
                               textAlign: TextAlign.center,
@@ -178,23 +180,23 @@ class HomeView extends GetView<HomeController> {
                 children: [
                   HomeWidget.totalData(
                     type: DataType.home,
-                    total: '19.082',
+                    total: controller.co2Home,
                   ),
                   HomeWidget.totalData(
                     type: DataType.mobility,
-                    total: '19.082',
+                    total: controller.co2Mobility,
                   ),
                   HomeWidget.totalData(
                     type: DataType.gear,
-                    total: '19.082',
+                    total: controller.co2Gear,
                   ),
                   HomeWidget.totalData(
                     type: DataType.others,
-                    total: '19.082',
+                    total: controller.co2Food,
                   ),
                   HomeWidget.totalData(
                     type: DataType.public,
-                    total: '19.082',
+                    total: controller.co2Public,
                   ),
                   Divider(
                     color: ColorManager.primary,
@@ -219,15 +221,17 @@ class HomeView extends GetView<HomeController> {
                         ),
                         Row(
                           children: [
-                            Text(
-                              controller.totalKg,
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.oswald(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.sp,
-                                color: ColorManager.displayText,
-                              ),
-                            ),
+                            Obx(() {
+                              return Text(
+                                '${controller.totalKg.value}',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.oswald(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.sp,
+                                  color: ColorManager.displayText,
+                                ),
+                              );
+                            }),
                             Text(
                               ' ${StringManager.kgCo}',
                               textAlign: TextAlign.center,
@@ -245,15 +249,17 @@ class HomeView extends GetView<HomeController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        controller.totalTon,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
-                          color: ColorManager.displayText,
-                        ),
-                      ),
+                      Obx(() {
+                        return Text(
+                          '${controller.totalTon.value}',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.oswald(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            color: ColorManager.displayText,
+                          ),
+                        );
+                      }),
                       Text(
                         ' ${StringManager.tonCo}',
                         textAlign: TextAlign.center,
