@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "897647395536",
+    "project_id": "my-outdoor-footprint",
+    "storage_bucket": "my-outdoor-footprint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897647395536:android:a425b6976c40e0d43c14d5",
+        "android_client_info": {
+          "package_name": "com.outdoorfootprint.myoutdoorfootprint.my_outdoor_footprint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897647395536-hf3qsv1ogee8qtfhqg6hlcgdldiirabj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9mr1kpEztyS9uTrwLvy0wWEbVISktRKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897647395536-hf3qsv1ogee8qtfhqg6hlcgdldiirabj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

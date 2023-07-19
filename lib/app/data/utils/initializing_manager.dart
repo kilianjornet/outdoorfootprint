@@ -1,10 +1,14 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:my_outdoor_footprint/app/data/utils/firebase_options.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
+import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class InitializingManager {
@@ -14,6 +18,10 @@ class InitializingManager {
     WidgetsFlutterBinding.ensureInitialized();
     await ScreenUtil.ensureScreenSize();
     await dotenv.load(fileName: ".env");
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    await getDeviceToken();
     await subscribe();
   }
 
@@ -57,4 +65,15 @@ class InitializingManager {
       type: SnackBarType.error,
     );
   }
+
+  static final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+
+  static String? _deviceToken;
+
+  static Future<void> getDeviceToken() async {
+    _deviceToken = await firebaseMessaging.getToken();
+    TokenManager.saveDeviceToken(deviceToken: '$_deviceToken');
+  }
+
+  String? get deviceToken => _deviceToken;
 }

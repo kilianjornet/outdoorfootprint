@@ -27,11 +27,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow camera access for video calls and capturing pictures? Enhancing communication and functionality, respecting privacy.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Grant microphone access for clear voice and video calls? Respecting privacy, limited to call usage.</string>
+	<string>$(PRODUCT_NAME) requires access to your device's camera in order to capture photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow access to photo library for image selection? Enhances user experience, respects privacy.</string>
+	<string>$(PRODUCT_NAME) requires access to your device's photo library to import and manage photos.</string>
+	<key>NSRemoteNotificationUsageDescription</key>
+	<string>$(PRODUCT_NAME) requires permission to send you important updates and notifications.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -57,6 +57,10 @@
       <string>mailto</string>
       <string>file</string>
     </array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
