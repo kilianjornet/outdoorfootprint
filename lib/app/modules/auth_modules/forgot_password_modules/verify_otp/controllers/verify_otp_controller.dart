@@ -2,14 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:my_outdoor_footprint/app/data/services/misc_services/device_token_service.dart';
 
 import '../../../../../data/services/auth_services/forgot_password_services/send_email_service.dart';
 import '../../../../../data/services/auth_services/forgot_password_services/verify_otp_service.dart';
+import '../../../../../data/utils/token_manager.dart';
 import '../../../../../data/utils/widget_manager.dart';
 
 class VerifyOtpController extends GetxController {
   final sendEmailService = SendEmailService();
   final verifyEmailService = VerifyEmailService();
+  final deviceTokenService = DeviceTokenService();
   final verifyOtpKey = GlobalKey<FormState>();
   late List<TextEditingController> otpControllers;
   late List<FocusNode> otpNodes;
@@ -96,6 +99,10 @@ class VerifyOtpController extends GetxController {
       } else {
         final verifyEmailResponse = await verifyEmailService.verifyEmail(
           otp: otp,
+        );
+        final deviceToken = await TokenManager.getDeviceToken();
+        await deviceTokenService.addToken(
+          deviceToken: '$deviceToken',
         );
         WidgetManager.customSnackBar(
           title: verifyEmailResponse['message'],

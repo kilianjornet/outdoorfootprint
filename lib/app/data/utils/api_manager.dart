@@ -17,6 +17,10 @@ class ApiManager {
   //Refresh Token URL
   static const refreshToken = '/api/auth/refresh-tokens';
 
+  //Device Token URL
+  static const addDeviceToken = '/api/auth/add-device-token';
+  static const removeDeviceToken = '/api/auth/remove-device-token';
+
   //Authentication URL
   static const signUp = '/api/auth/register';
   static const signIn = '/api/auth/login';

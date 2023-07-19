@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/services/auth_services/sign_in_service.dart';
+import 'package:my_outdoor_footprint/app/data/services/misc_services/device_token_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
 import '../../../../data/services/auth_services/forgot_password_services/send_email_service.dart';
@@ -9,6 +10,7 @@ import '../../../../data/utils/widget_manager.dart';
 class SignInController extends GetxController {
   final signInService = SignInService();
   final sendEmailService = SendEmailService();
+  final deviceTokenService = DeviceTokenService();
   final signInKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -40,13 +42,17 @@ class SignInController extends GetxController {
         password: passwordController.text,
       );
       if (signInResponse['status'] == true) {
-        WidgetManager.customSnackBar(
-          title: signInResponse['message'],
-          type: SnackBarType.success,
-        );
         await TokenManager.saveTokens(
           accessToken: signInResponse['tokens']['access']['token'],
           refreshToken: signInResponse['tokens']['refresh']['token'],
+        );
+        final deviceToken = await TokenManager.getDeviceToken();
+        await deviceTokenService.addToken(
+          deviceToken: '$deviceToken',
+        );
+        WidgetManager.customSnackBar(
+          title: signInResponse['message'],
+          type: SnackBarType.success,
         );
         await Get.offAllNamed(
           '/navigation-bar',

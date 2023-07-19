@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_outdoor_footprint/app/data/services/main_services/home_service.dart';
+import 'package:my_outdoor_footprint/app/data/services/misc_services/device_token_service.dart';
 import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
@@ -10,6 +11,7 @@ import '../../../../data/utils/widget_manager.dart';
 class HomeController extends GetxController {
   final homeService = HomeService();
   final profileService = ProfileService();
+  final deviceTokenService = DeviceTokenService();
   final appBarKey = GlobalKey();
   var totalKg = 0.00.obs;
   var totalTon = 0.00.obs;
@@ -102,6 +104,10 @@ class HomeController extends GetxController {
     try {
       WidgetManager.showCustomDialog();
 
+      final deviceToken = await TokenManager.getDeviceToken();
+      await deviceTokenService.removeToken(
+        deviceToken: '$deviceToken',
+      );
       await TokenManager.clearTokens();
       await CrudManager.clearUserData();
       await Get.offAllNamed(
