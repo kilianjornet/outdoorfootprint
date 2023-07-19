@@ -8,13 +8,15 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_manager.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
-class DefaultFirebaseOptions {
+class FirebaseManager {
+  FirebaseManager._();
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
@@ -63,7 +65,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '897647395536',
     projectId: 'my-outdoor-footprint',
     storageBucket: 'my-outdoor-footprint.appspot.com',
-    iosClientId: '897647395536-m1o1o56r5e2tvnat0vr3md24cq1i7hho.apps.googleusercontent.com',
+    iosClientId:
+        '897647395536-m1o1o56r5e2tvnat0vr3md24cq1i7hho.apps.googleusercontent.com',
     iosBundleId: 'com.outdoorfootprint.myoutdoorfootprint.myOutdoorFootprint',
   );
 }

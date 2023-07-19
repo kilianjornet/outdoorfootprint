@@ -6,7 +6,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_outdoor_footprint/app/data/utils/firebase_options.dart';
+import 'package:my_outdoor_footprint/app/data/utils/firebase_manager.dart';
+import 'package:my_outdoor_footprint/app/data/utils/notification_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
@@ -19,9 +20,10 @@ class InitializingManager {
     await ScreenUtil.ensureScreenSize();
     await dotenv.load(fileName: ".env");
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: FirebaseManager.currentPlatform,
     );
     await getDeviceToken();
+    await NotificationManager.initNotifications();
     await subscribe();
   }
 
