@@ -192,7 +192,6 @@ class StringManager {
   static const custom = 'Custom';
   static const removal = 'Removal';
   static const reforest = 'Reforest';
-  static const helpProject = 'Consider helping other environmental projects';
   static const visitLink = 'Visit link';
   static const currentYear = 'Current Year';
   static const noConnection = 'No Internet Connection';

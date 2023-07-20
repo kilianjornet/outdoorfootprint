@@ -18,15 +18,21 @@ class MyYearView extends GetView<OffsetController> {
           children: [
             OffsetWidget.titleCanvasButton(
               type: OffsetType.removal,
+              content: controller.removalContent,
+              amount: controller.removalAmount,
+              url: controller.removalUrl,
               isEnable: controller.isEnable,
             ),
             OffsetWidget.titleCanvasButton(
               type: OffsetType.reforest,
+              content: controller.reforestContent,
+              amount: controller.reforestAmount,
+              url: controller.reforestUrl,
               isEnable: controller.isEnable,
             ),
             OffsetWidget.canvasQA(
-              title: controller.map['title'],
-              content: controller.map['content'],
+              title: controller.offsetQuestion,
+              content: controller.offsetAnswer,
             ),
           ],
         ),

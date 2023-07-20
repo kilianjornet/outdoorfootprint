@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,6 @@ import 'package:my_outdoor_footprint/app/data/utils/asset_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/string_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../data/utils/api_manager.dart';
 import '../../../../data/utils/color_manager.dart';
 
 class OffsetWidget {
@@ -15,6 +15,9 @@ class OffsetWidget {
 
   static Widget titleCanvasButton({
     required OffsetType type,
+    required var content,
+    required var amount,
+    required var url,
     required var isEnable,
   }) {
     String title;
@@ -75,13 +78,46 @@ class OffsetWidget {
                     ),
                   ),
                 ),
-                Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
-                  ),
+                Obx(
+                  () {
+                    return Html(
+                      data: content.value,
+                      onLinkTap: (url, _, __) async {
+                        Uri uri = Uri.parse('$url');
+                        String path = uri.path;
+                        String host = uri.host;
+                        List<String> pathSegments = path.split("/");
+                        String desiredString =
+                            pathSegments.length > 2 ? pathSegments[2] : "";
+                        final Uri urls = Uri(
+                          scheme: 'https',
+                          host: host,
+                          path: desiredString,
+                        );
+                        if (!await launchUrl(
+                          urls,
+                          mode: LaunchMode.inAppWebView,
+                        )) {
+                          throw Exception('Could not launch $url');
+                        }
+                      },
+                      style: {
+                        'p': Style(
+                          fontFamily: GoogleFonts.oswald().fontFamily,
+                          fontWeight: FontWeight.w400,
+                          fontSize: FontSize(
+                            14.sp,
+                          ),
+                          color: ColorManager.labelText,
+                          lineHeight: LineHeight(
+                            1.2.sp,
+                          ),
+                          padding: HtmlPaddings.zero,
+                          margin: Margins.zero,
+                        ),
+                      },
+                    );
+                  },
                 ),
                 Divider(
                   color: ColorManager.primary,
@@ -93,13 +129,17 @@ class OffsetWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          '1350',
-                          style: GoogleFonts.oswald(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18.sp,
-                            color: ColorManager.labelText,
-                          ),
+                        Obx(
+                          () {
+                            return Text(
+                              amount.value,
+                              style: GoogleFonts.oswald(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18.sp,
+                                color: ColorManager.labelText,
+                              ),
+                            );
+                          },
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -115,7 +155,25 @@ class OffsetWidget {
                     offsetButton(
                       buttonName: StringManager.offset,
                       isEnable: isEnable,
-                      onTap: () async {},
+                      onTap: () async {
+                        Uri uri = Uri.parse('${url.value}');
+                        String path = uri.path;
+                        String host = uri.host;
+                        List<String> pathSegments = path.split("/");
+                        String desiredString =
+                            pathSegments.length > 2 ? pathSegments[2] : "";
+                        final Uri urls = Uri(
+                          scheme: 'https',
+                          host: host,
+                          path: desiredString,
+                        );
+                        if (!await launchUrl(
+                          urls,
+                          mode: LaunchMode.inAppWebView,
+                        )) {
+                          throw Exception('Could not launch ${url.value}');
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -189,8 +247,8 @@ class OffsetWidget {
   }
 
   static Widget canvasQA({
-    required String title,
-    required String content,
+    required var title,
+    required var content,
   }) {
     return Padding(
       padding: EdgeInsets.only(
@@ -232,58 +290,59 @@ class OffsetWidget {
                   padding: EdgeInsets.only(
                     bottom: 10.h,
                   ),
-                  child: Text(
-                    title,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 22.sp,
-                      color: ColorManager.displayText,
-                    ),
-                  ),
+                  child: Obx(() {
+                    return Text(
+                      title.value,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 22.sp,
+                        color: ColorManager.displayText,
+                      ),
+                    );
+                  }),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
                     bottom: 5.h,
                   ),
-                  child: Text(
-                    content,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: ColorManager.labelText,
-                    ),
-                  ),
-                ),
-                Text(
-                  StringManager.helpProject,
-                  style: GoogleFonts.oswald(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.sp,
-                    color: ColorManager.labelText,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    final Uri url = Uri(
-                      scheme: 'https',
-                      host: ApiManager.donationBaseUrl,
-                      path: ApiManager.donationHeaders,
-                    );
-                    if (!await launchUrl(
-                      url,
-                      mode: LaunchMode.inAppWebView,
-                    )) {
-                      throw Exception('Could not launch $url');
-                    }
-                  },
-                  child: Text(
-                    StringManager.visitLink,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: ColorManager.button,
-                      decoration: TextDecoration.underline,
-                    ),
+                  child: Obx(
+                    () {
+                      return Html(
+                        data: content.value,
+                        onLinkTap: (url, _, __) async {
+                          Uri uri = Uri.parse('$url');
+                          String path = uri.path;
+                          String host = uri.host;
+                          List<String> pathSegments = path.split("/");
+                          String desiredString =
+                              pathSegments.length > 2 ? pathSegments[2] : "";
+                          final Uri urls = Uri(
+                            scheme: 'https',
+                            host: host,
+                            path: desiredString,
+                          );
+                          if (!await launchUrl(
+                            urls,
+                            mode: LaunchMode.inAppWebView,
+                          )) {
+                            throw Exception('Could not launch $url');
+                          }
+                        },
+                        style: {
+                          'p': Style(
+                            fontFamily: GoogleFonts.oswald().fontFamily,
+                            fontWeight: FontWeight.w400,
+                            fontSize: FontSize(
+                              14.sp,
+                            ),
+                            color: ColorManager.labelText,
+                            lineHeight: LineHeight(
+                              1.6.sp,
+                            ),
+                          ),
+                        },
+                      );
+                    },
                   ),
                 ),
               ],
