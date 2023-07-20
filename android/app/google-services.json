@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:897647395536:android:a425b6976c40e0d43c14d5",
+        "mobilesdk_app_id": "1:897647395536:android:f59dfeac61d435423c14d5",
         "android_client_info": {
           "package_name": "com.outdoorfootprint.myoutdoorfootprint.my_outdoor_footprint"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "897647395536-p812362joh1jpo6b9mnc8ajf4phvdh05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.outdoorfootprint.myoutdoorfootprint.my_outdoor_footprint",
+            "certificate_hash": "82f88197f2b0bd71419de1c17b8386f8c509c1ca"
+          }
+        },
         {
           "client_id": "897647395536-hf3qsv1ogee8qtfhqg6hlcgdldiirabj.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +37,13 @@
             {
               "client_id": "897647395536-hf3qsv1ogee8qtfhqg6hlcgdldiirabj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "897647395536-m1o1o56r5e2tvnat0vr3md24cq1i7hho.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.outdoorfootprint.myoutdoorfootprint.myOutdoorFootprint"
+              }
             }
           ]
         }

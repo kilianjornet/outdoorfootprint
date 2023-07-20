@@ -19,51 +19,11 @@ class NotificationManager {
     'important_channel',
     'Important Notifications',
     description: 'This channel is used for important notifications',
-    importance: Importance.defaultImportance,
+    importance: Importance.high,
+    playSound: true,
   );
 
   static Future<void> configureFirebaseMessaging() async {
-    FirebaseMessaging.onMessage.listen(
-      (RemoteMessage message) {
-        print("Received a notification while the app is in the foreground!");
-        // Handle foreground notification here
-      },
-    );
-
-    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-
-    FirebaseMessaging.onMessageOpenedApp.listen(
-      (RemoteMessage message) {
-        print("User tapped on the notification in the background!");
-        // Handle background notification here
-      },
-    );
-  }
-
-  static Future<void> firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
-    print("Handling a background message: ${message.messageId}");
-    // Handle background message here
-  }
-
-  static handleMessage(RemoteMessage? message) {
-    if (message == null) return;
-  }
-
-  static Future handleBackgroundMessage(RemoteMessage? message) async {
-    if (message == null) return;
-  }
-
-  static Future initPushNotifications() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
-    FirebaseMessaging.instance.getInitialMessage().then((handleMessage));
-    FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
-    FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     FirebaseMessaging.onMessage.listen(
       (message) {
         final notification = message.notification;
@@ -74,9 +34,13 @@ class NotificationManager {
           notification.body,
           NotificationDetails(
             android: AndroidNotificationDetails(
-                androidChannel.id, androidChannel.name,
-                channelDescription: androidChannel.description,
-                icon: '@drawable/ic_launcher'),
+              androidChannel.id,
+              androidChannel.name,
+              channelDescription: androidChannel.description,
+              icon: '@drawable/ic_launcher',
+              visibility: NotificationVisibility.public,
+              category: AndroidNotificationCategory.message,
+            ),
           ),
           payload: jsonEncode(
             message.toMap(),
@@ -84,6 +48,135 @@ class NotificationManager {
         );
       },
     );
+
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (RemoteMessage message) {
+        final notification = message.notification;
+        if (notification == null) return;
+        localNotifications.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              androidChannel.id,
+              androidChannel.name,
+              channelDescription: androidChannel.description,
+              icon: '@drawable/ic_launcher',
+              visibility: NotificationVisibility.public,
+              category: AndroidNotificationCategory.message,
+            ),
+          ),
+          payload: jsonEncode(
+            message.toMap(),
+          ),
+        );
+      },
+    );
+  }
+
+  static Future<void> firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    final notification = message.notification;
+    if (notification == null) return;
+    localNotifications.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          androidChannel.id,
+          androidChannel.name,
+          channelDescription: androidChannel.description,
+          icon: '@drawable/ic_launcher',
+        ),
+      ),
+      payload: jsonEncode(
+        message.toMap(),
+      ),
+    );
+  }
+
+  static void showForegroundNotification(String title, String body) {
+    // Use flutter_local_notifications to show custom UI for foreground notifications
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+      'important_channel', // Change to a unique channel ID for foreground notifications
+      'Foreground Notifications', // Change to a channel name for foreground notifications
+      channelDescription: 'This channel is used for foreground notifications',
+      importance: Importance.high,
+      playSound: true,
+      icon: '@drawable/ic_launcher',
+    );
+
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidDetails,
+    );
+
+    // Show the notification using flutter_local_notifications plugin
+    localNotifications.show(
+      0, // Change to a unique notification ID
+      title,
+      body,
+      notificationDetails,
+    );
+  }
+
+  static handleMessage(RemoteMessage? message) {
+    if (message == null) return;
+    final notification = message.notification;
+    if (notification == null) return;
+    localNotifications.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          androidChannel.id,
+          androidChannel.name,
+          channelDescription: androidChannel.description,
+          icon: '@drawable/ic_launcher',
+        ),
+      ),
+      payload: jsonEncode(
+        message.toMap(),
+      ),
+    );
+  }
+
+  static Future handleBackgroundMessage(RemoteMessage? message) async {
+    if (message == null) return;
+    final notification = message.notification;
+    if (notification == null) return;
+    localNotifications.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          androidChannel.id,
+          androidChannel.name,
+          channelDescription: androidChannel.description,
+          icon: '@drawable/ic_launcher',
+        ),
+      ),
+      payload: jsonEncode(
+        message.toMap(),
+      ),
+    );
+  }
+
+  static Future initPushNotifications() async {
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    FirebaseMessaging.instance.getInitialMessage().then((handleMessage));
+    await configureFirebaseMessaging();
   }
 
   static Future<void> initLocalNotifications() async {
