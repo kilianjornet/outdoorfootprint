@@ -3,17 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_outdoor_footprint/app/data/utils/api_manager.dart';
+import 'package:my_outdoor_footprint/app/modules/main_modules/my_footprint/widget/my_footprint_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../data/utils/color_manager.dart';
-import '../../../../data/utils/stacked_barchart.dart';
 import '../../../../data/utils/string_manager.dart';
 import '../../../../data/utils/widget_manager.dart';
 import '../controllers/my_footprint_controller.dart';
-import '../widget/footprintWidget.dart';
 
 class MyFootprintView extends GetView<MyFootprintController> {
   const MyFootprintView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,124 +24,156 @@ class MyFootprintView extends GetView<MyFootprintController> {
         ),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                height: 16.h,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: MyFootprintWidget.shadowCanvas(children: [
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const HorizontalBarChart(),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const HorizontalBarChart(),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const HorizontalBarChart(),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  const HorizontalBarChart(),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                ]),
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              Text(
-                StringManager.currentYear,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.oswald(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 24.sp,
-                  color: ColorManager.captionText,
-                ),
-              ),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        StringManager.co2,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.oswald(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 24.sp,
-                          color: ColorManager.captionText,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h,
+              horizontal: 20.w,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                WidgetManager.whiteCanvas(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MyFootprintWidget.customLegend(
+                          type: LegendType.home,
                         ),
+                        MyFootprintWidget.customLegend(
+                          type: LegendType.mobility,
+                        ),
+                        MyFootprintWidget.customLegend(
+                          type: LegendType.gear,
+                        ),
+                        MyFootprintWidget.customLegend(
+                          type: LegendType.others,
+                        ),
+                      ],
+                    ),
+                    AspectRatio(
+                      aspectRatio: 2,
+                      child: Obx(
+                        () {
+                          return Visibility(
+                            visible: controller.isLoading.value,
+                            child: MyFootprintWidget.barChart(
+                              list: controller.list,
+                              maxValue: controller.maxTotalKg,
+                            ),
+                          );
+                        },
                       ),
-                      Row(
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.h,
+                  ),
+                  child: Text(
+                    StringManager.currentYear,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.oswald(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 24.sp,
+                      color: ColorManager.captionText,
+                    ),
+                  ),
+                ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      height: 240.h,
+                      width: 240.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: ColorManager.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorManager.primary.withOpacity(
+                              0.5,
+                            ),
+                            spreadRadius: 1,
+                            blurRadius: 15,
+                          )
+                        ],
+                      ),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            controller.totalTon,
+                            StringManager.co2,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.oswald(
                               fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
-                              color: ColorManager.button,
+                              fontSize: 24.sp,
+                              color: ColorManager.captionText,
                             ),
                           ),
-                          Text(
-                            StringManager.ton,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.oswald(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
-                              color: ColorManager.button,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Obx(
+                                () {
+                                  return Text(
+                                    '${controller.totalTon.value}',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.oswald(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp,
+                                      color: ColorManager.button,
+                                    ),
+                                  );
+                                },
+                              ),
+                              Text(
+                                StringManager.ton,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.oswald(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                  color: ColorManager.button,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  AspectRatio(
-                    aspectRatio: 1,
-                    child: MyFootprintWidget.pieChart(
-                      co2Home: controller.co2Home,
-                      co2Mobility: controller.co2Mobility,
-                      co2Gear: controller.co2Gear,
-                      co2Food: controller.co2Food,
                     ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: MyFootprintWidget.shadowCanvas(
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: WidgetManager.pieChart(
+                        co2Home: controller.co2Home,
+                        co2Mobility: controller.co2Mobility,
+                        co2Gear: controller.co2Gear,
+                        co2Food: controller.co2Food,
+                      ),
+                    ),
+                  ],
+                ),
+                WidgetManager.whiteCanvas(
                   children: [
-                    MyFootprintWidget.totalData(
+                    WidgetManager.totalData(
                       type: DataType.home,
-                      total: '19.082',
+                      total: controller.co2Home,
                     ),
-                    MyFootprintWidget.totalData(
+                    WidgetManager.totalData(
                       type: DataType.mobility,
-                      total: '19.082',
+                      total: controller.co2Mobility,
                     ),
-                    MyFootprintWidget.totalData(
+                    WidgetManager.totalData(
                       type: DataType.gear,
-                      total: '19.082',
+                      total: controller.co2Gear,
                     ),
-                    MyFootprintWidget.totalData(
+                    WidgetManager.totalData(
                       type: DataType.others,
-                      total: '19.082',
+                      total: controller.co2Food,
                     ),
-                    MyFootprintWidget.totalData(
+                    WidgetManager.totalData(
                       type: DataType.public,
-                      total: '19.082',
+                      total: controller.co2Public,
                     ),
                     Divider(
                       color: ColorManager.primary,
@@ -166,15 +198,17 @@ class MyFootprintView extends GetView<MyFootprintController> {
                           ),
                           Row(
                             children: [
-                              Text(
-                                controller.totalKg,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.oswald(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16.sp,
-                                  color: ColorManager.displayText,
-                                ),
-                              ),
+                              Obx(() {
+                                return Text(
+                                  '${controller.totalKg.value}',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.oswald(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.sp,
+                                    color: ColorManager.displayText,
+                                  ),
+                                );
+                              }),
                               Text(
                                 ' ${StringManager.kgCo}',
                                 textAlign: TextAlign.center,
@@ -192,15 +226,17 @@ class MyFootprintView extends GetView<MyFootprintController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          controller.totalTon,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.oswald(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.sp,
-                            color: ColorManager.displayText,
-                          ),
-                        ),
+                        Obx(() {
+                          return Text(
+                            '${controller.totalTon.value}',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.oswald(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16.sp,
+                              color: ColorManager.displayText,
+                            ),
+                          );
+                        }),
                         Text(
                           ' ${StringManager.tonCo}',
                           textAlign: TextAlign.center,
@@ -214,33 +250,30 @@ class MyFootprintView extends GetView<MyFootprintController> {
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: SizedBox(
-                  height: 8.h,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: SizedBox(
+                    height: 8.h,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    StringManager.compareCarbon,
-                    style: GoogleFonts.oswald(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      color: ColorManager.titleText,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      StringManager.compareCarbon,
+                      style: GoogleFonts.oswald(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: ColorManager.titleText,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Align(
+                SizedBox(
+                  height: 8.h,
+                ),
+                Align(
                   alignment: Alignment.centerLeft,
                   child: TextButton(
                     onPressed: () async {
@@ -271,11 +304,11 @@ class MyFootprintView extends GetView<MyFootprintController> {
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-            ],
+                SizedBox(
+                  height: 10.h,
+                ),
+              ],
+            ),
           ),
         ));
   }

@@ -98,7 +98,7 @@ class HomeView extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          StringManager.co,
+                          StringManager.co2,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.oswald(
                             fontWeight: FontWeight.w400,
@@ -136,7 +136,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                   AspectRatio(
                     aspectRatio: 1,
-                    child: HomeWidget.pieChart(
+                    child: WidgetManager.pieChart(
                       co2Home: controller.co2Home,
                       co2Mobility: controller.co2Mobility,
                       co2Gear: controller.co2Gear,
@@ -176,25 +176,25 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
               ),
-              HomeWidget.shadowCanvas(
+              WidgetManager.whiteCanvas(
                 children: [
-                  HomeWidget.totalData(
+                  WidgetManager.totalData(
                     type: DataType.home,
                     total: controller.co2Home,
                   ),
-                  HomeWidget.totalData(
+                  WidgetManager.totalData(
                     type: DataType.mobility,
                     total: controller.co2Mobility,
                   ),
-                  HomeWidget.totalData(
+                  WidgetManager.totalData(
                     type: DataType.gear,
                     total: controller.co2Gear,
                   ),
-                  HomeWidget.totalData(
+                  WidgetManager.totalData(
                     type: DataType.others,
                     total: controller.co2Food,
                   ),
-                  HomeWidget.totalData(
+                  WidgetManager.totalData(
                     type: DataType.public,
                     total: controller.co2Public,
                   ),

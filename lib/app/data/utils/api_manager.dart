@@ -34,15 +34,19 @@ class ApiManager {
   static const getUserTotalCalculation =
       '/api/users/app/get-all-calculation-by-user-id';
 
-  //Profile URL
-  static const getProfile = '/api/users/app/get-profile';
-  static const updateProfile = '/api/auth/update-profile';
-
   //Calculator URL
   static const createHome = '/api/users/create-user-home-category';
   static const createMobility = '/api/users/create-user-mobility-category';
   static const createGear = '/api/users/create-user-gear-category';
   static const createFood = '/api/users/create-user-other-category';
+
+  //Home URL
+  static const getUserFootprint =
+      '/api/users/app/get-all-calculation-four-year-by-user-id';
+
+  //Profile URL
+  static const getProfile = '/api/users/app/get-profile';
+  static const updateProfile = '/api/auth/update-profile';
 
   //Miscellaneous URL
   static const termsCondition = '/api/cms/app/terms';

@@ -183,7 +183,6 @@ class StringManager {
   static const homeTitle = 'My Carbon Footprint this year:';
   static const kgCo = 'Kg of CO2e';
   static const tonCo = 'Tons of CO2e';
-  static const co = 'CO2e';
   static const co2 = 'CO2';
   static const ton = 'Tons';
   static const tip = 'Tips';
