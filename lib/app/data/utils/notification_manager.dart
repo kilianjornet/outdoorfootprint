@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:my_outdoor_footprint/app/data/utils/widget_manager.dart';
 
 class NotificationManager {
   NotificationManager._();
@@ -28,23 +29,28 @@ class NotificationManager {
       (message) {
         final notification = message.notification;
         if (notification == null) return;
-        localNotifications.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          NotificationDetails(
-            android: AndroidNotificationDetails(
-              androidChannel.id,
-              androidChannel.name,
-              channelDescription: androidChannel.description,
-              icon: '@drawable/ic_launcher',
-              visibility: NotificationVisibility.public,
-              category: AndroidNotificationCategory.message,
-            ),
-          ),
-          payload: jsonEncode(
-            message.toMap(),
-          ),
+        // localNotifications.show(
+        //   notification.hashCode,
+        //   notification.title,
+        //   notification.body,
+        //   NotificationDetails(
+        //     android: AndroidNotificationDetails(
+        //       androidChannel.id,
+        //       androidChannel.name,
+        //       channelDescription: androidChannel.description,
+        //       icon: '@drawable/ic_launcher',
+        //       visibility: NotificationVisibility.public,
+        //       category: AndroidNotificationCategory.message,
+        //     ),
+        //   ),
+        //   payload: jsonEncode(
+        //     message.toMap(),
+        //   ),
+        // );
+        WidgetManager.customSnackBar(
+          title: '${notification.title}',
+          body: '${notification.body}',
+          type: SnackBarType.notification,
         );
       },
     );
