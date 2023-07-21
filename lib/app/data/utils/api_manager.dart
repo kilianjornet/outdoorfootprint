@@ -49,4 +49,5 @@ class ApiManager {
   static const privacyPolicy = '/api/cms/app/privacy-policy';
   static const tips = '/api/tips/app/list';
   static const offset = '/api/offset/app/list';
+  static const notification = '/api/fcm/app/get-all-notification';
 }
