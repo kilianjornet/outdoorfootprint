@@ -19,6 +19,7 @@ class WidgetManager {
 
   static ScaffoldMessengerState customSnackBar({
     required String title,
+    String? body,
     required SnackBarType type,
   }) {
     Color backgroundColor;
@@ -61,7 +62,7 @@ class WidgetManager {
             margin: EdgeInsets.only(
               left: 10.w,
               right: 10.w,
-              bottom: 10.h,
+              bottom: type == SnackBarType.notification ? 475.h : 10.h,
             ),
             decoration: BoxDecoration(
               color: backgroundColor,
@@ -85,21 +86,37 @@ class WidgetManager {
               children: [
                 SvgPicture.asset(
                   assetPath,
-                  width: 25.w,
+                  width: type == SnackBarType.notification ? 20.w : 25.w,
                 ),
                 Flexible(
                   child: Padding(
                     padding: EdgeInsets.only(
                       left: 6.w,
                     ),
-                    child: Text(
-                      title,
-                      maxLines: 2,
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        color: primaryColor,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w500,
+                            color: primaryColor,
+                          ),
+                        ),
+                        type == SnackBarType.notification
+                            ? Text(
+                                '$body',
+                                maxLines: 2,
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: primaryColor,
+                                ),
+                              )
+                            : const SizedBox(),
+                      ],
                     ),
                   ),
                 ),
