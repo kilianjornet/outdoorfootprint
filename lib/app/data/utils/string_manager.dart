@@ -23,7 +23,7 @@ class StringManager {
   static const phoneNumber = 'Phone Number';
   static const confirmPassword = 'Confirm Password';
   static const agreeTo = 'I agree to';
-  static const termsAndConditions = 'Terms and Condition';
+  static const termsAndConditions = 'Terms and Conditions';
   static const andThe = 'and the';
   static const privacyPolicy = 'Privacy Policy';
   static const continueButton = 'Continue';
