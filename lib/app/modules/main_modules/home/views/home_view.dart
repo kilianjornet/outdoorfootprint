@@ -24,21 +24,23 @@ class HomeView extends GetView<HomeController> {
         type: AppBarType.home,
         dialog: const PopDialogView(),
         openDialog: controller.openDialog,
-        child: Obx(() {
-          return controller.profileImage.value.isNotEmpty
-              ? Image.network(
-                  controller.profileImage.value,
-                  fit: BoxFit.cover,
-                  width: ScreenUtil().screenWidth,
-                  height: ScreenUtil().screenHeight,
-                )
-              : SvgPicture.asset(
-                  AssetManager.avatar,
-                  fit: BoxFit.cover,
-                  width: ScreenUtil().screenWidth,
-                  height: ScreenUtil().screenHeight,
-                );
-        }),
+        child: Obx(
+          () {
+            return controller.profileImage.value.isNotEmpty
+                ? Image.network(
+                    controller.profileImage.value,
+                    fit: BoxFit.cover,
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
+                  )
+                : SvgPicture.asset(
+                    AssetManager.avatar,
+                    fit: BoxFit.cover,
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
+                  );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

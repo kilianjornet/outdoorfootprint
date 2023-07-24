@@ -4,10 +4,6 @@ class ApiManager {
   //Base URL
   static const baseUrl = 'https://nodeserver.mydevfactory.com:6006';
 
-  //Donation URL
-  static const donationBaseUrl = 'www.kilianjornetfoundation.org';
-  static const donationHeaders = '/take-action/donate/';
-
   //Hotel URL
   static const hotelUrl = 'www.hotelfootprints.org';
 
@@ -54,4 +50,5 @@ class ApiManager {
   static const tips = '/api/tips/app/list';
   static const offset = '/api/offset/app/list';
   static const notification = '/api/fcm/app/get-all-notification';
+  static const deleteAccount = '/api/auth/app/block-user';
 }

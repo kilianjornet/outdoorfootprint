@@ -23,7 +23,7 @@ class StringManager {
   static const phoneNumber = 'Phone Number';
   static const confirmPassword = 'Confirm Password';
   static const agreeTo = 'I agree to';
-  static const termsAndConditions = 'Terms and Condition';
+  static const termsAndConditions = 'Terms and Conditions';
   static const andThe = 'and the';
   static const privacyPolicy = 'Privacy Policy';
   static const continueButton = 'Continue';
@@ -178,6 +178,7 @@ class StringManager {
   static const totalGearProduced = 'Total: 1962.216 kg CO2 produced';
   static const signOut = 'Sign Out';
   static const deleteAccount = 'Delete Account';
+  static const delete = 'Delete';
   static const hello = 'Hello';
   static const welcomeText = 'Good to see you again!';
   static const homeTitle = 'My Carbon Footprint this year:';
@@ -199,4 +200,10 @@ class StringManager {
   static const tipsFootprint = 'Tips to Lower Your Footprint';
   static const sumShare = 'Sum in share %';
   static const sumError = '(Should be 100%)';
+  static const signOutTitle = 'You are about to sign out';
+  static const signOutSubtitle =
+      'Are you sure you want to sign out? Take a moment to confirm your sign-out choice.';
+  static const deleteTitle = 'You are about to delete account';
+  static const deleteSubtitle =
+      'Are you sure you want to delete your account? Deleting your account is permanent and the action cannot be undone.';
 }

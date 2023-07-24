@@ -10,6 +10,7 @@ import 'package:my_outdoor_footprint/app/modules/main_modules/home/controllers/h
 
 import '../../../../data/utils/color_manager.dart';
 import '../../../../data/utils/string_manager.dart';
+import '../widgets/home_widget.dart';
 
 class PopDialogView extends GetView<HomeController> {
   const PopDialogView({Key? key}) : super(key: key);
@@ -61,7 +62,24 @@ class PopDialogView extends GetView<HomeController> {
                             GestureDetector(
                               onTap: () async {
                                 Get.back();
-                                await controller.logout();
+                                Get.dialog(
+                                  HomeWidget.confirmationDialog(
+                                    openDialog: controller.openDialog,
+                                    onTap: () async {
+                                      Get.back();
+                                      await controller.logout();
+                                    },
+                                    type: DialogType.signOut,
+                                  ),
+                                  barrierDismissible: true,
+                                  barrierColor: ColorManager.button.withOpacity(
+                                    0.5,
+                                  ),
+                                  transitionCurve: Curves.easeInOut,
+                                  transitionDuration: const Duration(
+                                    milliseconds: 300,
+                                  ),
+                                );
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(
@@ -93,9 +111,26 @@ class PopDialogView extends GetView<HomeController> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Get.back();
-                                //await controller.deleteAccount();
+                                Get.dialog(
+                                  HomeWidget.confirmationDialog(
+                                    openDialog: controller.openDialog,
+                                    onTap: () async {
+                                      Get.back();
+                                      await controller.deleteAccount();
+                                    },
+                                    type: DialogType.delete,
+                                  ),
+                                  barrierDismissible: true,
+                                  barrierColor: ColorManager.button.withOpacity(
+                                    0.5,
+                                  ),
+                                  transitionCurve: Curves.easeInOut,
+                                  transitionDuration: const Duration(
+                                    milliseconds: 300,
+                                  ),
+                                );
                               },
                               child: Padding(
                                 padding: EdgeInsets.only(

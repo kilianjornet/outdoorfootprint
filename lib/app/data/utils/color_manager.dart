@@ -31,4 +31,5 @@ class ColorManager {
   static const pieGear = Color(0xFFD8CA4D);
   static const pieFood = Color(0xFF8184C6);
   static const boxShadow = Color(0xFF40788E);
+  static const deletePressed = Color(0xFFC04140);
 }
