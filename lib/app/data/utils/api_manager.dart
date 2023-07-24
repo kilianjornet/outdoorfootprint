@@ -50,4 +50,5 @@ class ApiManager {
   static const tips = '/api/tips/app/list';
   static const offset = '/api/offset/app/list';
   static const notification = '/api/fcm/app/get-all-notification';
+  static const deleteAccount = '/api/auth/app/block-user';
 }

@@ -6,12 +6,14 @@ import 'package:my_outdoor_footprint/app/data/utils/crud_manager.dart';
 import 'package:my_outdoor_footprint/app/data/utils/token_manager.dart';
 
 import '../../../../data/services/main_services/profile_service.dart';
+import '../../../../data/services/misc_services/delete_account_service.dart';
 import '../../../../data/utils/widget_manager.dart';
 
 class HomeController extends GetxController {
   final homeService = HomeService();
   final profileService = ProfileService();
   final deviceTokenService = DeviceTokenService();
+  final deleteAccountService = DeleteAccountService();
   final appBarKey = GlobalKey();
   var totalKg = 0.00.obs;
   var totalTon = 0.00.obs;
@@ -113,6 +115,26 @@ class HomeController extends GetxController {
       await Get.offAllNamed(
         '/sign-in',
       );
+    } catch (e) {
+      WidgetManager.customSnackBar(
+        title: '$e',
+        type: SnackBarType.error,
+      );
+    } finally {
+      WidgetManager.hideCustomDialog();
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      WidgetManager.showCustomDialog();
+
+      final deleteAccountResponse = await deleteAccountService.deleteAccount();
+      WidgetManager.customSnackBar(
+        title: '${deleteAccountResponse['message']}',
+        type: SnackBarType.success,
+      );
+      await logout();
     } catch (e) {
       WidgetManager.customSnackBar(
         title: '$e',

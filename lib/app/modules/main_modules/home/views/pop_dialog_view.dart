@@ -118,7 +118,7 @@ class PopDialogView extends GetView<HomeController> {
                                     openDialog: controller.openDialog,
                                     onTap: () async {
                                       Get.back();
-                                      // await controller.logout();
+                                      await controller.deleteAccount();
                                     },
                                     type: DialogType.delete,
                                   ),
