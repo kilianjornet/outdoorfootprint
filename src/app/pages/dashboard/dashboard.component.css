@@ -1,0 +1,101 @@
+
+
+.count-card{
+    display: flex;
+    box-shadow: 0 0 10px 0 rgba(209,208,208,1);
+    -webkit-box-shadow: 0 0 10px 0 rgb(208, 209, 209);
+    border-radius: 5px;
+    height: 141px;
+    cursor: pointer;
+    padding:45px 20px 20px 20px;
+    background: #fff6f6;
+}
+.iconBx{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 35px;
+    border-radius: 100px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    background: #1fadd9;
+    transition: all .3s ease-in-out;
+}
+.count-card:hover .iconBx {
+    top: -25px;
+}
+.count-card i{
+    align-self: center;
+}
+.content_box.dashboard_page .title{
+    margin-bottom: 60px;
+}
+.count-card .values{
+    text-align: right;
+}
+.count-card .values h4{
+    font-size: 14px;
+    font-weight: 500;
+    color:#333
+}
+.count-card .values span{
+    font-size: 20px;
+    font-weight: 500;
+    color:#333
+}
+.count-card2{
+    display: flex;
+    background: linear-gradient(to bottom,#81B2C6, #78c8f7 170%);
+}
+.count-card2 i{
+    align-self: center;
+}
+.count-card2 .values{
+    flex: 1;
+    padding-left: 25px;
+}
+.count-card2 .values span{
+    display: block;
+    width: 100%;
+    font-weight: bold;
+}
+.count-card3{
+    display: flex;
+    background: linear-gradient(to bottom,#408a33, #9fa39f 175%);
+}
+.count-card3 i{
+    align-self: center;
+}
+.count-card3 .values{
+    flex: 1;
+    padding-left: 25px;
+}
+.dashboard_page .count-card:nth-child(2) .iconBx{
+    background: #02b59e;
+}
+.dashboard_page .count-card:nth-child(3) .iconBx{
+    background:rgb(247, 59, 137);
+}
+.count-card3 .values span{
+    display: block;
+    width: 100%;
+    font-weight: bold;
+}
+.wrapperOuter{
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 30px;
+    height: 100%;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0, 0,0, 0.1),-1px -1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}

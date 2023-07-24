@@ -1,0 +1,101 @@
+<div class="wrapperOuter">
+  <div class="wrapper">
+    <div class="content_box dashboard_page">
+      <h2 class="title">Dashboard</h2>
+      <div class="cardWrap">
+        <div class="row">
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/users'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="person icon" fontIcon="person"></mat-icon>
+              </div>
+              <div class="values">
+                <h4>Users</h4>
+                <span>{{totaluser || '0'}}</span>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/carbonmanagement'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="co2 icon" fontIcon="co2"></mat-icon>
+              </div>
+             
+              <div class="values">
+                <h4>Carbon Management</h4>
+                <span>{{totaluser1 || '0'}}</span>   
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/tips'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="tips icon" fontIcon="lightbulb"></mat-icon>
+              </div>
+             
+              <div class="values">
+                <h4>Tips Management</h4>
+                <span>{{totaluser2 || '0'}}</span>   
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/offset'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="tips icon" fontIcon="adf_scanner"></mat-icon>
+              </div>
+             
+              <div class="values">
+                <h4>Offset Management</h4>
+                <span>{{allcontent || '0'}}</span>   
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/nhistory'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="tips icon" fontIcon="notifications"></mat-icon>
+              </div>
+             
+              <div class="values">
+                <h4> Notification History</h4>
+                <span>{{allnoti || '0'}}</span>   
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-md-4 col-lg-3 mb-5">
+            <mat-card class="count-card" [routerLink]="'/main/cms'">
+              <div class="iconBx">
+                <mat-icon aria-hidden="false" aria-label="tips icon" fontIcon="account_tree"></mat-icon>
+              </div>
+             
+              <div class="values">
+                <h4>CMS</h4>
+                <span>{{cmslist || '0'}}</span>   
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- <div class="col-sm-4 card-holder">
+          <mat-card class="count-card" [routerLink]="'/main/send-email/all'" [queryParams]="{notification:1}">
+            <i class="fa fa-bullhorn" aria-hidden="true"></i>
+            <div class="values">
+              <h4>Notify Users</h4>
+              <span>&nbsp;</span>
+            </div>
+          </mat-card>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

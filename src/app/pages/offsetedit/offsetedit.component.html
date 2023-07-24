@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="content_box">
+    <h2>
+      Update Offset</h2>
+     
+  
+    
+    <form [formGroup]="formGroup">
+        <div class="edit_form" *ngIf="!plainText">
+            <mat-form-field class="full-width"   >
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Update title here" formControlName="title" >
+         
+             
+              <mat-error *ngIf="formGroup.invalid">
+                Please enter title.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="edit_form" *ngIf="!plainText">
+          
+            <mat-form-field style="width: 100%;" >
+              <mat-label>Url</mat-label>
+                <input matInput placeholder="Update title here" formControlName="url" >
+           
+               
+                <mat-error *ngIf="formGroup.invalid">
+                  Please enter title.
+                </mat-error>
+              </mat-form-field>
+
+          
+          </div>
+       
+      <div class="edit_form" *ngIf="!plainText">
+        <mat-form-field class="full-width"  >
+          <input matInput placeholder="Enter content here" formControlName="text" hidden>
+          <ckeditor
+        formControlName="text"
+        [config]="editorConfig"
+      ></ckeditor>
+         
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter content.
+          </mat-error>
+        </mat-form-field>
+      </div>
+   
+
+      <div class="edit_form" *ngIf="!plainText">
+        <mat-form-field  >
+          <mat-label>Amount</mat-label>
+          <input type="number" matInput placeholder="Update Amount here" formControlName="amount" >
+     
+         
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter title.
+          </mat-error>
+        </mat-form-field >
+      </div>
+      <div class="edit_form" *ngIf="plainText">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Enter content here" formControlName="text">
+          <mat-error *ngIf="formGroup.invalid">
+            Please enter content
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-button-row">
+        <button
+        type="button"
+        class="add-btn " 
+        mat-raised-button
+        [disabled]="formGroup.invalid" color="primary" class="update_btn" (click)="savecms()">SAVE</button>
+      <button
+      type="button"
+      mat-raised-button
+    color="accent"
+      class="add-btn " 
+      [routerLink]="'/main/offset'">CANCEL</button>
+   
+      
+      </div>
+     
+    </form>
+  </div>
+
+

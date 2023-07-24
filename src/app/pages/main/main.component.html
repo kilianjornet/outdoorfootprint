@@ -1,0 +1,68 @@
+<mat-toolbar class="app-toolbar header">
+  <mat-icon aria-hidden="false" aria-label="menu icon" fontIcon="menu" (click)="drawer.toggle()" class="menu_btn"></mat-icon>
+  <span class="adminTitle">Admin</span>
+
+  <!-- <div class="float-right">
+    <span>
+      {{loggedUser}}&nbsp;{{loggedUserLastName}}
+    </span>
+  </div> -->
+  
+  <div class="right_toggle">
+    <span class="userwrap" *ngIf="login()">
+      {{loggedUser}}&nbsp;{{loggedUserLastName}}
+    </span>
+    <div>
+      <!-- <img [src]="url ? url :profile_image" class="avatar img-circle img-thumbnail"> -->
+    <mat-icon  [matMenuTriggerFor]="menu" [ngClass]="{'hide-badge':!totalBadgeCount}"
+    matBadgeColor="warn"  style="margin-left: 5px; margin-right: 5px; height: 40px; width: 40px;">
+   <img *ngIf="profile_image!=''" [src]="profile_image"></mat-icon>
+   <img *ngIf="profile_image==''" src="/assets/logo/defaultlogo5.png" alt="">
+ <mat-menu #menu="matMenu">
+   <!-- <button mat-menu-item routerLink="notifications">
+     <span class="has-badge" [ngClass]="{'hide-badge':notificationCount==0}" [matBadge]="notificationCount>9?'9+':notificationCount" matBadgeColor="warn">Notifications</span>
+   </button>
+   <button mat-menu-item routerLink="chat">
+     <span class="has-badge" [ngClass]="{'hide-badge':isChatHistoryPage || chatHistoryCount==0}" [matBadge]="chatHistoryCount>9?'9+':chatHistoryCount" matBadgeColor="warn">Chat History</span>
+   </button> -->
+   <button mat-menu-item routerLink="profile">Profile</button>
+   <!-- <button mat-menu-item routerLink="change-password">Change password</button> -->
+   <button mat-menu-item (click)="logOut()">Logout</button>
+ </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav color="primary" #drawer [mode]="isLargeScreen() ? 'side' : 'over'" [opened]="isLargeScreen()">
+    <mat-list role="list" (click)="isSmallScreen()">
+      <mat-list-item matRipple class="color1" role="listitem" routerLink="dashboard"
+        routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" dashboard icon" fontIcon="dashboard"></mat-icon> Dashboard</mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+      <mat-list-item matRipple role="listitem" routerLink="users" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="manage_accounts icon" fontIcon="manage_accounts"></mat-icon>User Management</mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+      <!-- <mat-list-item role="listitem" routerLink="interpreters" routerLinkActive="active">Interpreter Management
+      </mat-list-item> -->
+      <!-- <mat-divider></mat-divider> -->
+      <!--  <mat-list-item role="listitem" routerLink="bookings" routerLinkActive="active">Booking History</mat-list-item>
+          <mat-divider></mat-divider> -->
+      <mat-list-item matRipple role="listitem" routerLink="carbonmanagement" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" groups icon" fontIcon="groups"></mat-icon>Carbon Management</mat-list-item>
+      <!-- <mat-divider></mat-divider> -->
+      <mat-list-item role="listitem" routerLink="tips"  routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" tips_and_updates icon" fontIcon="tips_and_updates"></mat-icon>Tips Management
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="offset"  routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" adf_scanner icon" fontIcon="adf_scanner"></mat-icon>Offset Management
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="notification" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" add_alert icon" fontIcon="add_alert"></mat-icon>Push Notification
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="nhistory" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" notifications icon" fontIcon="notifications"></mat-icon>Notification History
+      </mat-list-item>
+      <mat-list-item matRipple role="listitem" routerLink="cms" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label=" account_tree icon" fontIcon="account_tree"></mat-icon>CMS</mat-list-item>
+      <mat-list-item matRipple role="listitem" (click)="logOut()" ><mat-icon aria-hidden="false" aria-label="logout icon" fontIcon="logout"></mat-icon>Logout</mat-list-item>
+
+   
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

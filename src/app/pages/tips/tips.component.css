@@ -1,0 +1,111 @@
+
+
+img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.search-container{
+    display: flex;
+    justify-content: space-around;
+}
+.search-container .search-query{
+    flex: 1;
+}
+.search-container .search-date-container{
+    flex: 1;
+    display: flex;
+}
+.search-btn{
+    align-self: center;
+}
+
+
+.wrapperOuter{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px;
+
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    background: #fff;
+    box-shadow: 2px 2px 12px rgba(0, 0,0, 0.1),-1px -1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.wrapper h2.title {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+ 
+    table {
+        width: 100%;
+      }
+      
+   
+      
+      .mat-mdc-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+      
+    
+      .mat-header-cell{
+        background-color: #163813;
+      }
+         
+      .actionBtn{
+        cursor: pointer;
+    }
+    .mat-mdc-table .mdc-data-table__header-row {
+        background: #0274bb;
+     
+    }
+    .example-spacer {
+        flex: 1 1 auto;
+        text-align: right;
+      
+      }
+  
+      .mat-mdc-form-field[_ngcontent-ng-c3606676134] {
+        font-size: 14px;
+        width: 100%;
+        margin-top: 25px;
+    }
+      
+    .mdc-data-table__header-cell {
+        color: rgba(253, 249, 249, 0.87);
+        font-weight: bold;
+        font-size: 16px; /* Adjust the font size as needed */
+      }
+      .mat-input-element {
+        border-radius: 50px; /* You can adjust the value to control the roundness */
+      }
+      /* For left alignment */
+.mat-cell {
+    text-align: left;
+  }
+  
+  /* For center alignment */
+  .mat-cell.center-align {
+    text-align: center;
+  }
+  
+  /* For right alignment */
+  .mat-cell.right-align {
+    text-align: right;
+  }
+  .header-text {
+    max-width: 200px; /* Set the maximum width you want here */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  

@@ -1,0 +1,51 @@
+
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <ngx-spinner></ngx-spinner> -->
+<div class="login_box_outer">
+  <div class="login_box">
+    
+    <!-- <img src="https://www.pakainfo.com/wp-content/uploads/2021/09/sample-image-url-link-300x300.png" alt="Logo" class="logo-image"> -->
+    <img src="assets/logo/mainlogo.webp" alt="Logo" class="logo-image">
+    <div class="title">
+      <h2>admin login</h2>
+      <h3>Input your email and password to get started</h3>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+      <p>
+      <mat-form-field class="from">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+          Please enter email.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('pattern') && loginForm.controls['email'].touched">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field class="field" class="from">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="changetype?'password':'text'" formControlName="password" placeholder="password">   
+        <span (click)="viewpass()"><i [ngClass]="visible?'fa fa-eye-slash':'fa fa-eye'" style="color:black"></i></span>  
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+          Please enter password.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('minlength') && loginForm.controls['password'].touched">
+          Invalid password.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('maxlength') && loginForm.controls['password'].touched">
+          Invalid password.
+        </mat-error>
+      </mat-form-field>
+      </p>
+      <p class="forgot_pass" [routerLink]="['/forgotpassword']">Forgot Password?</p>
+      <button matRipple mat-flat-button class="login_btn" [disabled]="loginForm.invalid">Login</button>
+      <!-- <button    [disabled]="loginForm.invalid">Login</button> -->
+    </form>
+  </div>
+ 
+</div>
+
+
+  

@@ -1,0 +1,104 @@
+
+
+<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet" />
+<div class="wrapperOuter">
+  <h2 class="title">User Profile Edit</h2>
+    <div class="card">
+      <div class="form-gap"></div>
+  <br><hr>
+	<div class="row">
+      <!-- left column -->
+      
+      <div class="col-md-3">
+        <form  [formGroup]="updateuserForm" role="form">
+        <div class="text-center">
+        
+            <label id="icon" class="hoverable" for="fileInput">
+              <img *ngIf="profile!=''" [src]="url ? url :profile ||imgurl " class="avatar img-circle img-thumbnail" >
+              <ngx-avatars [size]="195" [name]="data2" bgColor="#3366FF" [src]="url ? url :profile" *ngIf="profile==''" ></ngx-avatars> 
+              <i class="fas fa-pencil-alt"></i>
+              
+              <input id="fileInput" type='file'  (change)="image1($event)"  >
+          
+               </label>
+    
+        </div>
+      </form>
+      </div>
+     
+     
+      <!-- <label class="hoverable" for="fileInput"> -->
+       
+      <!-- edit form column -->
+     
+      <div class="col-md-9 personal-info">
+        <!-- <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
+        </div> -->
+  
+       
+        <form class="form-horizontal" [formGroup]="updateuserForm" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First Name:</label>
+            <div class="col-lg-8">
+            <input class="form-control" type="text"  formControlName="firstName">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last Name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text"  formControlName="lastName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Mobile:</label>
+            <div class="col-lg-8">
+              <input class="form-control" readonly type="text" formControlName="phoneNumber">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" readonly type="text"  formControlName="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Address:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text"  formControlName="address">
+            </div>
+           
+          </div>
+          <div class="form-group" >
+            <div class="example-button-row">
+              <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              class="add-btn " 
+              (click)="updateuserData()"
+              
+            >SAVE</button>
+            <button
+            type="button"
+            mat-raised-button
+          color="accent"
+            class="add-btn " 
+            [routerLink]="['/main/users']" 
+          >CANCEL</button>
+         
+            
+            </div>
+          <!-- <div class="wp  col-lg-4 "  >
+            <button type="button" class="btn btn-lg btn-info" style=" margin-left: 10px;" [routerLink]="['/main/users']" >Cancel</button> &nbsp;
+            &nbsp;<button type="button" class="btn btn-lg btn-success"   (click)="updateuserData()">Save</button>
+          </div> -->
+          </div>
+        </form>
+      </div>
+  </div>
+  </div>
+</div>

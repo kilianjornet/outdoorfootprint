@@ -1,0 +1,7 @@
+::ng-deep .mat-badge.hide-badge .mat-badge-content {
+    color: transparent;
+    background: none;
+}
+::ng-deep .has-badge{
+    padding-right: 10px;
+}

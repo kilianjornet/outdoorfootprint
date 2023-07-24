@@ -1,0 +1,91 @@
+
+<div class="wrapperOuter">
+ 
+    <h2 class="title">Tips Management</h2>
+    <div class="example-button-row" style="float: right;">
+      
+   
+      <button 
+      type="button"
+      mat-raised-button color="primary" (click)="openDialog()">+create 
+    
+      </button>
+    </div>
+ <br>
+ <br>
+      <p>
+
+  <mat-toolbar style="background: #dbf6fa;">
+    <div *ngIf="!editingMode; else editMode">
+      <!-- Header content when not in editing mode -->
+      <span class="header-text" [title]="headerText">Title: <span style="color: rgb(107, 157, 250); font-weight: bold;">{{headerText}}</span></span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="startEditing()">
+        <mat-icon class="actionBtn" aria-hidden="false" color="accent" aria-label="edit icon" fontIcon="edit"></mat-icon>
+      </button>
+      
+    </div>
+    <ng-template #editMode>
+      <!-- Header content in editing mode -->
+      <mat-form-field>
+        <input class="form-control" type="text" style="margin-top: 6px;" [(ngModel)]="editingHeaderText">
+      </mat-form-field>
+      <button type="button" class="add-btn" mat-raised-button color="primary" (click)="saveHeader()">Save</button> &nbsp;
+      <button type="button" class="add-btn" mat-raised-button color="accent" (click)="cancelEditing()">Cancel</button>
+    </ng-template>
+  </mat-toolbar>
+</p>
+
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" >
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let element; let i = index"> {{ getAdjustedIndex(i+1) }}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element "> {{element.content_name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Content Title</th>
+    <td mat-cell *matCellDef="let element"> {{element.content_title}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <!-- <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef>Last Update</th>
+    <td mat-cell *matCellDef="let element"> {{element.updated_at}} </td>
+  </ng-container> -->
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      
+      <div class="option_b" >
+         
+        <!-- <mat-icon class="actionBtn" aria-hidden="false" color="accent" aria-label="visibility icon" fontIcon="visibility" [matMenuTriggerFor]="menu"></mat-icon> -->
+        <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onAction(element)">Edit </button>
+ 
+          <button mat-menu-item (click)="ondelete(element)">Delete</button>
+        </mat-menu>
+
+  </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator #paginator  showFirstLastButtons [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+</div>
+</div>
