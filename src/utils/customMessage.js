@@ -1,0 +1,37 @@
+module.exports = {
+  english: {
+    LOGIN_SUCCESS:"Sign in successfully",
+    NEED_EMAIL_VERIFY:"Need to verify your email",
+    REGISTRATION_SUCCESS:"Verification code sent on mail",
+    DEFAULT_ERROR:"Something went wrong!",
+    DEFAULT_SUCCESS:"Data fetch successfully",
+    NO_DATA_FOUND:"No data found!",
+    INVALID_OTP:"Invalid OTP",
+    SUCCESS_OTP:"OTP verfied successfully",
+    All_CMS:"CMS list",
+    All_TIPS:"Tips list",
+    All_OFFSETS:"Offset list",
+    NOTIFICATION_SEND_SUCCESS:"Notification send successfully",
+    UPDATE_CMS:"CMS update successfully",
+    ADD_SUCCESS:"Added successfully",
+    UPDATE_TIPS:"Tips update successfully",
+    UPDATE_OFFSET:"Offset update successfully",
+    NOT_A_ADMIN:"You are not a admin !",
+    NOT_A_USER:"You are not a user !",
+    FORGOT_EMAIL_SENT:"OTP sent on your mail",
+    SUBMIT_SUCCESS:"Submitted successfully",
+    INCORRECT_PASSWORD:"Provide a valid password!",
+    RESET_PASSWORD:"Password successfully changed",
+    RESET_PASSWORD_FAILED:"Password reset failed!",
+    ENTER_REGISTER_EMAIL:"Enter registered email",
+    SUCCESS:"Success",
+    ERROR_GET_PROFILE:"Unable to get profile",
+    UPDATED_SUCCESSFULLY:"Updated successfully",
+    USER_BLOCK_SUCCESSFULLY:"User block successfully",
+    USER_UNBLOCK_SUCCESSFULLY:"User unblock successfully",
+    DELETED_SUCCESSFULLY:"Deleted successfully",
+    
+    
+
+  },
+};

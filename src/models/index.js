@@ -1,0 +1,11 @@
+module.exports.Token = require('./token.model');
+module.exports.User = require('./user.model');
+module.exports.Gear = require('./gear.model');
+module.exports.Mobility = require('./mobility.model');
+module.exports.userCarbon = require('./user.carbon.model');
+module.exports.userHome = require('./user.home_category.model');
+module.exports.userMobility = require('./user.mobility_category.model');
+module.exports.userGear = require('./user.gear_category.model');
+module.exports.userOther = require('./user.others_category.model');
+module.exports.userPublicShare = require('./user.publicshare_category.model');
+module.exports.Tip = require('./tips.model');
