@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -47,11 +48,13 @@ class NotificationManager {
         //     message.toMap(),
         //   ),
         // );
-        WidgetManager.customSnackBar(
-          title: '${notification.title}',
-          body: '${notification.body}',
-          type: SnackBarType.notification,
-        );
+        if (Platform.isAndroid) {
+          WidgetManager.customSnackBar(
+            title: '${notification.title}',
+            body: '${notification.body}',
+            type: SnackBarType.notification,
+          );
+        }
       },
     );
 
