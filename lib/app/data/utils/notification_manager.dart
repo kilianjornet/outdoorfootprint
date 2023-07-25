@@ -9,8 +9,8 @@ class NotificationManager {
   NotificationManager._();
 
   static Future initNotifications() async {
-    await initPushNotifications();
     await initLocalNotifications();
+    await initPushNotifications();
   }
 
   static final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
