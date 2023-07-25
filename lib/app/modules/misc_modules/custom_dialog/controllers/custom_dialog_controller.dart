@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class CustomDialogController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void onInit() {
