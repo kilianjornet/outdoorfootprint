@@ -36,7 +36,7 @@ class ApiManager {
   static const createGear = '/api/users/create-user-gear-category';
   static const createFood = '/api/users/create-user-other-category';
 
-  //Home URL
+  //Footprint URL
   static const getUserFootprint =
       '/api/users/app/get-all-calculation-four-year-by-user-id';
 

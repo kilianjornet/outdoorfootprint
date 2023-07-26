@@ -1123,7 +1123,7 @@ class WidgetManager {
         number = 101;
         break;
       case DropdownType.car:
-        number = 5;
+        number = 6;
         break;
     }
 
