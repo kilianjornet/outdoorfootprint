@@ -18,6 +18,7 @@ class SignInController extends GetxController {
   final passwordNode = FocusNode();
   var obscurePasswordText = true.obs;
   var isEnable = false.obs;
+
   @override
   void onInit() {
     super.onInit();

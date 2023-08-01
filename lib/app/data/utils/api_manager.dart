@@ -2,7 +2,8 @@ class ApiManager {
   ApiManager._();
 
   //Base URL
-  static const baseUrl = 'https://nodeserver.mydevfactory.com:6006';
+  // static const baseUrl = 'https://nodeserver.mydevfactory.com:6006';
+  static const baseUrl = 'https://summitsfoundation.org:6006';
 
   //Hotel URL
   static const hotelUrl = 'www.hotelfootprints.org';
